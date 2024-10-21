@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<LangVersion>12.0</LangVersion>
+		<ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
+		<AssemblyVersion>3.0.8.0</AssemblyVersion>
+		<FileVersion>3.0.8.0</FileVersion>
+		<Version>$(VersionPrefix)3.0.8.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\*.ico" />
+		<Resource Include="Assets\*.png" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="RestSharp" Version="112.1.0" />
+		<PackageReference Include="Flucli" Version="0.2.0-beta" />
+		<PackageReference Include="NotifyIconEx" Version="1.1.2" />
+		<PackageReference Include="WPF-UI.Violeta" Version="3.0.5.20" />
+		<PackageReference Include="Vanara.PInvoke.SHCore" Version="4.0.3" />
+		<PackageReference Include="Vanara.PInvoke.User32" Version="4.0.3" />
+		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="4.0.3" />
+		<PackageReference Include="WPF-UI" Version="3.0.5" />
+		<PackageReference Include="WPF-UI.Violeta" Version="3.0.5.20" />
+		<PackageReference Include="ComputedConverters.WPF" Version="0.4.7-beta" />
+		<PackageReference Include="ComputedBehaviors.WPF" Version="0.4.7-beta" />
+		<PackageReference Include="ComputedAnimations.WPF" Version="0.4.7-beta" />
+	</ItemGroup>
+	
+</Project>
