@@ -110,7 +110,7 @@ internal class TrayIconManager
             //Kernel32.FreeConsole();
         };
 
-        System.Windows.Forms.Application.DoEvents();
+        //System.Windows.Forms.Application.DoEvents();
     }
 
     public static TrayIconManager GetInstance()
