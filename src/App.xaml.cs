@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Fischless.Configuration;
+using System.Diagnostics;
 using System.Windows;
 using TiktokLiveRec.Extensions;
 
@@ -6,6 +7,12 @@ namespace TiktokLiveRec;
 
 public partial class App : Application
 {
+    static App()
+    {
+        ConfigurationManager.ConfigurationSerializer = new YamlConfigurationSerializer();
+        ConfigurationManager.Setup(ConfigurationSpecialPath.GetPath($"config.yaml", AppConfig.PackName));
+    }
+
     /// <summary>
     /// Occurs when the application is loading.
     /// </summary>

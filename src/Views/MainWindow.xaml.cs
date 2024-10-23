@@ -1,7 +1,6 @@
-﻿using System.Windows;
-using Wpf.Ui.Controls;
+﻿using Wpf.Ui.Controls;
 
-namespace TiktokLiveRec;
+namespace TiktokLiveRec.Views;
 
 public partial class MainWindow : FluentWindow
 {
