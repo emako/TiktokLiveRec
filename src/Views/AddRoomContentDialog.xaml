@@ -7,7 +7,6 @@
                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                    xmlns:vio="http://schemas.lepo.co/wpfui/2022/xaml/violeta"
                    Title="添加房间"
-                   MinWidth="800"
                    d:DesignHeight="NaN"
                    d:DesignWidth="NaN"
                    CloseButtonText="关闭"
@@ -20,7 +19,7 @@
     <ui:Grid>
         <ui:StackPanel Spacing="8">
             <TextBlock Text="输入直播间链接" />
-            <ui:TextBox PlaceholderText="格式：https://live.douyin.com/xxx" Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <ui:TextBox PlaceholderText="示例：https://live.douyin.com/xxx" Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </ui:StackPanel>
     </ui:Grid>
 </vio:ContentDialog>

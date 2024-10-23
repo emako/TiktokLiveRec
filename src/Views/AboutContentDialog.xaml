@@ -1,0 +1,36 @@
+﻿<vio:ContentDialog x:Class="TiktokLiveRec.Views.AboutContentDialog"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:base="clr-namespace:TiktokLiveRec"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:local="clr-namespace:TiktokLiveRec.Views"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                   xmlns:vio="http://schemas.lepo.co/wpfui/2022/xaml/violeta"
+                   Title="关于"
+                   d:DesignHeight="NaN"
+                   d:DesignWidth="NaN"
+                   CloseButtonText="关闭"
+                   FontSize="14"
+                   Style="{StaticResource DefaultVioletaContentDialogStyle}"
+                   mc:Ignorable="d">
+    <ui:Grid RowDefinitions="Auto,Auto">
+        <ui:Grid Grid.Row="0" ColumnDefinitions="Auto,*">
+            <Image Grid.Column="0"
+                   Height="48"
+                   Source="pack://application:,,,/Assets/Favicon.png" />
+            <ui:StackPanel Grid.Column="1"
+                           Margin="12,0,0,0"
+                           VerticalAlignment="Center"
+                           Spacing="4">
+                <TextBlock Text="{x:Static base:AppConfig.PackName}" />
+                <TextBlock Text="{x:Static base:AppConfig.Version}" />
+            </ui:StackPanel>
+        </ui:Grid>
+        <ui:HyperlinkButton Grid.Row="1"
+                            Margin="0,8,0,0"
+                            Command="{Binding OpenHyperlinkCommand}"
+                            Content="{x:Static base:AppConfig.Url}"
+                            Cursor="Hand" />
+    </ui:Grid>
+</vio:ContentDialog>

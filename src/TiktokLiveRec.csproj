@@ -9,9 +9,9 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<LangVersion>12.0</LangVersion>
 		<ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
-		<AssemblyVersion>3.0.8.0</AssemblyVersion>
-		<FileVersion>3.0.8.0</FileVersion>
-		<Version>$(VersionPrefix)3.0.8.0</Version>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<Version>$(VersionPrefix)1.0.0.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -37,5 +37,5 @@
 		<PackageReference Include="Vanara.PInvoke.User32" Version="4.0.4" />
 		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="4.0.4" />
 	</ItemGroup>
-	
+
 </Project>

@@ -6,7 +6,8 @@ namespace TiktokLiveRec;
 [Obfuscation]
 public static class Configurations
 {
-    public static ConfigurationDefinition<Room[]> Rooms { get; } = new(nameof(Room), []);
+    public static ConfigurationDefinition<string> Theme { get; } = new(nameof(Theme), string.Empty);
+    public static ConfigurationDefinition<Room[]> Rooms { get; } = new(nameof(Rooms), []);
 }
 
 public class Room
