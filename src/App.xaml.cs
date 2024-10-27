@@ -1,6 +1,7 @@
 ﻿using Fischless.Configuration;
 using System.Diagnostics;
 using System.Windows;
+using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
 
 namespace TiktokLiveRec;

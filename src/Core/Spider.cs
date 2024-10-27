@@ -1,7 +1,7 @@
 ﻿using RestSharp;
 using System.Text.RegularExpressions;
 
-namespace TiktokLiveRec;
+namespace TiktokLiveRec.Core;
 
 internal static partial class Spider
 {

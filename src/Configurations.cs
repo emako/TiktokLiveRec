@@ -13,7 +13,7 @@ public static class Configurations
 public class Room
 {
     public string NickName { get; set; } = null!;
-    public string LiveUrl { get; set; } = null!;
+    public string RoomUrl { get; set; } = null!;
 
-    public override string ToString() => $"{LiveUrl},{NickName}";
+    public override string ToString() => $"{RoomUrl},{NickName}";
 }

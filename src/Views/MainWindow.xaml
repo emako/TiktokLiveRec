@@ -52,19 +52,127 @@
             </ui:Grid>
             <DataGrid Grid.Row="1"
                       Margin="0,8,0,0"
-                      AutoGenerateColumns="True"
+                      AutoGenerateColumns="False"
                       Background="Transparent"
                       CanUserAddRows="False"
+                      CanUserSortColumns="False"
                       ColumnHeaderHeight="50"
                       ColumnWidth="100"
+                      DataGrid.CellStyle="{StaticResource CenteredDataGridCellStyle}"
+                      DataGrid.ColumnHeaderStyle="{StaticResource CenteredDataGridColumnHeaderStyle}"
                       EnableColumnVirtualization="False"
                       EnableRowVirtualization="False"
                       IsReadOnly="True"
                       ItemsSource="{Binding Recs}"
-                      Loaded="{c:EventBinding RecTableLoadedCommand}"
+                      Loaded="{c:EventBinding DataGridLoadedCommand}"
                       RowHeight="40"
                       SelectionMode="Single"
-                      SelectionUnit="FullRow" />
+                      SelectionUnit="FullRow">
+                <DataGrid.ContextMenu>
+                    <ContextMenu Loaded="{c:EventBinding ContextMenuLoadedCommand}">
+                        <MenuItem Header="{Binding SelectedItem.NickName}" IsEnabled="False" />
+                        <MenuItem Command="{Binding GotoRoomUrlCommand}" Header="前往直播间">
+                            <MenuItem.Icon>
+                                <ui:FontIcon Margin="2,0,2,0"
+                                             FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                             FontSize="16"
+                                             Glyph="{x:Static ui:FontSymbols.OpenInNewWindow}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem Command="{Binding PlayRecordCommand}" Header="播放录制">
+                            <MenuItem.Icon>
+                                <ui:FontIcon Margin="2,0,2,0"
+                                             FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             FontSize="16"
+                                             Glyph="{x:Static ui:FontSymbols.Play}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding StopRecordCommand}" Header="停止录制">
+                            <MenuItem.Icon>
+                                <ui:FontIcon Margin="2,0,2,0"
+                                             FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             FontSize="16"
+                                             Glyph="{x:Static ui:FontSymbols.Stop}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem Header="单独设置" IsEnabled="False" />
+                        <MenuItem Command="{Binding GotoRoomUrlCommand}"
+                                  Header="通知直播"
+                                  IsCheckable="True"
+                                  ToolTip="指示是否在检测到开播后进行系统通知" />
+                        <MenuItem Command="{Binding GotoRoomUrlCommand}"
+                                  Header="监听直播"
+                                  IsCheckable="True"
+                                  ToolTip="指示是否检测开播状态" />
+                        <MenuItem Command="{Binding GotoRoomUrlCommand}"
+                                  Header="录制直播"
+                                  IsCheckable="True"
+                                  ToolTip="指示是否录制直播" />
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*"
+                                        Binding="{Binding NickName}"
+                                        CellStyle="{StaticResource CenteredDataGridTextColumnCellStyle}"
+                                        EditingElementStyle="{StaticResource CenteredDataGridTextColumnEditingElementStyle}"
+                                        ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
+                                        Header="直播间"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Width="*"
+                                        Binding="{Binding StreamStatusText}"
+                                        CellStyle="{StaticResource CenteredDataGridTextColumnCellStyle}"
+                                        EditingElementStyle="{StaticResource CenteredDataGridTextColumnEditingElementStyle}"
+                                        ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
+                                        Header="直播状态"
+                                        IsReadOnly="True" />
+                    <DataGridTextColumn Width="*"
+                                        Binding="{Binding RecordStatusText}"
+                                        CellStyle="{StaticResource CenteredDataGridTextColumnCellStyle}"
+                                        EditingElementStyle="{StaticResource CenteredDataGridTextColumnEditingElementStyle}"
+                                        ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
+                                        Header="录制状态"
+                                        IsReadOnly="True" />
+                    <!--<DataGridTemplateColumn Width="3*" Header="操作">
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style BasedOn="{StaticResource DefaultDataGridCellStyle}" TargetType="{x:Type DataGridCell}">
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                            <ui:StackPanel HorizontalAlignment="Center"
+                                                           Orientation="Horizontal"
+                                                           Spacing="8">
+                                                <Button Command="{Binding PlayRecordCommand}"
+                                                        Tag="{Binding}"
+                                                        ToolTip="播放直播">
+                                                    <Button.Content>
+                                                        <ui:StackPanel Orientation="Horizontal" Spacing="4">
+                                                            <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static ui:FontSymbols.Play}" />
+                                                            <TextBlock Text="播放" />
+                                                        </ui:StackPanel>
+                                                    </Button.Content>
+                                                </Button>
+                                                <Button Command="{Binding GotoCommand}"
+                                                        Tag="{Binding}"
+                                                        ToolTip="前往直播间">
+                                                    <Button.Content>
+                                                        <ui:StackPanel Orientation="Horizontal" Spacing="4">
+                                                            <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static ui:FontSymbols.OpenInNewWindow}" />
+                                                            <TextBlock Text="前往" />
+                                                        </ui:StackPanel>
+                                                    </Button.Content>
+                                                </Button>
+                                            </ui:StackPanel>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
         </ui:Grid>
         <Grid>
             <ui:TitleBar Title="TiktokLiveRec"

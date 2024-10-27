@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using TiktokLiveRec.Core;
 using Wpf.Ui.Violeta.Controls;
 
 namespace TiktokLiveRec.Views;
@@ -42,9 +43,9 @@ public sealed partial class AddRoomContentDialog : ContentDialog
             }
 
             string roomId = uri.Segments.Last();
-            string liveUrl = $"https://live.douyin.com/{roomId}";
+            string roomUrl = $"https://live.douyin.com/{roomId}";
 
-            SpiderResult spider = Spider.GetResult(liveUrl);
+            SpiderResult spider = Spider.GetResult(roomUrl);
 
             if (string.IsNullOrWhiteSpace(spider.Nickname))
             {

@@ -3,16 +3,19 @@ using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
-using System.Collections.ObjectModel;
 using System.IO;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using TiktokLiveRec.Views;
 using Windows.Storage;
 using Windows.System;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Violeta.Appearance;
+using DataGrid = System.Windows.Controls.DataGrid;
 
-namespace TiktokLiveRec;
+namespace TiktokLiveRec.ViewModels;
 
 [ObservableObject]
 public partial class MainViewModel : ReactiveObject
@@ -56,15 +59,16 @@ public partial class MainViewModel : ReactiveObject
         }
     }
 
-    public DataGrid RecTable { get; private set; } = null!;
-
     [ObservableProperty]
-    private ObservableCollection<RecRoom> recs = [];
+    private ReactiveCollection<RecRoom> recs = [];
 
-    [RelayCommand]
-    private void RecTableLoaded(RelayEventParameter param)
+    public MainViewModel()
     {
-        RecTable = (DataGrid)param.Deconstruct().Sender;
+        Recs.Reset(Configurations.Rooms.Get().Select(room => new RecRoom()
+        {
+            NickName = room.NickName,
+            RoomUrl = room.RoomUrl,
+        }));
     }
 
     [RelayCommand]
@@ -79,11 +83,11 @@ public partial class MainViewModel : ReactiveObject
             {
                 List<Room> rooms = [.. Configurations.Rooms.Get()];
 
-                rooms.RemoveAll(room => room.LiveUrl == dialog.Url);
+                rooms.RemoveAll(room => room.RoomUrl == dialog.Url);
                 rooms.Add(new Room()
                 {
                     NickName = dialog.NickName,
-                    LiveUrl = dialog.Url!,
+                    RoomUrl = dialog.Url!,
                 });
                 Configurations.Rooms.Set([.. rooms]);
                 ConfigurationManager.Save();
@@ -91,7 +95,7 @@ public partial class MainViewModel : ReactiveObject
                 Recs.Add(new RecRoom()
                 {
                     NickName = dialog.NickName,
-                    LiveUrl = dialog.Url!,
+                    RoomUrl = dialog.Url!,
                 });
             }
         }
@@ -124,13 +128,81 @@ public partial class MainViewModel : ReactiveObject
         AboutContentDialog dialog = new();
         _ = await dialog.ShowAsync();
     }
-}
 
-public partial class RecRoom : ObservableObject
-{
-    [ObservableProperty]
-    private string nickName = string.Empty;
+    [RelayCommand]
+    private async Task PlayRecordAsync()
+    {
+        await Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    private async Task GotoRoomUrlAsync()
+    {
+        await Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    private async Task StopRecordAsync()
+    {
+        await Task.CompletedTask;
+    }
+
+    public DataGrid DataGrid { get; private set; } = null!;
+
+    [RelayCommand]
+    private void OnDataGridLoaded(RelayEventParameter param)
+    {
+        DataGrid = (DataGrid)param.Deconstruct().Sender;
+    }
 
     [ObservableProperty]
-    private string liveUrl = string.Empty;
+    private RecRoom selectedItem = new();
+
+    [RelayCommand]
+    private void OnContextMenuLoaded(RelayEventParameter param)
+    {
+        ContextMenu sender = (ContextMenu)param.Deconstruct().Sender;
+
+        sender.Opened -= ContextMenuOpened;
+        sender.Opened += ContextMenuOpened;
+
+        // Closure method
+        void ContextMenuOpened(object sender, RoutedEventArgs e)
+        {
+            if (DataGrid.InputHitTest(Mouse.GetPosition(DataGrid)) is FrameworkElement { } element)
+            {
+                if (GetDataGridRow(element) is DataGridRow { } row)
+                {
+                    if (row.DataContext is RecRoom { } data)
+                    {
+                        _ = data.MapTo(SelectedItem);
+
+                        foreach (UIElement d in ((ContextMenu)sender).Items.OfType<UIElement>())
+                        {
+                            d.Visibility = Visibility.Visible;
+                        }
+                    }
+                }
+                else
+                {
+                    ((ContextMenu)sender).IsOpen = false;
+                    _ = SelectedItem.MapFrom(new RecRoom());
+
+                    foreach (UIElement d in ((ContextMenu)sender).Items.OfType<UIElement>())
+                    {
+                        d.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+
+            static DataGridRow? GetDataGridRow(FrameworkElement? element)
+            {
+                while (element != null && element is not DataGridRow)
+                {
+                    element = VisualTreeHelper.GetParent(element) as FrameworkElement;
+                }
+                return element as DataGridRow;
+            }
+        }
+    }
 }
