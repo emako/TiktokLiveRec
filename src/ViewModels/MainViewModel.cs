@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Threading;
+using TiktokLiveRec.Core;
 using TiktokLiveRec.Views;
 using Windows.Storage;
 using Windows.System;
@@ -21,8 +21,6 @@ namespace TiktokLiveRec.ViewModels;
 [ObservableObject]
 public partial class MainViewModel : ReactiveObject
 {
-    private DispatcherTimer timer = new();
-
     [ObservableProperty]
     private bool isThemeAuto = string.IsNullOrWhiteSpace(Configurations.Theme.Get());
 
@@ -63,20 +61,17 @@ public partial class MainViewModel : ReactiveObject
     }
 
     [ObservableProperty]
-    private ReactiveCollection<RecRoom> recs = [];
+    private ReactiveCollection<RoomStatusReactive> recs = [];
 
     public MainViewModel()
     {
-        Recs.Reset(Configurations.Rooms.Get().Select(room => new RecRoom()
+        Recs.Reset(Configurations.Rooms.Get().Select(room => new RoomStatusReactive()
         {
             NickName = room.NickName,
             RoomUrl = room.RoomUrl,
         }));
 
-        timer.Interval = TimeSpan.FromSeconds(5);
-        timer.Tick += async (sender, e) =>
-        {
-        };
+        _ = Task.Run(async () => await GlobalMonitor.StartAsync());
     }
 
     [RelayCommand]
@@ -100,7 +95,7 @@ public partial class MainViewModel : ReactiveObject
                 Configurations.Rooms.Set([.. rooms]);
                 ConfigurationManager.Save();
 
-                Recs.Add(new RecRoom()
+                Recs.Add(new RoomStatusReactive()
                 {
                     NickName = dialog.NickName,
                     RoomUrl = dialog.RoomUrl!,
@@ -164,7 +159,7 @@ public partial class MainViewModel : ReactiveObject
     }
 
     [ObservableProperty]
-    private RecRoom selectedItem = new();
+    private RoomStatusReactive selectedItem = new();
 
     [ObservableProperty]
     private bool isToNotify = false;
@@ -177,7 +172,6 @@ public partial class MainViewModel : ReactiveObject
 
     [RelayCommand]
     private void OnContextMenuLoaded(RelayEventParameter param)
-
     {
         ContextMenu sender = (ContextMenu)param.Deconstruct().Sender;
 
@@ -191,7 +185,7 @@ public partial class MainViewModel : ReactiveObject
             {
                 if (GetDataGridRow(element) is DataGridRow { } row)
                 {
-                    if (row.DataContext is RecRoom { } data)
+                    if (row.DataContext is RoomStatusReactive { } data)
                     {
                         _ = data.MapTo(SelectedItem);
 
@@ -204,7 +198,7 @@ public partial class MainViewModel : ReactiveObject
                 else
                 {
                     ((ContextMenu)sender).IsOpen = false;
-                    _ = SelectedItem.MapFrom(new RecRoom());
+                    _ = SelectedItem.MapFrom(new RoomStatusReactive());
 
                     foreach (UIElement d in ((ContextMenu)sender).Items.OfType<UIElement>())
                     {
