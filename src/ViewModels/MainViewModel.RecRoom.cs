@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
-using System.Windows.Controls;
 
 namespace TiktokLiveRec.ViewModels;
 
@@ -44,6 +43,12 @@ public partial class MainViewModel
             RecordStatus.Recording => "录制中",
             _ => "未知",
         };
+
+        [RelayCommand]
+        private async Task GotoRoomUrlAsync()
+        {
+            await Task.CompletedTask;
+        }
     }
 
     public enum StreamStatus

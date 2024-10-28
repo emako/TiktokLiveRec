@@ -13,6 +13,8 @@ public sealed partial class AddRoomContentDialog : ContentDialog
     [ObservableProperty]
     private string? nickName = null;
 
+    public string? RoomUrl = null;
+
     public AddRoomContentDialog()
     {
         DataContext = this;
@@ -55,6 +57,7 @@ public sealed partial class AddRoomContentDialog : ContentDialog
             }
 
             NickName = spider.Nickname;
+            RoomUrl = roomUrl;
 
             Toast.Success($"成功添加{NickName}直播间");
         }

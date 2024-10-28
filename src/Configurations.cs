@@ -14,6 +14,9 @@ public class Room
 {
     public string NickName { get; set; } = null!;
     public string RoomUrl { get; set; } = null!;
+    public bool IsToNotify { get; set; } = true;
+    public bool IsToSpider { get; set; } = true;
+    public bool IsToRecord { get; set; } = true;
 
     public override string ToString() => $"{RoomUrl},{NickName}";
 }

@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 using TiktokLiveRec.Views;
 using Windows.Storage;
 using Windows.System;
@@ -20,6 +21,8 @@ namespace TiktokLiveRec.ViewModels;
 [ObservableObject]
 public partial class MainViewModel : ReactiveObject
 {
+    private DispatcherTimer timer = new();
+
     [ObservableProperty]
     private bool isThemeAuto = string.IsNullOrWhiteSpace(Configurations.Theme.Get());
 
@@ -69,6 +72,11 @@ public partial class MainViewModel : ReactiveObject
             NickName = room.NickName,
             RoomUrl = room.RoomUrl,
         }));
+
+        timer.Interval = TimeSpan.FromSeconds(5);
+        timer.Tick += async (sender, e) =>
+        {
+        };
     }
 
     [RelayCommand]
@@ -87,7 +95,7 @@ public partial class MainViewModel : ReactiveObject
                 rooms.Add(new Room()
                 {
                     NickName = dialog.NickName,
-                    RoomUrl = dialog.Url!,
+                    RoomUrl = dialog.RoomUrl!,
                 });
                 Configurations.Rooms.Set([.. rooms]);
                 ConfigurationManager.Save();
@@ -95,7 +103,7 @@ public partial class MainViewModel : ReactiveObject
                 Recs.Add(new RecRoom()
                 {
                     NickName = dialog.NickName,
-                    RoomUrl = dialog.Url!,
+                    RoomUrl = dialog.RoomUrl!,
                 });
             }
         }
@@ -158,8 +166,18 @@ public partial class MainViewModel : ReactiveObject
     [ObservableProperty]
     private RecRoom selectedItem = new();
 
+    [ObservableProperty]
+    private bool isToNotify = false;
+
+    [ObservableProperty]
+    private bool isToSpider = false;
+
+    [ObservableProperty]
+    private bool isToRecord = false;
+
     [RelayCommand]
     private void OnContextMenuLoaded(RelayEventParameter param)
+
     {
         ContextMenu sender = (ContextMenu)param.Deconstruct().Sender;
 
