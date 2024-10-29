@@ -32,6 +32,11 @@ internal static class GlobalMonitor
                         });
                     }
 
+                    if (!room.IsToSpider)
+                    {
+                        continue;
+                    }
+
                     SpiderResult spiderResult = Spider.GetResult(room.RoomUrl);
 
                     if (RoomStatus.TryGetValue(room.RoomUrl, out RoomStatus? roomStatus))

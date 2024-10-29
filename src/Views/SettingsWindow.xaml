@@ -1,0 +1,110 @@
+﻿<ui:FluentWindow x:Class="TiktokLiveRec.Views.SettingsWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:b="http://schemas.github.com/computedbehaviors/2024/xaml"
+                 xmlns:c="http://schemas.github.com/computedconverters/2024/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:local="clr-namespace:TiktokLiveRec.Views"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 xmlns:vio="http://schemas.lepo.co/wpfui/2022/xaml/violeta"
+                 Title="设置"
+                 Width="700"
+                 Height="560"
+                 d:Background="#FF101010"
+                 ExtendsContentIntoTitleBar="True"
+                 WindowBackdropType="Mica"
+                 WindowStartupLocation="CenterOwner"
+                 mc:Ignorable="d">
+    <Grid>
+        <ui:Grid Margin="8,42,8,8" RowDefinitions="Auto,*">
+            <ScrollViewer PanningMode="None" VerticalScrollBarVisibility="Visible">
+                <ui:StackPanel Margin="8,0,8,0" Spacing="8">
+                    <TextBlock Margin="4,0,0,4"
+                               FontSize="14"
+                               Foreground="#87898B"
+                               Text="网络设置" />
+                    <ui:CardExpander>
+                        <ui:CardExpander.Header>
+                            <ui:Grid ColumnDefinitions="Auto,*,Auto">
+                                <Grid Grid.Column="0" Margin="0,0,12,0">
+                                    <TextBlock MinWidth="26"
+                                               Margin="4,0,0,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                               FontSize="18"
+                                               Text="{x:Static ui:FontSymbols.VPN}" />
+                                </Grid>
+                                <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                    <TextBlock Grid.Row="0" Text="使用代理" />
+                                    <TextBlock Grid.Row="1"
+                                               FontSize="11"
+                                               Foreground="#D0D0D0"
+                                               Text="指定你的代理 URL" />
+                                </ui:Grid>
+                                <Grid Grid.Column="2" Margin="0,0,12,0">
+                                    <ui:ToggleSwitch IsChecked="{Binding ViewModel.IsUseArguments, Mode=TwoWay}" />
+                                </Grid>
+                            </ui:Grid>
+                        </ui:CardExpander.Header>
+                        <ui:StackPanel Spacing="8">
+                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto">
+                                <TextBlock VerticalAlignment="Center" Text="主机名以及端口号" />
+                                <ui:TextBox Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            PlaceholderText="示例：127.0.0.1:7890"
+                                            Text="" />
+                                <Button Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        Content="检查连接" />
+                            </ui:Grid>
+                        </ui:StackPanel>
+                    </ui:CardExpander>
+                    <ui:CardExpander>
+                        <ui:CardExpander.Header>
+                            <ui:Grid ColumnDefinitions="Auto,*,Auto">
+                                <Grid Grid.Column="0" Margin="0,0,12,0">
+                                    <TextBlock MinWidth="26"
+                                               Margin="4,0,0,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                               FontSize="18"
+                                               Text="{x:Static ui:FontSymbols.Rename}" />
+                                </Grid>
+                                <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                    <TextBlock Grid.Row="0" Text="使用 Cookie" />
+                                    <TextBlock Grid.Row="1"
+                                               FontSize="11"
+                                               Foreground="#D0D0D0"
+                                               Text="录制抖音必须带有 Cookie" />
+                                </ui:Grid>
+                                <Grid Grid.Column="2" Margin="0,0,12,0">
+                                    <!--  EMPTY  -->
+                                </Grid>
+                            </ui:Grid>
+                        </ui:CardExpander.Header>
+                        <ui:StackPanel Spacing="8">
+                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*">
+                                <TextBlock VerticalAlignment="Center" Text="Cookie" />
+                                <ui:TextBox Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            PlaceholderText=""
+                                            Text="" />
+                            </ui:Grid>
+                        </ui:StackPanel>
+                    </ui:CardExpander>
+                    <FrameworkElement Height="90" />
+                </ui:StackPanel>
+            </ScrollViewer>
+        </ui:Grid>
+        <Grid>
+            <ui:TitleBar Title="设置" ShowMaximize="False">
+                <ui:TitleBar.Icon>
+                    <ui:ImageIcon Source="pack://application:,,,/Assets/Favicon.png" />
+                </ui:TitleBar.Icon>
+            </ui:TitleBar>
+        </Grid>
+    </Grid>
+</ui:FluentWindow>

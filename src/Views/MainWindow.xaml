@@ -12,6 +12,7 @@
                  Title="TiktokLiveRec"
                  Width="800"
                  Height="600"
+                 d:Background="#FF101010"
                  ExtendsContentIntoTitleBar="True"
                  WindowBackdropType="Mica"
                  WindowStartupLocation="CenterScreen"
@@ -195,9 +196,7 @@
             </DataGrid>
         </ui:Grid>
         <Grid>
-            <ui:TitleBar Title="TiktokLiveRec"
-                         Grid.Row="0"
-                         ShowMaximize="False">
+            <ui:TitleBar Title="TiktokLiveRec" ShowMaximize="False">
                 <ui:TitleBar.Icon>
                     <ui:ImageIcon Source="pack://application:,,,/Assets/Favicon.png" />
                 </ui:TitleBar.Icon>

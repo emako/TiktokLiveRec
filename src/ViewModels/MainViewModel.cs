@@ -105,6 +105,20 @@ public partial class MainViewModel : ReactiveObject
     }
 
     [RelayCommand]
+    private void OpenSettingsDialog()
+    {
+        foreach (Window win in Application.Current.Windows.OfType<SettingsWindow>())
+        {
+            win.Close();
+        }
+
+        _ = new SettingsWindow()
+        {
+            Owner = Application.Current.MainWindow,
+        }.ShowDialog();
+    }
+
+    [RelayCommand]
     private async Task OpenSaveFolderAsync()
     {
         const string path = "download";
