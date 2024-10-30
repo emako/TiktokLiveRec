@@ -10,51 +10,49 @@ internal static class GlobalMonitor
 
     public static async Task StartAsync(CancellationToken token = default)
     {
-        using PeriodicTimer timer = new(TimeSpan.FromMilliseconds(500));
+        using PeriodicTimer timer = new(TimeSpan.FromMilliseconds(5000000));
 
         while (await timer.WaitForNextTickAsync(token).ConfigureAwait(false))
         {
             try
             {
-                Room[] rooms = Configurations.Rooms.Get();
-
-                foreach (Room room in rooms)
+                if (Configurations.IsToNotify.Get() || Configurations.IsToRecord.Get())
                 {
-                    if (!RoomStatus.ContainsKey(room.RoomUrl))
+                    Room[] rooms = Configurations.Rooms.Get();
+
+                    foreach (Room room in rooms)
                     {
-                        RoomStatus.TryAdd(room.RoomUrl, new RoomStatus()
+                        if (!RoomStatus.ContainsKey(room.RoomUrl))
                         {
-                            NickName = room.NickName,
-                            RoomUrl = room.RoomUrl,
-                            HlsUrl = null!,
-                            StreamStatus = StreamStatus.Initialized,
-                            RecordStatus = RecordStatus.Initialized,
+                            RoomStatus.TryAdd(room.RoomUrl, new RoomStatus()
+                            {
+                                NickName = room.NickName,
+                                RoomUrl = room.RoomUrl,
+                                HlsUrl = null!,
+                                StreamStatus = StreamStatus.Initialized,
+                                RecordStatus = RecordStatus.Initialized,
+                            });
+                        }
+
+                        SpiderResult spiderResult = Spider.GetResult(room.RoomUrl);
+
+                        if (RoomStatus.TryGetValue(room.RoomUrl, out RoomStatus? roomStatus))
+                        {
+                            if (room.IsToNotify)
+                            {
+                                if (roomStatus.StreamStatus != StreamStatus.Streaming && (spiderResult.IsLiveStreaming ?? false))
+                                {
+                                    Notifier.Notify(room.NickName, "开播通知", room.RoomUrl);
+                                }
+                            }
+                            roomStatus.HlsUrl = spiderResult.HlsUrl!;
+                        }
+
+                        WeakReferenceMessenger.Default.Send(new RecMessage()
+                        {
+                            Type = RecMessage.RecMessageType.StartStreaming,
                         });
                     }
-
-                    if (!room.IsToSpider)
-                    {
-                        continue;
-                    }
-
-                    SpiderResult spiderResult = Spider.GetResult(room.RoomUrl);
-
-                    if (RoomStatus.TryGetValue(room.RoomUrl, out RoomStatus? roomStatus))
-                    {
-                        if (room.IsToNotify)
-                        {
-                            if (roomStatus.StreamStatus != StreamStatus.Streaming && (spiderResult.IsLiveStreaming ?? false))
-                            {
-                                Notifier.Notify(room.NickName, "开播通知", room.RoomUrl);
-                            }
-                        }
-                        roomStatus.HlsUrl = spiderResult.HlsUrl!;
-                    }
-
-                    WeakReferenceMessenger.Default.Send(new RecMessage()
-                    {
-                        Type = RecMessage.RecMessageType.StartStreaming,
-                    });
                 }
             }
             catch (Exception e)

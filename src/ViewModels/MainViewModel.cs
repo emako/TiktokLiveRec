@@ -179,9 +179,6 @@ public partial class MainViewModel : ReactiveObject
     private bool isToNotify = false;
 
     [ObservableProperty]
-    private bool isToSpider = false;
-
-    [ObservableProperty]
     private bool isToRecord = false;
 
     [RelayCommand]

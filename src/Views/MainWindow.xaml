@@ -45,7 +45,7 @@
                         <Button.Content>
                             <ui:StackPanel Orientation="Horizontal" Spacing="8">
                                 <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static ui:FontSymbols.FolderOpen}" />
-                                <TextBlock Text="打开下载目录" />
+                                <TextBlock Text="保存目录" />
                             </ui:StackPanel>
                         </Button.Content>
                     </Button>
@@ -81,7 +81,7 @@
                             </MenuItem.Icon>
                         </MenuItem>
                         <Separator />
-                        <MenuItem Command="{Binding StopRecordCommand}" Header="打开目录">
+                        <MenuItem Command="{Binding StopRecordCommand}" Header="保存目录">
                             <MenuItem.Icon>
                                 <ui:FontIcon Margin="2,0,2,0"
                                              FontFamily="{DynamicResource SymbolThemeFontFamily}"
@@ -120,11 +120,6 @@
                                   IsCheckable="True"
                                   IsChecked="{Binding IsToNotify, Mode=TwoWay}"
                                   ToolTip="指示是否在检测到开播后进行系统通知" />
-                        <MenuItem Command="{Binding GotoRoomUrlCommand}"
-                                  Header="启用监听"
-                                  IsCheckable="True"
-                                  IsChecked="{Binding IsToSpider, Mode=TwoWay}"
-                                  ToolTip="指示是否检测开播状态" />
                         <MenuItem Command="{Binding GotoRoomUrlCommand}"
                                   Header="启用录制"
                                   IsCheckable="True"
@@ -210,14 +205,14 @@
                                Icon="{ui:SymbolIcon CaretDown16}">
                         <ui:Button.ContextMenu>
                             <ContextMenu FontSize="12">
-                                <MenuItem Command="{Binding OpenSettingsFileFolderCommand}" Header="打开下载目录">
+                                <MenuItem Command="{Binding OpenSettingsFileFolderCommand}" Header="保存目录">
                                     <MenuItem.Icon>
                                         <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static ui:FontSymbols.FolderOpen}" />
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <MenuItem Command="{Binding OpenSettingsFileFolderCommand}" Header="打开配置文件">
+                                <MenuItem Command="{Binding OpenSettingsFileFolderCommand}" Header="配置文件">
                                     <MenuItem.Icon>
-                                        <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static ui:FontSymbols.FileExplorer}" />
+                                        <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static ui:FontSymbols.OpenLocal}" />
                                     </MenuItem.Icon>
                                 </MenuItem>
                                 <Separator />

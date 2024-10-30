@@ -23,6 +23,129 @@
                     <TextBlock Margin="4,0,0,4"
                                FontSize="14"
                                Foreground="#87898B"
+                               Text="录制设置" />
+                    <ui:CardExpander>
+                        <ui:CardExpander.Header>
+                            <ui:Grid ColumnDefinitions="Auto,*,Auto">
+                                <Grid Grid.Column="0" Margin="0,0,12,0">
+                                    <TextBlock MinWidth="26"
+                                               Margin="4,0,0,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                               FontSize="18"
+                                               Text="{x:Static ui:FontSymbols.Ringer}" />
+                                </Grid>
+                                <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                    <TextBlock Grid.Row="0" Text="开播通知" />
+                                    <TextBlock Grid.Row="1"
+                                               FontSize="11"
+                                               Foreground="#D0D0D0"
+                                               Text="是否通过 Windows 系统通知等方式通知开播" />
+                                </ui:Grid>
+                                <Grid Grid.Column="2" Margin="0,0,12,0">
+                                    <ui:ToggleSwitch IsChecked="{Binding xxx, Mode=TwoWay}" />
+                                </Grid>
+                            </ui:Grid>
+                        </ui:CardExpander.Header>
+                        <ui:StackPanel Spacing="8">
+                            <ui:StackPanel Margin="42,0,28,0" Spacing="12">
+                                <CheckBox Content="通过 Windows 系统通知" />
+                                <ui:Grid ColumnDefinitions="Auto,*">
+                                    <CheckBox Grid.Column="0" Content="通过播放音乐通知" />
+                                    <ui:TextBox Grid.Column="1"
+                                                Margin="8,0,0,0"
+                                                PlaceholderText="填写音乐文件路径，留空白则启用内置音乐"
+                                                Text="" />
+                                </ui:Grid>
+                                <ui:Grid ColumnDefinitions="Auto,*">
+                                    <CheckBox Grid.Column="0" Content="通过邮件通知" />
+                                    <ui:Grid Grid.Column="1" ColumnDefinitions="*,*,*">
+                                        <ui:TextBox Grid.Column="0"
+                                                    Margin="8,0,0,0"
+                                                    PlaceholderText="SMTP"
+                                                    Text="" />
+                                        <ui:TextBox Grid.Column="1"
+                                                    Margin="8,0,0,0"
+                                                    PlaceholderText="账号"
+                                                    Text="" />
+                                        <ui:TextBox Grid.Column="2"
+                                                    Margin="8,0,0,0"
+                                                    PlaceholderText="密码"
+                                                    Text="" />
+                                    </ui:Grid>
+                                </ui:Grid>
+                            </ui:StackPanel>
+                        </ui:StackPanel>
+                    </ui:CardExpander>
+                    <ui:Card>
+                        <Grid MinHeight="35">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.Record}" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="启用录制" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="#D0D0D0"
+                                           Text="是否启用视频录制功能" />
+                            </Grid>
+                            <ui:ToggleSwitch Grid.Column="2"
+                                             Margin="0,0,28,0"
+                                             IsChecked="{Binding xxx, Mode=TwoWay}" />
+                        </Grid>
+                    </ui:Card>
+                    <ui:CardExpander>
+                        <ui:CardExpander.Header>
+                            <ui:Grid ColumnDefinitions="Auto,*,Auto">
+                                <Grid Grid.Column="0" Margin="0,0,12,0">
+                                    <TextBlock MinWidth="26"
+                                               Margin="4,0,0,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                               FontSize="18"
+                                               Text="{x:Static ui:FontSymbols.Video}" />
+                                </Grid>
+                                <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                    <TextBlock Grid.Row="0" Text="录制格式" />
+                                    <TextBlock Grid.Row="1"
+                                               FontSize="11"
+                                               Foreground="#D0D0D0"
+                                               Text="为保证录制稳定源格式仅支持 TS 或稍后自动转格式" />
+                                </ui:Grid>
+                                <Grid Grid.Column="2" Margin="0,0,12,0">
+                                    <ComboBox MinWidth="150" SelectedIndex="0">
+                                        <ComboBoxItem Content="TS" />
+                                        <ComboBoxItem Content="TS+MP4" />
+                                    </ComboBox>
+                                </Grid>
+                            </ui:Grid>
+                        </ui:CardExpander.Header>
+                        <ui:StackPanel Spacing="8">
+                            <ui:StackPanel Margin="42,0,28,0" Spacing="12">
+                                <CheckBox Grid.Column="0" Content="是否转换格式后自动删除原 TS 文件" />
+                            </ui:StackPanel>
+                        </ui:StackPanel>
+                    </ui:CardExpander>
+                    <TextBlock Margin="4,0,0,4"
+                               FontSize="14"
+                               Foreground="#87898B"
                                Text="网络设置" />
                     <ui:CardExpander>
                         <ui:CardExpander.Header>
@@ -44,7 +167,7 @@
                                                Text="指定你的代理 URL" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
-                                    <ui:ToggleSwitch IsChecked="{Binding ViewModel.IsUseArguments, Mode=TwoWay}" />
+                                    <ui:ToggleSwitch IsChecked="{Binding xxx, Mode=TwoWay}" />
                                 </Grid>
                             </ui:Grid>
                         </ui:CardExpander.Header>
@@ -86,12 +209,15 @@
                             </ui:Grid>
                         </ui:CardExpander.Header>
                         <ui:StackPanel Spacing="8">
-                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*">
-                                <TextBlock VerticalAlignment="Center" Text="Cookie" />
+                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto">
+                                <TextBlock VerticalAlignment="Center" Text="输入 Cookie" />
                                 <ui:TextBox Grid.Column="1"
                                             Margin="8,0,0,0"
-                                            PlaceholderText=""
+                                            PlaceholderText="留白则使用内置 Cookie"
                                             Text="" />
+                                <Button Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        Content="如何获取？" />
                             </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>
