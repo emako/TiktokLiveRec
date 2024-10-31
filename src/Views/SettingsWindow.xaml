@@ -17,9 +17,64 @@
                  WindowStartupLocation="CenterOwner"
                  mc:Ignorable="d">
     <Grid>
-        <ui:Grid Margin="8,42,8,8" RowDefinitions="Auto,*">
+        <ui:Grid Margin="8,42,4,8">
             <ScrollViewer PanningMode="None" VerticalScrollBarVisibility="Visible">
-                <ui:StackPanel Margin="8,0,8,0" Spacing="8">
+                <ui:StackPanel Margin="8,0,12,0" Spacing="8">
+                    <TextBlock Margin="4,0,0,4"
+                               FontSize="14"
+                               Foreground="#87898B"
+                               Text="外观设置" />
+                    <ui:Card>
+                        <ui:Grid MinHeight="35" ColumnDefinitions="Auto,*,Auto">
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.Color}" />
+                            </Grid>
+                            <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0" Text="主题颜色" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="#D0D0D0"
+                                           Text="选择你习惯使用的主题色" />
+                            </ui:Grid>
+                            <ComboBox Grid.Column="2"
+                                      MinWidth="150"
+                                      Margin="0,0,28,0"
+                                      SelectedIndex="{Binding ThemeIndex}">
+                                <ComboBoxItem Content="跟随系统" />
+                                <ComboBoxItem Content="深色" />
+                                <ComboBoxItem Content="浅色" />
+                            </ComboBox>
+                        </ui:Grid>
+                    </ui:Card>
+                    <ui:Card>
+                        <ui:Grid MinHeight="35" ColumnDefinitions="Auto,*,Auto">
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.DeviceMonitorRightPic}" />
+                            </Grid>
+                            <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0" Text="托盘状态" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="#D0D0D0"
+                                           Text="启用录制中提示状态的托盘图标" />
+                            </ui:Grid>
+                            <ui:ToggleSwitch Grid.Column="2"
+                                             Margin="0,0,28,0"
+                                             IsChecked="{Binding xxx, Mode=TwoWay}" />
+                        </ui:Grid>
+                    </ui:Card>
                     <TextBlock Margin="4,0,0,4"
                                FontSize="14"
                                Foreground="#87898B"
@@ -133,6 +188,7 @@
                                     <ComboBox MinWidth="150" SelectedIndex="0">
                                         <ComboBoxItem Content="TS" />
                                         <ComboBoxItem Content="TS+MP4" />
+                                        <ComboBoxItem Content="TS+MKV" />
                                     </ComboBox>
                                 </Grid>
                             </ui:Grid>
@@ -141,6 +197,42 @@
                             <ui:StackPanel Margin="42,0,28,0" Spacing="12">
                                 <CheckBox Grid.Column="0" Content="是否转换格式后自动删除原 TS 文件" />
                             </ui:StackPanel>
+                        </ui:StackPanel>
+                    </ui:CardExpander>
+                    <ui:CardExpander>
+                        <ui:CardExpander.Header>
+                            <ui:Grid ColumnDefinitions="Auto,*,Auto">
+                                <Grid Grid.Column="0" Margin="0,0,12,0">
+                                    <TextBlock MinWidth="26"
+                                               Margin="4,0,0,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                               FontSize="18"
+                                               Text="{x:Static ui:FontSymbols.Folder}" />
+                                </Grid>
+                                <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                    <TextBlock Grid.Row="0" Text="保存目录" />
+                                    <TextBlock Grid.Row="1"
+                                               FontSize="11"
+                                               Foreground="#D0D0D0"
+                                               Text="指定录制视频的保存目录" />
+                                </ui:Grid>
+                                <Grid Grid.Column="2" Margin="0,0,12,0">
+                                    <!--  EMPTY  -->
+                                </Grid>
+                            </ui:Grid>
+                        </ui:CardExpander.Header>
+                        <ui:StackPanel Spacing="8">
+                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="*,Auto,Auto">
+                                <ui:TextBox Grid.Column="0" PlaceholderText="留空则使用默认运行目录下 download" />
+                                <Button Grid.Column="1"
+                                        Margin="8,0,0,0"
+                                        Content="选择" />
+                                <Button Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        Content="打开" />
+                            </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>
                     <ui:CardExpander>
@@ -169,12 +261,14 @@
                         </ui:CardExpander.Header>
                         <ui:StackPanel Spacing="8">
                             <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,Auto,Auto">
-                                <ComboBox Grid.Column="0" SelectedIndex="0">
+                                <ComboBox Grid.Column="0"
+                                          MinWidth="150"
+                                          SelectedIndex="0">
                                     <ComboBoxItem Content="内置播放器" ToolTip="" />
                                     <ComboBoxItem Content="系统播放器" />
                                 </ComboBox>
                                 <CheckBox Grid.Column="2"
-                                          Margin="8,0,0,0"
+                                          Margin="16,0,0,0"
                                           Content="启用直角窗口模式便于截图" />
                             </ui:Grid>
                         </ui:StackPanel>
@@ -257,7 +351,7 @@
                             </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>
-                    <FrameworkElement Height="90" />
+                    <FrameworkElement Height="10" />
                 </ui:StackPanel>
             </ScrollViewer>
         </ui:Grid>
