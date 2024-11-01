@@ -12,8 +12,6 @@ using TiktokLiveRec.Core;
 using TiktokLiveRec.Views;
 using Windows.Storage;
 using Windows.System;
-using Wpf.Ui.Appearance;
-using Wpf.Ui.Violeta.Appearance;
 using DataGrid = System.Windows.Controls.DataGrid;
 
 namespace TiktokLiveRec.ViewModels;
@@ -21,45 +19,6 @@ namespace TiktokLiveRec.ViewModels;
 [ObservableObject]
 public partial class MainViewModel : ReactiveObject
 {
-    [ObservableProperty]
-    private bool isThemeAuto = string.IsNullOrWhiteSpace(Configurations.Theme.Get());
-
-    partial void OnIsThemeAutoChanged(bool value)
-    {
-        if (value)
-        {
-            ThemeManager.Apply(ApplicationTheme.Unknown);
-            Configurations.Theme.Set(string.Empty);
-            ConfigurationManager.Save();
-        }
-    }
-
-    [ObservableProperty]
-    private bool isThemeLight = Configurations.Theme.Get().Equals("Light");
-
-    partial void OnIsThemeLightChanged(bool value)
-    {
-        if (value)
-        {
-            ThemeManager.Apply(ApplicationTheme.Light);
-            Configurations.Theme.Set("Light");
-            ConfigurationManager.Save();
-        }
-    }
-
-    [ObservableProperty]
-    private bool isThemeDark = Configurations.Theme.Get().Equals("Dark");
-
-    partial void OnIsThemeDarkChanged(bool value)
-    {
-        if (value)
-        {
-            ThemeManager.Apply(ApplicationTheme.Dark);
-            Configurations.Theme.Set("Dark");
-            ConfigurationManager.Save();
-        }
-    }
-
     [ObservableProperty]
     private ReactiveCollection<RoomStatusReactive> recs = [];
 

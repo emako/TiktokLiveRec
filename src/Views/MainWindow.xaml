@@ -216,39 +216,6 @@
                                     </MenuItem.Icon>
                                 </MenuItem>
                                 <Separator />
-                                <MenuItem Header="主题">
-                                    <MenuItem.Resources>
-                                        <vio:MenuItemGroup x:Key="MenuItemGroupOfTheme" />
-                                    </MenuItem.Resources>
-                                    <MenuItem.Icon>
-                                        <ui:SymbolIcon FontSize="16" Symbol="Color16" />
-                                    </MenuItem.Icon>
-                                    <MenuItem vio:MenuItemGroup.Group="{StaticResource MenuItemGroupOfTheme}"
-                                              Header="跟随系统"
-                                              IsCheckable="True"
-                                              IsChecked="{Binding IsThemeAuto}">
-                                        <MenuItem.Icon>
-                                            <Control Width="2" />
-                                        </MenuItem.Icon>
-                                    </MenuItem>
-                                    <MenuItem vio:MenuItemGroup.Group="{StaticResource MenuItemGroupOfTheme}"
-                                              Header="浅色主题"
-                                              IsCheckable="True"
-                                              IsChecked="{Binding IsThemeLight}">
-                                        <MenuItem.Icon>
-                                            <Control Width="2" />
-                                        </MenuItem.Icon>
-                                    </MenuItem>
-                                    <MenuItem vio:MenuItemGroup.Group="{StaticResource MenuItemGroupOfTheme}"
-                                              Header="深色主题"
-                                              IsCheckable="True"
-                                              IsChecked="{Binding IsThemeDark}">
-                                        <MenuItem.Icon>
-                                            <Control Width="2" />
-                                        </MenuItem.Icon>
-                                    </MenuItem>
-                                </MenuItem>
-                                <Separator />
                                 <MenuItem Command="{Binding OpenAboutCommand}" Header="关于">
                                     <MenuItem.Icon>
                                         <ui:SymbolIcon FontSize="16" Symbol="Info16" />
