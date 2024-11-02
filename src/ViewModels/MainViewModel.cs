@@ -80,14 +80,23 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task OpenSaveFolderAsync()
     {
-        const string path = "download";
+        string saveFolder = Configurations.SaveFolder.Get();
 
-        if (!Directory.Exists(path))
+        if (string.IsNullOrWhiteSpace(saveFolder))
         {
-            Directory.CreateDirectory(path);
-        }
+            const string path = "download";
 
-        await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetFullPath(path)));
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetFullPath(path)));
+        }
+        else
+        {
+            await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetFullPath(saveFolder)));
+        }
     }
 
     [RelayCommand]

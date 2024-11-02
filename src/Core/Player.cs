@@ -1,7 +1,6 @@
 ﻿using MediaInfoLib;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Resources;
 using TiktokLiveRec.Extensions;
 
 namespace TiktokLiveRec.Core;
@@ -84,7 +83,7 @@ internal sealed class Player
                     Interop.SetHideFromTaskBar(hWnd);
 
                     // FFplay will lost icon when maximize.
-                    // Interop.SetWindowIcon(hWnd, new(GetStream("pack://application:,,,/TiktokLiveRec;component/Assets/Favicon.ico")));
+                    // Interop.SetWindowIcon(hWnd, new(Wpf.Ui.Violeta.Resources.ResourcesProvider.GetStream("pack://application:,,,/TiktokLiveRec;component/Assets/Favicon.ico")));
                 }
             }
 
@@ -92,13 +91,6 @@ internal sealed class Player
             {
                 return;
             }
-        }
-
-        static Stream GetStream(string uriString)
-        {
-            Uri uri = new(uriString);
-            StreamResourceInfo info = Application.GetResourceStream(uri);
-            return info?.Stream!;
         }
     }
 }

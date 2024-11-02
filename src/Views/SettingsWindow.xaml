@@ -12,6 +12,7 @@
                  Width="700"
                  Height="560"
                  d:Background="#FF101010"
+                 d:Height="1500"
                  ExtendsContentIntoTitleBar="True"
                  WindowBackdropType="Mica"
                  WindowStartupLocation="CenterOwner"
@@ -72,7 +73,7 @@
                             </ui:Grid>
                             <ui:ToggleSwitch Grid.Column="2"
                                              Margin="0,0,28,0"
-                                             IsChecked="{Binding xxx, Mode=TwoWay}" />
+                                             IsChecked="{Binding IsUseStatusTray, Mode=TwoWay}" />
                         </ui:Grid>
                     </ui:Card>
                     <TextBlock Margin="4,0,0,4"
@@ -99,19 +100,21 @@
                                                Text="是否通过 Windows 系统通知等方式通知开播" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
-                                    <ui:ToggleSwitch IsChecked="{Binding xxx, Mode=TwoWay}" />
+                                    <ui:ToggleSwitch IsChecked="{Binding IsToNotify, Mode=TwoWay}" />
                                 </Grid>
                             </ui:Grid>
                         </ui:CardExpander.Header>
                         <ui:StackPanel Spacing="8">
                             <ui:StackPanel Margin="42,0,28,0" Spacing="12">
-                                <CheckBox Content="通过 Windows 系统通知" />
+                                <CheckBox Content="通过 Windows 系统通知" IsChecked="{Binding IsToNotifyWithSystem, Mode=TwoWay}" />
                                 <ui:Grid ColumnDefinitions="Auto,*">
-                                    <CheckBox Grid.Column="0" Content="通过播放音乐通知" />
+                                    <CheckBox Grid.Column="0"
+                                              Content="通过播放音乐通知"
+                                              IsChecked="{Binding IsToNotifyWithMusic, Mode=TwoWay}" />
                                     <ui:TextBox Grid.Column="1"
                                                 Margin="8,0,0,0"
-                                                PlaceholderText="填写音乐文件路径，留空白则启用内置音乐"
-                                                Text="" />
+                                                PlaceholderText="启用内置音乐或指定音乐文件路径"
+                                                Text="{Binding ToNotifyWithMusicPath, Mode=TwoWay}" />
                                 </ui:Grid>
                                 <ui:Grid ColumnDefinitions="Auto,*">
                                     <CheckBox Grid.Column="0" Content="通过邮件通知" />
@@ -119,27 +122,22 @@
                                         <ui:TextBox Grid.Column="0"
                                                     Margin="8,0,0,0"
                                                     PlaceholderText="SMTP"
-                                                    Text="" />
+                                                    Text="{Binding ToNotifyWithEmailSmtp, Mode=TwoWay}" />
                                         <ui:TextBox Grid.Column="1"
                                                     Margin="8,0,0,0"
                                                     PlaceholderText="账号"
-                                                    Text="" />
+                                                    Text="{Binding ToNotifyWithEmailAccount, Mode=TwoWay}" />
                                         <ui:TextBox Grid.Column="2"
                                                     Margin="8,0,0,0"
                                                     PlaceholderText="密码"
-                                                    Text="" />
+                                                    Text="{Binding ToNotifyWithEmailPassword, Mode=TwoWay}" />
                                     </ui:Grid>
                                 </ui:Grid>
                             </ui:StackPanel>
                         </ui:StackPanel>
                     </ui:CardExpander>
                     <ui:Card>
-                        <Grid MinHeight="35">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                        <ui:Grid MinHeight="35" ColumnDefinitions="Auto,*,Auto">
                             <Grid Grid.Column="0" Margin="0,0,12,0">
                                 <TextBlock MinWidth="26"
                                            Margin="4,0,0,0"
@@ -149,21 +147,17 @@
                                            FontSize="18"
                                            Text="{x:Static ui:FontSymbols.Record}" />
                             </Grid>
-                            <Grid Grid.Column="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
+                            <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
                                 <TextBlock Grid.Row="0" Text="启用录制" />
                                 <TextBlock Grid.Row="1"
                                            FontSize="11"
                                            Foreground="#D0D0D0"
                                            Text="是否启用视频录制功能" />
-                            </Grid>
+                            </ui:Grid>
                             <ui:ToggleSwitch Grid.Column="2"
                                              Margin="0,0,28,0"
-                                             IsChecked="{Binding xxx, Mode=TwoWay}" />
-                        </Grid>
+                                             IsChecked="{Binding IsToRecord, Mode=TwoWay}" />
+                        </ui:Grid>
                     </ui:Card>
                     <ui:CardExpander>
                         <ui:CardExpander.Header>
@@ -185,7 +179,7 @@
                                                Text="为保证录制稳定源格式仅支持 TS 或稍后自动转格式" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
-                                    <ComboBox MinWidth="150" SelectedIndex="0">
+                                    <ComboBox MinWidth="150" SelectedIndex="{Binding RecordFormatIndex, Mode=TwoWay}">
                                         <ComboBoxItem Content="TS" />
                                         <ComboBoxItem Content="TS+MP4" />
                                         <ComboBoxItem Content="TS+MKV" />
@@ -195,7 +189,9 @@
                         </ui:CardExpander.Header>
                         <ui:StackPanel Spacing="8">
                             <ui:StackPanel Margin="42,0,28,0" Spacing="12">
-                                <CheckBox Grid.Column="0" Content="是否转换格式后自动删除原 TS 文件" />
+                                <CheckBox Grid.Column="0"
+                                          Content="是否转换格式后自动删除原 TS 文件"
+                                          IsChecked="{Binding IsRemoveTs, Mode=TwoWay}" />
                             </ui:StackPanel>
                         </ui:StackPanel>
                     </ui:CardExpander>
@@ -225,12 +221,16 @@
                         </ui:CardExpander.Header>
                         <ui:StackPanel Spacing="8">
                             <ui:Grid Margin="42,0,28,0" ColumnDefinitions="*,Auto,Auto">
-                                <ui:TextBox Grid.Column="0" PlaceholderText="留空则默认使用运行目录下 download" />
+                                <ui:TextBox Grid.Column="0"
+                                            PlaceholderText=".\download"
+                                            Text="{Binding SaveFolder, Mode=TwoWay}" />
                                 <Button Grid.Column="1"
                                         Margin="8,0,0,0"
+                                        Command="{Binding SelectSaveFolderCommand}"
                                         Content="选择" />
                                 <Button Grid.Column="2"
                                         Margin="8,0,0,0"
+                                        Command="{Binding OpenSaveFolderCommand}"
                                         Content="打开" />
                             </ui:Grid>
                         </ui:StackPanel>
@@ -261,15 +261,21 @@
                         </ui:CardExpander.Header>
                         <ui:StackPanel Spacing="8">
                             <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,Auto,Auto">
-                                <ComboBox Grid.Column="0"
+                                <TextBlock Grid.Row="0"
+                                           VerticalAlignment="Center"
+                                           Text="视频播放器" />
+                                <ComboBox Grid.Column="1"
                                           MinWidth="150"
-                                          SelectedIndex="0">
-                                    <ComboBoxItem Content="内置播放器" ToolTip="" />
-                                    <ComboBoxItem Content="系统播放器" />
+                                          Margin="16,0,0,0"
+                                          SelectedIndex="{Binding PlayerIndex, Mode=TwoWay}">
+                                    <ComboBoxItem Content="内置播放器" ToolTip="启用内置 FFplay 播放" />
+                                    <ComboBoxItem Content="系统播放器" ToolTip="启用您的系统默认播放器，请注意不要将TS格式设置成 TypeScript IDE格式" />
                                 </ComboBox>
                                 <CheckBox Grid.Column="2"
                                           Margin="16,0,0,0"
-                                          Content="启用直角窗口模式便于截图" />
+                                          Content="启用直角窗口模式便于截图"
+                                          IsChecked="{Binding IsPlayerRect, Mode=TwoWay}"
+                                          IsEnabled="{Binding PlayerIndex, Converter={x:Static c:IntToBoolConverter.Instance}, ConverterParameter={c:Int Value=0}}" />
                             </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>
@@ -294,10 +300,10 @@
                                     <TextBlock Grid.Row="1"
                                                FontSize="11"
                                                Foreground="#D0D0D0"
-                                               Text="指定你的代理 URL" />
+                                               Text="指定你的网络代理 URL" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
-                                    <ui:ToggleSwitch IsChecked="{Binding xxx, Mode=TwoWay}" />
+                                    <ui:ToggleSwitch IsChecked="{Binding IsUseProxy, Mode=TwoWay}" />
                                 </Grid>
                             </ui:Grid>
                         </ui:CardExpander.Header>
@@ -307,7 +313,7 @@
                                 <ui:TextBox Grid.Column="1"
                                             Margin="8,0,0,0"
                                             PlaceholderText="示例：127.0.0.1:7890"
-                                            Text="" />
+                                            Text="{Binding ProxyUrl, Mode=TwoWay}" />
                                 <Button Grid.Column="2"
                                         Margin="8,0,0,0"
                                         Content="检查连接" />
@@ -338,15 +344,29 @@
                                 </Grid>
                             </ui:Grid>
                         </ui:CardExpander.Header>
-                        <ui:StackPanel Spacing="8">
+                        <ui:StackPanel Spacing="12">
                             <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto">
-                                <TextBlock VerticalAlignment="Center" Text="输入 Cookie" />
+                                <TextBlock VerticalAlignment="Center" Text="国区 Cookie" />
                                 <ui:TextBox Grid.Column="1"
                                             Margin="8,0,0,0"
                                             PlaceholderText="留白则使用内置 Cookie"
-                                            Text="" />
+                                            Text="{Binding CookieChina, Mode=TwoWay}" />
                                 <Button Grid.Column="2"
                                         Margin="8,0,0,0"
+                                        Command="{Binding OpenHowToGetCookieChinaCommand}"
+                                        Content="如何获取？" />
+                            </ui:Grid>
+                            <ui:Grid Margin="42,0,28,0"
+                                     ColumnDefinitions="Auto,*,Auto"
+                                     Visibility="Collapsed">
+                                <TextBlock VerticalAlignment="Center" Text="海外 Cookie" />
+                                <ui:TextBox Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            PlaceholderText="留白则使用内置 Cookie"
+                                            Text="{Binding CookieOversea, Mode=TwoWay}" />
+                                <Button Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        Command="{Binding OpenHowToGetCookieOverseaCommand}"
                                         Content="如何获取？" />
                             </ui:Grid>
                         </ui:StackPanel>

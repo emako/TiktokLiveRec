@@ -18,6 +18,7 @@
 	<ItemGroup>
 		<Resource Include="Assets\*.ico" />
 		<Resource Include="Assets\*.png" />
+		<Resource Include="Assets\*.html" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -39,6 +40,7 @@
 		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="4.0.4" />
 		<PackageReference Include="Vanara.PInvoke.DwmApi" Version="4.0.4" />
 		<PackageReference Include="MediaInfoDLL" Version="24.6.2" />
+		<PackageReference Include="WindowsAPICodePack.Shell.CommonFileDialogs" Version="1.1.5" />
 	</ItemGroup>
 
 </Project>

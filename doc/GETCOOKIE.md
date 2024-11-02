@@ -1,4 +1,4 @@
-#### 抖音Cookie获取
+#### 抖音 Cookie 获取
 
 1. 点击 [抖音创作服务平台](https://creator.douyin.com/creator-micro/home) 登录后进入首页；
 
@@ -10,4 +10,4 @@
 
 5. 在 `标头` 栏向下滑动至请求标头，在请求标头中找到 `Cookie` 并将对应的值复制至工具中即可。
 
-![image-20241030012941645](./assets/image-20241030012941645.png)
+<img src="./assets/image-20241030012941645.png" alt="image-20241030012941645" style="border-radius: 10px" />

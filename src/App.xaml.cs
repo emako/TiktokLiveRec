@@ -11,7 +11,7 @@ public partial class App : Application
     static App()
     {
         ConfigurationManager.ConfigurationSerializer = new YamlConfigurationSerializer();
-        ConfigurationManager.Setup(ConfigurationSpecialPath.GetPath($"config.yaml", AppConfig.PackName));
+        ConfigurationManager.Setup(ConfigurationSpecialPath.GetPath("config.yaml", AppConfig.PackName));
     }
 
     /// <summary>
