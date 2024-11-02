@@ -316,6 +316,7 @@
                                             Text="{Binding ProxyUrl, Mode=TwoWay}" />
                                 <Button Grid.Column="2"
                                         Margin="8,0,0,0"
+                                        Command="{Binding CheckProxyUrlCommand}"
                                         Content="检查连接" />
                             </ui:Grid>
                         </ui:StackPanel>

@@ -3,11 +3,14 @@ using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
 using Fischless.Configuration;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 using Windows.Storage;
 using Windows.System;
 using WindowsAPICodePack.Dialogs;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Violeta.Appearance;
+using Wpf.Ui.Violeta.Controls;
 using Wpf.Ui.Violeta.Resources;
 
 namespace TiktokLiveRec.ViewModels;
@@ -240,6 +243,68 @@ public partial class SettingsViewModel : ReactiveObject
     {
         Configurations.ProxyUrl.Set(value);
         ConfigurationManager.Save();
+    }
+
+    [RelayCommand]
+    private async Task CheckProxyUrlAsync()
+    {
+        if (string.IsNullOrWhiteSpace(ProxyUrl))
+        {
+            Toast.Error("代理 URL 不能为空");
+            return;
+        }
+
+        if (!ProxyUrl.Contains(':'))
+        {
+            Toast.Error("代理 URL 缺失主机名或端口号");
+            return;
+        }
+
+        string[] proxy = ProxyUrl.Split(':');
+
+        if (proxy.Length < 2)
+        {
+            Toast.Error("代理 URL 格式有误");
+            return;
+        }
+
+        if (!IPAddress.TryParse(proxy[0], out IPAddress? address))
+        {
+            Toast.Error("代理 URL 主机格式有误");
+            return;
+        }
+
+        if (!int.TryParse(proxy[1], out int port))
+        {
+            Toast.Error("代理 URL 端口号格式有误");
+            return;
+        }
+
+        if (port <= 0 || port > short.MaxValue)
+        {
+            Toast.Error("代理 URL 端口号超出范围");
+            return;
+        }
+
+        HttpClientHandler httpClientHandler = new()
+        {
+            Proxy = new WebProxy(address.ToString(), port),
+            UseProxy = true
+        };
+
+        using HttpClient httpClient = new(httpClientHandler);
+
+        try
+        {
+            HttpResponseMessage response = await httpClient.GetAsync("https://www.google.com");
+            response.EnsureSuccessStatusCode();
+
+            Toast.Success("代理可用，响应状态：" + response.StatusCode);
+        }
+        catch (HttpRequestException e)
+        {
+            Toast.Success("代理无效或请求失败：" + e.Message);
+        }
     }
 
     [ObservableProperty]

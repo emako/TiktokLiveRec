@@ -1,8 +1,9 @@
 ﻿using Fischless.Configuration;
 using System.Diagnostics;
 using System.Windows;
-using TiktokLiveRec.Core;
+using System.Windows.Threading;
 using TiktokLiveRec.Extensions;
+using Wpf.Ui.Violeta.Controls;
 
 namespace TiktokLiveRec;
 
@@ -14,6 +15,17 @@ public partial class App : Application
         ConfigurationManager.Setup(ConfigurationSpecialPath.GetPath("config.yaml", AppConfig.PackName));
     }
 
+    public App()
+    {
+        InitializeComponent();
+
+        DispatcherUnhandledException += (object s, DispatcherUnhandledExceptionEventArgs e) =>
+        {
+            e.Handled = true;
+            ExceptionReport.Show(e.Exception);
+        };
+    }
+
     /// <summary>
     /// Occurs when the application is loading.
     /// </summary>
@@ -22,7 +34,6 @@ public partial class App : Application
         base.OnStartup(e);
 
         RuntimeHelper.CheckSingleInstance(AppConfig.PackName + (Debugger.IsAttached ? "_DEBUG" : string.Empty));
-        SpiderResult result = Spider.GetResult("https://live.douyin.com/940169270753");
         TrayIconManager.Start();
     }
 
