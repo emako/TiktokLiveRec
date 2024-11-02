@@ -227,11 +227,11 @@
                                 <Button Grid.Column="1"
                                         Margin="8,0,0,0"
                                         Command="{Binding SelectSaveFolderCommand}"
-                                        Content="选择" />
+                                        Content="选择目录" />
                                 <Button Grid.Column="2"
                                         Margin="8,0,0,0"
                                         Command="{Binding OpenSaveFolderCommand}"
-                                        Content="打开" />
+                                        Content="打开目录" />
                             </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>

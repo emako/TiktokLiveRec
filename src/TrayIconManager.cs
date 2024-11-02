@@ -1,8 +1,9 @@
-﻿using TiktokLiveRec.Extensions;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using Vanara.PInvoke;
+using System.Windows;
+using TiktokLiveRec.Extensions;
+using TiktokLiveRec.Views;
 using NotifyIcon = NotifyIconEx.NotifyIcon;
 
 namespace TiktokLiveRec;
@@ -68,6 +69,15 @@ internal class TrayIconManager
         _icon.AddMenu("-");
         _icon.AddMenu("打开设置 (&O)", (_, _) =>
         {
+            foreach (Window win in Application.Current.Windows.OfType<SettingsWindow>())
+            {
+                win.Close();
+            }
+
+            _ = new SettingsWindow()
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+            }.ShowDialog();
         });
         _itemAutoRun = _icon.AddMenu("启动时自动运行 (&S)",
             (_, _) =>
@@ -91,26 +101,16 @@ internal class TrayIconManager
 
         _icon.MouseDoubleClick += (_, _) =>
         {
-            //_ = Kernel32.AttachConsole((uint)process.Id);
-            //HWND hWnd = Kernel32.GetConsoleWindow();
-
-            //if (User32.IsWindowVisible(hWnd))
-            //{
-            //    User32.SetWindowLong(hWnd, User32.WindowLongFlags.GWL_STYLE, User32.GetWindowLong(hWnd, User32.WindowLongFlags.GWL_STYLE) & ~(int)User32.WindowStyles.WS_VISIBLE);
-            //    User32.ShowWindow(hWnd, ShowWindowCommand.SW_FORCEMINIMIZE);
-            //}
-            //else
-            //{
-            //    User32.SetWindowLong(hWnd, User32.WindowLongFlags.GWL_STYLE, User32.GetWindowLong(hWnd, User32.WindowLongFlags.GWL_STYLE) | (int)User32.WindowStyles.WS_VISIBLE);
-            //    _ = User32.ShowWindow(hWnd, ShowWindowCommand.SW_RESTORE);
-            //    _ = User32.ShowWindow(hWnd, ShowWindowCommand.SW_SHOW);
-            //    _ = User32.SetActiveWindow(hWnd);
-            //}
-
-            //Kernel32.FreeConsole();
+            if (Application.Current.MainWindow.IsVisible)
+            {
+                Application.Current.MainWindow.Hide();
+            }
+            else
+            {
+                Application.Current.MainWindow.Show();
+                Application.Current.MainWindow.Activate();
+            }
         };
-
-        //System.Windows.Forms.Application.DoEvents();
     }
 
     public static TrayIconManager GetInstance()
