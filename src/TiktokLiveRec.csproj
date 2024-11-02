@@ -12,6 +12,7 @@
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<FileVersion>1.0.0.0</FileVersion>
 		<Version>$(VersionPrefix)1.0.0.0</Version>
+		<Platforms>x64</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -36,6 +37,8 @@
 		<PackageReference Include="Vanara.PInvoke.SHCore" Version="4.0.4" />
 		<PackageReference Include="Vanara.PInvoke.User32" Version="4.0.4" />
 		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="4.0.4" />
+		<PackageReference Include="Vanara.PInvoke.DwmApi" Version="4.0.4" />
+		<PackageReference Include="MediaInfoDLL" Version="24.6.2" />
 	</ItemGroup>
 
 </Project>
