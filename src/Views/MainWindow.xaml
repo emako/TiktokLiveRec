@@ -65,7 +65,6 @@
                       EnableRowVirtualization="False"
                       IsReadOnly="True"
                       ItemsSource="{Binding Recs}"
-                      Loaded="{c:EventBinding DataGridLoadedCommand}"
                       RowHeight="40"
                       SelectionMode="Single"
                       SelectionUnit="FullRow">
@@ -139,15 +138,15 @@
                         </MenuItem>
                         <Separator />
                         <MenuItem Header="单独设置" IsEnabled="False" />
-                        <MenuItem Command="{Binding GotoRoomUrlCommand}"
+                        <MenuItem Command="{Binding IsToNotifyCommand}"
                                   Header="开播通知"
                                   IsCheckable="True"
-                                  IsChecked="{Binding IsToNotify, Mode=TwoWay}"
+                                  IsChecked="{Binding SelectedItem.IsToNotify, Mode=TwoWay}"
                                   ToolTip="指示是否在检测到开播后进行系统通知" />
-                        <MenuItem Command="{Binding GotoRoomUrlCommand}"
+                        <MenuItem Command="{Binding IsToRecordCommand}"
                                   Header="启用录制"
                                   IsCheckable="True"
-                                  IsChecked="{Binding IsToRecord, Mode=TwoWay}"
+                                  IsChecked="{Binding SelectedItem.IsToRecord, Mode=TwoWay}"
                                   ToolTip="指示是否启用直播录制" />
                         <Separator />
                     </ContextMenu>

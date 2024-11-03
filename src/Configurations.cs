@@ -15,7 +15,7 @@ public static class Configurations
     public static ConfigurationDefinition<string?> ToNotifyWithMusicPath { get; } = new(nameof(ToNotifyWithMusicPath), null);
     public static ConfigurationDefinition<bool> IsToNotifyWithEmail { get; } = new(nameof(IsToNotifyWithEmail), true);
     public static ConfigurationDefinition<string> ToNotifyWithEmailSmtp { get; } = new(nameof(ToNotifyWithEmailSmtp), null!);
-    public static ConfigurationDefinition<string> ToNotifyWithEmailAccount { get; } = new(nameof(ToNotifyWithEmailAccount), null!);
+    public static ConfigurationDefinition<string> ToNotifyWithEmailUserName { get; } = new(nameof(ToNotifyWithEmailUserName), null!);
     public static ConfigurationDefinition<string> ToNotifyWithEmailPassword { get; } = new(nameof(ToNotifyWithEmailPassword), null!);
     public static ConfigurationDefinition<bool> IsToRecord { get; } = new(nameof(IsToRecord), true);
     public static ConfigurationDefinition<string> RecordFormat { get; } = new(nameof(RecordFormat), "TS");

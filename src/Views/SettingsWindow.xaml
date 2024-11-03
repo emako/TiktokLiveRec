@@ -119,7 +119,9 @@
                                                 Text="{Binding ToNotifyWithMusicPath, Mode=TwoWay}" />
                                 </ui:Grid>
                                 <ui:Grid ColumnDefinitions="Auto,*">
-                                    <CheckBox Grid.Column="0" Content="通过邮件通知" />
+                                    <CheckBox Grid.Column="0"
+                                              Content="通过邮件通知"
+                                              IsChecked="{Binding IsToNotifyWithEmail, Mode=TwoWay}" />
                                     <ui:Grid Grid.Column="1" ColumnDefinitions="*,*,*">
                                         <ui:TextBox Grid.Column="0"
                                                     Margin="8,0,0,0"
@@ -128,7 +130,7 @@
                                         <ui:TextBox Grid.Column="1"
                                                     Margin="8,0,0,0"
                                                     PlaceholderText="账号"
-                                                    Text="{Binding ToNotifyWithEmailAccount, Mode=TwoWay}" />
+                                                    Text="{Binding ToNotifyWithEmailUserName, Mode=TwoWay}" />
                                         <ui:TextBox Grid.Column="2"
                                                     Margin="8,0,0,0"
                                                     PlaceholderText="密码"

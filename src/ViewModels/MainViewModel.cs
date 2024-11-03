@@ -5,8 +5,10 @@ using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -29,12 +31,17 @@ public partial class MainViewModel : ReactiveObject
     [ObservableProperty]
     private ReactiveCollection<RoomStatusReactive> recs = [];
 
+    [ObservableProperty]
+    private RoomStatusReactive selectedItem = new();
+
     public MainViewModel()
     {
         Recs.Reset(Configurations.Rooms.Get().Select(room => new RoomStatusReactive()
         {
             NickName = room.NickName,
             RoomUrl = room.RoomUrl,
+            IsToNotify = room.IsToNotify,
+            IsToRecord = room.IsToRecord,
         }));
 
         WeakReferenceMessenger.Default.Register<RecMessage>(this, (_, msg) =>
@@ -163,8 +170,13 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task GotoRoomUrlAsync()
     {
-        // TODO
-        await Task.CompletedTask;
+        if (SelectedItem != null)
+        {
+            if (!string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+            {
+                await Launcher.LaunchUriAsync(new Uri(SelectedItem.RoomUrl));
+            }
+        }
     }
 
     [RelayCommand]
@@ -174,22 +186,59 @@ public partial class MainViewModel : ReactiveObject
         await Task.CompletedTask;
     }
 
-    public DataGrid DataGrid { get; private set; } = null!;
-
     [RelayCommand]
-    private void OnDataGridLoaded(RelayEventParameter param)
+    private void IsToNotify()
     {
-        DataGrid = (DataGrid)param.Deconstruct().Sender;
+        if (SelectedItem != null)
+        {
+            if (!string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+            {
+                RoomStatusReactive? roomStatus = Recs.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+
+                if (roomStatus != null)
+                {
+                    roomStatus.IsToNotify = SelectedItem.IsToNotify;
+                }
+
+                Room[] rooms = Configurations.Rooms.Get();
+                Room? room = rooms.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+
+                if (room != null)
+                {
+                    room.IsToNotify = SelectedItem.IsToNotify;
+                }
+                Configurations.Rooms.Set(rooms);
+                ConfigurationManager.Save();
+            }
+        }
     }
 
-    [ObservableProperty]
-    private RoomStatusReactive selectedItem = new();
+    [RelayCommand]
+    private void IsToRecord()
+    {
+        if (SelectedItem != null)
+        {
+            if (!string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+            {
+                RoomStatusReactive? roomStatus = Recs.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
 
-    [ObservableProperty]
-    private bool isToNotify = false;
+                if (roomStatus != null)
+                {
+                    roomStatus.IsToRecord = SelectedItem.IsToRecord;
+                }
 
-    [ObservableProperty]
-    private bool isToRecord = false;
+                Room[] rooms = Configurations.Rooms.Get();
+                Room? room = rooms.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+
+                if (room != null)
+                {
+                    room.IsToRecord = SelectedItem.IsToRecord;
+                }
+                Configurations.Rooms.Set(rooms);
+                ConfigurationManager.Save();
+            }
+        }
+    }
 
     [RelayCommand]
     private void OnContextMenuLoaded(RelayEventParameter param)
@@ -200,34 +249,41 @@ public partial class MainViewModel : ReactiveObject
         sender.Opened += ContextMenuOpened;
 
         // Closure method
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         void ContextMenuOpened(object sender, RoutedEventArgs e)
         {
-            if (DataGrid.InputHitTest(Mouse.GetPosition(DataGrid)) is FrameworkElement { } element)
+            if (sender is ContextMenu { } contextMenu
+             && contextMenu.Parent is Popup { } popup
+             && popup.PlacementTarget is DataGrid { } dataGrid)
             {
-                if (GetDataGridRow(element) is DataGridRow { } row)
+                if (dataGrid.InputHitTest(Mouse.GetPosition(dataGrid)) is FrameworkElement { } element)
                 {
-                    if (row.DataContext is RoomStatusReactive { } data)
+                    if (GetDataGridRow(element) is DataGridRow { } row)
                     {
-                        _ = data.MapTo(SelectedItem);
+                        if (row.DataContext is RoomStatusReactive { } data)
+                        {
+                            _ = data.MapTo(SelectedItem);
+
+                            foreach (UIElement d in ((ContextMenu)sender).Items.OfType<UIElement>())
+                            {
+                                d.Visibility = Visibility.Visible;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ((ContextMenu)sender).IsOpen = false;
+                        _ = SelectedItem.MapFrom(new RoomStatusReactive());
 
                         foreach (UIElement d in ((ContextMenu)sender).Items.OfType<UIElement>())
                         {
-                            d.Visibility = Visibility.Visible;
+                            d.Visibility = Visibility.Collapsed;
                         }
-                    }
-                }
-                else
-                {
-                    ((ContextMenu)sender).IsOpen = false;
-                    _ = SelectedItem.MapFrom(new RoomStatusReactive());
-
-                    foreach (UIElement d in ((ContextMenu)sender).Items.OfType<UIElement>())
-                    {
-                        d.Visibility = Visibility.Collapsed;
                     }
                 }
             }
 
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             static DataGridRow? GetDataGridRow(FrameworkElement? element)
             {
                 while (element != null && element is not DataGridRow)

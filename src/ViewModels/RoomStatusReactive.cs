@@ -1,8 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
 using TiktokLiveRec.Core;
-using Windows.System;
 
 namespace TiktokLiveRec.ViewModels;
 
@@ -17,6 +15,12 @@ public partial class RoomStatusReactive : ReactiveObject
 
     [ObservableProperty]
     private string hlsUrl = string.Empty;
+
+    [ObservableProperty]
+    private bool isToNotify = false;
+
+    [ObservableProperty]
+    private bool isToRecord = false;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(StreamStatusText))]
@@ -43,10 +47,4 @@ public partial class RoomStatusReactive : ReactiveObject
         RecordStatus.Recording => "录制中",
         _ => "未知",
     };
-
-    [RelayCommand]
-    private async Task GotoRoomUrlAsync()
-    {
-        await Launcher.LaunchUriAsync(new Uri(RoomUrl));
-    }
 }

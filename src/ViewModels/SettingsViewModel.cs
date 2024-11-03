@@ -102,11 +102,11 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [ObservableProperty]
-    private string toNotifyWithEmailAccount = Configurations.ToNotifyWithEmailAccount.Get();
+    private string toNotifyWithEmailUserName = Configurations.ToNotifyWithEmailUserName.Get();
 
-    partial void OnToNotifyWithEmailAccountChanged(string value)
+    partial void OnToNotifyWithEmailUserNameChanged(string value)
     {
-        Configurations.ToNotifyWithEmailSmtp.Set(value);
+        Configurations.ToNotifyWithEmailUserName.Set(value);
         ConfigurationManager.Save();
     }
 
