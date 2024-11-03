@@ -1,12 +1,46 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.Concurrent;
+using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Web;
+using Windows.System;
 
 namespace TiktokLiveRec.Core;
 
 internal static class GlobalMonitor
 {
     public static ConcurrentDictionary<string, RoomStatus> RoomStatus { get; } = new();
+
+    private sealed class GlobalMonitorRecipient : ObservableRecipient
+    {
+        public static GlobalMonitorRecipient Instance { get; } = new();
+    }
+
+    static GlobalMonitor()
+    {
+        WeakReferenceMessenger.Default.Register<ToastNotificationActivatedMessage>(GlobalMonitorRecipient.Instance, async (_, msg) =>
+        {
+            string arguments = msg.EventArgs.Argument;
+
+            if (!string.IsNullOrEmpty(arguments))
+            {
+                NameValueCollection parsedArgs = HttpUtility.ParseQueryString(arguments);
+
+                if (parsedArgs["RoomUrl"] != null)
+                {
+                    try
+                    {
+                        await Launcher.LaunchUriAsync(new Uri(parsedArgs["RoomUrl"]!));
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e);
+                    }
+                }
+            }
+        });
+    }
 
     public static async Task StartAsync(CancellationToken token = default)
     {
@@ -42,7 +76,7 @@ internal static class GlobalMonitor
                             {
                                 if (roomStatus.StreamStatus != StreamStatus.Streaming && (spiderResult.IsLiveStreaming ?? false))
                                 {
-                                    Notifier.Notify(room.NickName, "开播通知", room.RoomUrl);
+                                    Notifier.AddNoticeWithButton("开播通知", room.NickName, "进入直播间", [("RoomUrl", room.RoomUrl)]);
                                 }
                             }
                             roomStatus.HlsUrl = spiderResult.HlsUrl!;
