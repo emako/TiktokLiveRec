@@ -80,6 +80,30 @@
                                              Glyph="{x:Static ui:FontSymbols.OpenInNewWindow}" />
                             </MenuItem.Icon>
                         </MenuItem>
+                        <MenuItem Command="{Binding RowUpRoomUrlCommand}" Header="上移直播间">
+                            <MenuItem.Icon>
+                                <ui:FontIcon Margin="2,0,2,0"
+                                             FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                             FontSize="16"
+                                             Glyph="{x:Static ui:FontSymbols.ChevronUp}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding RowDownRoomUrlCommand}" Header="下移直播间">
+                            <MenuItem.Icon>
+                                <ui:FontIcon Margin="2,0,2,0"
+                                             FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                             FontSize="16"
+                                             Glyph="{x:Static ui:FontSymbols.ChevronDown}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="{Binding RemoveRoomUrlCommand}" Header="移除直播间">
+                            <MenuItem.Icon>
+                                <ui:FontIcon Margin="2,0,2,0"
+                                             FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                             FontSize="16"
+                                             Glyph="{x:Static ui:FontSymbols.CalculatorMultiply}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
                         <Separator />
                         <MenuItem Command="{Binding OpenSaveFolderCommand}" Header="保存目录">
                             <MenuItem.Icon>

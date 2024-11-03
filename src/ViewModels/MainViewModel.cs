@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
@@ -8,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.Views;
 using Windows.Storage;
@@ -19,6 +21,11 @@ namespace TiktokLiveRec.ViewModels;
 [ObservableObject]
 public partial class MainViewModel : ReactiveObject
 {
+    private DispatcherTimer timer = new()
+    {
+        Interval = TimeSpan.FromSeconds(3)
+    };
+
     [ObservableProperty]
     private ReactiveCollection<RoomStatusReactive> recs = [];
 
@@ -29,6 +36,17 @@ public partial class MainViewModel : ReactiveObject
             NickName = room.NickName,
             RoomUrl = room.RoomUrl,
         }));
+
+        WeakReferenceMessenger.Default.Register<RecMessage>(this, (_, msg) =>
+        {
+            // TODO
+        });
+
+        timer.Tick += (object? sender, EventArgs e) =>
+        {
+            // TODO
+        };
+        timer.Start();
 
         _ = Task.Run(async () => await GlobalMonitor.StartAsync());
     }
@@ -117,18 +135,42 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task PlayRecordAsync()
     {
+        // TODO
+        await Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    private async Task RowUpRoomUrlAsync()
+    {
+        // TODO
+        await Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    private async Task RowDownRoomUrlAsync()
+    {
+        // TODO
+        await Task.CompletedTask;
+    }
+
+    [RelayCommand]
+    private async Task RemoveRoomUrlAsync()
+    {
+        // TODO
         await Task.CompletedTask;
     }
 
     [RelayCommand]
     private async Task GotoRoomUrlAsync()
     {
+        // TODO
         await Task.CompletedTask;
     }
 
     [RelayCommand]
     private async Task StopRecordAsync()
     {
+        // TODO
         await Task.CompletedTask;
     }
 

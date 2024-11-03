@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Interop;
 using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Views;
 using NotifyIcon = NotifyIconEx.NotifyIcon;
@@ -61,12 +62,18 @@ internal class TrayIconManager
 
         _icon = new NotifyIcon()
         {
-            Text = "Tiktok Live Rec",
+            Text = "TiktokLiveRec",
             Icon = Icon.ExtractAssociatedIcon(Process.GetCurrentProcess().MainModule?.FileName!)!,
             Visible = true
         };
         _icon.AddMenu($"v{Assembly.GetExecutingAssembly().GetName().Version!.ToString(3)}").Enabled = false;
         _icon.AddMenu("-");
+        _icon.AddMenu("显示界面 (&U)", (_, _) =>
+        {
+            Application.Current.MainWindow.Show();
+            Application.Current.MainWindow.Activate();
+            Interop.RestoreWindow(new WindowInteropHelper(Application.Current.MainWindow).Handle);
+        });
         _icon.AddMenu("打开设置 (&O)", (_, _) =>
         {
             foreach (Window win in Application.Current.Windows.OfType<SettingsWindow>())
@@ -83,9 +90,13 @@ internal class TrayIconManager
             (_, _) =>
             {
                 if (AutoStartupHelper.IsAutorun())
+                {
                     AutoStartupHelper.RemoveAutorunShortcut();
+                }
                 else
+                {
                     AutoStartupHelper.CreateAutorunShortcut();
+                }
             }) as ToolStripMenuItem;
         _icon.AddMenu("重启 (&R)", (_, _) => RuntimeHelper.Restart(forced: true));
         _icon.AddMenu("退出 (&E)", (_, _) =>
@@ -109,6 +120,7 @@ internal class TrayIconManager
             {
                 Application.Current.MainWindow.Show();
                 Application.Current.MainWindow.Activate();
+                Interop.RestoreWindow(new WindowInteropHelper(Application.Current.MainWindow).Handle);
             }
         };
     }

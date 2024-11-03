@@ -138,4 +138,21 @@ internal static class Interop
         _ = User32.SetWindowLong(hWnd, User32.WindowLongFlags.GWL_EXSTYLE, exStyle);
         _ = User32.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, 0, 0, User32.SetWindowPosFlags.SWP_NOMOVE | User32.SetWindowPosFlags.SWP_NOSIZE | User32.SetWindowPosFlags.SWP_NOZORDER | User32.SetWindowPosFlags.SWP_FRAMECHANGED);
     }
+
+    public static void RestoreWindow(nint hWnd)
+    {
+        if (User32.IsWindow(hWnd))
+        {
+            _ = User32.SendMessage(hWnd, User32.WindowMessage.WM_SYSCOMMAND, User32.SysCommand.SC_RESTORE, 0);
+            _ = User32.SetForegroundWindow(hWnd);
+
+            if (User32.IsIconic(hWnd))
+            {
+                _ = User32.ShowWindow(hWnd, ShowWindowCommand.SW_RESTORE);
+            }
+
+            _ = User32.BringWindowToTop(hWnd);
+            _ = User32.SetActiveWindow(hWnd);
+        }
+    }
 }

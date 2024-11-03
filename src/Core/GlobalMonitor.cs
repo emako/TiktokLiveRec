@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.Concurrent;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Linq;
 using System.Web;
 using Windows.System;
 
@@ -100,6 +101,7 @@ internal static class GlobalMonitor
 public sealed class RecMessage
 {
     public RecMessageType Type { get; set; } = default;
+    public object? Data { get; set; } = null;
 
     public enum RecMessageType
     {
