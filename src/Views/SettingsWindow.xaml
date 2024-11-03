@@ -105,7 +105,9 @@
                             </ui:Grid>
                         </ui:CardExpander.Header>
                         <ui:StackPanel Spacing="8">
-                            <ui:StackPanel Margin="42,0,28,0" Spacing="12">
+                            <ui:StackPanel Margin="42,0,28,0"
+                                           IsEnabled="{Binding IsToNotify}"
+                                           Spacing="12">
                                 <CheckBox Content="通过 Windows 系统通知" IsChecked="{Binding IsToNotifyWithSystem, Mode=TwoWay}" />
                                 <ui:Grid ColumnDefinitions="Auto,*">
                                     <CheckBox Grid.Column="0"
@@ -307,7 +309,7 @@
                                 </Grid>
                             </ui:Grid>
                         </ui:CardExpander.Header>
-                        <ui:StackPanel Spacing="8">
+                        <ui:StackPanel IsEnabled="{Binding IsUseProxy}" Spacing="12">
                             <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto">
                                 <TextBlock VerticalAlignment="Center" Text="主机名以及端口号" />
                                 <ui:TextBox Grid.Column="1"
