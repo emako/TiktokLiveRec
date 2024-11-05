@@ -9,6 +9,7 @@ public static class Configurations
     public static ConfigurationDefinition<string> Theme { get; } = new(nameof(Theme), string.Empty);
     public static ConfigurationDefinition<Room[]> Rooms { get; } = new(nameof(Rooms), []);
     public static ConfigurationDefinition<bool> IsUseStatusTray { get; } = new(nameof(IsUseStatusTray), true);
+    public static ConfigurationDefinition<int> RoutineInterval { get; } = new(nameof(RoutineInterval), 30000);
     public static ConfigurationDefinition<bool> IsToNotify { get; } = new(nameof(IsToNotify), true);
     public static ConfigurationDefinition<bool> IsToNotifyWithSystem { get; } = new(nameof(IsToNotifyWithSystem), true);
     public static ConfigurationDefinition<bool> IsToNotifyWithMusic { get; } = new(nameof(IsToNotifyWithMusic), true);

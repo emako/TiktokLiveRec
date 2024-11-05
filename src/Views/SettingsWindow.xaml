@@ -163,6 +163,32 @@
                                              IsChecked="{Binding IsToRecord, Mode=TwoWay}" />
                         </ui:Grid>
                     </ui:Card>
+                    <ui:Card>
+                        <ui:Grid MinHeight="35" ColumnDefinitions="Auto,*,Auto">
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.DeviceMonitorRightPic}" />
+                            </Grid>
+                            <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0" Text="循环周期" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="#D0D0D0"
+                                           Text="检测开播状态等动作的循环周期（毫秒）" />
+                            </ui:Grid>
+                            <ui:NumberBox Grid.Column="2"
+                                          MinWidth="150"
+                                          Margin="0,0,28,0"
+                                          Maximum="{c:DoubleMaxValue}"
+                                          Minimum="500"
+                                          Value="{Binding RoutineInterval, Mode=TwoWay}" />
+                        </ui:Grid>
+                    </ui:Card>
                     <ui:CardExpander>
                         <ui:CardExpander.Header>
                             <ui:Grid ColumnDefinitions="Auto,*,Auto">

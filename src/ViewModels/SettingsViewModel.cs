@@ -129,6 +129,15 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [ObservableProperty]
+    private int routineInterval = Configurations.RoutineInterval.Get();
+
+    partial void OnRoutineIntervalChanged(int value)
+    {
+        Configurations.RoutineInterval.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
     private int recordFormatIndex = Configurations.RecordFormat.Get() switch
     {
         "TS+MP4" => 1,
