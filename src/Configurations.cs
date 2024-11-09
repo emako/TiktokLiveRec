@@ -18,6 +18,8 @@ public static class Configurations
     public static ConfigurationDefinition<string> ToNotifyWithEmailSmtp { get; } = new(nameof(ToNotifyWithEmailSmtp), null!);
     public static ConfigurationDefinition<string> ToNotifyWithEmailUserName { get; } = new(nameof(ToNotifyWithEmailUserName), null!);
     public static ConfigurationDefinition<string> ToNotifyWithEmailPassword { get; } = new(nameof(ToNotifyWithEmailPassword), null!);
+    public static ConfigurationDefinition<bool> IsToNotifyGotoRoomUrl { get; } = new(nameof(IsToNotifyGotoRoomUrl), false);
+    public static ConfigurationDefinition<bool> IsToNotifyGotoRoomUrlAndMute { get; } = new(nameof(IsToNotifyGotoRoomUrlAndMute), false);
     public static ConfigurationDefinition<bool> IsToRecord { get; } = new(nameof(IsToRecord), true);
     public static ConfigurationDefinition<string> RecordFormat { get; } = new(nameof(RecordFormat), "TS");
     public static ConfigurationDefinition<bool> IsRemoveTs { get; } = new(nameof(IsRemoveTs), false);

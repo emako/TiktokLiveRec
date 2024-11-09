@@ -137,6 +137,15 @@
                                                     Text="{Binding ToNotifyWithEmailPassword, Mode=TwoWay}" />
                                     </ui:Grid>
                                 </ui:Grid>
+                                <ui:Grid ColumnDefinitions="Auto,*">
+                                    <CheckBox Grid.Column="0"
+                                              Content="自动进入直播间"
+                                              IsChecked="{Binding IsToNotifyGotoRoomUrl, Mode=TwoWay}" />
+                                    <ui:ToggleSwitch Grid.Column="1"
+                                                     Margin="8,0,0,0"
+                                                     Content="自动系统静音"
+                                                     IsChecked="{Binding IsToNotifyGotoRoomUrlAndMute, Mode=TwoWay}" />
+                                </ui:Grid>
                             </ui:StackPanel>
                         </ui:StackPanel>
                     </ui:CardExpander>
@@ -186,7 +195,7 @@
                                           Margin="0,0,28,0"
                                           Maximum="{c:DoubleMaxValue}"
                                           Minimum="500"
-                                          Value="{Binding RoutineInterval, Mode=TwoWay}" />
+                                          Value="{Binding RoutineInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </ui:Grid>
                     </ui:Card>
                     <ui:CardExpander>

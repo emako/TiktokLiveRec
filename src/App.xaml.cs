@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
+using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
 using Wpf.Ui.Violeta.Controls;
 

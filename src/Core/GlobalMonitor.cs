@@ -15,6 +15,8 @@ internal static class GlobalMonitor
 {
     public static ConcurrentDictionary<string, RoomStatus> RoomStatus { get; } = new();
 
+    public static int RoutineInterval = int.Max(Configurations.RoutineInterval.Get(), 500);
+
     private sealed class GlobalMonitorRecipient : ObservableRecipient
     {
         public static GlobalMonitorRecipient Instance { get; } = new();
@@ -47,10 +49,15 @@ internal static class GlobalMonitor
 
     public static async Task StartAsync(CancellationToken token = default)
     {
-        using PeriodicTimer timer = new(TimeSpan.FromMilliseconds(5000000));
-
-        while (await timer.WaitForNextTickAsync(token).ConfigureAwait(false))
+        while (true)
         {
+            int currentRoutineInterval = default;
+            while (currentRoutineInterval < RoutineInterval)
+            {
+                Thread.Sleep(500);
+                currentRoutineInterval += 500;
+            }
+
             try
             {
                 // Check Global Settings
@@ -88,9 +95,18 @@ internal static class GlobalMonitor
                                     }
                                 }
                                 roomStatus.HlsUrl = spiderResult.HlsUrl!;
+
+                                if (spiderResult.IsLiveStreaming == true)
+                                {
+                                    roomStatus.StreamStatus = StreamStatus.Streaming;
+                                }
+                                else if (spiderResult.IsLiveStreaming == false)
+                                {
+                                    roomStatus.StreamStatus = StreamStatus.NotStreaming;
+                                }
                             }
 
-                            WeakReferenceMessenger.Default.Send(new RecMessage()
+                            _ = WeakReferenceMessenger.Default.Send(new RecMessage()
                             {
                                 Type = RecMessage.RecMessageType.StartStreaming,
                             });
@@ -105,7 +121,7 @@ internal static class GlobalMonitor
         }
     }
 
-    private static void Notify(Room room, CancellationToken token = default)
+    private static async void Notify(Room room, CancellationToken token = default)
     {
         if (Configurations.IsToNotifyWithSystem.Get())
         {
@@ -154,6 +170,16 @@ internal static class GlobalMonitor
             {
                 _ = Notifier.SendEmail(smtpServer, userName, password, room.NickName, room.RoomUrl);
             }, token);
+        }
+
+        if (Configurations.IsToNotifyGotoRoomUrl.Get())
+        {
+            _ = await Launcher.LaunchUriAsync(new Uri(room.RoomUrl));
+
+            if (Configurations.IsToNotifyGotoRoomUrlAndMute.Get())
+            {
+                SystemVolume.SetMasterVolumeMute(true);
+            }
         }
     }
 }

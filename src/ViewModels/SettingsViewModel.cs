@@ -5,6 +5,7 @@ using Fischless.Configuration;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using TiktokLiveRec.Core;
 using Windows.Storage;
 using Windows.System;
 using WindowsAPICodePack.Dialogs;
@@ -120,6 +121,24 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [ObservableProperty]
+    private bool isToNotifyGotoRoomUrl = Configurations.IsToNotifyGotoRoomUrl.Get();
+
+    partial void OnIsToNotifyGotoRoomUrlChanged(bool value)
+    {
+        Configurations.IsToNotifyGotoRoomUrl.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private bool isToNotifyGotoRoomUrlAndMute = Configurations.IsToNotifyGotoRoomUrlAndMute.Get();
+
+    partial void OnIsToNotifyGotoRoomUrlAndMuteChanged(bool value)
+    {
+        Configurations.IsToNotifyGotoRoomUrlAndMute.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
     private bool isToRecord = Configurations.IsToRecord.Get();
 
     partial void OnIsToRecordChanged(bool value)
@@ -133,6 +152,7 @@ public partial class SettingsViewModel : ReactiveObject
 
     partial void OnRoutineIntervalChanged(int value)
     {
+        GlobalMonitor.RoutineInterval = int.Max(value, 500);
         Configurations.RoutineInterval.Set(value);
         ConfigurationManager.Save();
     }
