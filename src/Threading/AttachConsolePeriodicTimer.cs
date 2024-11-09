@@ -16,36 +16,6 @@ public partial class ChildProcessTrackPeriodicTimer : IDisposable
         PeriodicTimer = new PeriodicTimer(period);
     }
 
-    [Obsolete]
-    public async ValueTask AttachChildConsoleAsync(CancellationToken cancellationToken = default)
-    {
-        bool ret = Kernel32.AllocConsole();
-
-        while (await PeriodicTimer.WaitForNextTickAsync())
-        {
-            (int, string)[] children = Interop.GetChildProcessIdAndName(Environment.ProcessId);
-
-            foreach ((int Id, string ProcessName) child in children)
-            {
-                if (child.ProcessName == "conhost")
-                {
-                    continue;
-                }
-
-                if (Kernel32.AttachConsole((uint)child.Id))
-                {
-                    Debug.WriteLine("Console attached.");
-                }
-                else
-                {
-                    Debug.WriteLine("Failed to attach console.");
-                }
-            }
-        }
-
-        ret = Kernel32.FreeConsole();
-    }
-
     public async ValueTask AttachChildProcessAsync(CancellationToken cancellationToken = default)
     {
         while (await PeriodicTimer.WaitForNextTickAsync())
