@@ -47,9 +47,9 @@ public sealed partial class AddRoomContentDialog : ContentDialog
             string roomId = uri.Segments.Last();
             string roomUrl = $"https://live.douyin.com/{roomId}";
 
-            SpiderResult spider = Spider.GetResult(roomUrl);
+            ISpiderResult? spider = Spider.GetResult(roomUrl);
 
-            if (string.IsNullOrWhiteSpace(spider.Nickname))
+            if (string.IsNullOrWhiteSpace(spider?.Nickname))
             {
                 Toast.Error("获取直播间信息失败");
                 e.Cancel = true;

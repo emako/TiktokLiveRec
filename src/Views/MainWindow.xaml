@@ -64,7 +64,7 @@
                       EnableColumnVirtualization="False"
                       EnableRowVirtualization="False"
                       IsReadOnly="True"
-                      ItemsSource="{Binding Recs}"
+                      ItemsSource="{Binding RoomStatuses}"
                       RowHeight="40"
                       SelectionMode="Single"
                       SelectionUnit="FullRow">

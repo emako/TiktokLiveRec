@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using TiktokLiveRec.Core;
+using TiktokLiveRec.Models;
 using TiktokLiveRec.Views;
 using Windows.Storage;
 using Windows.System;
@@ -23,20 +24,20 @@ namespace TiktokLiveRec.ViewModels;
 [ObservableObject]
 public partial class MainViewModel : ReactiveObject
 {
-    private DispatcherTimer timer = new()
+    public DispatcherTimer DispatcherTimer = new()
     {
         Interval = TimeSpan.FromSeconds(3)
     };
 
     [ObservableProperty]
-    private ReactiveCollection<RoomStatusReactive> recs = [];
+    private ReactiveCollection<RoomStatusReactive> roomStatuses = [];
 
     [ObservableProperty]
     private RoomStatusReactive selectedItem = new();
 
     public MainViewModel()
     {
-        Recs.Reset(Configurations.Rooms.Get().Select(room => new RoomStatusReactive()
+        RoomStatuses.Reset(Configurations.Rooms.Get().Select(room => new RoomStatusReactive()
         {
             NickName = room.NickName,
             RoomUrl = room.RoomUrl,
@@ -46,16 +47,31 @@ public partial class MainViewModel : ReactiveObject
 
         WeakReferenceMessenger.Default.Register<RecMessage>(this, (_, msg) =>
         {
-            // TODO
+            ReloadRoomStatus();
         });
 
-        timer.Tick += (object? sender, EventArgs e) =>
+        DispatcherTimer.Tick += (_, _) =>
         {
-            // TODO
+            ReloadRoomStatus();
         };
-        timer.Start();
+        DispatcherTimer.Start();
 
         _ = Task.Run(async () => await GlobalMonitor.StartAsync());
+    }
+
+    private void ReloadRoomStatus()
+    {
+        foreach (RoomStatus roomStatus in GlobalMonitor.RoomStatus.Values.ToArray())
+        {
+            RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == roomStatus.RoomUrl).FirstOrDefault();
+
+            if (roomStatusReactive != null)
+            {
+                roomStatusReactive.StreamStatus = roomStatus.StreamStatus;
+                roomStatusReactive.RecordStatus = roomStatus.RecordStatus;
+                roomStatusReactive.HlsUrl = roomStatus.HlsUrl;
+            }
+        }
     }
 
     [RelayCommand]
@@ -79,7 +95,7 @@ public partial class MainViewModel : ReactiveObject
                 Configurations.Rooms.Set([.. rooms]);
                 ConfigurationManager.Save();
 
-                Recs.Add(new RoomStatusReactive()
+                RoomStatuses.Add(new RoomStatusReactive()
                 {
                     NickName = dialog.NickName,
                     RoomUrl = dialog.RoomUrl!,
@@ -193,11 +209,11 @@ public partial class MainViewModel : ReactiveObject
         {
             if (!string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
             {
-                RoomStatusReactive? roomStatus = Recs.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+                RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
 
-                if (roomStatus != null)
+                if (roomStatusReactive != null)
                 {
-                    roomStatus.IsToNotify = SelectedItem.IsToNotify;
+                    roomStatusReactive.IsToNotify = SelectedItem.IsToNotify;
                 }
 
                 Room[] rooms = Configurations.Rooms.Get();
@@ -220,11 +236,11 @@ public partial class MainViewModel : ReactiveObject
         {
             if (!string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
             {
-                RoomStatusReactive? roomStatus = Recs.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+                RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
 
-                if (roomStatus != null)
+                if (roomStatusReactive != null)
                 {
-                    roomStatus.IsToRecord = SelectedItem.IsToRecord;
+                    roomStatusReactive.IsToRecord = SelectedItem.IsToRecord;
                 }
 
                 Room[] rooms = Configurations.Rooms.Get();

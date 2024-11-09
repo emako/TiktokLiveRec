@@ -6,6 +6,8 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Web;
+using TiktokLiveRec.Models;
+using TiktokLiveRec.Threading;
 using Windows.System;
 using Wpf.Ui.Violeta.Resources;
 
@@ -13,9 +15,12 @@ namespace TiktokLiveRec.Core;
 
 internal static class GlobalMonitor
 {
+    /// <summary>
+    /// ConcurrentDictionary{RoomUrl, RoomStatus}
+    /// </summary>
     public static ConcurrentDictionary<string, RoomStatus> RoomStatus { get; } = new();
 
-    public static int RoutineInterval = int.Max(Configurations.RoutineInterval.Get(), 500);
+    public static PeriodicWait RoutinePeriodicWait = new(TimeSpan.FromMilliseconds(int.Max(Configurations.RoutineInterval.Get(), 500)));
 
     private sealed class GlobalMonitorRecipient : ObservableRecipient
     {
@@ -49,15 +54,12 @@ internal static class GlobalMonitor
 
     public static async Task StartAsync(CancellationToken token = default)
     {
-        while (true)
+        while (!token.IsCancellationRequested)
         {
-            int currentRoutineInterval = default;
-            while (currentRoutineInterval < RoutineInterval)
-            {
-                Thread.Sleep(500);
-                currentRoutineInterval += 500;
-            }
+            // Delay Routine Interval
+            _ = await RoutinePeriodicWait.WaitForNextTickAsync(token);
 
+            // Routine Can't be stopped from throwables
             try
             {
                 // Check Global Settings
@@ -67,49 +69,62 @@ internal static class GlobalMonitor
 
                     foreach (Room room in rooms)
                     {
-                        // Check Room Settings
-                        if (room.IsToNotify || room.IsToRecord)
+                        if (TryGetRoomStatus(room) is RoomStatus roomStatus)
                         {
-                            // First insert
-                            if (!RoomStatus.ContainsKey(room.RoomUrl))
+                            // Check Room Settings
+                            if (room.IsToNotify || room.IsToRecord)
                             {
-                                RoomStatus.TryAdd(room.RoomUrl, new RoomStatus()
-                                {
-                                    NickName = room.NickName,
-                                    RoomUrl = room.RoomUrl,
-                                    HlsUrl = null!,
-                                    StreamStatus = StreamStatus.Initialized,
-                                    RecordStatus = RecordStatus.Initialized,
-                                });
-                            }
+                                // Spider Room Status
+                                ISpiderResult? spiderResult = Spider.GetResult(room.RoomUrl);
 
-                            SpiderResult spiderResult = Spider.GetResult(room.RoomUrl);
-
-                            if (RoomStatus.TryGetValue(room.RoomUrl, out RoomStatus? roomStatus))
-                            {
-                                if (room.IsToNotify)
+                                if (spiderResult == null)
                                 {
-                                    if (roomStatus.StreamStatus != StreamStatus.Streaming && (spiderResult.IsLiveStreaming ?? false))
+                                    // Not supported streaming live or error
+                                    continue;
+                                }
+
+                                // Update Room Status
+                                roomStatus.HlsUrl = spiderResult.HlsUrl!;
+                                roomStatus.StreamStatus = spiderResult.IsLiveStreaming switch
+                                {
+                                    true => StreamStatus.Streaming,
+                                    false => StreamStatus.NotStreaming,
+                                    null or _ => roomStatus.StreamStatus,
+                                };
+
+                                // Start Streaming Recording
+                                if (room.IsToRecord)
+                                {
+                                    if (roomStatus.StreamStatus == StreamStatus.Streaming)
                                     {
-                                        Notify(room, token);
+                                        roomStatus.Recorder.Start();
                                     }
                                 }
-                                roomStatus.HlsUrl = spiderResult.HlsUrl!;
 
-                                if (spiderResult.IsLiveStreaming == true)
+                                // Start Broadcast Notification
+                                if (room.IsToNotify)
                                 {
-                                    roomStatus.StreamStatus = StreamStatus.Streaming;
+                                    // Only to notify when first detected
+                                    if (roomStatus.StreamStatus != StreamStatus.Streaming)
+                                    {
+                                        if (spiderResult.IsLiveStreaming ?? false)
+                                        {
+                                            await Notify(room, token);
+                                        }
+                                    }
                                 }
-                                else if (spiderResult.IsLiveStreaming == false)
+
+                                // ?
+                                _ = WeakReferenceMessenger.Default.Send(new RecMessage()
                                 {
-                                    roomStatus.StreamStatus = StreamStatus.NotStreaming;
-                                }
+                                    Type = RecMessageType.Default,
+                                });
                             }
-
-                            _ = WeakReferenceMessenger.Default.Send(new RecMessage()
+                            else
                             {
-                                Type = RecMessage.RecMessageType.StartStreaming,
-                            });
+                                // Update Room Status
+                                roomStatus.StreamStatus = StreamStatus.Disabled;
+                            }
                         }
                     }
                 }
@@ -121,7 +136,35 @@ internal static class GlobalMonitor
         }
     }
 
-    private static async void Notify(Room room, CancellationToken token = default)
+    /// <summary>
+    /// Get Room Status
+    /// </summary>
+    private static RoomStatus? TryGetRoomStatus(Room room)
+    {
+        // First insert
+        if (!RoomStatus.ContainsKey(room.RoomUrl))
+        {
+            RoomStatus.TryAdd(room.RoomUrl, new RoomStatus()
+            {
+                NickName = room.NickName,
+                RoomUrl = room.RoomUrl,
+                HlsUrl = null!,
+                StreamStatus = StreamStatus.Initialized,
+            });
+        }
+
+        if (RoomStatus.TryGetValue(room.RoomUrl, out RoomStatus? roomStatus))
+        {
+            ///
+        }
+
+        return roomStatus;
+    }
+
+    /// <summary>
+    /// Notification Runnable
+    /// </summary>
+    private static async Task Notify(Room room, CancellationToken token = default)
     {
         if (Configurations.IsToNotifyWithSystem.Get())
         {
@@ -181,20 +224,5 @@ internal static class GlobalMonitor
                 SystemVolume.SetMasterVolumeMute(true);
             }
         }
-    }
-}
-
-public sealed class RecMessage
-{
-    public RecMessageType Type { get; set; } = default;
-    public object? Data { get; set; } = null;
-
-    public enum RecMessageType
-    {
-        Unknown,
-        StartStreaming,
-        StopStreaming,
-        StartRecording,
-        StopRecording,
     }
 }

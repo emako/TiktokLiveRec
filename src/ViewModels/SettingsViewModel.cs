@@ -152,7 +152,7 @@ public partial class SettingsViewModel : ReactiveObject
 
     partial void OnRoutineIntervalChanged(int value)
     {
-        GlobalMonitor.RoutineInterval = int.Max(value, 500);
+        GlobalMonitor.RoutinePeriodicWait.Period = TimeSpan.FromMilliseconds(int.Max(value, 500));
         Configurations.RoutineInterval.Set(value);
         ConfigurationManager.Save();
     }

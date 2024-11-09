@@ -5,7 +5,7 @@ using TiktokLiveRec.Extensions;
 
 namespace TiktokLiveRec.Core;
 
-internal sealed class Player
+public sealed class Player
 {
     public static async Task PlayAsync(string mediaPath)
     {
