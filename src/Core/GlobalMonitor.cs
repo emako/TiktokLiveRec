@@ -22,6 +22,8 @@ internal static class GlobalMonitor
 
     public static PeriodicWait RoutinePeriodicWait = new(TimeSpan.FromMilliseconds(int.Max(Configurations.RoutineInterval.Get(), 500)));
 
+    public static CancellationTokenSource? TokenSource { get; private set; } = null;
+
     public static ChildProcessTrackPeriodicTimer AttachConsolePeriodicTimer = new(TimeSpan.FromMilliseconds(500));
 
     private sealed class GlobalMonitorRecipient : ObservableRecipient
@@ -52,6 +54,20 @@ internal static class GlobalMonitor
                 }
             }
         });
+    }
+
+    public static void Start(CancellationTokenSource? tokenSource = null)
+    {
+        TokenSource = tokenSource ?? new CancellationTokenSource();
+
+        _ = AttachConsolePeriodicTimer.AttachChildProcessAsync();
+
+        _ = Task.Factory.StartNew(async () => await StartAsync(TokenSource.Token), TaskCreationOptions.LongRunning);
+    }
+
+    public static void Stop()
+    {
+        TokenSource?.Cancel();
     }
 
     public static async Task StartAsync(CancellationToken token = default)
@@ -99,7 +115,7 @@ internal static class GlobalMonitor
                                 {
                                     if (roomStatus.StreamStatus == StreamStatus.Streaming)
                                     {
-                                        roomStatus.Recorder.Start(new RecorderStartInfo()
+                                        _ = roomStatus.Recorder.Start(new RecorderStartInfo()
                                         {
                                             NickName = room.NickName,
                                             HlsUrl = roomStatus.HlsUrl,
@@ -140,10 +156,6 @@ internal static class GlobalMonitor
                 Debug.WriteLine(e);
             }
         }
-    }
-
-    private static void D()
-    {
     }
 
     /// <summary>

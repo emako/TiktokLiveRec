@@ -10,10 +10,10 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Threading;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Models;
+using TiktokLiveRec.Threading;
 using TiktokLiveRec.Views;
 using Windows.Storage;
 using Windows.System;
@@ -24,10 +24,7 @@ namespace TiktokLiveRec.ViewModels;
 [ObservableObject]
 public partial class MainViewModel : ReactiveObject
 {
-    public DispatcherTimer DispatcherTimer = new()
-    {
-        Interval = TimeSpan.FromSeconds(3)
-    };
+    private ForeverDispatcherTimer dispatcherTimer;
 
     [ObservableProperty]
     private ReactiveCollection<RoomStatusReactive> roomStatuses = [];
@@ -37,6 +34,8 @@ public partial class MainViewModel : ReactiveObject
 
     public MainViewModel()
     {
+        dispatcherTimer = new(TimeSpan.FromSeconds(3), ReloadRoomStatus);
+
         RoomStatuses.Reset(Configurations.Rooms.Get().Select(room => new RoomStatusReactive()
         {
             NickName = room.NickName,
@@ -50,15 +49,8 @@ public partial class MainViewModel : ReactiveObject
             ReloadRoomStatus();
         });
 
-        DispatcherTimer.Tick += (_, _) =>
-        {
-            ReloadRoomStatus();
-        };
-        DispatcherTimer.Start();
-
-        // TODO
-        _ = Task.Run(async () => await GlobalMonitor.AttachConsolePeriodicTimer.AttachChildProcessAsync());
-        _ = Task.Run(async () => await GlobalMonitor.StartAsync());
+        GlobalMonitor.Start();
+        dispatcherTimer.Start();
     }
 
     private void ReloadRoomStatus()
