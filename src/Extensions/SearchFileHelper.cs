@@ -2,7 +2,7 @@
 
 namespace TiktokLiveRec.Extensions;
 
-internal class SearchFileHelper
+internal static class SearchFileHelper
 {
     public static IEnumerable<string> SearchFiles(string directory, string fileName)
     {
@@ -22,7 +22,7 @@ internal class SearchFileHelper
         }
         catch (UnauthorizedAccessException e)
         {
-            Console.WriteLine($"访问被拒绝: {directory}, 错误: {e.Message}");
+            Console.WriteLine($"Unauthorized: {directory}, Detail: {e.Message}");
         }
 
         return foundFiles;

@@ -76,7 +76,8 @@ public sealed partial class DouyinSpider : ISpider
         match = GetHlsPullUrlMapRegex().Match(htmlStr);
         if (match.Success)
         {
-            result.HlsUrl = match.Groups[1].Value.Replace("u0026", "&");
+            result.HlsUrl = match.Groups[1].Value
+                .Replace("\\u0026", "&");
         }
 
         return result;

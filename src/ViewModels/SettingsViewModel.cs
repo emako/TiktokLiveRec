@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using TiktokLiveRec.Core;
+using TiktokLiveRec.Extensions;
 using Windows.Storage;
 using Windows.System;
 using WindowsAPICodePack.Dialogs;
@@ -211,23 +212,11 @@ public partial class SettingsViewModel : ReactiveObject
     [RelayCommand]
     private async Task OpenSaveFolderAsync()
     {
-        string saveFolder = Configurations.SaveFolder.Get();
-
-        if (string.IsNullOrWhiteSpace(saveFolder))
-        {
-            const string path = "download";
-
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetFullPath(path)));
-        }
-        else
-        {
-            await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetFullPath(saveFolder)));
-        }
+        await Launcher.LaunchFolderAsync(
+            await StorageFolder.GetFolderFromPathAsync(
+                SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get())
+            )
+        );
     }
 
     [ObservableProperty]

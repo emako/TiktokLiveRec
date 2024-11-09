@@ -45,6 +45,7 @@ public partial class RoomStatusReactive : ReactiveObject
         RecordStatus.Disabled => "已禁用",
         RecordStatus.NotRecording => "未录制",
         RecordStatus.Recording => "录制中",
+        RecordStatus.Error => "出错啦",
         _ => "未知",
     };
 }

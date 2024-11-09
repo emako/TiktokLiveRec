@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Vanara.PInvoke;
 
 namespace TiktokLiveRec;
@@ -154,5 +155,57 @@ internal static class Interop
             _ = User32.BringWindowToTop(hWnd);
             _ = User32.SetActiveWindow(hWnd);
         }
+    }
+
+    public static void Attach(uint pid)
+    {
+        if (Kernel32.AttachConsole(pid))
+        {
+            Console.WriteLine("Successfully attached to the console of the specified process.");
+            Console.WriteLine("Hello from the attached console!");
+        }
+        else
+        {
+            Console.WriteLine("Failed to attach to the console of the specified process.");
+            Console.WriteLine($"Error Code: {Kernel32.GetLastError()}");
+        }
+    }
+
+    public static unsafe int? GetParentProcessId(int pid)
+    {
+        using var hProcess = Kernel32.OpenProcess(ACCESS_MASK.GENERIC_READ, false, (uint)pid);
+
+        if (hProcess == IntPtr.Zero)
+        {
+            return null!;
+        }
+
+        NtDll.PROCESS_BASIC_INFORMATION pbi = new();
+        NTStatus status = NtDll.NtQueryInformationProcess(hProcess, NtDll.PROCESSINFOCLASS.ProcessBasicInformation, (nint)(&pbi), (uint)Marshal.SizeOf<NtDll.PROCESS_BASIC_INFORMATION>(), out var returnLength);
+
+        if (status == NTStatus.STATUS_SUCCESS)
+        {
+            return (int)pbi.InheritedFromUniqueProcessId;
+        }
+        else
+        {
+            return null!;
+        }
+    }
+
+    public static int[] GetChildProcessId(int pid)
+    {
+        return Process.GetProcesses()
+            .Where(p => GetParentProcessId(p.Id) == pid)
+            .Select(p => p.Id)
+            .ToArray();
+    }
+
+    public static (int, string)[] GetChildProcessIdAndName(int pid)
+    {
+        return Process.GetProcesses()
+            .Where(p => GetParentProcessId(p.Id) == pid)
+            .Select(p => (p.Id, p.ProcessName))
+            .ToArray();
     }
 }

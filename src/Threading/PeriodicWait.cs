@@ -1,8 +1,5 @@
 ﻿namespace TiktokLiveRec.Threading;
 
-/// <summary>
-/// <seealso cref="PeriodicTimer"/>
-/// </summary>
 public class PeriodicWait
 {
     protected int _interval = 50;

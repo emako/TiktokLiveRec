@@ -4,7 +4,6 @@ using CommunityToolkit.Mvvm.Messaging;
 using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
-using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using TiktokLiveRec.Core;
+using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Models;
 using TiktokLiveRec.Views;
 using Windows.Storage;
@@ -56,6 +56,8 @@ public partial class MainViewModel : ReactiveObject
         };
         DispatcherTimer.Start();
 
+        // TODO
+        _ = Task.Run(async () => await GlobalMonitor.AttachConsolePeriodicTimer.AttachChildProcessAsync());
         _ = Task.Run(async () => await GlobalMonitor.StartAsync());
     }
 
@@ -121,23 +123,11 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task OpenSaveFolderAsync()
     {
-        string saveFolder = Configurations.SaveFolder.Get();
-
-        if (string.IsNullOrWhiteSpace(saveFolder))
-        {
-            const string path = "download";
-
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetFullPath(path)));
-        }
-        else
-        {
-            await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetFullPath(saveFolder)));
-        }
+        await Launcher.LaunchFolderAsync(
+            await StorageFolder.GetFolderFromPathAsync(
+                SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get())
+            )
+        );
     }
 
     [RelayCommand]
