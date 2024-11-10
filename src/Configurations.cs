@@ -30,6 +30,7 @@ public static class Configurations
     public static ConfigurationDefinition<string> ProxyUrl { get; } = new(nameof(ProxyUrl), string.Empty);
     public static ConfigurationDefinition<string> CookieChina { get; } = new(nameof(CookieChina), string.Empty);
     public static ConfigurationDefinition<string> CookieOversea { get; } = new(nameof(CookieOversea), string.Empty);
+    public static ConfigurationDefinition<string> UserAgent { get; } = new(nameof(UserAgent), string.Empty);
 }
 
 public class Room

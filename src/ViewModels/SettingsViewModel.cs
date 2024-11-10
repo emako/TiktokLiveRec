@@ -358,4 +358,13 @@ public partial class SettingsViewModel : ReactiveObject
     {
         // TODO
     }
+
+    [ObservableProperty]
+    private string userAgent = Configurations.UserAgent.Get();
+
+    partial void OnUserAgentChanged(string value)
+    {
+        Configurations.UserAgent.Set(value);
+        ConfigurationManager.Save();
+    }
 }

@@ -83,7 +83,7 @@ public sealed class Player
                     Interop.SetHideFromTaskBar(hWnd);
 
                     // FFplay will lost icon when maximize.
-                    // Interop.SetWindowIcon(hWnd, new(Wpf.Ui.Violeta.Resources.ResourcesProvider.GetStream("pack://application:,,,/TiktokLiveRec;component/Assets/Favicon.ico")));
+                    Interop.SetWindowIcon(hWnd, new(Wpf.Ui.Violeta.Resources.ResourcesProvider.GetStream("pack://application:,,,/TiktokLiveRec;component/Assets/Favicon.ico")));
                 }
             }
 

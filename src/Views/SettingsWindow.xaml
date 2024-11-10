@@ -411,6 +411,40 @@
                             </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>
+                    <ui:CardExpander>
+                        <ui:CardExpander.Header>
+                            <ui:Grid ColumnDefinitions="Auto,*,Auto">
+                                <Grid Grid.Column="0" Margin="0,0,12,0">
+                                    <TextBlock MinWidth="26"
+                                               Margin="4,0,0,0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                               FontSize="18"
+                                               Text="{x:Static ui:FontSymbols.EaseOfAccess}" />
+                                </Grid>
+                                <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                    <TextBlock Grid.Row="0" Text="UA 标识" />
+                                    <TextBlock Grid.Row="1"
+                                               FontSize="11"
+                                               Foreground="#D0D0D0"
+                                               Text="您可以使用自定义浏览器 UserAgent" />
+                                </ui:Grid>
+                                <Grid Grid.Column="2" Margin="0,0,12,0">
+                                    <!--  EMPTY  -->
+                                </Grid>
+                            </ui:Grid>
+                        </ui:CardExpander.Header>
+                        <ui:StackPanel Spacing="12">
+                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*">
+                                <TextBlock VerticalAlignment="Center" Text="UA 标识" />
+                                <ui:TextBox Grid.Column="1"
+                                            Margin="8,0,0,0"
+                                            PlaceholderText="留白则使用内置 UA 标识"
+                                            Text="{Binding UserAgent, Mode=TwoWay}" />
+                            </ui:Grid>
+                        </ui:StackPanel>
+                    </ui:CardExpander>
                     <FrameworkElement Height="10" />
                 </ui:StackPanel>
             </ScrollViewer>
