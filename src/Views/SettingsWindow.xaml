@@ -261,7 +261,7 @@
                         <ui:StackPanel Spacing="8">
                             <ui:Grid Margin="42,0,28,0" ColumnDefinitions="*,Auto,Auto">
                                 <ui:TextBox Grid.Column="0"
-                                            PlaceholderText=".\download"
+                                            PlaceholderText="downloads"
                                             Text="{Binding SaveFolder, Mode=TwoWay}" />
                                 <Button Grid.Column="1"
                                         Margin="8,0,0,0"
