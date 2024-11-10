@@ -17,10 +17,10 @@ public partial class RoomStatusReactive : ReactiveObject
     private string hlsUrl = string.Empty;
 
     [ObservableProperty]
-    private bool isToNotify = false;
+    private bool isToNotify = true;
 
     [ObservableProperty]
-    private bool isToRecord = false;
+    private bool isToRecord = true;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(StreamStatusText))]
