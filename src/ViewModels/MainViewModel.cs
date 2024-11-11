@@ -256,6 +256,7 @@ public partial class MainViewModel : ReactiveObject
         }
 
         // TODO
+        Toast.Warning("暂未实现");
     }
 
     [RelayCommand]
