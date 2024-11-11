@@ -214,8 +214,34 @@ public partial class MainViewModel : ReactiveObject
             return;
         }
 
+        if (GlobalMonitor.RoomStatus.TryGetValue(SelectedItem.RoomUrl, out RoomStatus? roomStatus))
+        {
+            if (roomStatus.RecordStatus == RecordStatus.Recording)
+            {
+                MessageBoxResult result = await MessageBox.QuestionAsync($"是否停止 {roomStatus} 的录制？");
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    roomStatus.Recorder.Stop();
+                    Toast.Success("操作成功");
+                }
+            }
+            else
+            {
+                Toast.Warning("当前没有录制任务");
+            }
+        }
+    }
+
+    [RelayCommand]
+    private void ShowRecordLog()
+    {
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+        {
+            return;
+        }
+
         // TODO
-        await Task.CompletedTask;
     }
 
     [RelayCommand]

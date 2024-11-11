@@ -128,7 +128,7 @@
                                              Glyph="{x:Static ui:FontSymbols.Stop}" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Command="{Binding StopRecordCommand}" Header="录制日志">
+                        <MenuItem Command="{Binding ShowRecordLogCommand}" Header="录制日志">
                             <MenuItem.Icon>
                                 <ui:FontIcon Margin="2,0,2,0"
                                              FontFamily="{DynamicResource SymbolThemeFontFamily}"
