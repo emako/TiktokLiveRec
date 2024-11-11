@@ -16,7 +16,7 @@ namespace TiktokLiveRec.Core;
 internal static class GlobalMonitor
 {
     /// <summary>
-    /// ConcurrentDictionary{RoomUrl, RoomStatus}
+    /// ConcurrentDictionary{RoomUrl: string, RoomStatus: RoomStatus>}
     /// </summary>
     public static ConcurrentDictionary<string, RoomStatus> RoomStatus { get; } = new();
 

@@ -7,7 +7,12 @@ namespace TiktokLiveRec.Core;
 
 public sealed class Player
 {
-    public static async Task PlayAsync(string mediaPath)
+    /// <summary>
+    /// Method to play video/audio file use 3rd party player.
+    /// </summary>
+    /// <param name="mediaPath">Media file path</param>
+    /// <param name="isSeekable">Only seekable for FFplay</param>
+    public static async Task PlayAsync(string mediaPath, bool isSeekable = false)
     {
         if (!File.Exists(mediaPath))
         {
@@ -31,12 +36,19 @@ public sealed class Player
 
             playerPath = SearchFileHelper.SearchFiles(".", "ffplay.exe").FirstOrDefault();
 
-            using MediaInfo lib = new();
-            lib.Open(mediaPath);
-
-            if (double.TryParse(lib.Get(StreamKind.Video, 0, "Duration"), out double duration))
+            if (isSeekable)
             {
-                playerArgs = $"-ss {duration / 1000 - 5} -i \"{mediaPath}\"";
+                using MediaInfo lib = new();
+                lib.Open(mediaPath);
+
+                if (double.TryParse(lib.Get(StreamKind.Video, 0, "Duration"), out double duration))
+                {
+                    playerArgs = $"-ss {duration / 1000 - 5} -i \"{mediaPath}\"";
+                }
+                else
+                {
+                    playerArgs = $"-i \"{mediaPath}\"";
+                }
             }
             else
             {

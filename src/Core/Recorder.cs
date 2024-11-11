@@ -13,8 +13,6 @@ public sealed class Recorder
 {
     public RecordStatus RecordStatus { get; private set; } = RecordStatus.Initialized;
 
-    public Process? RecorderProcess { get; private set; } = null;
-
     public CancellationTokenSource? TokenSource { get; private set; } = null;
 
     public string? FileName { get; set; } = null;

@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +18,7 @@ using TiktokLiveRec.Threading;
 using TiktokLiveRec.Views;
 using Windows.Storage;
 using Windows.System;
+using Wpf.Ui.Violeta.Controls;
 using DataGrid = System.Windows.Controls.DataGrid;
 
 namespace TiktokLiveRec.ViewModels;
@@ -140,13 +142,30 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task PlayRecordAsync()
     {
-        // TODO
-        await Task.CompletedTask;
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+        {
+            return;
+        }
+
+        if (GlobalMonitor.RoomStatus.TryGetValue(SelectedItem.RoomUrl, out RoomStatus? roomStatus)
+         && File.Exists(roomStatus.Recorder.FileName))
+        {
+            await Player.PlayAsync(roomStatus.Recorder.FileName, isSeekable: roomStatus.RecordStatus == RecordStatus.Recording);
+        }
+        else
+        {
+            Toast.Warning("没有可播放的录制文件");
+        }
     }
 
     [RelayCommand]
     private async Task RowUpRoomUrlAsync()
     {
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+        {
+            return;
+        }
+
         // TODO
         await Task.CompletedTask;
     }
@@ -154,6 +173,11 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task RowDownRoomUrlAsync()
     {
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+        {
+            return;
+        }
+
         // TODO
         await Task.CompletedTask;
     }
@@ -161,6 +185,11 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task RemoveRoomUrlAsync()
     {
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+        {
+            return;
+        }
+
         // TODO
         await Task.CompletedTask;
     }
@@ -168,18 +197,22 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task GotoRoomUrlAsync()
     {
-        if (SelectedItem != null)
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
         {
-            if (!string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
-            {
-                await Launcher.LaunchUriAsync(new Uri(SelectedItem.RoomUrl));
-            }
+            return;
         }
+
+        await Launcher.LaunchUriAsync(new Uri(SelectedItem.RoomUrl));
     }
 
     [RelayCommand]
     private async Task StopRecordAsync()
     {
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
+        {
+            return;
+        }
+
         // TODO
         await Task.CompletedTask;
     }
@@ -187,55 +220,53 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private void IsToNotify()
     {
-        if (SelectedItem != null)
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
         {
-            if (!string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
-            {
-                RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
-
-                if (roomStatusReactive != null)
-                {
-                    roomStatusReactive.IsToNotify = SelectedItem.IsToNotify;
-                }
-
-                Room[] rooms = Configurations.Rooms.Get();
-                Room? room = rooms.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
-
-                if (room != null)
-                {
-                    room.IsToNotify = SelectedItem.IsToNotify;
-                }
-                Configurations.Rooms.Set(rooms);
-                ConfigurationManager.Save();
-            }
+            return;
         }
+
+        RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+
+        if (roomStatusReactive != null)
+        {
+            roomStatusReactive.IsToNotify = SelectedItem.IsToNotify;
+        }
+
+        Room[] rooms = Configurations.Rooms.Get();
+        Room? room = rooms.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+
+        if (room != null)
+        {
+            room.IsToNotify = SelectedItem.IsToNotify;
+        }
+        Configurations.Rooms.Set(rooms);
+        ConfigurationManager.Save();
     }
 
     [RelayCommand]
     private void IsToRecord()
     {
-        if (SelectedItem != null)
+        if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
         {
-            if (!string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
-            {
-                RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
-
-                if (roomStatusReactive != null)
-                {
-                    roomStatusReactive.IsToRecord = SelectedItem.IsToRecord;
-                }
-
-                Room[] rooms = Configurations.Rooms.Get();
-                Room? room = rooms.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
-
-                if (room != null)
-                {
-                    room.IsToRecord = SelectedItem.IsToRecord;
-                }
-                Configurations.Rooms.Set(rooms);
-                ConfigurationManager.Save();
-            }
+            return;
         }
+
+        RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+
+        if (roomStatusReactive != null)
+        {
+            roomStatusReactive.IsToRecord = SelectedItem.IsToRecord;
+        }
+
+        Room[] rooms = Configurations.Rooms.Get();
+        Room? room = rooms.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault();
+
+        if (room != null)
+        {
+            room.IsToRecord = SelectedItem.IsToRecord;
+        }
+        Configurations.Rooms.Set(rooms);
+        ConfigurationManager.Save();
     }
 
     [RelayCommand]
