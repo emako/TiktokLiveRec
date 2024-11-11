@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -160,27 +161,25 @@ public partial class MainViewModel : ReactiveObject
     }
 
     [RelayCommand]
-    private async Task RowUpRoomUrlAsync()
+    private void RowUpRoomUrl()
     {
         if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
         {
             return;
         }
 
-        // TODO
-        await Task.CompletedTask;
+        RoomStatuses.MoveUp(SelectedItem);
     }
 
     [RelayCommand]
-    private async Task RowDownRoomUrlAsync()
+    private void RowDownRoomUrl()
     {
         if (SelectedItem == null || string.IsNullOrWhiteSpace(SelectedItem.RoomUrl))
         {
             return;
         }
 
-        // TODO
-        await Task.CompletedTask;
+        RoomStatuses.MoveDown(SelectedItem);
     }
 
     [RelayCommand]
@@ -191,8 +190,23 @@ public partial class MainViewModel : ReactiveObject
             return;
         }
 
-        // TODO
-        await Task.CompletedTask;
+        if (GlobalMonitor.RoomStatus.TryGetValue(SelectedItem.RoomUrl, out RoomStatus? roomStatus))
+        {
+            MessageBoxResult result = await MessageBox.QuestionAsync($"是否删除 {roomStatus} 直播间？");
+
+            if (result == MessageBoxResult.Yes)
+            {
+                roomStatus.Recorder.Stop();
+
+                _ = GlobalMonitor.RoomStatus.TryRemove(SelectedItem.RoomUrl, out _);
+                RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == roomStatus.RoomUrl).FirstOrDefault();
+                if (roomStatusReactive != null)
+                {
+                    RoomStatuses.Remove(roomStatusReactive);
+                }
+                Toast.Success("操作成功");
+            }
+        }
     }
 
     [RelayCommand]
@@ -349,5 +363,30 @@ public partial class MainViewModel : ReactiveObject
                 return element as DataGridRow;
             }
         }
+    }
+}
+
+public static class ObservableCollectionExtensions
+{
+    public static void MoveUp<T>(this ObservableCollection<T> collection, T item)
+    {
+        int index = collection.IndexOf(item);
+
+        if (index <= 0)
+        {
+            return;
+        }
+        collection.Move(index, index - 1);
+    }
+
+    public static void MoveDown<T>(this ObservableCollection<T> collection, T item)
+    {
+        int index = collection.IndexOf(item);
+
+        if (index < 0 || index >= collection.Count - 1)
+        {
+            return;
+        }
+        collection.Move(index, index + 1);
     }
 }
