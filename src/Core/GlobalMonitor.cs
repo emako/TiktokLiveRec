@@ -24,8 +24,6 @@ internal static class GlobalMonitor
 
     public static CancellationTokenSource? TokenSource { get; private set; } = null;
 
-    public static ChildProcessTrackPeriodicTimer AttachConsolePeriodicTimer = new(TimeSpan.FromMilliseconds(500));
-
     private sealed class GlobalMonitorRecipient : ObservableRecipient
     {
         public static GlobalMonitorRecipient Instance { get; } = new();
@@ -59,8 +57,6 @@ internal static class GlobalMonitor
     public static void Start(CancellationTokenSource? tokenSource = null)
     {
         TokenSource = tokenSource ?? new CancellationTokenSource();
-
-        _ = AttachConsolePeriodicTimer.AttachChildProcessAsync();
 
         _ = Task.Factory.StartNew(async () => await StartAsync(TokenSource.Token), TaskCreationOptions.LongRunning);
     }

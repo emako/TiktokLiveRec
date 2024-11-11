@@ -7,8 +7,11 @@ namespace TiktokLiveRec.Threading;
 
 public partial class ChildProcessTrackPeriodicTimer : IDisposable
 {
-    public ChildProcessTracer Tracer { get; }
-    public PeriodicTimer PeriodicTimer { get; }
+    public static ChildProcessTrackPeriodicTimer Default { get; } = new(TimeSpan.FromMilliseconds(500));
+
+    public ChildProcessTracer Tracer { get; } = null!;
+    public PeriodicTimer PeriodicTimer { get; } = null!;
+    public CancellationTokenSource? TokenSource { get; private set; } = null;
 
     public ChildProcessTrackPeriodicTimer(TimeSpan period)
     {
@@ -16,9 +19,16 @@ public partial class ChildProcessTrackPeriodicTimer : IDisposable
         PeriodicTimer = new PeriodicTimer(period);
     }
 
-    public async ValueTask AttachChildProcessAsync(CancellationToken cancellationToken = default)
+    public void Start(CancellationTokenSource? tokenSource = null)
     {
-        while (await PeriodicTimer.WaitForNextTickAsync())
+        TokenSource = tokenSource ?? new CancellationTokenSource();
+
+        _ = Task.Factory.StartNew(async () => await StartAsync(TokenSource.Token), TaskCreationOptions.LongRunning);
+    }
+
+    private async Task StartAsync(CancellationToken cancellationToken = default)
+    {
+        while (await PeriodicTimer.WaitForNextTickAsync(cancellationToken))
         {
             (int, string)[] children = Interop.GetChildProcessIdAndName(Environment.ProcessId);
 
@@ -33,6 +43,11 @@ public partial class ChildProcessTrackPeriodicTimer : IDisposable
                 Tracer.AddChildProcess(Process.GetProcessById(child.Id).Handle);
             }
         }
+    }
+
+    public void Stop()
+    {
+        TokenSource?.Cancel();
     }
 
     [SuppressMessage("Usage", "CA1816:Dispose methods should call SuppressFinalize")]

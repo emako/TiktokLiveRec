@@ -26,7 +26,7 @@ namespace TiktokLiveRec.ViewModels;
 [ObservableObject]
 public partial class MainViewModel : ReactiveObject
 {
-    private ForeverDispatcherTimer dispatcherTimer;
+    protected internal ForeverDispatcherTimer DispatcherTimer { get; }
 
     [ObservableProperty]
     private ReactiveCollection<RoomStatusReactive> roomStatuses = [];
@@ -36,7 +36,7 @@ public partial class MainViewModel : ReactiveObject
 
     public MainViewModel()
     {
-        dispatcherTimer = new(TimeSpan.FromSeconds(3), ReloadRoomStatus);
+        DispatcherTimer = new(TimeSpan.FromSeconds(3), ReloadRoomStatus);
 
         RoomStatuses.Reset(Configurations.Rooms.Get().Select(room => new RoomStatusReactive()
         {
@@ -52,7 +52,8 @@ public partial class MainViewModel : ReactiveObject
         });
 
         GlobalMonitor.Start();
-        dispatcherTimer.Start();
+        ChildProcessTrackPeriodicTimer.Default.Start();
+        DispatcherTimer.Start();
     }
 
     private void ReloadRoomStatus()
