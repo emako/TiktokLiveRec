@@ -168,7 +168,8 @@ public partial class MainViewModel : ReactiveObject
             return;
         }
 
-        RoomStatuses.MoveUp(SelectedItem);
+        // SelectedItem's properties is mapped from CollectionView, so we need to find the original item
+        RoomStatuses.MoveUp(RoomStatuses.Where(roomStatus => roomStatus.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault()!);
     }
 
     [RelayCommand]
@@ -179,7 +180,8 @@ public partial class MainViewModel : ReactiveObject
             return;
         }
 
-        RoomStatuses.MoveDown(SelectedItem);
+        // SelectedItem's properties is mapped from CollectionView, so we need to find the original item
+        RoomStatuses.MoveDown(RoomStatuses.Where(roomStatus => roomStatus.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault()!);
     }
 
     [RelayCommand]
@@ -192,7 +194,7 @@ public partial class MainViewModel : ReactiveObject
 
         if (GlobalMonitor.RoomStatus.TryGetValue(SelectedItem.RoomUrl, out RoomStatus? roomStatus))
         {
-            MessageBoxResult result = await MessageBox.QuestionAsync($"是否删除 {roomStatus} 直播间？");
+            MessageBoxResult result = await MessageBox.QuestionAsync($"是否删除 {roomStatus.NickName} 直播间？");
 
             if (result == MessageBoxResult.Yes)
             {
@@ -232,7 +234,7 @@ public partial class MainViewModel : ReactiveObject
         {
             if (roomStatus.RecordStatus == RecordStatus.Recording)
             {
-                MessageBoxResult result = await MessageBox.QuestionAsync($"是否停止 {roomStatus} 的录制？");
+                MessageBoxResult result = await MessageBox.QuestionAsync($"是否停止 {roomStatus.NickName} 的录制？");
 
                 if (result == MessageBoxResult.Yes)
                 {
