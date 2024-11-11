@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using System.Net;
 using System.Text.RegularExpressions;
 
 namespace TiktokLiveRec.Core;
@@ -17,7 +18,26 @@ public sealed partial class DouyinSpider : ISpider
 
     private string? RequestUrl(string url)
     {
-        RestClient client = new(url);
+        RestClientOptions options = new()
+        {
+            BaseUrl = new Uri(url),
+        };
+
+        if (Configurations.IsUseProxy.Get())
+        {
+            string proxyUrl = Configurations.ProxyUrl.Get();
+
+            if (!string.IsNullOrWhiteSpace(proxyUrl))
+            {
+                options.Proxy = new WebProxy($"https://{proxyUrl}")
+                {
+                    //Credentials = new NetworkCredential("username", "password")
+                };
+            }
+        }
+
+        RestClient client = new(options);
+
         RestRequest request = new()
         {
             Method = Method.Get,
@@ -32,7 +52,7 @@ public sealed partial class DouyinSpider : ISpider
 
         if (response.IsSuccessful)
         {
-            var htmlStr = response.Content;
+            string? htmlStr = response.Content;
 
             Console.WriteLine(htmlStr);
             return htmlStr;

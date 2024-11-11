@@ -26,7 +26,6 @@
 	<ItemGroup>
 		<PackageReference Include="Flucli" Version="0.3.2" />
 		<PackageReference Include="NotifyIconEx" Version="1.1.2" />
-		<PackageReference Include="Vanara.PInvoke.NtDll" Version="4.0.4" />
 		<PackageReference Include="WPF-UI" Version="3.0.5" />
 		<PackageReference Include="WPF-UI.Violeta" Version="3.0.5.23" />
 		<PackageReference Include="ComputedConverters.WPF" Version="0.4.7-beta" />
