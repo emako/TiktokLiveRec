@@ -5,19 +5,14 @@ using Vanara.PInvoke;
 
 namespace TiktokLiveRec.Threading;
 
-public partial class ChildProcessTrackPeriodicTimer : IDisposable
+public partial class ChildProcessTracerPeriodicTimer(TimeSpan period) : IDisposable
 {
-    public static ChildProcessTrackPeriodicTimer Default { get; } = new(TimeSpan.FromMilliseconds(500));
+    public static ChildProcessTracerPeriodicTimer Default { get; } = new(TimeSpan.FromMilliseconds(500));
 
-    public ChildProcessTracer Tracer { get; } = null!;
-    public PeriodicTimer PeriodicTimer { get; } = null!;
-    public CancellationTokenSource? TokenSource { get; private set; } = null;
-
-    public ChildProcessTrackPeriodicTimer(TimeSpan period)
-    {
-        Tracer = new ChildProcessTracer();
-        PeriodicTimer = new PeriodicTimer(period);
-    }
+    public ChildProcessTracer Tracer { get; } = new ChildProcessTracer();
+    public PeriodicTimer PeriodicTimer { get; } = new PeriodicTimer(period);
+    public CancellationTokenSource? TokenSource { get; protected set; } = null;
+    public HashSet<int> TracedChildProcessIds { get; } = [];
 
     public void Start(CancellationTokenSource? tokenSource = null)
     {
@@ -28,20 +23,35 @@ public partial class ChildProcessTrackPeriodicTimer : IDisposable
 
     private async Task StartAsync(CancellationToken cancellationToken = default)
     {
+        TracedChildProcessIds.Clear();
+
         while (await PeriodicTimer.WaitForNextTickAsync(cancellationToken))
         {
-            (int, string)[] children = Interop.GetChildProcessIdAndName(Environment.ProcessId);
+            (int Id, string ProcessName)[] children = Interop.GetChildProcessIdAndName(Environment.ProcessId);
 
-            foreach ((int Id, string ProcessName) child in children)
+            foreach ((int childId, string childProcessName) in children)
             {
                 // Skip owner console host process
-                if (child.ProcessName == "conhost")
+                if (childProcessName == "conhost")
                 {
                     continue;
                 }
 
-                Tracer.AddChildProcess(Process.GetProcessById(child.Id).Handle);
+                if (TracedChildProcessIds.Add(childId))
+                {
+                    using Process childProcess = Process.GetProcessById(childId);
+
+                    if (childProcess != null && childProcess.Handle != IntPtr.Zero)
+                    {
+                        Tracer.AddChildProcess(childProcess.Handle);
+                    }
+                }
             }
+
+            // Check if child process is still alive
+            TracedChildProcessIds.RemoveWhere(tracedChildProcessId =>
+               !children.Any(child => child.Id == tracedChildProcessId)
+            );
         }
     }
 

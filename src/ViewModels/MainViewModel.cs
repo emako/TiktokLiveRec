@@ -52,7 +52,7 @@ public partial class MainViewModel : ReactiveObject
         });
 
         GlobalMonitor.Start();
-        ChildProcessTrackPeriodicTimer.Default.Start();
+        ChildProcessTracerPeriodicTimer.Default.Start();
         DispatcherTimer.Start();
     }
 
