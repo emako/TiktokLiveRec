@@ -25,6 +25,13 @@ For Others: [.NET Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotne
 | Douyin (中国抖音) | 支持   |
 | Tiktok (海外抖音) | 待开发 |
 
+怎么添加直播间：
+
+```bash
+# 直播间链接类似如下：
+https://live.douyin.com/XXX
+```
+
 ## 支持系统
 
 为了加快初版开发实现，首版基于 WPF 开发了 Windows 版本。

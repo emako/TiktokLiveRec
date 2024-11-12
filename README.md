@@ -27,6 +27,13 @@ Support following live site.
 | Douyin (抖音) | Available |
 | Tiktok        | TBD       |
 
+How to add live room:
+
+```bash
+# Room Url like following:
+https://live.douyin.com/XXX
+```
+
 ## Support OS
 
 For rapid development, first implement WPF-based windows support.
