@@ -2,6 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
 using Fischless.Configuration;
+using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -20,6 +22,48 @@ namespace TiktokLiveRec.ViewModels;
 [ObservableObject]
 public partial class SettingsViewModel : ReactiveObject
 {
+    private enum LanguageIndexEnum
+    {
+        Auto,
+        ChineseSimplified,
+        ChineseTraditional,
+        English,
+        Japanese,
+    }
+
+    [ObservableProperty]
+    private int languageIndex = Configurations.Language.Get() switch
+    {
+        "zh" or "zh-Hans" => (int)LanguageIndexEnum.ChineseSimplified,
+        "zh-Hant" => (int)LanguageIndexEnum.ChineseTraditional,
+        "en" => (int)LanguageIndexEnum.English,
+        "ja" => (int)LanguageIndexEnum.Japanese,
+        _ => (int)LanguageIndexEnum.Auto,
+    };
+
+    partial void OnLanguageIndexChanged(int value)
+    {
+        string language = value switch
+        {
+            (int)LanguageIndexEnum.ChineseSimplified => "zh-Hans",
+            (int)LanguageIndexEnum.ChineseTraditional => "zh-Hant",
+            (int)LanguageIndexEnum.English => "en",
+            (int)LanguageIndexEnum.Japanese => "ja",
+            _ => string.Empty,
+        };
+
+        if (value == (int)LanguageIndexEnum.Auto)
+        {
+            Locale.Culture = CultureInfo.CurrentUICulture;
+        }
+        else
+        {
+            Locale.Culture = new CultureInfo(language);
+        }
+        Configurations.Language.Set(language);
+        ConfigurationManager.Save();
+    }
+
     [ObservableProperty]
     private int themeIndex = Configurations.Theme.Get() switch
     {

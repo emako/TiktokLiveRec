@@ -6,6 +6,7 @@ namespace TiktokLiveRec;
 [Obfuscation]
 public static class Configurations
 {
+    public static ConfigurationDefinition<string> Language { get; } = new(nameof(Language), string.Empty);
     public static ConfigurationDefinition<string> Theme { get; } = new(nameof(Theme), string.Empty);
     public static ConfigurationDefinition<Room[]> Rooms { get; } = new(nameof(Rooms), []);
     public static ConfigurationDefinition<bool> IsUseStatusTray { get; } = new(nameof(IsUseStatusTray), true);
@@ -33,7 +34,8 @@ public static class Configurations
     public static ConfigurationDefinition<string> UserAgent { get; } = new(nameof(UserAgent), string.Empty);
 }
 
-public class Room
+[Obfuscation]
+public sealed class Room
 {
     public string NickName { get; set; } = null!;
     public string RoomUrl { get; set; } = null!;

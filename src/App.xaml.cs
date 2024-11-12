@@ -1,8 +1,8 @@
 ﻿using Fischless.Configuration;
 using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Threading;
-using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
 using Wpf.Ui.Violeta.Controls;
 
@@ -14,6 +14,7 @@ public partial class App : Application
     {
         ConfigurationManager.ConfigurationSerializer = new YamlConfigurationSerializer();
         ConfigurationManager.Setup(ConfigurationSpecialPath.GetPath("config.yaml", AppConfig.PackName));
+        Locale.Culture = string.IsNullOrWhiteSpace(Configurations.Language.Get()) ? CultureInfo.CurrentUICulture : new CultureInfo(Configurations.Language.Get());
     }
 
     public App()
