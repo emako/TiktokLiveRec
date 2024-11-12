@@ -7,10 +7,10 @@
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                    xmlns:vio="http://schemas.lepo.co/wpfui/2022/xaml/violeta"
-                   Title="关于"
+                   Title="{I18N About}"
                    d:DesignHeight="NaN"
                    d:DesignWidth="NaN"
-                   CloseButtonText="关闭"
+                   CloseButtonText="{I18N ButtonOfClose}"
                    FontSize="14"
                    Style="{StaticResource DefaultVioletaContentDialogStyle}"
                    mc:Ignorable="d">

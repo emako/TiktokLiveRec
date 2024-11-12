@@ -26,6 +26,8 @@ public interface ISpider
 
 public interface ISpiderResult
 {
+    public string? RoomUrl { get; set; }
+
     public bool? IsLiveStreaming { get; set; }
 
     public string? Nickname { get; set; }

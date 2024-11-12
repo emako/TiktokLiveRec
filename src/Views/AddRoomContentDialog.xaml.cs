@@ -32,22 +32,7 @@ public sealed partial class AddRoomContentDialog : ContentDialog
 
         try
         {
-            // Supported two case URLs:
-            // https://live.douyin.com/xxx?x=x
-            // https://www.douyin.com/root/live/xxx?x=x
-            Uri uri = new(Url);
-
-            if (uri.Host != "live.douyin.com" && uri.Host != "www.douyin.com")
-            {
-                Toast.Warning("目前仅支持国区抖音直播间链接");
-                e.Cancel = true;
-                return;
-            }
-
-            string roomId = uri.Segments.Last();
-            string roomUrl = $"https://live.douyin.com/{roomId}";
-
-            ISpiderResult? spider = Spider.GetResult(roomUrl);
+            ISpiderResult? spider = Spider.GetResult(Url);
 
             if (string.IsNullOrWhiteSpace(spider?.Nickname))
             {
@@ -57,9 +42,9 @@ public sealed partial class AddRoomContentDialog : ContentDialog
             }
 
             NickName = spider.Nickname;
-            RoomUrl = roomUrl;
+            RoomUrl = spider.RoomUrl;
 
-            Toast.Success($"成功添加{NickName}直播间");
+            Toast.Success($"成功添加 {NickName} 直播间");
         }
         catch
         {

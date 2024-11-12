@@ -61,6 +61,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About Program.
         /// </summary>
         public static string AboutProgram {
@@ -75,6 +84,42 @@ namespace TiktokLiveRec.Properties {
         public static string Add {
             get {
                 return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AddRoom {
+            get {
+                return ResourceManager.GetString("AddRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ButtonOfAdd {
+            get {
+                return ResourceManager.GetString("ButtonOfAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ButtonOfClose {
+            get {
+                return ResourceManager.GetString("ButtonOfClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EnterRoomUrl {
+            get {
+                return ResourceManager.GetString("EnterRoomUrl", resourceCulture);
             }
         }
         
@@ -124,6 +169,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string NoRecordTask {
+            get {
+                return ResourceManager.GetString("NoRecordTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File ffplay not found so cannot be played!.
         /// </summary>
         public static string PlayerErrorOfFFplayNotFound {
@@ -144,6 +198,177 @@ namespace TiktokLiveRec.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string ProxyErrorOfEmptyUrl {
+            get {
+                return ResourceManager.GetString("ProxyErrorOfEmptyUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProxyErrorOfExceptionMessage {
+            get {
+                return ResourceManager.GetString("ProxyErrorOfExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProxyErrorOfFormat {
+            get {
+                return ResourceManager.GetString("ProxyErrorOfFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProxyErrorOfHostFormatError {
+            get {
+                return ResourceManager.GetString("ProxyErrorOfHostFormatError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProxyErrorOfMissHostOrPort {
+            get {
+                return ResourceManager.GetString("ProxyErrorOfMissHostOrPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProxyErrorOfPortFormatError {
+            get {
+                return ResourceManager.GetString("ProxyErrorOfPortFormatError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProxyErrorOfPortOutOfRange {
+            get {
+                return ResourceManager.GetString("ProxyErrorOfPortOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProxySuccOfStatusCode {
+            get {
+                return ResourceManager.GetString("ProxySuccOfStatusCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordStatusOfDisabled {
+            get {
+                return ResourceManager.GetString("RecordStatusOfDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordStatusOfError {
+            get {
+                return ResourceManager.GetString("RecordStatusOfError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordStatusOfInitialized {
+            get {
+                return ResourceManager.GetString("RecordStatusOfInitialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordStatusOfNotRecording {
+            get {
+                return ResourceManager.GetString("RecordStatusOfNotRecording", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordStatusOfRecording {
+            get {
+                return ResourceManager.GetString("RecordStatusOfRecording", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordStatusOfUnknown {
+            get {
+                return ResourceManager.GetString("RecordStatusOfUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string StreamStatusOfDisabled {
+            get {
+                return ResourceManager.GetString("StreamStatusOfDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string StreamStatusOfInitialized {
+            get {
+                return ResourceManager.GetString("StreamStatusOfInitialized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string StreamStatusOfNotStreaming {
+            get {
+                return ResourceManager.GetString("StreamStatusOfNotStreaming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string StreamStatusOfStreaming {
+            get {
+                return ResourceManager.GetString("StreamStatusOfStreaming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string StreamStatusOfUnknown {
+            get {
+                return ResourceManager.GetString("StreamStatusOfUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string SuccOp {
             get {
                 return ResourceManager.GetString("SuccOp", resourceCulture);
@@ -156,6 +381,15 @@ namespace TiktokLiveRec.Properties {
         public static string SureRemoveRoom {
             get {
                 return ResourceManager.GetString("SureRemoveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SureStopRecord {
+            get {
+                return ResourceManager.GetString("SureStopRecord", resourceCulture);
             }
         }
         

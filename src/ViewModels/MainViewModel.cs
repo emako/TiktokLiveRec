@@ -234,7 +234,7 @@ public partial class MainViewModel : ReactiveObject
         {
             if (roomStatus.RecordStatus == RecordStatus.Recording)
             {
-                MessageBoxResult result = await MessageBox.QuestionAsync($"是否停止 {roomStatus.NickName} 的录制？");
+                MessageBoxResult result = await MessageBox.QuestionAsync("SureStopRecord".Tr(roomStatus.NickName));
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -244,7 +244,7 @@ public partial class MainViewModel : ReactiveObject
             }
             else
             {
-                Toast.Warning("当前没有录制任务");
+                Toast.Warning("NoRecordTask".Tr());
             }
         }
     }

@@ -148,4 +148,82 @@
   <data name="FailOp" xml:space="preserve">
     <value>操作失败</value>
   </data>
+  <data name="SureStopRecord" xml:space="preserve">
+    <value>是否停止 {0} 的录制？</value>
+  </data>
+  <data name="NoRecordTask" xml:space="preserve">
+    <value>当前没有录制任务</value>
+  </data>
+  <data name="StreamStatusOfUnknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="StreamStatusOfInitialized" xml:space="preserve">
+    <value>初始化</value>
+  </data>
+  <data name="StreamStatusOfDisabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="StreamStatusOfNotStreaming" xml:space="preserve">
+    <value>未开播</value>
+  </data>
+  <data name="StreamStatusOfStreaming" xml:space="preserve">
+    <value>直播中</value>
+  </data>
+  <data name="RecordStatusOfInitialized" xml:space="preserve">
+    <value>初始化</value>
+  </data>
+  <data name="RecordStatusOfDisabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="RecordStatusOfUnknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="RecordStatusOfNotRecording" xml:space="preserve">
+    <value>未录制</value>
+  </data>
+  <data name="RecordStatusOfRecording" xml:space="preserve">
+    <value>录制中</value>
+  </data>
+  <data name="RecordStatusOfError" xml:space="preserve">
+    <value>出错啦</value>
+  </data>
+  <data name="ProxyErrorOfEmptyUrl" xml:space="preserve">
+    <value>代理 URL 不能为空</value>
+  </data>
+  <data name="ProxyErrorOfMissHostOrPort" xml:space="preserve">
+    <value>代理 URL 缺失主机名或端口号</value>
+  </data>
+  <data name="ProxyErrorOfFormat" xml:space="preserve">
+    <value>代理 URL 格式有误</value>
+  </data>
+  <data name="ProxyErrorOfHostFormatError" xml:space="preserve">
+    <value>代理 URL 主机格式有误</value>
+  </data>
+  <data name="ProxyErrorOfPortFormatError" xml:space="preserve">
+    <value>代理 URL 端口号格式有误</value>
+  </data>
+  <data name="ProxyErrorOfPortOutOfRange" xml:space="preserve">
+    <value>代理 URL 端口号超出范围</value>
+  </data>
+  <data name="ProxySuccOfStatusCode" xml:space="preserve">
+    <value>代理可用，响应状态 {0}</value>
+  </data>
+  <data name="ProxyErrorOfExceptionMessage" xml:space="preserve">
+    <value>代理无效或请求失败：{0}</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="ButtonOfClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="ButtonOfAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="AddRoom" xml:space="preserve">
+    <value>添加房间</value>
+  </data>
+  <data name="EnterRoomUrl" xml:space="preserve">
+    <value>输入直播间链接</value>
+  </data>
 </root>

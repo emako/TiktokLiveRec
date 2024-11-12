@@ -6,20 +6,20 @@
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                    xmlns:vio="http://schemas.lepo.co/wpfui/2022/xaml/violeta"
-                   Title="添加房间"
+                   Title="{I18N AddRoom}"
                    d:DesignHeight="NaN"
                    d:DesignWidth="NaN"
-                   CloseButtonText="关闭"
+                   CloseButtonText="{I18N ButtonOfClose}"
                    DefaultButton="Primary"
                    FontSize="14"
                    PrimaryButtonClick="OnPrimaryButtonClick"
-                   PrimaryButtonText="添加"
+                   PrimaryButtonText="{I18N ButtonOfAdd}"
                    Style="{StaticResource DefaultVioletaContentDialogStyle}"
                    mc:Ignorable="d">
     <ui:Grid>
         <ui:StackPanel Spacing="8">
-            <TextBlock Text="输入直播间链接" />
-            <ui:TextBox PlaceholderText="示例：https://live.douyin.com/xxx" Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="{I18N EnterRoomUrl}" />
+            <ui:TextBox PlaceholderText="https://live.douyin.com/xxx" Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </ui:StackPanel>
     </ui:Grid>
 </vio:ContentDialog>

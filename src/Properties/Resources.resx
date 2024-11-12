@@ -148,4 +148,82 @@
   <data name="FailOp" xml:space="preserve">
     <value></value>
   </data>
+  <data name="SureStopRecord" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="NoRecordTask" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StreamStatusOfUnknown" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StreamStatusOfInitialized" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StreamStatusOfDisabled" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StreamStatusOfNotStreaming" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StreamStatusOfStreaming" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordStatusOfInitialized" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordStatusOfDisabled" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordStatusOfNotRecording" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordStatusOfRecording" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordStatusOfError" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordStatusOfUnknown" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxyErrorOfEmptyUrl" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxyErrorOfMissHostOrPort" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxyErrorOfFormat" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxyErrorOfHostFormatError" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxyErrorOfPortFormatError" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxyErrorOfPortOutOfRange" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxySuccOfStatusCode" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxyErrorOfExceptionMessage" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ButtonOfClose" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ButtonOfAdd" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="AddRoom" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="EnterRoomUrl" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

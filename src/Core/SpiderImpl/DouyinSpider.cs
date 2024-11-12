@@ -1,6 +1,8 @@
 ﻿using RestSharp;
 using System.Net;
+using System.Security.Policy;
 using System.Text.RegularExpressions;
+using Wpf.Ui.Violeta.Controls;
 
 namespace TiktokLiveRec.Core;
 
@@ -10,14 +12,39 @@ public sealed partial class DouyinSpider : ISpider
 
     public ISpiderResult GetResult(string url)
     {
-        string? htmlStr = RequestUrl(url);
+        string? roomUrl = ParseUrl(url);
+        string? htmlStr = RequestUrl(roomUrl);
         DouyinSpiderResult result = ExtractData(htmlStr);
 
+        result.RoomUrl = roomUrl;
         return result;
     }
 
-    private string? RequestUrl(string url)
+    public string? ParseUrl(string url)
     {
+        // Supported two case URLs:
+        // https://live.douyin.com/xxx?x=x
+        // https://www.douyin.com/root/live/xxx?x=x
+        Uri uri = new(url);
+
+        if (uri.Host != "live.douyin.com" && uri.Host != "www.douyin.com")
+        {
+            return null;
+        }
+
+        string roomId = uri.Segments.Last();
+        string roomUrl = $"https://live.douyin.com/{roomId}";
+
+        return roomUrl;
+    }
+
+    private string? RequestUrl(string? url)
+    {
+        if (url == null)
+        {
+            return null;
+        }
+
         RestClientOptions options = new()
         {
             BaseUrl = new Uri(url),
@@ -112,6 +139,8 @@ public sealed partial class DouyinSpider : ISpider
 
 public sealed class DouyinSpiderResult : ISpiderResult
 {
+    public string? RoomUrl { get; set; }
+
     /// <summary>
     /// \"status_str\":\"2\" -> true
     /// \"status_str\":\"4\" -> false
