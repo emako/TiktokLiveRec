@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
 using Fischless.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
@@ -254,6 +255,7 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [RelayCommand]
+    [SuppressMessage("Performance", "CA1822:Mark members as static")]
     private async Task OpenSaveFolderAsync()
     {
         await Launcher.LaunchFolderAsync(
@@ -379,6 +381,7 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [RelayCommand]
+    [SuppressMessage("Performance", "CA1822:Mark members as static")]
     private async Task OpenHowToGetCookieChinaAsync()
     {
         string html = ResourcesProvider.GetString("pack://application:,,,/TiktokLiveRec;component/Assets/GETCOOKIE.html");
@@ -398,6 +401,7 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [RelayCommand]
+    [SuppressMessage("Performance", "CA1822:Mark members as static")]
     private void OpenHowToGetCookieOversea()
     {
         // TODO
