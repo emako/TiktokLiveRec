@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
 using Fischless.Configuration;
 using System.Diagnostics.CodeAnalysis;
-using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Net;
@@ -53,14 +52,12 @@ public partial class SettingsViewModel : ReactiveObject
             _ => string.Empty,
         };
 
-        if (value == (int)LanguageIndexEnum.Auto)
+        Locale.Culture = value switch
         {
-            Locale.Culture = CultureInfo.CurrentUICulture;
-        }
-        else
-        {
-            Locale.Culture = new CultureInfo(language);
-        }
+            (int)LanguageIndexEnum.Auto => new CultureInfo(Interop.GetUserDefaultLocaleName()),
+            _ => new CultureInfo(language),
+        };
+
         Configurations.Language.Set(language);
         ConfigurationManager.Save();
     }
