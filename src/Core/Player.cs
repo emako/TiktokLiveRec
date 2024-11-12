@@ -58,7 +58,7 @@ public sealed class Player
 
         if (string.IsNullOrEmpty(playerPath))
         {
-            _ = MessageBox.Warning("未找到文件 ffplay.exe 因此无法播放！");
+            _ = MessageBox.Warning("PlayerErrorOfFFplayNotFound".Tr());
             return;
         }
 

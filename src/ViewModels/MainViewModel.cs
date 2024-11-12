@@ -156,7 +156,7 @@ public partial class MainViewModel : ReactiveObject
         }
         else
         {
-            Toast.Warning("没有可播放的录制文件");
+            Toast.Warning("PlayerErrorOfNoFile".Tr());
         }
     }
 
@@ -194,7 +194,7 @@ public partial class MainViewModel : ReactiveObject
 
         if (GlobalMonitor.RoomStatus.TryGetValue(SelectedItem.RoomUrl, out RoomStatus? roomStatus))
         {
-            MessageBoxResult result = await MessageBox.QuestionAsync($"是否删除 {roomStatus.NickName} 直播间？");
+            MessageBoxResult result = await MessageBox.QuestionAsync("SureRemoveRoom".Tr(roomStatus.NickName));
 
             if (result == MessageBoxResult.Yes)
             {
@@ -206,7 +206,7 @@ public partial class MainViewModel : ReactiveObject
                 {
                     RoomStatuses.Remove(roomStatusReactive);
                 }
-                Toast.Success("操作成功");
+                Toast.Success("SuccOp".Tr());
             }
         }
     }
@@ -239,7 +239,7 @@ public partial class MainViewModel : ReactiveObject
                 if (result == MessageBoxResult.Yes)
                 {
                     roomStatus.Recorder.Stop();
-                    Toast.Success("操作成功");
+                    Toast.Success("SuccOp".Tr());
                 }
             }
             else
@@ -258,7 +258,7 @@ public partial class MainViewModel : ReactiveObject
         }
 
         // TODO
-        Toast.Warning("暂未实现");
+        Toast.Warning("Coming soon ...");
     }
 
     [RelayCommand]

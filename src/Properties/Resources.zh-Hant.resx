@@ -109,4 +109,19 @@
   <data name="Language" xml:space="preserve">
     <value>語言</value>
   </data>
+  <data name="LiveNotification" xml:space="preserve">
+    <value>開播通知</value>
+  </data>
+  <data name="GotoLiveRoom" xml:space="preserve">
+    <value>進入直播間</value>
+  </data>
+  <data name="MailBodyElement" xml:space="preserve">
+    <value>立即進入{0}的直播間</value>
+  </data>
+  <data name="PlayerErrorOfFFplayNotFound" xml:space="preserve">
+    <value>未找到文件 ffplay 因此無法播放！</value>
+  </data>
+  <data name="FailOp" xml:space="preserve">
+    <value>操作失敗</value>
+  </data>
 </root>

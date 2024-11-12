@@ -109,4 +109,43 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="LiveNotification" xml:space="preserve">
+    <value>Live Notification</value>
+  </data>
+  <data name="GotoLiveRoom" xml:space="preserve">
+    <value>Goto Live Room</value>
+  </data>
+  <data name="MailBodyElement" xml:space="preserve">
+    <value>Goto {0}'s live room immediately</value>
+  </data>
+  <data name="PlayerErrorOfFFplayNotFound" xml:space="preserve">
+    <value>File ffplay not found so cannot be played!</value>
+  </data>
+  <data name="TrayMenuShowMainWindow" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="TrayMenuOpenSettings" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="TrayMenuAutoRun" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="TrayMenuRestart" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="TrayMenuExit" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PlayerErrorOfNoFile" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SureRemoveRoom" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SuccOp" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="FailOp" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

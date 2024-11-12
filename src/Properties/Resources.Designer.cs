@@ -79,11 +79,128 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string FailOp {
+            get {
+                return ResourceManager.GetString("FailOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goto Live Room.
+        /// </summary>
+        public static string GotoLiveRoom {
+            get {
+                return ResourceManager.GetString("GotoLiveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Live Notification.
+        /// </summary>
+        public static string LiveNotification {
+            get {
+                return ResourceManager.GetString("LiveNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goto {0}&apos;s live room immediately.
+        /// </summary>
+        public static string MailBodyElement {
+            get {
+                return ResourceManager.GetString("MailBodyElement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File ffplay not found so cannot be played!.
+        /// </summary>
+        public static string PlayerErrorOfFFplayNotFound {
+            get {
+                return ResourceManager.GetString("PlayerErrorOfFFplayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayerErrorOfNoFile {
+            get {
+                return ResourceManager.GetString("PlayerErrorOfNoFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SuccOp {
+            get {
+                return ResourceManager.GetString("SuccOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SureRemoveRoom {
+            get {
+                return ResourceManager.GetString("SureRemoveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TrayMenuAutoRun {
+            get {
+                return ResourceManager.GetString("TrayMenuAutoRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TrayMenuExit {
+            get {
+                return ResourceManager.GetString("TrayMenuExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TrayMenuOpenSettings {
+            get {
+                return ResourceManager.GetString("TrayMenuOpenSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TrayMenuRestart {
+            get {
+                return ResourceManager.GetString("TrayMenuRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TrayMenuShowMainWindow {
+            get {
+                return ResourceManager.GetString("TrayMenuShowMainWindow", resourceCulture);
             }
         }
         

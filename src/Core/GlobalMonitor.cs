@@ -186,7 +186,7 @@ internal static class GlobalMonitor
     {
         if (Configurations.IsToNotifyWithSystem.Get())
         {
-            Notifier.AddNoticeWithButton("开播通知", room.NickName, "进入直播间", [("RoomUrl", room.RoomUrl)]);
+            Notifier.AddNoticeWithButton("LiveNotification".Tr(), room.NickName, "GotoLiveRoom".Tr(), [("RoomUrl", room.RoomUrl)]);
         }
 
         if (Configurations.IsToNotifyWithMusic.Get())

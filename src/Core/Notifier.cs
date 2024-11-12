@@ -4,6 +4,7 @@ using NAudio.Wave;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using Windows.UI.Notifications;
 
 namespace TiktokLiveRec.Core;
 
@@ -92,8 +93,8 @@ internal static class Notifier
             using MailMessage mail = new();
             mail.From = new MailAddress(userName);
             mail.To.Add(userName);
-            mail.Subject = $"{nickName}开播通知 - TiktokLiveRec";
-            mail.Body = $"<html><body>立即进入{nickName}的直播间 <a href=\"{roomUrl}\">{roomUrl}</a></body></html>";
+            mail.Subject = $"{nickName}{"LiveNotification".Tr()} - TiktokLiveRec";
+            mail.Body = $"<html><body>{"MailBodyElement".Tr(nickName)} <a href=\"{roomUrl}\">{roomUrl}</a></body></html>";
             mail.IsBodyHtml = true;
 
             using SmtpClient smtp = new(smtpServer, 25);

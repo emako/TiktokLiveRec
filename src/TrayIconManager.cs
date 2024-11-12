@@ -68,13 +68,13 @@ internal class TrayIconManager
         };
         _icon.AddMenu($"v{Assembly.GetExecutingAssembly().GetName().Version!.ToString(3)}").Enabled = false;
         _icon.AddMenu("-");
-        _icon.AddMenu("显示界面 (&U)", (_, _) =>
+        _icon.AddMenu("TrayMenuShowMainWindow".Tr(), (_, _) =>
         {
             Application.Current.MainWindow.Show();
             Application.Current.MainWindow.Activate();
             Interop.RestoreWindow(new WindowInteropHelper(Application.Current.MainWindow).Handle);
         });
-        _icon.AddMenu("打开设置 (&O)", (_, _) =>
+        _icon.AddMenu("TrayMenuOpenSettings".Tr(), (_, _) =>
         {
             foreach (Window win in Application.Current.Windows.OfType<SettingsWindow>())
             {
@@ -86,7 +86,7 @@ internal class TrayIconManager
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
             }.ShowDialog();
         });
-        _itemAutoRun = _icon.AddMenu("启动时自动运行 (&S)",
+        _itemAutoRun = _icon.AddMenu("TrayMenuAutoRun".Tr(),
             (_, _) =>
             {
                 if (AutoStartupHelper.IsAutorun())
@@ -98,8 +98,8 @@ internal class TrayIconManager
                     AutoStartupHelper.CreateAutorunShortcut();
                 }
             }) as ToolStripMenuItem;
-        _icon.AddMenu("重启 (&R)", (_, _) => RuntimeHelper.Restart(forced: true));
-        _icon.AddMenu("退出 (&E)", (_, _) =>
+        _icon.AddMenu("TrayMenuRestart".Tr(), (_, _) => RuntimeHelper.Restart(forced: true));
+        _icon.AddMenu("TrayMenuExit".Tr(), (_, _) =>
         {
             process?.Kill();
             Application.Current.Shutdown();

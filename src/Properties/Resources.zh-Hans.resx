@@ -109,4 +109,43 @@
   <data name="Language" xml:space="preserve">
     <value>语言</value>
   </data>
+  <data name="LiveNotification" xml:space="preserve">
+    <value>开播通知</value>
+  </data>
+  <data name="GotoLiveRoom" xml:space="preserve">
+    <value>进入直播间</value>
+  </data>
+  <data name="MailBodyElement" xml:space="preserve">
+    <value>立即进入{0}的直播间</value>
+  </data>
+  <data name="PlayerErrorOfFFplayNotFound" xml:space="preserve">
+    <value>未找到文件 ffplay 因此无法播放！</value>
+  </data>
+  <data name="TrayMenuShowMainWindow" xml:space="preserve">
+    <value>显示界面 (&amp;U)</value>
+  </data>
+  <data name="TrayMenuOpenSettings" xml:space="preserve">
+    <value>打开设置 (&amp;O)</value>
+  </data>
+  <data name="TrayMenuAutoRun" xml:space="preserve">
+    <value>启动时自动运行 (&amp;S)</value>
+  </data>
+  <data name="TrayMenuRestart" xml:space="preserve">
+    <value>重启 (&amp;R)</value>
+  </data>
+  <data name="TrayMenuExit" xml:space="preserve">
+    <value>退出 (&amp;E)</value>
+  </data>
+  <data name="PlayerErrorOfNoFile" xml:space="preserve">
+    <value>没有可播放的录制文件</value>
+  </data>
+  <data name="SureRemoveRoom" xml:space="preserve">
+    <value>是否删除 {0} 直播间？</value>
+  </data>
+  <data name="SuccOp" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="FailOp" xml:space="preserve">
+    <value>操作失败</value>
+  </data>
 </root>
