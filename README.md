@@ -1,6 +1,6 @@
 [English](README.md) | [简体中文](README.zh-Hans.md)
 
-<img src="src/Assets/Favicon.png" style="zoom: 20%;" />
+<img src="branding/logo.png" />
 
 # Tiktok Live Rec
 
@@ -12,7 +12,7 @@ Based on FFmpeg and FFplay.
 
 ## Screen Shot
 
-<img src="assets/image-20241111161919039.png" alt="image-20241111161919039" style="zoom: 33%;" />
+<img src="assets/image-20241113165355466.png" alt="image-20241113165355466" style="transform:scale(0.5);" />
 
 ## Dependencies Runtime
 

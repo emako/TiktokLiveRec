@@ -1,6 +1,6 @@
 [English](README.md) | [简体中文](README.zh-Hans.md)
 
-<img src="src/Assets/Favicon.png" style="zoom: 20%;" />
+<img src="branding/logo.png" />
 
 # 抖音直播录制
 
@@ -12,7 +12,7 @@
 
 ## 截图
 
-<img src="assets/image-20241111161919039.png" alt="image-20241111161919039" style="zoom: 33%;" />
+<img src="assets/image-20241113165448238.png" alt="image-20241113165448238" style="transform:scale(0.5);" />
 
 ## 依赖运行时
 
