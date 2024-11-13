@@ -246,19 +246,19 @@
     <value>保存フォルダ</value>
   </data>
   <data name="RowUpRoom" xml:space="preserve">
-    <value>上に移動する</value>
+    <value>上に移</value>
   </data>
   <data name="RowDownRoom" xml:space="preserve">
-    <value>下に移動する</value>
+    <value>下に移動</value>
   </data>
   <data name="RemoveRoom" xml:space="preserve">
-    <value>ルームを削除する</value>
+    <value>ルームを削除</value>
   </data>
   <data name="StopRecord" xml:space="preserve">
-    <value>録画を中止する</value>
+    <value>録画を中止</value>
   </data>
   <data name="PlayRecord" xml:space="preserve">
-    <value>録画を再生する</value>
+    <value>録画を再生</value>
   </data>
   <data name="RecordLog" xml:space="preserve">
     <value>録画ログ</value>
@@ -360,10 +360,10 @@
     <value>録画フォーマット</value>
   </data>
   <data name="RecordFormatHint" xml:space="preserve">
-    <value>安定性を保証するため TS のみサポートされています、のちに他のフォーマットに変換することが可能です</value>
+    <value>安定性を保証するため TS のみサポートし、後に他のフォーマットに変換可能</value>
   </data>
   <data name="RecordFormatAutoRemove" xml:space="preserve">
-    <value>フォーマット変換後に TS ファイルを削除する</value>
+    <value>フォーマット変換後に TS ファイルを削除</value>
   </data>
   <data name="SaveFolderHint" xml:space="preserve">
     <value>録画ファイルの保存フォルダ</value>
@@ -402,7 +402,7 @@
     <value>プロキシ</value>
   </data>
   <data name="UseProxyHint" xml:space="preserve">
-    <value>プロキシ URL を指定する</value>
+    <value>プロキシ URL を指定</value>
   </data>
   <data name="ProxyHostAndPort" xml:space="preserve">
     <value>ホストネームとポートナンバ</value>
@@ -423,7 +423,7 @@
     <value>Tiktok Cookie</value>
   </data>
   <data name="UseCookieEnterHint" xml:space="preserve">
-    <value>空白の場合は内蔵 Cookie を使用する</value>
+    <value>空白の場合は内蔵 Cookie を使用</value>
   </data>
   <data name="HowToGet" xml:space="preserve">
     <value>いかに獲得？</value>
@@ -435,6 +435,9 @@
     <value>UA「ユーザーエージェント」をカスタマイズ可能です</value>
   </data>
   <data name="UserAgentEnterHint" xml:space="preserve">
-    <value>空白の場合は内蔵 UA を使用する</value>
+    <value>空白の場合は内蔵 UA を使用</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>設定</value>
   </data>
 </root>

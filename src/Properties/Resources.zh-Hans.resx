@@ -433,4 +433,7 @@
   <data name="UserAgentEnterHint" xml:space="preserve">
     <value>留白则使用内置 UA 标识</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
 </root>

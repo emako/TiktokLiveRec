@@ -433,4 +433,7 @@
   <data name="UserAgentEnterHint" xml:space="preserve">
     <value>Leave blank to use the built-in User Agent</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>
