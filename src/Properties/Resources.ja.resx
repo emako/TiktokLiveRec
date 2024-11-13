@@ -245,7 +245,7 @@
     <value>保存フォルダ</value>
   </data>
   <data name="RowUpRoom" xml:space="preserve">
-    <value>上に移</value>
+    <value>上に移動</value>
   </data>
   <data name="RowDownRoom" xml:space="preserve">
     <value>下に移動</value>
@@ -283,7 +283,7 @@
   <data name="RecordStatus" xml:space="preserve">
     <value>録画状態</value>
   </data>
-  <data name="Opration" xml:space="preserve">
+  <data name="Operation" xml:space="preserve">
     <value>操作</value>
   </data>
   <data name="ButtonOfPlay" xml:space="preserve">

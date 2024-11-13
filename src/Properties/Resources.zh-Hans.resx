@@ -280,7 +280,7 @@
   <data name="RecordStatus" xml:space="preserve">
     <value>录制状态</value>
   </data>
-  <data name="Opration" xml:space="preserve">
+  <data name="Operation" xml:space="preserve">
     <value>操作</value>
   </data>
   <data name="ButtonOfPlay" xml:space="preserve">

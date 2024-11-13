@@ -280,8 +280,8 @@
   <data name="RecordStatus" xml:space="preserve">
     <value>Recording Status</value>
   </data>
-  <data name="Opration" xml:space="preserve">
-    <value>Opration</value>
+  <data name="Operation" xml:space="preserve">
+    <value>Operation</value>
   </data>
   <data name="ButtonOfPlay" xml:space="preserve">
     <value>Play</value>

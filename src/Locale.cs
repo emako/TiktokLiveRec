@@ -13,7 +13,7 @@ internal static class Locale
 
     public static CultureInfo Culture
     {
-        get => Thread.CurrentThread.CurrentUICulture;
+        get => CultureInfo.CurrentUICulture;
         set => SetCulture(value);
     }
 
@@ -32,8 +32,8 @@ internal static class Locale
         }
 
         I18NExtension.Culture
-            = Thread.CurrentThread.CurrentCulture
-            = Thread.CurrentThread.CurrentUICulture
+            = CultureInfo.CurrentCulture
+            = CultureInfo.CurrentUICulture
             = culture;
 
         CultureChanged?.Invoke(CultureChanged.Target, EventArgs.Empty);

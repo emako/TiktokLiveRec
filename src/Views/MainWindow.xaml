@@ -173,7 +173,7 @@
                                         ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
                                         Header="{I18N RecordStatus}"
                                         IsReadOnly="True" />
-                    <!--<DataGridTemplateColumn Width="3*" Header="{I18N Opration}">
+                    <DataGridTemplateColumn Width="2*" Header="{I18N Operation}">
                         <DataGridTemplateColumn.CellStyle>
                             <Style BasedOn="{StaticResource DefaultDataGridCellStyle}" TargetType="{x:Type DataGridCell}">
                                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -193,7 +193,7 @@
                                                         </ui:StackPanel>
                                                     </Button.Content>
                                                 </Button>
-                                                <Button Command="{Binding GotoCommand}"
+                                                <Button Command="{Binding GotoRoomUrlCommand}"
                                                         Tag="{Binding}"
                                                         ToolTip="{I18N GotoLiveRoom}">
                                                     <Button.Content>
@@ -209,12 +209,12 @@
                                 </Setter>
                             </Style>
                         </DataGridTemplateColumn.CellStyle>
-                    </DataGridTemplateColumn>-->
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </ui:Grid>
         <Grid>
-            <ui:TitleBar Title="TiktokLiveRec" ShowMaximize="False">
+            <ui:TitleBar Title="{I18N Title}" ShowMaximize="False">
                 <ui:TitleBar.Icon>
                     <ui:ImageIcon Source="pack://application:,,,/Assets/Favicon.png" />
                 </ui:TitleBar.Icon>

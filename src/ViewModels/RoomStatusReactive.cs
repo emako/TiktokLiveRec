@@ -1,6 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
+using System.IO;
 using TiktokLiveRec.Core;
+using Windows.System;
+using Wpf.Ui.Violeta.Controls;
 
 namespace TiktokLiveRec.ViewModels;
 
@@ -48,4 +52,29 @@ public partial class RoomStatusReactive : ReactiveObject
         RecordStatus.Error => "RecordStatusOfError".Tr(),
         _ => "RecordStatusOfUnknown".Tr(),
     };
+
+    [RelayCommand]
+    private async Task PlayRecordAsync()
+    {
+        if (GlobalMonitor.RoomStatus.TryGetValue(RoomUrl, out RoomStatus? roomStatus)
+         && File.Exists(roomStatus.Recorder.FileName))
+        {
+            await Player.PlayAsync(roomStatus.Recorder.FileName, isSeekable: roomStatus.RecordStatus == RecordStatus.Recording);
+        }
+        else
+        {
+            Toast.Warning("PlayerErrorOfNoFile".Tr());
+        }
+    }
+
+    [RelayCommand]
+    private async Task GotoRoomUrlAsync()
+    {
+        await Launcher.LaunchUriAsync(new Uri(RoomUrl));
+    }
+}
+
+public sealed class CommandEventArgs(string command) : EventArgs
+{
+    public string Command { get; } = command;
 }
