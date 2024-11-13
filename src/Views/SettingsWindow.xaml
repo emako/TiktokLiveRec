@@ -103,7 +103,8 @@
                             </ui:Grid>
                             <ui:ToggleSwitch Grid.Column="2"
                                              Margin="0,0,28,0"
-                                             IsChecked="{Binding IsUseStatusTray, Mode=TwoWay}" />
+                                             IsChecked="{Binding IsUseStatusTray, Mode=TwoWay}"
+                                             IsEnabled="False" />
                         </ui:Grid>
                     </ui:Card>
                     <TextBlock Margin="4,0,0,4"
@@ -250,8 +251,8 @@
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
                                     <ComboBox MinWidth="150" SelectedIndex="{Binding RecordFormatIndex, Mode=TwoWay}">
                                         <ComboBoxItem Content="TS" />
-                                        <ComboBoxItem Content="TS+MP4" />
-                                        <ComboBoxItem Content="TS+MKV" />
+                                        <ComboBoxItem Content="TS+MP4" IsEnabled="False" />
+                                        <ComboBoxItem Content="TS+MKV" IsEnabled="False" />
                                     </ComboBox>
                                 </Grid>
                             </ui:Grid>
@@ -430,7 +431,9 @@
                                         Command="{Binding OpenHowToGetCookieChinaCommand}"
                                         Content="{I18N HowToGet}" />
                             </ui:Grid>
-                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto">
+                            <ui:Grid Margin="42,0,28,0"
+                                     ColumnDefinitions="Auto,*,Auto"
+                                     IsEnabled="False">
                                 <TextBlock VerticalAlignment="Center" Text="{I18N UseCookieOfOversea}" />
                                 <ui:TextBox Grid.Column="1"
                                             Margin="8,0,0,0"
