@@ -22,7 +22,8 @@
 		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
 			[base64 mime encoded serialized .NET Framework object]
 		</data>
-		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing"
+  mimetype="application/x-microsoft.net.object.bytearray.base64">
 			[base64 mime encoded string representing a byte array form of the .NET Framework object]
 		</data>
 
@@ -58,7 +59,8 @@
 			: using a System.ComponentModel.TypeConverter
 			: and then encoded with base64 encoding.
 	-->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -92,10 +94,12 @@
     <value>1.3</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0,
+      Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutProgram" xml:space="preserve">
     <value>プログラムについて</value>
@@ -120,5 +124,317 @@
   </data>
   <data name="PlayerErrorOfFFplayNotFound" xml:space="preserve">
     <value>ファイル ffplay が見つからないため再生できません！</value>
+  </data>
+  <data name="TrayMenuShowMainWindow" xml:space="preserve">
+    <value>画面表示 (&amp;U)</value>
+  </data>
+  <data name="TrayMenuOpenSettings" xml:space="preserve">
+    <value>設定 (&amp;O)</value>
+  </data>
+  <data name="TrayMenuAutoRun" xml:space="preserve">
+    <value>起動時に自動的に実行 (&amp;S)</value>
+  </data>
+  <data name="TrayMenuRestart" xml:space="preserve">
+    <value>再起動 (&amp;R)</value>
+  </data>
+  <data name="TrayMenuExit" xml:space="preserve">
+    <value>終了 (&amp;E)</value>
+  </data>
+  <data name="PlayerErrorOfNoFile" xml:space="preserve">
+    <value>再生できる録画ファイルがありません</value>
+  </data>
+  <data name="SureRemoveRoom" xml:space="preserve">
+    <value>ルーム{0}を削除してよろしいですか？</value>
+  </data>
+  <data name="SuccOp" xml:space="preserve">
+    <value>操作が完了しました</value>
+  </data>
+  <data name="FailOp" xml:space="preserve">
+    <value>操作に失敗しました</value>
+  </data>
+  <data name="StreamStatusOfUnknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="StreamStatusOfInitialized" xml:space="preserve">
+    <value>初期化</value>
+  </data>
+  <data name="SureStopRecord" xml:space="preserve">
+    <value>ルーム{0}のレコーディングを中止してよろしいですか？</value>
+  </data>
+  <data name="NoRecordTask" xml:space="preserve">
+    <value>該当な録画タスクはありません</value>
+  </data>
+  <data name="StreamStatusOfDisabled" xml:space="preserve">
+    <value>禁止</value>
+  </data>
+  <data name="StreamStatusOfNotStreaming" xml:space="preserve">
+    <value>ライブ待ち</value>
+  </data>
+  <data name="StreamStatusOfStreaming" xml:space="preserve">
+    <value>ライブ中</value>
+  </data>
+  <data name="RecordStatusOfInitialized" xml:space="preserve">
+    <value>初期化</value>
+  </data>
+  <data name="RecordStatusOfDisabled" xml:space="preserve">
+    <value>禁止</value>
+  </data>
+  <data name="RecordStatusOfRecording" xml:space="preserve">
+    <value>録画中</value>
+  </data>
+  <data name="RecordStatusOfNotRecording" xml:space="preserve">
+    <value>録画完了</value>
+  </data>
+  <data name="RecordStatusOfError" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="RecordStatusOfUnknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="ProxyErrorOfEmptyUrl" xml:space="preserve">
+    <value>プロキシ URL が空です</value>
+  </data>
+  <data name="ProxyErrorOfMissHostOrPort" xml:space="preserve">
+    <value>プロキシ URL のホストネーム或いはポートナンバが欠けています</value>
+  </data>
+  <data name="ProxyErrorOfFormat" xml:space="preserve">
+    <value>プロキシ URL のフォーマットが正しくありません</value>
+  </data>
+  <data name="ProxyErrorOfHostFormatError" xml:space="preserve">
+    <value>プロキシ URL のホストネームが正しくありません</value>
+  </data>
+  <data name="ProxyErrorOfPortFormatError" xml:space="preserve">
+    <value>プロキシ URL のポートナンバが正しくありません</value>
+  </data>
+  <data name="ProxyErrorOfPortOutOfRange" xml:space="preserve">
+    <value>プロキシ URL のポートナンバが範囲値を超えています</value>
+  </data>
+  <data name="ProxySuccOfStatusCode" xml:space="preserve">
+    <value>プロキシが利用可能です、ステータスコード {0}</value>
+  </data>
+  <data name="ProxyErrorOfExceptionMessage" xml:space="preserve">
+    <value>プロキシが無効又は請求に失敗しました：{0}</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>プログラムについて</value>
+  </data>
+  <data name="ButtonOfClose" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="ButtonOfAdd" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="AddRoom" xml:space="preserve">
+    <value>ルーム追加</value>
+  </data>
+  <data name="EnterRoomUrl" xml:space="preserve">
+    <value>ライブルーム URL を入力してください</value>
+  </data>
+  <data name="GetRoomInfoError" xml:space="preserve">
+    <value>ルーム情報が獲得できませんしました</value>
+  </data>
+  <data name="AddRoomSucc" xml:space="preserve">
+    <value>ルーム {0} を追加しました</value>
+  </data>
+  <data name="ErrorRoomUrl" xml:space="preserve">
+    <value>無効なライブ URL です</value>
+  </data>
+  <data name="ButtonOfSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SaveFolder" xml:space="preserve">
+    <value>保存フォルダ</value>
+  </data>
+  <data name="RowUpRoom" xml:space="preserve">
+    <value>上に移動する</value>
+  </data>
+  <data name="RowDownRoom" xml:space="preserve">
+    <value>下に移動する</value>
+  </data>
+  <data name="RemoveRoom" xml:space="preserve">
+    <value>ルームを削除する</value>
+  </data>
+  <data name="StopRecord" xml:space="preserve">
+    <value>録画を中止する</value>
+  </data>
+  <data name="PlayRecord" xml:space="preserve">
+    <value>録画を再生する</value>
+  </data>
+  <data name="RecordLog" xml:space="preserve">
+    <value>録画ログ</value>
+  </data>
+  <data name="SingleSettings" xml:space="preserve">
+    <value>単独設定</value>
+  </data>
+  <data name="LiveNotificationHint" xml:space="preserve">
+    <value>Windows システムなどを通じて配信スタートを知らせる</value>
+  </data>
+  <data name="EnableRecord" xml:space="preserve">
+    <value>録画有効</value>
+  </data>
+  <data name="EnableRecordHint" xml:space="preserve">
+    <value>録画機能を有効にするかどうか</value>
+  </data>
+  <data name="LiveRoom" xml:space="preserve">
+    <value>ライブルーム</value>
+  </data>
+  <data name="StreamStatus" xml:space="preserve">
+    <value>配信状態</value>
+  </data>
+  <data name="RecordStatus" xml:space="preserve">
+    <value>録画状態</value>
+  </data>
+  <data name="Opration" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="ButtonOfPlay" xml:space="preserve">
+    <value>再生</value>
+  </data>
+  <data name="ButtonOfGoto" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="SettingsFile" xml:space="preserve">
+    <value>設定ファイル</value>
+  </data>
+  <data name="AppearanceSettings" xml:space="preserve">
+    <value>外観設定</value>
+  </data>
+  <data name="LanguageHint" xml:space="preserve">
+    <value>デフォルトでシステム言語に合わせる</value>
+  </data>
+  <data name="TrackingSystem" xml:space="preserve">
+    <value>システム</value>
+  </data>
+  <data name="ThemeOfDarkMode" xml:space="preserve">
+    <value>ダーク</value>
+  </data>
+  <data name="ThemeOfLightMode" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="ThemeColor" xml:space="preserve">
+    <value>テーマカラー</value>
+  </data>
+  <data name="ThemeColorHint" xml:space="preserve">
+    <value>お使い慣れしたテーマカラーを選択できます</value>
+  </data>
+  <data name="TrayStatus" xml:space="preserve">
+    <value>トレイのアイコン</value>
+  </data>
+  <data name="TrayStatusHint" xml:space="preserve">
+    <value>録画状態に合わせてトレイのアイコンが変わる</value>
+  </data>
+  <data name="RecordSettings" xml:space="preserve">
+    <value>録画設定</value>
+  </data>
+  <data name="LiveNotificationToSystem" xml:space="preserve">
+    <value>Windows システムの通知</value>
+  </data>
+  <data name="LiveNotificationToPlayMusic" xml:space="preserve">
+    <value>音楽の再生による通知</value>
+  </data>
+  <data name="LiveNotificationToPlayMusicPath" xml:space="preserve">
+    <value>内臓音楽か指定の音楽ファイルか</value>
+  </data>
+  <data name="LiveNotificationToMail" xml:space="preserve">
+    <value>メールによる通知</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="LiveNotificationToGotoLiveRoom" xml:space="preserve">
+    <value>ライブルームを自動的に開く</value>
+  </data>
+  <data name="LiveNotificationToGotoLiveRoomAndMute" xml:space="preserve">
+    <value>自動的にミュート</value>
+  </data>
+  <data name="RoutineInterval" xml:space="preserve">
+    <value>サイクル間隔</value>
+  </data>
+  <data name="RoutineIntervalHint" xml:space="preserve">
+    <value>配信状態などの検知動作のサイクリング間隔（ミリ秒）</value>
+  </data>
+  <data name="RecordFormat" xml:space="preserve">
+    <value>録画フォーマット</value>
+  </data>
+  <data name="RecordFormatHint" xml:space="preserve">
+    <value>安定性を保証するため TS のみサポートされています、のちに他のフォーマットに変換することが可能です</value>
+  </data>
+  <data name="RecordFormatAutoRemove" xml:space="preserve">
+    <value>フォーマット変換後に TS ファイルを削除する</value>
+  </data>
+  <data name="SaveFolderHint" xml:space="preserve">
+    <value>録画ファイルの保存フォルダ</value>
+  </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>フォルダを選択</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>フォルダを開く</value>
+  </data>
+  <data name="PlayRecordHint" xml:space="preserve">
+    <value>録画中のファイルでも再生可能です</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>プレイヤー</value>
+  </data>
+  <data name="PlayerInner" xml:space="preserve">
+    <value>内蔵プレイヤー</value>
+  </data>
+  <data name="PlayerSystem" xml:space="preserve">
+    <value>システムのプレイヤー</value>
+  </data>
+  <data name="PlayerInnerHint" xml:space="preserve">
+    <value>FFplay を使用すること</value>
+  </data>
+  <data name="PlayerSystemHint" xml:space="preserve">
+    <value>システムのプレイヤーを使用すること</value>
+  </data>
+  <data name="PlayerInnerUseRect" xml:space="preserve">
+    <value>直角ウィンドウでスクショが便利になる</value>
+  </data>
+  <data name="NetworkSettings" xml:space="preserve">
+    <value>ネット設定</value>
+  </data>
+  <data name="UseProxy" xml:space="preserve">
+    <value>プロキシ</value>
+  </data>
+  <data name="UseProxyHint" xml:space="preserve">
+    <value>プロキシ URL を指定する</value>
+  </data>
+  <data name="ProxyHostAndPort" xml:space="preserve">
+    <value>ホストネームとポートナンバ</value>
+  </data>
+  <data name="CheckConnectivity" xml:space="preserve">
+    <value>チェック</value>
+  </data>
+  <data name="UseCookie" xml:space="preserve">
+    <value>Cookie</value>
+  </data>
+  <data name="UseCookieHint" xml:space="preserve">
+    <value>Douyinの録画には Cookie が必要です</value>
+  </data>
+  <data name="UseCookieOfDouyin" xml:space="preserve">
+    <value>Douyin Cookie</value>
+  </data>
+  <data name="UseCookieOfOversea" xml:space="preserve">
+    <value>Tiktok Cookie</value>
+  </data>
+  <data name="UseCookieEnterHint" xml:space="preserve">
+    <value>空白の場合は内蔵 Cookie を使用する</value>
+  </data>
+  <data name="HowToGet" xml:space="preserve">
+    <value>いかに獲得？</value>
+  </data>
+  <data name="UserAgent" xml:space="preserve">
+    <value>UA</value>
+  </data>
+  <data name="UserAgentHint" xml:space="preserve">
+    <value>UA「ユーザーエージェント」をカスタマイズ可能です</value>
+  </data>
+  <data name="UserAgentEnterHint" xml:space="preserve">
+    <value>空白の場合は内蔵 UA を使用する</value>
   </data>
 </root>

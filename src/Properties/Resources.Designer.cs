@@ -61,7 +61,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to About.
         /// </summary>
         public static string About {
             get {
@@ -79,7 +79,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Account.
         /// </summary>
         public static string Account {
             get {
@@ -97,7 +97,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Add Room.
         /// </summary>
         public static string AddRoom {
             get {
@@ -106,7 +106,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Successfully added {0} live room.
         /// </summary>
         public static string AddRoomSucc {
             get {
@@ -115,7 +115,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Appearance Settings.
         /// </summary>
         public static string AppearanceSettings {
             get {
@@ -124,7 +124,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string ButtonOfAdd {
             get {
@@ -133,7 +133,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string ButtonOfClose {
             get {
@@ -142,7 +142,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Goto.
         /// </summary>
         public static string ButtonOfGoto {
             get {
@@ -151,7 +151,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Play.
         /// </summary>
         public static string ButtonOfPlay {
             get {
@@ -160,7 +160,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string ButtonOfSettings {
             get {
@@ -169,7 +169,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Check.
         /// </summary>
         public static string CheckConnectivity {
             get {
@@ -178,7 +178,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Enable Recording.
         /// </summary>
         public static string EnableRecord {
             get {
@@ -187,7 +187,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Indicates whether live streaming recording is enabled.
         /// </summary>
         public static string EnableRecordHint {
             get {
@@ -196,7 +196,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Enter room URL.
         /// </summary>
         public static string EnterRoomUrl {
             get {
@@ -205,7 +205,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Incorrect live room URL.
         /// </summary>
         public static string ErrorRoomUrl {
             get {
@@ -214,7 +214,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Operation failed.
         /// </summary>
         public static string FailOp {
             get {
@@ -223,7 +223,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Failed to get information about the live room.
         /// </summary>
         public static string GetRoomInfoError {
             get {
@@ -241,7 +241,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to How to get it?.
         /// </summary>
         public static string HowToGet {
             get {
@@ -259,7 +259,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Default follows the system language.
         /// </summary>
         public static string LanguageHint {
             get {
@@ -277,7 +277,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Whether to notify the start of the streaming through Windows system notifications, etc.
         /// </summary>
         public static string LiveNotificationHint {
             get {
@@ -286,7 +286,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Auto goto Live Room.
         /// </summary>
         public static string LiveNotificationToGotoLiveRoom {
             get {
@@ -295,7 +295,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Auto mute.
         /// </summary>
         public static string LiveNotificationToGotoLiveRoomAndMute {
             get {
@@ -304,7 +304,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Notification via E-mail.
         /// </summary>
         public static string LiveNotificationToMail {
             get {
@@ -313,7 +313,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Notification via playing music.
         /// </summary>
         public static string LiveNotificationToPlayMusic {
             get {
@@ -322,7 +322,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Use built-in music or specify music file path.
         /// </summary>
         public static string LiveNotificationToPlayMusicPath {
             get {
@@ -331,7 +331,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Notification via Windows System.
         /// </summary>
         public static string LiveNotificationToSystem {
             get {
@@ -340,7 +340,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Live Room.
         /// </summary>
         public static string LiveRoom {
             get {
@@ -358,7 +358,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Network Settings.
         /// </summary>
         public static string NetworkSettings {
             get {
@@ -367,7 +367,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to There are currently no recording tasks.
         /// </summary>
         public static string NoRecordTask {
             get {
@@ -376,7 +376,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Open Folder.
         /// </summary>
         public static string OpenFolder {
             get {
@@ -385,7 +385,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Opration.
         /// </summary>
         public static string Opration {
             get {
@@ -394,7 +394,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
@@ -403,7 +403,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Player.
         /// </summary>
         public static string Player {
             get {
@@ -421,7 +421,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to No playable recording file.
         /// </summary>
         public static string PlayerErrorOfNoFile {
             get {
@@ -430,7 +430,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Built-in player.
         /// </summary>
         public static string PlayerInner {
             get {
@@ -439,7 +439,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Use FFplay player.
         /// </summary>
         public static string PlayerInnerHint {
             get {
@@ -448,7 +448,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Enable reacangle window.
         /// </summary>
         public static string PlayerInnerUseRect {
             get {
@@ -457,7 +457,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to System player.
         /// </summary>
         public static string PlayerSystem {
             get {
@@ -466,7 +466,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Use System player.
         /// </summary>
         public static string PlayerSystemHint {
             get {
@@ -475,7 +475,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Play Recording.
         /// </summary>
         public static string PlayRecord {
             get {
@@ -484,7 +484,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Support to play the recording videos.
         /// </summary>
         public static string PlayRecordHint {
             get {
@@ -493,7 +493,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Proxy URL cannot be empty.
         /// </summary>
         public static string ProxyErrorOfEmptyUrl {
             get {
@@ -502,7 +502,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Invalid proxy or request failed: {0}.
         /// </summary>
         public static string ProxyErrorOfExceptionMessage {
             get {
@@ -511,7 +511,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Proxy URL is malformed.
         /// </summary>
         public static string ProxyErrorOfFormat {
             get {
@@ -520,7 +520,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Proxy URL host format is incorrect.
         /// </summary>
         public static string ProxyErrorOfHostFormatError {
             get {
@@ -529,7 +529,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Proxy URL missing hostname or port number.
         /// </summary>
         public static string ProxyErrorOfMissHostOrPort {
             get {
@@ -538,7 +538,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Proxy URL port number format is incorrect.
         /// </summary>
         public static string ProxyErrorOfPortFormatError {
             get {
@@ -547,7 +547,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Proxy URL port number out of range.
         /// </summary>
         public static string ProxyErrorOfPortOutOfRange {
             get {
@@ -556,7 +556,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Host name and port number.
         /// </summary>
         public static string ProxyHostAndPort {
             get {
@@ -565,7 +565,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Proxy available, response status code {0}.
         /// </summary>
         public static string ProxySuccOfStatusCode {
             get {
@@ -574,7 +574,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recording Format.
         /// </summary>
         public static string RecordFormat {
             get {
@@ -583,7 +583,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Whether to auto delete the original TS file after converting the format.
         /// </summary>
         public static string RecordFormatAutoRemove {
             get {
@@ -592,7 +592,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to To ensure stable recording, only supports TS or will be auto converted later.
         /// </summary>
         public static string RecordFormatHint {
             get {
@@ -601,7 +601,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recording Log.
         /// </summary>
         public static string RecordLog {
             get {
@@ -610,7 +610,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recording Settings.
         /// </summary>
         public static string RecordSettings {
             get {
@@ -619,7 +619,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recording Status.
         /// </summary>
         public static string RecordStatus {
             get {
@@ -628,7 +628,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Disabled.
         /// </summary>
         public static string RecordStatusOfDisabled {
             get {
@@ -637,7 +637,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string RecordStatusOfError {
             get {
@@ -646,7 +646,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Initialized.
         /// </summary>
         public static string RecordStatusOfInitialized {
             get {
@@ -655,7 +655,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Not Recording.
         /// </summary>
         public static string RecordStatusOfNotRecording {
             get {
@@ -664,7 +664,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recording.
         /// </summary>
         public static string RecordStatusOfRecording {
             get {
@@ -673,7 +673,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Unknown.
         /// </summary>
         public static string RecordStatusOfUnknown {
             get {
@@ -682,7 +682,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Remove Room.
         /// </summary>
         public static string RemoveRoom {
             get {
@@ -691,7 +691,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cycle Period.
         /// </summary>
         public static string RoutineInterval {
             get {
@@ -700,7 +700,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to The cycle period (ms) for detecting the status and other actions.
         /// </summary>
         public static string RoutineIntervalHint {
             get {
@@ -709,7 +709,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Move Down Room.
         /// </summary>
         public static string RowDownRoom {
             get {
@@ -718,7 +718,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Move Up Room.
         /// </summary>
         public static string RowUpRoom {
             get {
@@ -727,7 +727,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Save Folder.
         /// </summary>
         public static string SaveFolder {
             get {
@@ -736,7 +736,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Specify the saving directory of recorded videos.
         /// </summary>
         public static string SaveFolderHint {
             get {
@@ -745,7 +745,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Select Folder.
         /// </summary>
         public static string SelectFolder {
             get {
@@ -754,7 +754,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Settings File.
         /// </summary>
         public static string SettingsFile {
             get {
@@ -763,7 +763,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Single Settings.
         /// </summary>
         public static string SingleSettings {
             get {
@@ -772,7 +772,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Stop Recording.
         /// </summary>
         public static string StopRecord {
             get {
@@ -781,7 +781,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Live Streaming Status.
         /// </summary>
         public static string StreamStatus {
             get {
@@ -790,7 +790,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Disabled.
         /// </summary>
         public static string StreamStatusOfDisabled {
             get {
@@ -799,7 +799,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Initialized.
         /// </summary>
         public static string StreamStatusOfInitialized {
             get {
@@ -808,7 +808,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Not Streaming.
         /// </summary>
         public static string StreamStatusOfNotStreaming {
             get {
@@ -817,7 +817,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Streaming.
         /// </summary>
         public static string StreamStatusOfStreaming {
             get {
@@ -826,7 +826,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Unknown.
         /// </summary>
         public static string StreamStatusOfUnknown {
             get {
@@ -835,7 +835,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Operation successful.
         /// </summary>
         public static string SuccOp {
             get {
@@ -844,7 +844,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Delete {0} live room?.
         /// </summary>
         public static string SureRemoveRoom {
             get {
@@ -853,7 +853,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Does it stop the recording of {0}?.
         /// </summary>
         public static string SureStopRecord {
             get {
@@ -862,7 +862,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Theme Color.
         /// </summary>
         public static string ThemeColor {
             get {
@@ -871,7 +871,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Choose a theme color you like.
         /// </summary>
         public static string ThemeColorHint {
             get {
@@ -880,7 +880,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Dark.
         /// </summary>
         public static string ThemeOfDarkMode {
             get {
@@ -889,7 +889,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Light.
         /// </summary>
         public static string ThemeOfLightMode {
             get {
@@ -898,7 +898,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to System.
         /// </summary>
         public static string TrackingSystem {
             get {
@@ -907,7 +907,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Auto Run (&amp;S).
         /// </summary>
         public static string TrayMenuAutoRun {
             get {
@@ -916,7 +916,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Exit (&amp;E).
         /// </summary>
         public static string TrayMenuExit {
             get {
@@ -925,7 +925,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Settings (&amp;O).
         /// </summary>
         public static string TrayMenuOpenSettings {
             get {
@@ -934,7 +934,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Restart (&amp;R).
         /// </summary>
         public static string TrayMenuRestart {
             get {
@@ -943,7 +943,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Show (&amp;U).
         /// </summary>
         public static string TrayMenuShowMainWindow {
             get {
@@ -952,7 +952,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Tray Icon.
         /// </summary>
         public static string TrayStatus {
             get {
@@ -961,7 +961,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Enable tray icon is following to recording status.
         /// </summary>
         public static string TrayStatusHint {
             get {
@@ -970,7 +970,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Use Cookie.
         /// </summary>
         public static string UseCookie {
             get {
@@ -979,7 +979,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Leave blank to use built-in cookies.
         /// </summary>
         public static string UseCookieEnterHint {
             get {
@@ -988,7 +988,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recording Douyin requires cookies.
         /// </summary>
         public static string UseCookieHint {
             get {
@@ -997,7 +997,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Douyin Cookie.
         /// </summary>
         public static string UseCookieOfDouyin {
             get {
@@ -1006,7 +1006,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Tiktok Cookie.
         /// </summary>
         public static string UseCookieOfOversea {
             get {
@@ -1015,7 +1015,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Use Proxy.
         /// </summary>
         public static string UseProxy {
             get {
@@ -1024,7 +1024,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Specify your web proxy URL.
         /// </summary>
         public static string UseProxyHint {
             get {
@@ -1033,7 +1033,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to User Agent.
         /// </summary>
         public static string UserAgent {
             get {
@@ -1042,7 +1042,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Leave blank to use the built-in User Agent.
         /// </summary>
         public static string UserAgentEnterHint {
             get {
@@ -1051,7 +1051,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to You can use a custom browser User Agent.
         /// </summary>
         public static string UserAgentHint {
             get {

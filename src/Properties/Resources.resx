@@ -122,315 +122,315 @@
     <value>File ffplay not found so cannot be played!</value>
   </data>
   <data name="TrayMenuShowMainWindow" xml:space="preserve">
-    <value></value>
+    <value>Show (&amp;U)</value>
   </data>
   <data name="TrayMenuOpenSettings" xml:space="preserve">
-    <value></value>
+    <value>Settings (&amp;O)</value>
   </data>
   <data name="TrayMenuAutoRun" xml:space="preserve">
-    <value></value>
+    <value>Auto Run (&amp;S)</value>
   </data>
   <data name="TrayMenuRestart" xml:space="preserve">
-    <value></value>
+    <value>Restart (&amp;R)</value>
   </data>
   <data name="TrayMenuExit" xml:space="preserve">
-    <value></value>
+    <value>Exit (&amp;E)</value>
   </data>
   <data name="PlayerErrorOfNoFile" xml:space="preserve">
-    <value></value>
+    <value>No playable recording file</value>
   </data>
   <data name="SureRemoveRoom" xml:space="preserve">
-    <value></value>
+    <value>Delete {0} live room?</value>
   </data>
   <data name="SuccOp" xml:space="preserve">
-    <value></value>
+    <value>Operation successful</value>
   </data>
   <data name="FailOp" xml:space="preserve">
-    <value></value>
+    <value>Operation failed</value>
   </data>
   <data name="SureStopRecord" xml:space="preserve">
-    <value></value>
+    <value>Does it stop the recording of {0}?</value>
   </data>
   <data name="NoRecordTask" xml:space="preserve">
-    <value></value>
+    <value>There are currently no recording tasks</value>
   </data>
   <data name="StreamStatusOfUnknown" xml:space="preserve">
-    <value></value>
+    <value>Unknown</value>
   </data>
   <data name="StreamStatusOfInitialized" xml:space="preserve">
-    <value></value>
+    <value>Initialized</value>
   </data>
   <data name="StreamStatusOfDisabled" xml:space="preserve">
-    <value></value>
+    <value>Disabled</value>
   </data>
   <data name="StreamStatusOfNotStreaming" xml:space="preserve">
-    <value></value>
+    <value>Not Streaming</value>
   </data>
   <data name="StreamStatusOfStreaming" xml:space="preserve">
-    <value></value>
+    <value>Streaming</value>
   </data>
   <data name="RecordStatusOfInitialized" xml:space="preserve">
-    <value></value>
+    <value>Initialized</value>
   </data>
   <data name="RecordStatusOfDisabled" xml:space="preserve">
-    <value></value>
+    <value>Disabled</value>
   </data>
   <data name="RecordStatusOfNotRecording" xml:space="preserve">
-    <value></value>
+    <value>Not Recording</value>
   </data>
   <data name="RecordStatusOfRecording" xml:space="preserve">
-    <value></value>
+    <value>Recording</value>
   </data>
   <data name="RecordStatusOfError" xml:space="preserve">
-    <value></value>
+    <value>Error</value>
   </data>
   <data name="RecordStatusOfUnknown" xml:space="preserve">
-    <value></value>
+    <value>Unknown</value>
   </data>
   <data name="ProxyErrorOfEmptyUrl" xml:space="preserve">
-    <value></value>
+    <value>Proxy URL cannot be empty</value>
   </data>
   <data name="ProxyErrorOfMissHostOrPort" xml:space="preserve">
-    <value></value>
+    <value>Proxy URL missing hostname or port number</value>
   </data>
   <data name="ProxyErrorOfFormat" xml:space="preserve">
-    <value></value>
+    <value>Proxy URL is malformed</value>
   </data>
   <data name="ProxyErrorOfHostFormatError" xml:space="preserve">
-    <value></value>
+    <value>Proxy URL host format is incorrect</value>
   </data>
   <data name="ProxyErrorOfPortFormatError" xml:space="preserve">
-    <value></value>
+    <value>Proxy URL port number format is incorrect</value>
   </data>
   <data name="ProxyErrorOfPortOutOfRange" xml:space="preserve">
-    <value></value>
+    <value>Proxy URL port number out of range</value>
   </data>
   <data name="ProxySuccOfStatusCode" xml:space="preserve">
-    <value></value>
+    <value>Proxy available, response status code {0}</value>
   </data>
   <data name="ProxyErrorOfExceptionMessage" xml:space="preserve">
-    <value></value>
+    <value>Invalid proxy or request failed: {0}</value>
   </data>
   <data name="About" xml:space="preserve">
-    <value></value>
+    <value>About</value>
   </data>
   <data name="ButtonOfClose" xml:space="preserve">
-    <value></value>
+    <value>Close</value>
   </data>
   <data name="ButtonOfAdd" xml:space="preserve">
-    <value></value>
+    <value>Add</value>
   </data>
   <data name="AddRoom" xml:space="preserve">
-    <value></value>
+    <value>Add Room</value>
   </data>
   <data name="EnterRoomUrl" xml:space="preserve">
-    <value></value>
+    <value>Enter room URL</value>
   </data>
   <data name="GetRoomInfoError" xml:space="preserve">
-    <value></value>
+    <value>Failed to get information about the live room</value>
   </data>
   <data name="AddRoomSucc" xml:space="preserve">
-    <value></value>
+    <value>Successfully added {0} live room</value>
   </data>
   <data name="ErrorRoomUrl" xml:space="preserve">
-    <value></value>
+    <value>Incorrect live room URL</value>
   </data>
   <data name="ButtonOfSettings" xml:space="preserve">
-    <value></value>
+    <value>Settings</value>
   </data>
   <data name="SaveFolder" xml:space="preserve">
-    <value></value>
+    <value>Save Folder</value>
   </data>
   <data name="RowUpRoom" xml:space="preserve">
-    <value></value>
+    <value>Move Up Room</value>
   </data>
   <data name="RowDownRoom" xml:space="preserve">
-    <value></value>
+    <value>Move Down Room</value>
   </data>
   <data name="RemoveRoom" xml:space="preserve">
-    <value></value>
+    <value>Remove Room</value>
   </data>
   <data name="PlayRecord" xml:space="preserve">
-    <value></value>
+    <value>Play Recording</value>
   </data>
   <data name="StopRecord" xml:space="preserve">
-    <value></value>
+    <value>Stop Recording</value>
   </data>
   <data name="RecordLog" xml:space="preserve">
-    <value></value>
+    <value>Recording Log</value>
   </data>
   <data name="SingleSettings" xml:space="preserve">
-    <value></value>
+    <value>Single Settings</value>
   </data>
   <data name="LiveNotificationHint" xml:space="preserve">
-    <value></value>
+    <value>Whether to notify the start of the streaming through Windows system notifications, etc</value>
   </data>
   <data name="EnableRecord" xml:space="preserve">
-    <value></value>
+    <value>Enable Recording</value>
   </data>
   <data name="EnableRecordHint" xml:space="preserve">
-    <value></value>
+    <value>Indicates whether live streaming recording is enabled</value>
   </data>
   <data name="LiveRoom" xml:space="preserve">
-    <value></value>
+    <value>Live Room</value>
   </data>
   <data name="StreamStatus" xml:space="preserve">
-    <value></value>
+    <value>Live Streaming Status</value>
   </data>
   <data name="RecordStatus" xml:space="preserve">
-    <value></value>
+    <value>Recording Status</value>
   </data>
   <data name="Opration" xml:space="preserve">
-    <value></value>
+    <value>Opration</value>
   </data>
   <data name="ButtonOfPlay" xml:space="preserve">
-    <value></value>
+    <value>Play</value>
   </data>
   <data name="ButtonOfGoto" xml:space="preserve">
-    <value></value>
+    <value>Goto</value>
   </data>
   <data name="SettingsFile" xml:space="preserve">
-    <value></value>
+    <value>Settings File</value>
   </data>
   <data name="AppearanceSettings" xml:space="preserve">
-    <value></value>
+    <value>Appearance Settings</value>
   </data>
   <data name="LanguageHint" xml:space="preserve">
-    <value></value>
+    <value>Default follows the system language</value>
   </data>
   <data name="TrackingSystem" xml:space="preserve">
-    <value></value>
+    <value>System</value>
   </data>
   <data name="ThemeOfDarkMode" xml:space="preserve">
-    <value></value>
+    <value>Dark</value>
   </data>
   <data name="ThemeOfLightMode" xml:space="preserve">
-    <value></value>
+    <value>Light</value>
   </data>
   <data name="ThemeColor" xml:space="preserve">
-    <value></value>
+    <value>Theme Color</value>
   </data>
   <data name="ThemeColorHint" xml:space="preserve">
-    <value></value>
+    <value>Choose a theme color you like</value>
   </data>
   <data name="TrayStatus" xml:space="preserve">
-    <value></value>
+    <value>Tray Icon</value>
   </data>
   <data name="TrayStatusHint" xml:space="preserve">
-    <value></value>
+    <value>Enable tray icon is following to recording status</value>
   </data>
   <data name="RecordSettings" xml:space="preserve">
-    <value></value>
+    <value>Recording Settings</value>
   </data>
   <data name="LiveNotificationToSystem" xml:space="preserve">
-    <value></value>
+    <value>Notification via Windows System</value>
   </data>
   <data name="LiveNotificationToPlayMusic" xml:space="preserve">
-    <value></value>
+    <value>Notification via playing music</value>
   </data>
   <data name="LiveNotificationToPlayMusicPath" xml:space="preserve">
-    <value></value>
+    <value>Use built-in music or specify music file path</value>
   </data>
   <data name="LiveNotificationToMail" xml:space="preserve">
-    <value></value>
+    <value>Notification via E-mail</value>
   </data>
   <data name="Account" xml:space="preserve">
-    <value></value>
+    <value>Account</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value></value>
+    <value>Password</value>
   </data>
   <data name="LiveNotificationToGotoLiveRoom" xml:space="preserve">
-    <value></value>
+    <value>Auto goto Live Room</value>
   </data>
   <data name="LiveNotificationToGotoLiveRoomAndMute" xml:space="preserve">
-    <value></value>
+    <value>Auto mute</value>
   </data>
   <data name="RoutineInterval" xml:space="preserve">
-    <value></value>
+    <value>Cycle Period</value>
   </data>
   <data name="RoutineIntervalHint" xml:space="preserve">
-    <value></value>
+    <value>The cycle period (ms) for detecting the status and other actions</value>
   </data>
   <data name="RecordFormat" xml:space="preserve">
-    <value></value>
+    <value>Recording Format</value>
   </data>
   <data name="RecordFormatHint" xml:space="preserve">
-    <value></value>
+    <value>To ensure stable recording, only supports TS or will be auto converted later</value>
   </data>
   <data name="RecordFormatAutoRemove" xml:space="preserve">
-    <value></value>
+    <value>Whether to auto delete the original TS file after converting the format</value>
   </data>
   <data name="SaveFolderHint" xml:space="preserve">
-    <value></value>
+    <value>Specify the saving directory of recorded videos</value>
   </data>
   <data name="SelectFolder" xml:space="preserve">
-    <value></value>
+    <value>Select Folder</value>
   </data>
   <data name="OpenFolder" xml:space="preserve">
-    <value></value>
+    <value>Open Folder</value>
   </data>
   <data name="PlayRecordHint" xml:space="preserve">
-    <value></value>
+    <value>Support to play the recording videos</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value></value>
+    <value>Player</value>
   </data>
   <data name="PlayerInner" xml:space="preserve">
-    <value></value>
+    <value>Built-in player</value>
   </data>
   <data name="PlayerSystem" xml:space="preserve">
-    <value></value>
+    <value>System player</value>
   </data>
   <data name="PlayerInnerHint" xml:space="preserve">
-    <value></value>
+    <value>Use FFplay player</value>
   </data>
   <data name="PlayerSystemHint" xml:space="preserve">
-    <value></value>
+    <value>Use System player</value>
   </data>
   <data name="PlayerInnerUseRect" xml:space="preserve">
-    <value></value>
+    <value>Enable reacangle window</value>
   </data>
   <data name="NetworkSettings" xml:space="preserve">
-    <value></value>
+    <value>Network Settings</value>
   </data>
   <data name="UseProxy" xml:space="preserve">
-    <value></value>
+    <value>Use Proxy</value>
   </data>
   <data name="UseProxyHint" xml:space="preserve">
-    <value></value>
+    <value>Specify your web proxy URL</value>
   </data>
   <data name="ProxyHostAndPort" xml:space="preserve">
-    <value></value>
+    <value>Host name and port number</value>
   </data>
   <data name="CheckConnectivity" xml:space="preserve">
-    <value></value>
+    <value>Check</value>
   </data>
   <data name="UseCookie" xml:space="preserve">
-    <value></value>
+    <value>Use Cookie</value>
   </data>
   <data name="UseCookieHint" xml:space="preserve">
-    <value></value>
+    <value>Recording Douyin requires cookies</value>
   </data>
   <data name="UseCookieOfDouyin" xml:space="preserve">
-    <value></value>
+    <value>Douyin Cookie</value>
   </data>
   <data name="UseCookieEnterHint" xml:space="preserve">
-    <value></value>
+    <value>Leave blank to use built-in cookies</value>
   </data>
   <data name="HowToGet" xml:space="preserve">
-    <value></value>
+    <value>How to get it?</value>
   </data>
   <data name="UseCookieOfOversea" xml:space="preserve">
-    <value></value>
+    <value>Tiktok Cookie</value>
   </data>
   <data name="UserAgent" xml:space="preserve">
-    <value></value>
+    <value>User Agent</value>
   </data>
   <data name="UserAgentHint" xml:space="preserve">
-    <value></value>
+    <value>You can use a custom browser User Agent</value>
   </data>
   <data name="UserAgentEnterHint" xml:space="preserve">
-    <value></value>
+    <value>Leave blank to use the built-in User Agent</value>
   </data>
 </root>

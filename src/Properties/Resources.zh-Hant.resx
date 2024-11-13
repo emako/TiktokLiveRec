@@ -226,4 +226,211 @@
   <data name="EnterRoomUrl" xml:space="preserve">
     <value>輸入直播間鏈接</value>
   </data>
+  <data name="GetRoomInfoError" xml:space="preserve">
+    <value>獲取直播間信息失敗</value>
+  </data>
+  <data name="AddRoomSucc" xml:space="preserve">
+    <value>成功添加 {0} 直播間</value>
+  </data>
+  <data name="ErrorRoomUrl" xml:space="preserve">
+    <value>錯誤的直播間鏈接</value>
+  </data>
+  <data name="ButtonOfSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SaveFolder" xml:space="preserve">
+    <value>保存目錄</value>
+  </data>
+  <data name="RowUpRoom" xml:space="preserve">
+    <value>上移直播間</value>
+  </data>
+  <data name="RowDownRoom" xml:space="preserve">
+    <value>下移直播間</value>
+  </data>
+  <data name="RemoveRoom" xml:space="preserve">
+    <value>移除直播間</value>
+  </data>
+  <data name="PlayRecord" xml:space="preserve">
+    <value>播放錄製</value>
+  </data>
+  <data name="StopRecord" xml:space="preserve">
+    <value>停止錄製</value>
+  </data>
+  <data name="RecordLog" xml:space="preserve">
+    <value>錄製日誌</value>
+  </data>
+  <data name="SingleSettings" xml:space="preserve">
+    <value>單獨設定</value>
+  </data>
+  <data name="LiveNotificationHint" xml:space="preserve">
+    <value>是否通過 Windows 系統通知等方式通知開播</value>
+  </data>
+  <data name="EnableRecord" xml:space="preserve">
+    <value>啟用錄製</value>
+  </data>
+  <data name="EnableRecordHint" xml:space="preserve">
+    <value>指示是否啟用直播錄製</value>
+  </data>
+  <data name="LiveRoom" xml:space="preserve">
+    <value>直播間</value>
+  </data>
+  <data name="StreamStatus" xml:space="preserve">
+    <value>直播狀態</value>
+  </data>
+  <data name="RecordStatus" xml:space="preserve">
+    <value>錄製狀態</value>
+  </data>
+  <data name="Opration" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="ButtonOfPlay" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="ButtonOfGoto" xml:space="preserve">
+    <value>進入</value>
+  </data>
+  <data name="SettingsFile" xml:space="preserve">
+    <value>設定文件</value>
+  </data>
+  <data name="AppearanceSettings" xml:space="preserve">
+    <value>外觀設定</value>
+  </data>
+  <data name="LanguageHint" xml:space="preserve">
+    <value>默認跟隨系統語言</value>
+  </data>
+  <data name="TrackingSystem" xml:space="preserve">
+    <value>跟隨系統</value>
+  </data>
+  <data name="ThemeOfDarkMode" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="ThemeOfLightMode" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="ThemeColor" xml:space="preserve">
+    <value>主題顏色</value>
+  </data>
+  <data name="ThemeColorHint" xml:space="preserve">
+    <value>選擇您習慣使用的主題色</value>
+  </data>
+  <data name="TrayStatus" xml:space="preserve">
+    <value>托盤圖標</value>
+  </data>
+  <data name="TrayStatusHint" xml:space="preserve">
+    <value>啟用錄制中提示狀態的托盤圖標</value>
+  </data>
+  <data name="RecordSettings" xml:space="preserve">
+    <value>錄製設定</value>
+  </data>
+  <data name="LiveNotificationToSystem" xml:space="preserve">
+    <value>通過 Windows 系統通知</value>
+  </data>
+  <data name="LiveNotificationToPlayMusic" xml:space="preserve">
+    <value>通過播放音樂通知</value>
+  </data>
+  <data name="LiveNotificationToPlayMusicPath" xml:space="preserve">
+    <value>使用內置音樂或指定音樂文件路徑</value>
+  </data>
+  <data name="LiveNotificationToMail" xml:space="preserve">
+    <value>通過郵件通知</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>賬號</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="LiveNotificationToGotoLiveRoom" xml:space="preserve">
+    <value>自動進入直播間</value>
+  </data>
+  <data name="LiveNotificationToGotoLiveRoomAndMute" xml:space="preserve">
+    <value>自動系統靜音</value>
+  </data>
+  <data name="RoutineInterval" xml:space="preserve">
+    <value>循環週期</value>
+  </data>
+  <data name="RoutineIntervalHint" xml:space="preserve">
+    <value>檢測開播狀態等動作的循環週期（毫秒）</value>
+  </data>
+  <data name="RecordFormat" xml:space="preserve">
+    <value>錄製格式</value>
+  </data>
+  <data name="RecordFormatHint" xml:space="preserve">
+    <value>為保證錄製穩定源格式僅支持 TS 或稍後自動轉格式</value>
+  </data>
+  <data name="RecordFormatAutoRemove" xml:space="preserve">
+    <value>是否轉換格式後自動刪除原 TS 文件</value>
+  </data>
+  <data name="SaveFolderHint" xml:space="preserve">
+    <value>指定錄製視頻的保存目錄</value>
+  </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>選擇目錄</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>打開目錄</value>
+  </data>
+  <data name="PlayRecordHint" xml:space="preserve">
+    <value>支持播放錄製中的視頻</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>播放器</value>
+  </data>
+  <data name="PlayerInner" xml:space="preserve">
+    <value>內置播放器</value>
+  </data>
+  <data name="PlayerSystem" xml:space="preserve">
+    <value>系統播放器</value>
+  </data>
+  <data name="PlayerInnerHint" xml:space="preserve">
+    <value>啟用內置 FFplay 播放</value>
+  </data>
+  <data name="PlayerSystemHint" xml:space="preserve">
+    <value>啟用您的系統默認播放器</value>
+  </data>
+  <data name="PlayerInnerUseRect" xml:space="preserve">
+    <value>啟用直角窗口模式便於截圖</value>
+  </data>
+  <data name="NetworkSettings" xml:space="preserve">
+    <value>網絡設定</value>
+  </data>
+  <data name="UseProxy" xml:space="preserve">
+    <value>使用代理</value>
+  </data>
+  <data name="UseProxyHint" xml:space="preserve">
+    <value>指定您的網絡代理 URL</value>
+  </data>
+  <data name="ProxyHostAndPort" xml:space="preserve">
+    <value>主機名以及端口號</value>
+  </data>
+  <data name="CheckConnectivity" xml:space="preserve">
+    <value>檢查連接</value>
+  </data>
+  <data name="UseCookie" xml:space="preserve">
+    <value>使用 Cookie</value>
+  </data>
+  <data name="UseCookieHint" xml:space="preserve">
+    <value>錄製抖音必須帶有 Cookie</value>
+  </data>
+  <data name="UseCookieOfDouyin" xml:space="preserve">
+    <value>國區 Cookie</value>
+  </data>
+  <data name="UseCookieEnterHint" xml:space="preserve">
+    <value>留白則使用內置 Cookie</value>
+  </data>
+  <data name="HowToGet" xml:space="preserve">
+    <value>如何獲取？</value>
+  </data>
+  <data name="UseCookieOfOversea" xml:space="preserve">
+    <value>海外 Cookie</value>
+  </data>
+  <data name="UserAgent" xml:space="preserve">
+    <value>UA 標誌</value>
+  </data>
+  <data name="UserAgentHint" xml:space="preserve">
+    <value>您可以使用自定義瀏覽器 UserAgent</value>
+  </data>
+  <data name="UserAgentEnterHint" xml:space="preserve">
+    <value>留白則使用內置 UA 標識</value>
+  </data>
 </root>
