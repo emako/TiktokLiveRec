@@ -20,7 +20,7 @@ internal static class GlobalMonitor
     /// </summary>
     public static ConcurrentDictionary<string, RoomStatus> RoomStatus { get; } = new();
 
-    public static PeriodicWait RoutinePeriodicWait = new(TimeSpan.FromMilliseconds(int.Max(Configurations.RoutineInterval.Get(), 500)));
+    public static PeriodicWait RoutinePeriodicWait = new(TimeSpan.FromMilliseconds(int.Max(Configurations.RoutineInterval.Get(), 500)), TimeSpan.Zero);
 
     public static CancellationTokenSource? TokenSource { get; private set; } = null;
 
