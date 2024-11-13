@@ -7,6 +7,8 @@ namespace TiktokLiveRec;
 
 internal static class Locale
 {
+    public static event EventHandler? CultureChanged;
+
     public static CultureInfo Fallback { get; } = new CultureInfo("en-US");
 
     public static CultureInfo Culture
@@ -33,6 +35,8 @@ internal static class Locale
             = Thread.CurrentThread.CurrentCulture
             = Thread.CurrentThread.CurrentUICulture
             = culture;
+
+        CultureChanged?.Invoke(CultureChanged.Target, EventArgs.Empty);
     }
 }
 

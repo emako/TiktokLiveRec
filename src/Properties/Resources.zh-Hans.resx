@@ -122,13 +122,13 @@
     <value>未找到文件 ffplay 因此无法播放！</value>
   </data>
   <data name="TrayMenuShowMainWindow" xml:space="preserve">
-    <value>显示界面 (&amp;U)</value>
+    <value>显示界面 (&amp;V)</value>
   </data>
   <data name="TrayMenuOpenSettings" xml:space="preserve">
-    <value>打开设置 (&amp;O)</value>
+    <value>打开设置 (&amp;S)</value>
   </data>
   <data name="TrayMenuAutoRun" xml:space="preserve">
-    <value>启动时自动运行 (&amp;S)</value>
+    <value>启动时自动运行 (&amp;A)</value>
   </data>
   <data name="TrayMenuRestart" xml:space="preserve">
     <value>重启 (&amp;R)</value>
@@ -435,5 +435,8 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>抖音录播 - TiktokRec</value>
   </data>
 </root>

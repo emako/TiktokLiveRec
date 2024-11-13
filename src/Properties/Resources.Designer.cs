@@ -907,6 +907,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TiktokRec - Live Streaming Recorder.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System.
         /// </summary>
         public static string TrackingSystem {
@@ -916,7 +925,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto Run (&amp;S).
+        ///   Looks up a localized string similar to Auto Run (&amp;A).
         /// </summary>
         public static string TrayMenuAutoRun {
             get {
@@ -934,7 +943,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings (&amp;O).
+        ///   Looks up a localized string similar to Settings (&amp;S).
         /// </summary>
         public static string TrayMenuOpenSettings {
             get {
@@ -952,7 +961,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show (&amp;U).
+        ///   Looks up a localized string similar to Show (&amp;V).
         /// </summary>
         public static string TrayMenuShowMainWindow {
             get {

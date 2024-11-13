@@ -22,44 +22,6 @@ internal class TrayIconManager
 
     private TrayIconManager()
     {
-        //if (Kernel32.GetConsoleWindow() == 0)
-        //{
-        //    Kernel32.AllocConsole();
-        //}
-
-        //IEnumerable<string> result = SearchFileHelper.SearchFiles(".", "ffmpeg.exe");
-
-        //process = new()
-        //{
-        //    StartInfo = new ProcessStartInfo()
-        //    {
-        //        FileName = result.FirstOrDefault(),
-        //        UseShellExecute = false,
-        //        CreateNoWindow = true,
-        //        RedirectStandardInput = true,
-        //        RedirectStandardOutput = true,
-        //        RedirectStandardError = true,
-        //    },
-        //};
-        //process.ErrorDataReceived += (sender, e) =>
-        //{
-        //    if (e.Data != null)
-        //    {
-        //        Console.WriteLine(e.Data);
-        //    }
-        //};
-        //process.OutputDataReceived += (sender, e) =>
-        //{
-        //    if (e.Data != null)
-        //    {
-        //        Console.WriteLine(e.Data);
-        //    }
-        //};
-        //process.Start();
-        //process.BeginOutputReadLine();
-        //process.BeginErrorReadLine();
-        //Debug.WriteLine($"{process.StartInfo.FileName} PID: {process.Id}");
-
         _icon = new NotifyIcon()
         {
             Text = "TiktokLiveRec",
@@ -121,6 +83,33 @@ internal class TrayIconManager
                 Application.Current.MainWindow.Show();
                 Application.Current.MainWindow.Activate();
                 Interop.RestoreWindow(new WindowInteropHelper(Application.Current.MainWindow).Handle);
+            }
+        };
+
+        Locale.CultureChanged += (_, _) =>
+        {
+            foreach (ToolStripItem item in _icon.ContextMenuStrip.Items)
+            {
+                if (item.Text?.Contains("(&V)") ?? false)
+                {
+                    item.Text = "TrayMenuShowMainWindow".Tr();
+                }
+                else if (item.Text?.Contains("(&S)") ?? false)
+                {
+                    item.Text = "TrayMenuOpenSettings".Tr();
+                }
+                else if (item.Text?.Contains("(&A)") ?? false)
+                {
+                    item.Text = "TrayMenuAutoRun".Tr();
+                }
+                else if (item.Text?.Contains("(&R)") ?? false)
+                {
+                    item.Text = "TrayMenuRestart".Tr();
+                }
+                else if (item.Text?.Contains("(&E)") ?? false)
+                {
+                    item.Text = "TrayMenuExit".Tr();
+                }
             }
         };
     }

@@ -158,7 +158,7 @@
     <value>出錯啦</value>
   </data>
   <data name="TrayMenuShowMainWindow" xml:space="preserve">
-    <value>顯示界面 (&amp;U)</value>
+    <value>顯示界面 (&amp;V)</value>
   </data>
   <data name="SureStopRecord" xml:space="preserve">
     <value>是否停止 {0} 的錄製？</value>
@@ -179,10 +179,10 @@
     <value>重啟 (&amp;R)</value>
   </data>
   <data name="TrayMenuAutoRun" xml:space="preserve">
-    <value>啟動時自動運行 (&amp;S)</value>
+    <value>啟動時自動運行 (&amp;A)</value>
   </data>
   <data name="TrayMenuOpenSettings" xml:space="preserve">
-    <value>打開設置 (&amp;O)</value>
+    <value>打開設置 (&amp;S)</value>
   </data>
   <data name="PlayerErrorOfNoFile" xml:space="preserve">
     <value>沒有可播放的錄製文件</value>
@@ -435,5 +435,8 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>抖音錄播 - TiktokRec</value>
   </data>
 </root>
