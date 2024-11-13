@@ -17,9 +17,6 @@ internal class TrayIconManager
 
     private readonly ToolStripMenuItem? _itemAutoRun = null;
 
-    private Process process = null!;
-    private MemoryStream stream = new();
-
     private TrayIconManager()
     {
         _icon = new NotifyIcon()
@@ -63,7 +60,6 @@ internal class TrayIconManager
         _icon.AddMenu("TrayMenuRestart".Tr(), (_, _) => RuntimeHelper.Restart(forced: true));
         _icon.AddMenu("TrayMenuExit".Tr(), (_, _) =>
         {
-            process?.Kill();
             Application.Current.Shutdown();
         });
 
@@ -119,8 +115,8 @@ internal class TrayIconManager
         return _instance ??= new TrayIconManager();
     }
 
-    public static Process Start()
+    public static void Start()
     {
-        return GetInstance().process;
+        _ = GetInstance();
     }
 }

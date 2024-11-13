@@ -445,4 +445,7 @@
   <data name="EmptyRoomHint" xml:space="preserve">
     <value>ライブルームたちが空です~</value>
   </data>
+  <data name="AddRoomErrorDuplicated" xml:space="preserve">
+    <value>既存なライブルーム {0} です</value>
+  </data>
 </root>

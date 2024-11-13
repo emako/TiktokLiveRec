@@ -30,26 +30,36 @@ public sealed partial class AddRoomContentDialog : ContentDialog
             return;
         }
 
-        try
+        using (LoadingWindow.ShowAsync())
         {
-            ISpiderResult? spider = Spider.GetResult(Url);
-
-            if (string.IsNullOrWhiteSpace(spider?.Nickname))
+            try
             {
-                Toast.Error("GetRoomInfoError".Tr());
-                e.Cancel = true;
-                return;
+                ISpiderResult? spider = Spider.GetResult(Url);
+
+                if (string.IsNullOrWhiteSpace(spider?.Nickname))
+                {
+                    e.Cancel = true;
+                    Toast.Error("GetRoomInfoError".Tr());
+                    return;
+                }
+
+                if (Configurations.Rooms.Get().Any(room => room.RoomUrl == spider.RoomUrl))
+                {
+                    e.Cancel = true;
+                    Toast.Warning("AddRoomErrorDuplicated".Tr(spider.Nickname));
+                    return;
+                }
+
+                NickName = spider.Nickname;
+                RoomUrl = spider.RoomUrl;
+
+                Toast.Success("AddRoomSucc".Tr(NickName));
             }
-
-            NickName = spider.Nickname;
-            RoomUrl = spider.RoomUrl;
-
-            Toast.Success("AddRoomSucc".Tr(NickName));
-        }
-        catch
-        {
-            Toast.Error("ErrorRoomUrl".Tr());
-            e.Cancel = true;
+            catch
+            {
+                e.Cancel = true;
+                Toast.Error("ErrorRoomUrl".Tr());
+            }
         }
     }
 }

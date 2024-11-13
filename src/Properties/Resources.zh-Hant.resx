@@ -442,4 +442,7 @@
   <data name="EmptyRoomHint" xml:space="preserve">
     <value>未添加直播間~</value>
   </data>
+  <data name="AddRoomErrorDuplicated" xml:space="preserve">
+    <value>該直播間 {0} 已添加</value>
+  </data>
 </root>

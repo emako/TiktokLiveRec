@@ -106,6 +106,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The live room {0} has been added.
+        /// </summary>
+        public static string AddRoomErrorDuplicated {
+            get {
+                return ResourceManager.GetString("AddRoomErrorDuplicated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully added {0} live room.
         /// </summary>
         public static string AddRoomSucc {

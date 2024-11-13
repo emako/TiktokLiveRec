@@ -442,4 +442,7 @@
   <data name="EmptyRoomHint" xml:space="preserve">
     <value>No live room added~</value>
   </data>
+  <data name="AddRoomErrorDuplicated" xml:space="preserve">
+    <value>The live room {0} has been added</value>
+  </data>
 </root>
