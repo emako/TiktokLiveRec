@@ -51,6 +51,24 @@
                     </Button>
                 </ui:StackPanel>
             </ui:Grid>
+            <ui:Grid Grid.Row="1" Margin="0,8,0,0">
+                <ui:Grid.Resources>
+                    <c:ValueConverterGroup x:Key="NotZeroIntToToVisibilityConverter">
+                        <c:IntToBoolConverter TrueValue="0" />
+                        <c:BoolToVisibilityConverter />
+                    </c:ValueConverterGroup>
+                </ui:Grid.Resources>
+                <ui:StackPanel HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Opacity="0.8"
+                               Spacing="8"
+                               Visibility="{Binding RoomStatuses.Count, Converter={StaticResource NotZeroIntToToVisibilityConverter}}">
+                    <ui:BitmapIcon Width="40"
+                                   Height="40"
+                                   UriSource="pack://application:,,,/Assets/Empty.png" />
+                    <TextBlock Text="{I18N EmptyRoomHint}" />
+                </ui:StackPanel>
+            </ui:Grid>
             <DataGrid Grid.Row="1"
                       Margin="0,8,0,0"
                       AutoGenerateColumns="False"

@@ -192,22 +192,32 @@ public partial class MainViewModel : ReactiveObject
             return;
         }
 
-        if (GlobalMonitor.RoomStatus.TryGetValue(SelectedItem.RoomUrl, out RoomStatus? roomStatus))
-        {
-            MessageBoxResult result = await MessageBox.QuestionAsync("SureRemoveRoom".Tr(roomStatus.NickName));
+        MessageBoxResult result = await MessageBox.QuestionAsync("SureRemoveRoom".Tr(SelectedItem.NickName));
 
-            if (result == MessageBoxResult.Yes)
+        if (result == MessageBoxResult.Yes)
+        {
+            // Stop and remove from Global status
+            if (GlobalMonitor.RoomStatus.TryGetValue(SelectedItem.RoomUrl, out RoomStatus? roomStatus))
             {
                 roomStatus.Recorder.Stop();
-
                 _ = GlobalMonitor.RoomStatus.TryRemove(SelectedItem.RoomUrl, out _);
-                RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == roomStatus.RoomUrl).FirstOrDefault();
-                if (roomStatusReactive != null)
-                {
-                    RoomStatuses.Remove(roomStatusReactive);
-                }
-                Toast.Success("SuccOp".Tr());
             }
+
+            // Remove from Reactive UI
+            RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == roomStatus.RoomUrl).FirstOrDefault();
+            if (roomStatusReactive != null)
+            {
+                RoomStatuses.Remove(roomStatusReactive);
+            }
+
+            // Remove from Configuration
+            List<Room> rooms = [.. Configurations.Rooms.Get()];
+
+            rooms.Remove(rooms.Where(room => room.RoomUrl == SelectedItem.RoomUrl).FirstOrDefault()!);
+            Configurations.Rooms.Set([.. rooms]);
+            ConfigurationManager.Save();
+
+            Toast.Success("SuccOp".Tr());
         }
     }
 
@@ -246,6 +256,10 @@ public partial class MainViewModel : ReactiveObject
             {
                 Toast.Warning("NoRecordTask".Tr());
             }
+        }
+        else
+        {
+            Toast.Warning("NoRecordTask".Tr());
         }
     }
 

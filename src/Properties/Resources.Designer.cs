@@ -178,6 +178,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No live room added~.
+        /// </summary>
+        public static string EmptyRoomHint {
+            get {
+                return ResourceManager.GetString("EmptyRoomHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Recording.
         /// </summary>
         public static string EnableRecord {
