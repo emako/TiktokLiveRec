@@ -79,6 +79,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Account {
+            get {
+                return ResourceManager.GetString("Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Add {
@@ -93,6 +102,24 @@ namespace TiktokLiveRec.Properties {
         public static string AddRoom {
             get {
                 return ResourceManager.GetString("AddRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AddRoomSucc {
+            get {
+                return ResourceManager.GetString("AddRoomSucc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AppearanceSettings {
+            get {
+                return ResourceManager.GetString("AppearanceSettings", resourceCulture);
             }
         }
         
@@ -117,9 +144,72 @@ namespace TiktokLiveRec.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string ButtonOfGoto {
+            get {
+                return ResourceManager.GetString("ButtonOfGoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ButtonOfPlay {
+            get {
+                return ResourceManager.GetString("ButtonOfPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ButtonOfSettings {
+            get {
+                return ResourceManager.GetString("ButtonOfSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string CheckConnectivity {
+            get {
+                return ResourceManager.GetString("CheckConnectivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EnableRecord {
+            get {
+                return ResourceManager.GetString("EnableRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EnableRecordHint {
+            get {
+                return ResourceManager.GetString("EnableRecordHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string EnterRoomUrl {
             get {
                 return ResourceManager.GetString("EnterRoomUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ErrorRoomUrl {
+            get {
+                return ResourceManager.GetString("ErrorRoomUrl", resourceCulture);
             }
         }
         
@@ -133,11 +223,29 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string GetRoomInfoError {
+            get {
+                return ResourceManager.GetString("GetRoomInfoError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Goto Live Room.
         /// </summary>
         public static string GotoLiveRoom {
             get {
                 return ResourceManager.GetString("GotoLiveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HowToGet {
+            get {
+                return ResourceManager.GetString("HowToGet", resourceCulture);
             }
         }
         
@@ -151,11 +259,92 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageHint {
+            get {
+                return ResourceManager.GetString("LanguageHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Live Notification.
         /// </summary>
         public static string LiveNotification {
             get {
                 return ResourceManager.GetString("LiveNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LiveNotificationHint {
+            get {
+                return ResourceManager.GetString("LiveNotificationHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LiveNotificationToGotoLiveRoom {
+            get {
+                return ResourceManager.GetString("LiveNotificationToGotoLiveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LiveNotificationToGotoLiveRoomAndMute {
+            get {
+                return ResourceManager.GetString("LiveNotificationToGotoLiveRoomAndMute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LiveNotificationToMail {
+            get {
+                return ResourceManager.GetString("LiveNotificationToMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LiveNotificationToPlayMusic {
+            get {
+                return ResourceManager.GetString("LiveNotificationToPlayMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LiveNotificationToPlayMusicPath {
+            get {
+                return ResourceManager.GetString("LiveNotificationToPlayMusicPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LiveNotificationToSystem {
+            get {
+                return ResourceManager.GetString("LiveNotificationToSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LiveRoom {
+            get {
+                return ResourceManager.GetString("LiveRoom", resourceCulture);
             }
         }
         
@@ -171,9 +360,54 @@ namespace TiktokLiveRec.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string NetworkSettings {
+            get {
+                return ResourceManager.GetString("NetworkSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string NoRecordTask {
             get {
                 return ResourceManager.GetString("NoRecordTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string OpenFolder {
+            get {
+                return ResourceManager.GetString("OpenFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Opration {
+            get {
+                return ResourceManager.GetString("Opration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Player {
+            get {
+                return ResourceManager.GetString("Player", resourceCulture);
             }
         }
         
@@ -192,6 +426,69 @@ namespace TiktokLiveRec.Properties {
         public static string PlayerErrorOfNoFile {
             get {
                 return ResourceManager.GetString("PlayerErrorOfNoFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayerInner {
+            get {
+                return ResourceManager.GetString("PlayerInner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayerInnerHint {
+            get {
+                return ResourceManager.GetString("PlayerInnerHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayerInnerUseRect {
+            get {
+                return ResourceManager.GetString("PlayerInnerUseRect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayerSystem {
+            get {
+                return ResourceManager.GetString("PlayerSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayerSystemHint {
+            get {
+                return ResourceManager.GetString("PlayerSystemHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayRecord {
+            get {
+                return ResourceManager.GetString("PlayRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayRecordHint {
+            get {
+                return ResourceManager.GetString("PlayRecordHint", resourceCulture);
             }
         }
         
@@ -261,9 +558,72 @@ namespace TiktokLiveRec.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string ProxyHostAndPort {
+            get {
+                return ResourceManager.GetString("ProxyHostAndPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string ProxySuccOfStatusCode {
             get {
                 return ResourceManager.GetString("ProxySuccOfStatusCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordFormat {
+            get {
+                return ResourceManager.GetString("RecordFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordFormatAutoRemove {
+            get {
+                return ResourceManager.GetString("RecordFormatAutoRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordFormatHint {
+            get {
+                return ResourceManager.GetString("RecordFormatHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordLog {
+            get {
+                return ResourceManager.GetString("RecordLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordSettings {
+            get {
+                return ResourceManager.GetString("RecordSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RecordStatus {
+            get {
+                return ResourceManager.GetString("RecordStatus", resourceCulture);
             }
         }
         
@@ -318,6 +678,114 @@ namespace TiktokLiveRec.Properties {
         public static string RecordStatusOfUnknown {
             get {
                 return ResourceManager.GetString("RecordStatusOfUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RemoveRoom {
+            get {
+                return ResourceManager.GetString("RemoveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RoutineInterval {
+            get {
+                return ResourceManager.GetString("RoutineInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RoutineIntervalHint {
+            get {
+                return ResourceManager.GetString("RoutineIntervalHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RowDownRoom {
+            get {
+                return ResourceManager.GetString("RowDownRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string RowUpRoom {
+            get {
+                return ResourceManager.GetString("RowUpRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SaveFolder {
+            get {
+                return ResourceManager.GetString("SaveFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SaveFolderHint {
+            get {
+                return ResourceManager.GetString("SaveFolderHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SelectFolder {
+            get {
+                return ResourceManager.GetString("SelectFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SettingsFile {
+            get {
+                return ResourceManager.GetString("SettingsFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SingleSettings {
+            get {
+                return ResourceManager.GetString("SingleSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string StopRecord {
+            get {
+                return ResourceManager.GetString("StopRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string StreamStatus {
+            get {
+                return ResourceManager.GetString("StreamStatus", resourceCulture);
             }
         }
         
@@ -396,6 +864,51 @@ namespace TiktokLiveRec.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string ThemeColor {
+            get {
+                return ResourceManager.GetString("ThemeColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ThemeColorHint {
+            get {
+                return ResourceManager.GetString("ThemeColorHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ThemeOfDarkMode {
+            get {
+                return ResourceManager.GetString("ThemeOfDarkMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ThemeOfLightMode {
+            get {
+                return ResourceManager.GetString("ThemeOfLightMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TrackingSystem {
+            get {
+                return ResourceManager.GetString("TrackingSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string TrayMenuAutoRun {
             get {
                 return ResourceManager.GetString("TrayMenuAutoRun", resourceCulture);
@@ -435,6 +948,114 @@ namespace TiktokLiveRec.Properties {
         public static string TrayMenuShowMainWindow {
             get {
                 return ResourceManager.GetString("TrayMenuShowMainWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TrayStatus {
+            get {
+                return ResourceManager.GetString("TrayStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TrayStatusHint {
+            get {
+                return ResourceManager.GetString("TrayStatusHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UseCookie {
+            get {
+                return ResourceManager.GetString("UseCookie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UseCookieEnterHint {
+            get {
+                return ResourceManager.GetString("UseCookieEnterHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UseCookieHint {
+            get {
+                return ResourceManager.GetString("UseCookieHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UseCookieOfDouyin {
+            get {
+                return ResourceManager.GetString("UseCookieOfDouyin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UseCookieOfOversea {
+            get {
+                return ResourceManager.GetString("UseCookieOfOversea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UseProxy {
+            get {
+                return ResourceManager.GetString("UseProxy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UseProxyHint {
+            get {
+                return ResourceManager.GetString("UseProxyHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserAgent {
+            get {
+                return ResourceManager.GetString("UserAgent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserAgentEnterHint {
+            get {
+                return ResourceManager.GetString("UserAgentEnterHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserAgentHint {
+            get {
+                return ResourceManager.GetString("UserAgentHint", resourceCulture);
             }
         }
         

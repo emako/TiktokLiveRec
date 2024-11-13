@@ -25,7 +25,7 @@ public sealed partial class AddRoomContentDialog : ContentDialog
     {
         if (string.IsNullOrWhiteSpace(Url))
         {
-            Toast.Warning("请输入直播间链接");
+            Toast.Warning("EnterRoomUrl".Tr());
             e.Cancel = true;
             return;
         }
@@ -36,7 +36,7 @@ public sealed partial class AddRoomContentDialog : ContentDialog
 
             if (string.IsNullOrWhiteSpace(spider?.Nickname))
             {
-                Toast.Error("获取直播间信息失败");
+                Toast.Error("GetRoomInfoError".Tr());
                 e.Cancel = true;
                 return;
             }
@@ -44,11 +44,11 @@ public sealed partial class AddRoomContentDialog : ContentDialog
             NickName = spider.Nickname;
             RoomUrl = spider.RoomUrl;
 
-            Toast.Success($"成功添加 {NickName} 直播间");
+            Toast.Success("AddRoomSucc".Tr(NickName));
         }
         catch
         {
-            Toast.Error("错误的直播间链接");
+            Toast.Error("ErrorRoomUrl".Tr());
             e.Cancel = true;
         }
     }

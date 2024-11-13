@@ -226,4 +226,211 @@
   <data name="EnterRoomUrl" xml:space="preserve">
     <value></value>
   </data>
+  <data name="GetRoomInfoError" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="AddRoomSucc" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ErrorRoomUrl" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ButtonOfSettings" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SaveFolder" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RowUpRoom" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RowDownRoom" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RemoveRoom" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PlayRecord" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StopRecord" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordLog" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SingleSettings" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LiveNotificationHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="EnableRecord" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="EnableRecordHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LiveRoom" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StreamStatus" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordStatus" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Opration" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ButtonOfPlay" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ButtonOfGoto" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SettingsFile" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="AppearanceSettings" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LanguageHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="TrackingSystem" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ThemeOfDarkMode" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ThemeOfLightMode" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ThemeColor" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ThemeColorHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="TrayStatus" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="TrayStatusHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordSettings" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LiveNotificationToSystem" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LiveNotificationToPlayMusic" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LiveNotificationToPlayMusicPath" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LiveNotificationToMail" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LiveNotificationToGotoLiveRoom" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LiveNotificationToGotoLiveRoomAndMute" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RoutineInterval" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RoutineIntervalHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordFormat" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordFormatHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="RecordFormatAutoRemove" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SaveFolderHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PlayRecordHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PlayerInner" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PlayerSystem" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PlayerInnerHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PlayerSystemHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PlayerInnerUseRect" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="NetworkSettings" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UseProxy" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UseProxyHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ProxyHostAndPort" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="CheckConnectivity" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UseCookie" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UseCookieHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UseCookieOfDouyin" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UseCookieEnterHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="HowToGet" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UseCookieOfOversea" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UserAgent" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UserAgentHint" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UserAgentEnterHint" xml:space="preserve">
+    <value></value>
+  </data>
 </root>
