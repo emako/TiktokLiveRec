@@ -139,19 +139,3 @@ public record RecorderStartInfo
 
     public string HlsUrl { get; set; } = string.Empty;
 }
-
-file static class Extension
-{
-    public static List<string> AddIf(this List<string> self, bool condition, params string[] items)
-    {
-        if (condition)
-        {
-            foreach (string item in items)
-            {
-                self.Add(item);
-            }
-        }
-
-        return self;
-    }
-}
