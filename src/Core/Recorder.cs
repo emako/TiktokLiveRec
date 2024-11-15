@@ -77,8 +77,7 @@ public sealed class Recorder
                     "-correct_ts_overflow", "1",
                     "-user_agent", userAgent,
                 }
-                .AddIf(isUseProxy, "-http_proxy")
-                .AddIf(isUseProxy, httpProxy)
+                .AddIf(isUseProxy, "-http_proxy", httpProxy)
                 .ToArguments();
                 TokenSource = tokenSource ?? new CancellationTokenSource();
 
@@ -143,11 +142,14 @@ public record RecorderStartInfo
 
 file static class Extension
 {
-    public static List<string> AddIf(this List<string> self, bool condition, string item)
+    public static List<string> AddIf(this List<string> self, bool condition, params string[] items)
     {
         if (condition)
         {
-            self.Add(item);
+            foreach (string item in items)
+            {
+                self.Add(item);
+            }
         }
 
         return self;
