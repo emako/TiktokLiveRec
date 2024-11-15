@@ -27,14 +27,14 @@ public sealed class Player
 
         if (player.Equals("System", StringComparison.OrdinalIgnoreCase))
         {
-            playerPath = "cmd";
+            playerPath = "cmd"; // Windows Only
             playerArgs = $"/c start \"{mediaPath}\"";
         }
         else
         {
             isFFplay = true;
 
-            playerPath = SearchFileHelper.SearchFiles(".", "ffplay.exe").FirstOrDefault();
+            playerPath = SearchFileHelper.SearchFiles(".", "ffplay[/.exe]").FirstOrDefault();
 
             if (isSeekable)
             {

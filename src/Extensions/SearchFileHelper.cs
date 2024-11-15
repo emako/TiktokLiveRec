@@ -1,30 +1,23 @@
 ﻿using System.IO;
+using System.Text.RegularExpressions;
 
 namespace TiktokLiveRec.Extensions;
 
 internal static class SearchFileHelper
 {
-    public static IEnumerable<string> SearchFiles(string directory, string fileName)
+    public static IEnumerable<string> SearchFiles(string directory, string regexPattern, bool searchSubdirectories = true)
     {
-        List<string> foundFiles = [];
-
         try
         {
-            foreach (var file in Directory.GetFiles(directory, fileName))
-            {
-                foundFiles.Add(Path.GetFullPath(file));
-            }
-
-            foreach (var subDirectory in Directory.GetDirectories(directory))
-            {
-                foundFiles.AddRange(SearchFiles(subDirectory, fileName));
-            }
+            string[] files = Directory.GetFiles(directory, "*",
+                searchSubdirectories ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
+            Regex regex = new(regexPattern, RegexOptions.IgnoreCase);
+            return files.Where(file => regex.IsMatch(Path.GetFileName(file)));
         }
         catch (UnauthorizedAccessException e)
         {
             Console.WriteLine($"Unauthorized: {directory}, Detail: {e.Message}");
+            return [];
         }
-
-        return foundFiles;
     }
 }

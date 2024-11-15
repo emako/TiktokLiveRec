@@ -33,7 +33,7 @@ public sealed class Recorder
         {
             try
             {
-                string? recorderPath = SearchFileHelper.SearchFiles(".", "ffmpeg.exe").FirstOrDefault();
+                string? recorderPath = SearchFileHelper.SearchFiles(".", "ffmpeg[\\.exe]").FirstOrDefault();
 
                 if (recorderPath == null)
                 {

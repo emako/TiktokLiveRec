@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Interop;
 
 namespace TiktokLiveRec.Extensions;
@@ -59,7 +60,7 @@ internal static class RuntimeHelper
             {
                 StartInfo = new ProcessStartInfo()
                 {
-                    FileName = fileName ?? Path.Combine(dir ?? AppDomain.CurrentDomain.BaseDirectory, AppDomain.CurrentDomain.FriendlyName + ".exe"),
+                    FileName = fileName ?? GetExecutablePath(),
                     WorkingDirectory = dir ?? Environment.CurrentDirectory,
                     UseShellExecute = true,
                 },
@@ -75,5 +76,17 @@ internal static class RuntimeHelper
             Process.GetCurrentProcess().Kill();
         }
         Environment.Exit(exitCode ?? 'r' + 'e' + 's' + 't' + 'a' + 'r' + 't');
+
+        static string GetExecutablePath()
+        {
+            string fileName = AppDomain.CurrentDomain.FriendlyName;
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                fileName += ".exe";
+            }
+
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+        }
     }
 }
