@@ -27,7 +27,7 @@
                     </i:Interaction.Behaviors>
                     <TextBlock Margin="4,0,0,4"
                                FontSize="14"
-                               Foreground="#87898B"
+                               Foreground="{DynamicResource SystemAccentColorPrimaryBrush}"
                                Text="{I18N AppearanceSettings}" />
                     <ui:Card>
                         <ui:Grid MinHeight="35" ColumnDefinitions="Auto,*,Auto">
@@ -44,7 +44,7 @@
                                 <TextBlock Grid.Row="0" Text="{I18N Language}" />
                                 <TextBlock Grid.Row="1"
                                            FontSize="11"
-                                           Foreground="#D0D0D0"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                            Text="{I18N LanguageHint}" />
                             </ui:Grid>
                             <ComboBox Grid.Column="2"
@@ -74,7 +74,7 @@
                                 <TextBlock Grid.Row="0" Text="{I18N ThemeColor}" />
                                 <TextBlock Grid.Row="1"
                                            FontSize="11"
-                                           Foreground="#D0D0D0"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                            Text="{I18N ThemeColorHint}" />
                             </ui:Grid>
                             <ComboBox Grid.Column="2"
@@ -102,7 +102,7 @@
                                 <TextBlock Grid.Row="0" Text="{I18N TrayStatus}" />
                                 <TextBlock Grid.Row="1"
                                            FontSize="11"
-                                           Foreground="#D0D0D0"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                            Text="{I18N TrayStatusHint}" />
                             </ui:Grid>
                             <ui:ToggleSwitch Grid.Column="2"
@@ -113,7 +113,7 @@
                     </ui:Card>
                     <TextBlock Margin="4,0,0,4"
                                FontSize="14"
-                               Foreground="#87898B"
+                               Foreground="{DynamicResource SystemAccentColorPrimaryBrush}"
                                Text="{I18N RecordSettings}" />
                     <ui:CardExpander>
                         <ui:CardExpander.Header>
@@ -131,7 +131,7 @@
                                     <TextBlock Grid.Row="0" Text="{I18N LiveNotification}" />
                                     <TextBlock Grid.Row="1"
                                                FontSize="11"
-                                               Foreground="#D0D0D0"
+                                               Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                                Text="{I18N LiveNotificationHint}" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
@@ -199,7 +199,7 @@
                                 <TextBlock Grid.Row="0" Text="{I18N EnableRecord}" />
                                 <TextBlock Grid.Row="1"
                                            FontSize="11"
-                                           Foreground="#D0D0D0"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                            Text="{I18N EnableRecordHint}" />
                             </ui:Grid>
                             <ui:ToggleSwitch Grid.Column="2"
@@ -222,7 +222,7 @@
                                 <TextBlock Grid.Row="0" Text="{I18N RoutineInterval}" />
                                 <TextBlock Grid.Row="1"
                                            FontSize="11"
-                                           Foreground="#D0D0D0"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                            Text="{I18N RoutineIntervalHint}" />
                             </ui:Grid>
                             <ui:NumberBox Grid.Column="2"
@@ -249,7 +249,7 @@
                                     <TextBlock Grid.Row="0" Text="{I18N RecordFormat}" />
                                     <TextBlock Grid.Row="1"
                                                FontSize="11"
-                                               Foreground="#D0D0D0"
+                                               Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                                Text="{I18N RecordFormatHint}" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
@@ -285,7 +285,7 @@
                                     <TextBlock Grid.Row="0" Text="{I18N SaveFolder}" />
                                     <TextBlock Grid.Row="1"
                                                FontSize="11"
-                                               Foreground="#D0D0D0"
+                                               Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                                Text="{I18N SaveFolderHint}" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
@@ -329,7 +329,7 @@
                                     <TextBlock Grid.Row="0" Text="{I18N PlayRecord}" />
                                     <TextBlock Grid.Row="1"
                                                FontSize="11"
-                                               Foreground="#D0D0D0"
+                                               Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                                Text="{I18N PlayRecordHint}" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
@@ -359,7 +359,7 @@
                     </ui:CardExpander>
                     <TextBlock Margin="4,0,0,4"
                                FontSize="14"
-                               Foreground="#87898B"
+                               Foreground="{DynamicResource SystemAccentColorPrimaryBrush}"
                                Text="{I18N NetworkSettings}" />
                     <ui:CardExpander>
                         <ui:CardExpander.Header>
@@ -377,7 +377,7 @@
                                     <TextBlock Grid.Row="0" Text="{I18N UseProxy}" />
                                     <TextBlock Grid.Row="1"
                                                FontSize="11"
-                                               Foreground="#D0D0D0"
+                                               Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                                Text="{I18N UseProxyHint}" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
@@ -415,7 +415,7 @@
                                     <TextBlock Grid.Row="0" Text="{I18N UseCookie}" />
                                     <TextBlock Grid.Row="1"
                                                FontSize="11"
-                                               Foreground="#D0D0D0"
+                                               Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                                Text="{I18N UseCookieHint}" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
@@ -466,7 +466,7 @@
                                     <TextBlock Grid.Row="0" Text="{I18N UserAgent}" />
                                     <TextBlock Grid.Row="1"
                                                FontSize="11"
-                                               Foreground="#D0D0D0"
+                                               Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                                Text="{I18N UserAgentHint}" />
                                 </ui:Grid>
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
