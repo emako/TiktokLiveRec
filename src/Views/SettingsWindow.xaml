@@ -4,6 +4,7 @@
                  xmlns:b="http://schemas.github.com/computedbehaviors/2024/xaml"
                  xmlns:c="http://schemas.github.com/computedconverters/2024/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                  xmlns:local="clr-namespace:TiktokLiveRec.Views"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
@@ -21,6 +22,9 @@
         <ui:Grid Margin="8,42,4,8">
             <ScrollViewer PanningMode="None" VerticalScrollBarVisibility="Visible">
                 <ui:StackPanel Margin="8,0,12,0" Spacing="8">
+                    <i:Interaction.Behaviors>
+                        <b:PanelTransitionsBehavior Type="DownToUp" />
+                    </i:Interaction.Behaviors>
                     <TextBlock Margin="4,0,0,4"
                                FontSize="14"
                                Foreground="#87898B"
