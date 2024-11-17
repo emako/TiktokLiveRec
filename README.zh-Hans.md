@@ -32,8 +32,12 @@ For Others: [.NET Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotne
 怎么添加直播间：
 
 ```bash
-# 直播间链接类似如下：
+# 国内抖音直播间链接类似如下：
 https://live.douyin.com/XXX
+https://www.douyin.com/root/live/XXX
+
+# 海外抖音直播间链接类似如下：
+https://www.tiktok.com/@XXX/live
 ```
 
 ## 支持系统
@@ -44,11 +48,13 @@ https://live.douyin.com/XXX
 
 另外 macOS 估计会是下一个支持的系统。
 
-| 操作系统 | 开发框架          | 状态   |
-| -------- | ----------------- | ------ |
-| Windows  | WPF               | 支持   |
-| macOS    | Avalonia          | 待开发 |
-| Ubuntu   | Avalonia/WPF+Wice | 待开发 |
+| 操作系统 | 开发框架             | 状态   |
+| -------- | -------------------- | ------ |
+| Windows  | WPF                  | 支持   |
+| macOS    | Avalonia             | 待开发 |
+| Ubuntu   | Avalonia 或 WPF+Wice | 待开发 |
+| Android  | Avalonia 或 MAUI     | 待开发 |
+| iOS      | Avalonia 或 MAUI     | 待开发 |
 
 ## 隐私政策
 

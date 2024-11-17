@@ -32,8 +32,12 @@ Support following live site.
 How to add live room:
 
 ```bash
-# Room Url like following:
+# Douyin room URL like following:
 https://live.douyin.com/XXX
+https://www.douyin.com/root/live/XXX
+
+# Tiktok room URL like following:
+https://www.tiktok.com/@XXX/live
 ```
 
 ## Support OS
@@ -44,11 +48,13 @@ Implementing other OS's based on my personal needs or other user reactions.
 
 BTW macOS may will be the next supported OS.
 
-| OS      | Framework         | Status    |
-| ------- | ----------------- | --------- |
-| Windows | WPF               | Available |
-| macOS   | Avalonia          | TBD       |
-| Ubuntu  | Avalonia/WPF+Wice | TBD       |
+| OS      | Framework            | Status    |
+| ------- | -------------------- | --------- |
+| Windows | WPF                  | Available |
+| macOS   | Avalonia             | TBD       |
+| Ubuntu  | Avalonia or WPF+Wice | TBD       |
+| Android | Avalonia or MAUI     | TBD       |
+| iOS     | Avalonia or MAUI     | TBD       |
 
 ## Privacy Policy
 
