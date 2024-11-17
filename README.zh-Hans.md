@@ -55,6 +55,7 @@ https://www.tiktok.com/@XXX/live
 | Ubuntu   | Avalonia 或 WPF+Wice | 待开发 |
 | Android  | Avalonia 或 MAUI     | 待开发 |
 | iOS      | Avalonia 或 MAUI     | 待开发 |
+| tvOS     | 待定                 | 待开发 |
 
 ## 隐私政策
 

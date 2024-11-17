@@ -55,6 +55,7 @@ BTW macOS may will be the next supported OS.
 | Ubuntu  | Avalonia or WPF+Wice | TBD       |
 | Android | Avalonia or MAUI     | TBD       |
 | iOS     | Avalonia or MAUI     | TBD       |
+| tvOS    | TBD                  | TBD       |
 
 ## Privacy Policy
 
