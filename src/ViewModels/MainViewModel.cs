@@ -35,6 +35,14 @@ public partial class MainViewModel : ReactiveObject
     [ObservableProperty]
     private RoomStatusReactive selectedItem = new();
 
+    [ObservableProperty]
+    private bool isRecording = false;
+
+    partial void OnIsRecordingChanged(bool value)
+    {
+        TrayIconManager.GetInstance().UpdateTrayIcon();
+    }
+
     public MainViewModel()
     {
         DispatcherTimer = new(TimeSpan.FromSeconds(3), ReloadRoomStatus);
@@ -70,6 +78,8 @@ public partial class MainViewModel : ReactiveObject
                 roomStatusReactive.HlsUrl = roomStatus.HlsUrl;
             }
         }
+
+        IsRecording = RoomStatuses.Any(roomStatusReactive => roomStatusReactive.RecordStatus == RecordStatus.Recording);
     }
 
     [RelayCommand]
@@ -204,7 +214,7 @@ public partial class MainViewModel : ReactiveObject
             }
 
             // Remove from Reactive UI
-            RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == roomStatus.RoomUrl).FirstOrDefault();
+            RoomStatusReactive? roomStatusReactive = RoomStatuses.Where(room => room.RoomUrl == roomStatus?.RoomUrl).FirstOrDefault();
             if (roomStatusReactive != null)
             {
                 RoomStatuses.Remove(roomStatusReactive);

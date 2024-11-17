@@ -23,5 +23,9 @@ public partial class MainWindow : FluentWindow
         {
             ThemeManager.Apply(applicationTheme);
         }
+        else
+        {
+            ThemeManager.Apply(ApplicationTheme.Unknown);
+        }
     }
 }

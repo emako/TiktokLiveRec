@@ -107,8 +107,7 @@
                             </ui:Grid>
                             <ui:ToggleSwitch Grid.Column="2"
                                              Margin="0,0,28,0"
-                                             IsChecked="{Binding IsUseStatusTray, Mode=TwoWay}"
-                                             IsEnabled="False" />
+                                             IsChecked="{Binding IsUseStatusTray, Mode=TwoWay}" />
                         </ui:Grid>
                     </ui:Card>
                     <TextBlock Margin="4,0,0,4"

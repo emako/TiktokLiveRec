@@ -1,10 +1,14 @@
-﻿using System.Diagnostics;
-using System.IO;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Interop;
+using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Views;
+using Wpf.Ui.Appearance;
+using Wpf.Ui.Violeta.Appearance;
+using Wpf.Ui.Violeta.Resources;
 using NotifyIcon = NotifyIconEx.NotifyIcon;
 
 namespace TiktokLiveRec;
@@ -22,9 +26,9 @@ internal class TrayIconManager
         _icon = new NotifyIcon()
         {
             Text = "TiktokLiveRec",
-            Icon = Icon.ExtractAssociatedIcon(Process.GetCurrentProcess().MainModule?.FileName!)!,
             Visible = true
         };
+        UpdateTrayIcon();
         _icon.AddMenu($"v{Assembly.GetExecutingAssembly().GetName().Version!.ToString(3)}").Enabled = false;
         _icon.AddMenu("-");
         _icon.AddMenu("TrayMenuShowMainWindow".Tr(), (_, _) =>
@@ -108,6 +112,15 @@ internal class TrayIconManager
                 }
             }
         };
+
+        SystemEvents.UserPreferenceChanged += (_, _) =>
+        {
+            if (string.IsNullOrWhiteSpace(Configurations.Theme.Get()))
+            {
+                ThemeManager.Apply(ApplicationTheme.Unknown);
+            }
+            UpdateTrayIcon();
+        };
     }
 
     public static TrayIconManager GetInstance()
@@ -118,5 +131,35 @@ internal class TrayIconManager
     public static void Start()
     {
         _ = GetInstance();
+    }
+
+    public void UpdateTrayIcon()
+    {
+        _icon.Icon = GetTrayIcon();
+
+        static Icon GetTrayIcon()
+        {
+            try
+            {
+                if (Configurations.IsUseStatusTray.Get())
+                {
+                    string status = GlobalMonitor.RoomStatus.Values.ToArray().Any(roomStatus => roomStatus.RecordStatus == RecordStatus.Recording) ? "Recording" : "Unrecording";
+
+                    SystemThemeManager.UpdateSystemThemeCache();
+                    string theme = SystemThemeManager.GetCachedSystemTheme() switch
+                    {
+                        SystemTheme.Dark or SystemTheme.HCBlack or SystemTheme.Glow or SystemTheme.CapturedMotion => "Dark",
+                        _ => "Light",
+                    };
+
+                    return new Icon(ResourcesProvider.GetStream($"pack://application:,,,/TiktokLiveRec;component/Assets/{status}{theme}.ico"));
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+            return Icon.ExtractAssociatedIcon(Process.GetCurrentProcess().MainModule?.FileName!)!;
+        }
     }
 }

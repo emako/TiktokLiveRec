@@ -1,6 +1,4 @@
-﻿using TiktokLiveRec.Models;
-
-namespace TiktokLiveRec.Core;
+﻿namespace TiktokLiveRec.Core;
 
 public sealed class RoomStatus
 {

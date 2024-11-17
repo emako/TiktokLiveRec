@@ -89,6 +89,7 @@ public partial class SettingsViewModel : ReactiveObject
     {
         Configurations.IsUseStatusTray.Set(value);
         ConfigurationManager.Save();
+        TrayIconManager.GetInstance().UpdateTrayIcon();
     }
 
     [ObservableProperty]
