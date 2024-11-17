@@ -403,7 +403,7 @@ public partial class SettingsViewModel : ReactiveObject
     private void OpenHowToGetCookieOversea()
     {
         // TODO
-        Toast.Warning("Coming soon ...");
+        Toast.Warning("ComingSoon".Tr() + " ...");
     }
 
     [ObservableProperty]

@@ -445,4 +445,13 @@
   <data name="AddRoomErrorDuplicated" xml:space="preserve">
     <value>The live room {0} has been added</value>
   </data>
+  <data name="NotSupportedOnRecording" xml:space="preserve">
+    <value>This feature is not supported in recording mode</value>
+  </data>
+  <data name="SureOnRecording" xml:space="preserve">
+    <value>Recording is in progress. Are you sure you want to continue your operation?</value>
+  </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>Coming soon</value>
+  </data>
 </root>

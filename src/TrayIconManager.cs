@@ -61,10 +61,33 @@ internal class TrayIconManager
                     AutoStartupHelper.CreateAutorunShortcut();
                 }
             }) as ToolStripMenuItem;
-        _icon.AddMenu("TrayMenuRestart".Tr(), (_, _) => RuntimeHelper.Restart(forced: true));
+        _icon.AddMenu("TrayMenuRestart".Tr(), (_, _) =>
+        {
+            if (GlobalMonitor.RoomStatus.Values.ToArray().Any(roomStatus => roomStatus.RecordStatus == RecordStatus.Recording))
+            {
+                if (MessageBox.Question("SureOnRecording".Tr()) == MessageBoxResult.Yes)
+                {
+                    RuntimeHelper.Restart(forced: true);
+                }
+            }
+            else
+            {
+                RuntimeHelper.Restart(forced: true);
+            }
+        });
         _icon.AddMenu("TrayMenuExit".Tr(), (_, _) =>
         {
-            Application.Current.Shutdown();
+            if (GlobalMonitor.RoomStatus.Values.ToArray().Any(roomStatus => roomStatus.RecordStatus == RecordStatus.Recording))
+            {
+                if (MessageBox.Question("SureOnRecording".Tr()) == MessageBoxResult.Yes)
+                {
+                    Application.Current.Shutdown();
+                }
+            }
+            else
+            {
+                Application.Current.Shutdown();
+            }
         });
 
         _icon.ContextMenuStrip.Opened += (_, _) =>

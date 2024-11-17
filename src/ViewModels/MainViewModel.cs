@@ -282,7 +282,7 @@ public partial class MainViewModel : ReactiveObject
         }
 
         // TODO
-        Toast.Warning("Coming soon ...");
+        Toast.Warning("ComingSoon".Tr() + " ...");
     }
 
     [RelayCommand]

@@ -1,4 +1,5 @@
-﻿using TiktokLiveRec.ViewModels;
+﻿using System.ComponentModel;
+using TiktokLiveRec.ViewModels;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 using Wpf.Ui.Violeta.Appearance;
@@ -27,5 +28,12 @@ public partial class MainWindow : FluentWindow
         {
             ThemeManager.Apply(ApplicationTheme.Unknown);
         }
+    }
+
+    protected override void OnClosing(CancelEventArgs e)
+    {
+        base.OnClosing(e);
+        e.Cancel = true;
+        Hide();
     }
 }

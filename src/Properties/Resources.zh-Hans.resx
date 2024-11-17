@@ -445,4 +445,13 @@
   <data name="AddRoomErrorDuplicated" xml:space="preserve">
     <value>该直播间 {0} 已添加</value>
   </data>
+  <data name="NotSupportedOnRecording" xml:space="preserve">
+    <value>此功能在录制模式下不受支持</value>
+  </data>
+  <data name="SureOnRecording" xml:space="preserve">
+    <value>正在录制中，您确定要继续您的操作吗？</value>
+  </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>敬请期待</value>
+  </data>
 </root>

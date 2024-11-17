@@ -187,6 +187,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coming soon.
+        /// </summary>
+        public static string ComingSoon {
+            get {
+                return ResourceManager.GetString("ComingSoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No live room added~.
         /// </summary>
         public static string EmptyRoomHint {
@@ -390,6 +399,15 @@ namespace TiktokLiveRec.Properties {
         public static string NoRecordTask {
             get {
                 return ResourceManager.GetString("NoRecordTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This feature is not supported in recording mode.
+        /// </summary>
+        public static string NotSupportedOnRecording {
+            get {
+                return ResourceManager.GetString("NotSupportedOnRecording", resourceCulture);
             }
         }
         
@@ -867,6 +885,15 @@ namespace TiktokLiveRec.Properties {
         public static string SuccOp {
             get {
                 return ResourceManager.GetString("SuccOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recording is in progress. Are you sure you want to continue your operation?.
+        /// </summary>
+        public static string SureOnRecording {
+            get {
+                return ResourceManager.GetString("SureOnRecording", resourceCulture);
             }
         }
         

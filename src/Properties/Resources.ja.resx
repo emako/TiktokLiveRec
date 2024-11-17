@@ -448,4 +448,13 @@
   <data name="AddRoomErrorDuplicated" xml:space="preserve">
     <value>既存なライブルーム {0} です</value>
   </data>
+  <data name="NotSupportedOnRecording" xml:space="preserve">
+    <value>この機能は録画中ではサポートされていません</value>
+  </data>
+  <data name="SureOnRecording" xml:space="preserve">
+    <value>録画中です。操作を続行してもよろしいですか？</value>
+  </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>乞うご期待</value>
+  </data>
 </root>
