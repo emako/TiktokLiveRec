@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Windows;
+using TiktokLiveRec.Core;
 using TiktokLiveRec.ViewModels;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
@@ -33,7 +35,16 @@ public partial class MainWindow : FluentWindow
     protected override void OnClosing(CancelEventArgs e)
     {
         base.OnClosing(e);
-        e.Cancel = true;
-        Hide();
+
+        if (!TrayIconManager.GetInstance().IsShutdownTriggered)
+        {
+            e.Cancel = true;
+            Hide();
+
+            if (!Configurations.IsOffRemindCloseToTray.Get())
+            {
+                Notifier.AddNoticeWithButton("Title".Tr(), "CloseToTrayHint".Tr(), "ButtonOfOffRemind".Tr(), args: [("OffRemindTheCloseToTrayHint", bool.TrueString)]);
+            }
+        }
     }
 }

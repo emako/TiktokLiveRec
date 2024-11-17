@@ -21,6 +21,8 @@ internal class TrayIconManager
 
     private readonly ToolStripMenuItem? _itemAutoRun = null;
 
+    public bool IsShutdownTriggered { get; private set; } = false;
+
     private TrayIconManager()
     {
         _icon = new NotifyIcon()
@@ -81,11 +83,13 @@ internal class TrayIconManager
             {
                 if (MessageBox.Question("SureOnRecording".Tr()) == MessageBoxResult.Yes)
                 {
+                    IsShutdownTriggered = true;
                     Application.Current.Shutdown();
                 }
             }
             else
             {
+                IsShutdownTriggered = true;
                 Application.Current.Shutdown();
             }
         });

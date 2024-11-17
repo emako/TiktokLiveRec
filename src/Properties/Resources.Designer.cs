@@ -160,6 +160,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don’t show again.
+        /// </summary>
+        public static string ButtonOfOffRemind {
+            get {
+                return ResourceManager.GetString("ButtonOfOffRemind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Play.
         /// </summary>
         public static string ButtonOfPlay {
@@ -183,6 +192,15 @@ namespace TiktokLiveRec.Properties {
         public static string CheckConnectivity {
             get {
                 return ResourceManager.GetString("CheckConnectivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running in the background.
+        /// </summary>
+        public static string CloseToTrayHint {
+            get {
+                return ResourceManager.GetString("CloseToTrayHint", resourceCulture);
             }
         }
         

@@ -454,4 +454,10 @@
   <data name="ComingSoon" xml:space="preserve">
     <value>敬請期待</value>
   </data>
+  <data name="CloseToTrayHint" xml:space="preserve">
+    <value>已進入後台運行</value>
+  </data>
+  <data name="ButtonOfOffRemind" xml:space="preserve">
+    <value>不再提示</value>
+  </data>
 </root>

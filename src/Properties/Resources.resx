@@ -454,4 +454,10 @@
   <data name="ComingSoon" xml:space="preserve">
     <value>Coming soon</value>
   </data>
+  <data name="CloseToTrayHint" xml:space="preserve">
+    <value>Running in the background</value>
+  </data>
+  <data name="ButtonOfOffRemind" xml:space="preserve">
+    <value>Don’t show again</value>
+  </data>
 </root>

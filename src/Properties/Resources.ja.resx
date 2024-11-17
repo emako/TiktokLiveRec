@@ -457,4 +457,10 @@
   <data name="ComingSoon" xml:space="preserve">
     <value>乞うご期待</value>
   </data>
+  <data name="CloseToTrayHint" xml:space="preserve">
+    <value>バックグラウンドで実行中です</value>
+  </data>
+  <data name="ButtonOfOffRemind" xml:space="preserve">
+    <value>再表示しない</value>
+  </data>
 </root>

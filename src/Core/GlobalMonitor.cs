@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
+using Fischless.Configuration;
 using MediaInfoLib;
 using System.Collections.Concurrent;
 using System.Collections.Specialized;
@@ -44,6 +45,18 @@ internal static class GlobalMonitor
                     try
                     {
                         await Launcher.LaunchUriAsync(new Uri(parsedArgs["RoomUrl"]!));
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e);
+                    }
+                }
+                else if (parsedArgs["OffRemindTheCloseToTrayHint"] != null)
+                {
+                    try
+                    {
+                        Configurations.IsOffRemindCloseToTray.Set(true);
+                        ConfigurationManager.Save();
                     }
                     catch (Exception e)
                     {

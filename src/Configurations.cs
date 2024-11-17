@@ -8,6 +8,7 @@ public static class Configurations
 {
     public static ConfigurationDefinition<string> Language { get; } = new(nameof(Language), string.Empty);
     public static ConfigurationDefinition<string> Theme { get; } = new(nameof(Theme), string.Empty);
+    public static ConfigurationDefinition<bool> IsOffRemindCloseToTray { get; } = new(nameof(IsOffRemindCloseToTray), false);
     public static ConfigurationDefinition<Room[]> Rooms { get; } = new(nameof(Rooms), []);
     public static ConfigurationDefinition<bool> IsUseStatusTray { get; } = new(nameof(IsUseStatusTray), true);
     public static ConfigurationDefinition<int> RoutineInterval { get; } = new(nameof(RoutineInterval), 30000);
