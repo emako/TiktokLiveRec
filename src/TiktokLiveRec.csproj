@@ -19,6 +19,7 @@
 
 	<ItemGroup>
 		<Resource Include="Assets\*" />
+		<Content Remove="$(NuGetPackageRoot)lottiesharp\2.4.0\contentFiles\any\net8.0-windows7.0\lottie_sharp.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
