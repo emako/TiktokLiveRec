@@ -53,6 +53,12 @@ public partial class RoomStatusReactive : ReactiveObject
         _ => "RecordStatusOfUnknown".Tr(),
     };
 
+    public void Refresh()
+    {
+        OnPropertyChanged(nameof(StreamStatusText));
+        OnPropertyChanged(nameof(RecordStatusText));
+    }
+
     [RelayCommand]
     private async Task PlayRecordAsync()
     {

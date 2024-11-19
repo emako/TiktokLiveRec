@@ -60,6 +60,14 @@ public partial class MainViewModel : ReactiveObject
             ReloadRoomStatus();
         });
 
+        Locale.CultureChanged += (_, _) =>
+        {
+            foreach (RoomStatusReactive roomStatusReactive in RoomStatuses)
+            {
+                roomStatusReactive.Refresh();
+            }
+        };
+
         GlobalMonitor.Start();
         ChildProcessTracerPeriodicTimer.Default.Start();
         DispatcherTimer.Start();
