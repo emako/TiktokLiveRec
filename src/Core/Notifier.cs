@@ -4,7 +4,6 @@ using NAudio.Wave;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
-using Windows.UI.Notifications;
 
 namespace TiktokLiveRec.Core;
 
@@ -33,7 +32,7 @@ internal static class Notifier
             .Show();
     }
 
-    public static void AddNoticeWithButton(string header, string title, string button, (string, string)[] args, ToastDuration duration = ToastDuration.Short)
+    public static void AddNoticeWithButton(string header, string title, ToastContentButtonOption[] buttons, ToastDuration duration = ToastDuration.Short)
     {
         if (Environment.OSVersion.Version.Major < 10)
         {
@@ -43,12 +42,7 @@ internal static class Notifier
         new ToastContentBuilder()
             .AddHeader("AddNotice", header, "AddNotice")
             .AddText(title)
-            .AddButton(
-                new ToastButton()
-                    .SetContent(button)
-                    .AddArguments(args)
-                    .SetBackgroundActivation()
-            )
+            .AddButtons(buttons)
             .SetToastDuration(duration)
             .Show();
     }
@@ -117,6 +111,15 @@ internal sealed class ToastNotificationActivatedMessage(ToastNotificationActivat
     public ToastNotificationActivatedEventArgsCompat EventArgs { get; } = e;
 }
 
+public sealed class ToastContentButtonOption
+{
+    public string Content { get; set; } = string.Empty;
+
+    public (string key, string value)[] Arguments { get; set; } = [];
+
+    public ToastActivationType ActivationType { get; set; } = ToastActivationType.Background;
+}
+
 file static class ToastContentBuilderExtensions
 {
     public static ToastContentBuilder AddAttributionTextIf(this ToastContentBuilder builder, bool condition, string text)
@@ -130,13 +133,27 @@ file static class ToastContentBuilderExtensions
             return builder;
         }
     }
+
+    public static ToastContentBuilder AddButtons(this ToastContentBuilder builder, params ToastContentButtonOption[] buttonOptions)
+    {
+        foreach (ToastContentButtonOption buttonOption in buttonOptions)
+        {
+            ToastButton button = new ToastButton()
+                .SetContent(buttonOption.Content)
+                .AddArguments(buttonOption.Arguments);
+
+            button.ActivationType = buttonOption.ActivationType;
+            builder.AddButton(button);
+        }
+        return builder;
+    }
 }
 
 file static class ToastButtonExtensions
 {
     public static ToastButton AddArguments(this ToastButton toastButton, (string, string)[] args)
     {
-        foreach (var arg in args)
+        foreach ((string, string) arg in args)
         {
             toastButton.AddArgument(arg.Item1, arg.Item2);
         }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Messaging;
 using Fischless.Configuration;
 using MediaInfoLib;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System.Collections.Concurrent;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -201,7 +202,19 @@ internal static class GlobalMonitor
     {
         if (Configurations.IsToNotifyWithSystem.Get())
         {
-            Notifier.AddNoticeWithButton("LiveNotification".Tr(), room.NickName, "GotoLiveRoom".Tr(), [("RoomUrl", room.RoomUrl)]);
+            Notifier.AddNoticeWithButton("LiveNotification".Tr(), room.NickName, [
+                new ToastContentButtonOption()
+                    {
+                        Content = "GotoLiveRoom".Tr(),
+                        Arguments = [("RoomUrl", room.RoomUrl)],
+                        ActivationType = ToastActivationType.Background,
+                    },
+                    new ToastContentButtonOption()
+                    {
+                        Content = "ButtonOfClose".Tr(),
+                        ActivationType = ToastActivationType.Foreground,
+                    },
+                ]);
         }
 
         if (Configurations.IsToNotifyWithMusic.Get())

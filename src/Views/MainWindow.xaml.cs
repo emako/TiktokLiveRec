@@ -1,5 +1,5 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System.ComponentModel;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.ViewModels;
 using Wpf.Ui.Appearance;
@@ -43,7 +43,19 @@ public partial class MainWindow : FluentWindow
 
             if (!Configurations.IsOffRemindCloseToTray.Get())
             {
-                Notifier.AddNoticeWithButton("Title".Tr(), "CloseToTrayHint".Tr(), "ButtonOfOffRemind".Tr(), args: [("OffRemindTheCloseToTrayHint", bool.TrueString)]);
+                Notifier.AddNoticeWithButton("Title".Tr(), "CloseToTrayHint".Tr(), [
+                    new ToastContentButtonOption()
+                    {
+                        Content = "ButtonOfOffRemind".Tr(),
+                        Arguments = [("OffRemindTheCloseToTrayHint", bool.TrueString)],
+                        ActivationType = ToastActivationType.Background,
+                    },
+                    new ToastContentButtonOption()
+                    {
+                        Content = "ButtonOfClose".Tr(),
+                        ActivationType = ToastActivationType.Foreground,
+                    },
+                ]);
             }
         }
     }
