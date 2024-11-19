@@ -19,6 +19,10 @@ public sealed class Recorder
 
     public string? Parameters { get; set; } = null;
 
+    public DateTime StartTime { get; private set; } = DateTime.MinValue;
+
+    public DateTime EndTime { get; private set; } = DateTime.MinValue;
+
     public Task Start(RecorderStartInfo startInfo, CancellationTokenSource? tokenSource = null)
     {
         if (RecordStatus == RecordStatus.Recording)
@@ -109,6 +113,8 @@ public sealed class Recorder
                 .ToArguments();
                 TokenSource = tokenSource ?? new CancellationTokenSource();
 
+                StartTime = DateTime.Now;
+
                 await recorderPath
                     .WithArguments(Parameters)
                     .WithStandardErrorPipe(PipeTarget.ToDelegate(OnStandardErrorReceived, Encoding.UTF8))
@@ -120,6 +126,7 @@ public sealed class Recorder
                 Debug.WriteLine(e);
             }
 
+            EndTime = DateTime.Now;
             RecordStatus = RecordStatus.NotRecording;
         }, TaskCreationOptions.LongRunning);
     }

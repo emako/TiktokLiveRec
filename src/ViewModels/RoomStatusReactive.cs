@@ -48,15 +48,48 @@ public partial class RoomStatusReactive : ReactiveObject
         RecordStatus.Initialized => "RecordStatusOfInitialized".Tr(),
         RecordStatus.Disabled => "RecordStatusOfDisabled".Tr(),
         RecordStatus.NotRecording => "RecordStatusOfNotRecording".Tr(),
-        RecordStatus.Recording => "RecordStatusOfRecording".Tr(),
+        RecordStatus.Recording => "RecordStatusOfRecording".Tr() + " " + Duration,
         RecordStatus.Error => "RecordStatusOfError".Tr(),
         _ => "RecordStatusOfUnknown".Tr(),
     };
 
-    public void Refresh()
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(Duration))]
+    public DateTime startTime = DateTime.MinValue;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(Duration))]
+    public DateTime endTime = DateTime.MinValue;
+
+    public string Duration
+    {
+        get
+        {
+            if (StartTime != DateTime.MinValue)
+            {
+                if (EndTime != DateTime.MinValue)
+                {
+                    return (EndTime - StartTime).ToTimeCodeString();
+                }
+                return (DateTime.Now - StartTime).ToTimeCodeString();
+            }
+            return string.Empty;
+        }
+    }
+
+    public void RefreshStatus()
     {
         OnPropertyChanged(nameof(StreamStatusText));
         OnPropertyChanged(nameof(RecordStatusText));
+    }
+
+    public void RefreshDuration()
+    {
+        if (RecordStatus == RecordStatus.Recording)
+        {
+            OnPropertyChanged(nameof(RecordStatusText));
+            OnPropertyChanged(nameof(Duration));
+        }
     }
 
     [RelayCommand]
@@ -83,4 +116,21 @@ public partial class RoomStatusReactive : ReactiveObject
 public sealed class CommandEventArgs(string command) : EventArgs
 {
     public string Command { get; } = command;
+}
+
+file static class TimeSpanExtension
+{
+    public static string ToTimeCodeString(this TimeSpan timeSpan)
+    {
+        timeSpan = new TimeSpan(timeSpan.Days, timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
+
+        if (timeSpan.TotalHours < 1)
+        {
+            return timeSpan.ToString(@"mm\:ss");
+        }
+        else
+        {
+            return timeSpan.ToString(@"h\:mm\:ss");
+        }
+    }
 }

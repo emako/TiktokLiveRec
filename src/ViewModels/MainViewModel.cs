@@ -64,7 +64,7 @@ public partial class MainViewModel : ReactiveObject
         {
             foreach (RoomStatusReactive roomStatusReactive in RoomStatuses)
             {
-                roomStatusReactive.Refresh();
+                roomStatusReactive.RefreshStatus();
             }
         };
 
@@ -84,6 +84,9 @@ public partial class MainViewModel : ReactiveObject
                 roomStatusReactive.StreamStatus = roomStatus.StreamStatus;
                 roomStatusReactive.RecordStatus = roomStatus.RecordStatus;
                 roomStatusReactive.HlsUrl = roomStatus.HlsUrl;
+                roomStatusReactive.StartTime = roomStatus.Recorder.StartTime;
+                roomStatusReactive.EndTime = roomStatus.Recorder.EndTime;
+                roomStatusReactive.RefreshDuration();
             }
         }
 
