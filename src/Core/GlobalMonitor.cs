@@ -110,6 +110,8 @@ internal static class GlobalMonitor
                                     continue;
                                 }
 
+                                StreamStatus prevStreamStatus = roomStatus.StreamStatus;
+
                                 // Update Room Status
                                 roomStatus.HlsUrl = spiderResult.HlsUrl!;
                                 roomStatus.StreamStatus = spiderResult.IsLiveStreaming switch
@@ -122,7 +124,7 @@ internal static class GlobalMonitor
                                 // Start Streaming Recording
                                 if (room.IsToRecord)
                                 {
-                                    if (roomStatus.StreamStatus == StreamStatus.Streaming)
+                                    if (spiderResult.IsLiveStreaming ?? false)
                                     {
                                         _ = roomStatus.Recorder.Start(new RecorderStartInfo()
                                         {
@@ -136,7 +138,7 @@ internal static class GlobalMonitor
                                 if (room.IsToNotify)
                                 {
                                     // Only to notify when first detected
-                                    if (roomStatus.StreamStatus != StreamStatus.Streaming)
+                                    if (prevStreamStatus != StreamStatus.Streaming)
                                     {
                                         if (spiderResult.IsLiveStreaming ?? false)
                                         {
