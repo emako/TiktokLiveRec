@@ -13,6 +13,7 @@
                 <vio:ThemesDictionary />
                 <vio:ControlsDictionary />
             </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="VioletaFluentIcons">pack://application:,,,/TiktokLiveRec;component/Assets/Violeta Fluent Icons.ttf#Violeta Fluent Icons</FontFamily>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <FontFamily x:Key="VioletaFluentIcons">pack://application:,,,/Wpf.Ui.Violeta;component/Resources/Fonts/Violeta Fluent Icons.ttf#Violeta Fluent Icons</FontFamily>
+
+</ResourceDictionary>

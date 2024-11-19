@@ -63,10 +63,10 @@
                                Opacity="0.8"
                                Spacing="8"
                                Visibility="{Binding RoomStatuses.Count, Converter={StaticResource NotZeroIntToToVisibilityConverter}}">
-                    <ui:BitmapIcon Width="40"
-                                   Height="40"
-                                   ShowAsMonochrome="True"
-                                   UriSource="pack://application:,,,/Assets/Empty.png" />
+                    <ui:FontIcon xmlns:ctrl="clr-namespace:TiktokLiveRec.Controls"
+                                 FontFamily="{DynamicResource VioletaFluentIcons}"
+                                 FontSize="40"
+                                 Glyph="{x:Static ctrl:FontSymbols.Empty}" />
                     <TextBlock Text="{I18N EmptyRoomHint}" />
                 </ui:StackPanel>
                 <ui:BitmapIcon Width="100"

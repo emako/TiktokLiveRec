@@ -63,7 +63,7 @@ public sealed class Recorder
 
                 FileName = Path.Combine(saveFolder, $"{startInfo.NickName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.ts");
                 Parameters = new List<string>() {
-                    "-i", $"\"{startInfo.HlsUrl}\"",
+                    "-i", startInfo.HlsUrl,
                     "-c", "copy", FileName,
                     "-y",
                     "-hide_banner",
