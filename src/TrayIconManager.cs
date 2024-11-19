@@ -171,9 +171,7 @@ internal class TrayIconManager
                 if (Configurations.IsUseStatusTray.Get())
                 {
                     string status = GlobalMonitor.RoomStatus.Values.ToArray().Any(roomStatus => roomStatus.RecordStatus == RecordStatus.Recording) ? "Recording" : "Unrecording";
-
-                    SystemThemeManager.UpdateSystemThemeCache();
-                    string theme = SystemThemeManager.GetCachedSystemTheme() switch
+                    string theme = GetTraySystemTheme() switch
                     {
                         SystemTheme.Dark or SystemTheme.HCBlack or SystemTheme.Glow or SystemTheme.CapturedMotion => "Dark",
                         _ => "Light",
@@ -188,5 +186,91 @@ internal class TrayIconManager
             }
             return Icon.ExtractAssociatedIcon(Process.GetCurrentProcess().MainModule?.FileName!)!;
         }
+    }
+
+    /// <summary>
+    /// <seealso cref="SystemThemeManager.GetCachedSystemTheme"/>
+    /// </summary>
+    private static SystemTheme GetTraySystemTheme()
+    {
+        var currentTheme =
+            Registry.GetValue(
+                "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes",
+                "CurrentTheme",
+                "aero.theme"
+            ) as string
+            ?? string.Empty;
+
+        if (!string.IsNullOrEmpty(currentTheme))
+        {
+            currentTheme = currentTheme.ToLower().Trim();
+
+            // This may be changed in the next versions, check the Insider previews
+            if (currentTheme.Contains("basic.theme"))
+            {
+                return SystemTheme.Light;
+            }
+
+            if (currentTheme.Contains("aero.theme"))
+            {
+                return SystemTheme.Light;
+            }
+
+            if (currentTheme.Contains("dark.theme"))
+            {
+                return SystemTheme.Dark;
+            }
+
+            if (currentTheme.Contains("hcblack.theme"))
+            {
+                return SystemTheme.HCBlack;
+            }
+
+            if (currentTheme.Contains("hcwhite.theme"))
+            {
+                return SystemTheme.HCWhite;
+            }
+
+            if (currentTheme.Contains("hc1.theme"))
+            {
+                return SystemTheme.HC1;
+            }
+
+            if (currentTheme.Contains("hc2.theme"))
+            {
+                return SystemTheme.HC2;
+            }
+
+            if (currentTheme.Contains("themea.theme"))
+            {
+                return SystemTheme.Glow;
+            }
+
+            if (currentTheme.Contains("themeb.theme"))
+            {
+                return SystemTheme.CapturedMotion;
+            }
+
+            if (currentTheme.Contains("themec.theme"))
+            {
+                return SystemTheme.Sunrise;
+            }
+
+            if (currentTheme.Contains("themed.theme"))
+            {
+                return SystemTheme.Flow;
+            }
+        }
+
+        /*if (currentTheme.Contains("custom.theme"))
+            return ; custom can be light or dark*/
+        var rawSystemUsesLightTheme =
+            Registry.GetValue(
+                "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+                "SystemUsesLightTheme",
+                1
+            ) ?? 1;
+
+        return rawSystemUsesLightTheme is 0 ? SystemTheme.Dark : SystemTheme.Light;
     }
 }
