@@ -1,4 +1,3 @@
-/src/Assets/*.html linguist-vendored
 /build/*.bat linguist-vendored
 /build/*.cmd linguist-vendored
 /build/*.ps linguist-vendored
