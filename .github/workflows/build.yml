@@ -23,8 +23,8 @@ jobs:
         uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.5
 
       - name: Install dependencies
-        run: cd src\TiktokLiveRec.Windows && dotnet restore TiktokLiveRec.csproj
+        run: cd src\TiktokLiveRec.Windows && dotnet restore TiktokLiveRec.Windows.csproj
 
       - name: Build
-        run: cd src\TiktokLiveRec.Windows && dotnet build TiktokLiveRec.csproj --configuration Release --no-restore
+        run: cd src\TiktokLiveRec.Windows && dotnet build TiktokLiveRec.Windows.csproj --configuration Release --no-restore
 
