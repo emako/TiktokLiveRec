@@ -61,5 +61,51 @@ internal static class LocaleExtension
     }
 }
 
+internal static class CultureInfoExtension
+{
+    public static bool IsUseWordSpace(this CultureInfo culture)
+    {
+        string language = culture.TwoLetterISOLanguageName;
+        return !Array.Exists(["zh", "ja", "ko"], lang => lang == language);
+    }
+
+    public static string WordSpace(this CultureInfo culture)
+    {
+        return culture.IsUseWordSpace() ? " " : string.Empty;
+    }
+
+    public static bool IsUseFullWidth(this CultureInfo culture)
+    {
+        string language = culture.TwoLetterISOLanguageName;
+        return !Array.Exists(["zh", "ja", "ko"], lang => lang == language);
+    }
+
+    public static string SymbolWidth(this string input, CultureInfo culture)
+    {
+        bool isFullWidthCulture = culture.IsUseFullWidth();
+        char[] result = input.ToCharArray();
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            if (isFullWidthCulture)
+            {
+                if (result[i] >= 0x21 && result[i] <= 0x7E)
+                {
+                    result[i] = (char)(result[i] + 0xFEE0);
+                }
+            }
+            else
+            {
+                if (result[i] >= 0xFF01 && result[i] <= 0xFF5E)
+                {
+                    result[i] = (char)(result[i] - 0xFEE0);
+                }
+            }
+        }
+
+        return new string(result);
+    }
+}
+
 [ResourceKeysOf(typeof(Resources))]
 public partial class LangKeys;

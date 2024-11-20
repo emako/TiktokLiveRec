@@ -87,7 +87,7 @@ internal static class Notifier
             using MailMessage mail = new();
             mail.From = new MailAddress(userName);
             mail.To.Add(userName);
-            mail.Subject = $"{nickName}{"LiveNotification".Tr()} - TiktokLiveRec";
+            mail.Subject = $"{nickName}{Locale.Culture.WordSpace()}{"LiveNotification".Tr()} - TiktokLiveRec";
             mail.Body = $"<html><body>{"MailBodyElement".Tr(nickName)} <a href=\"{roomUrl}\">{roomUrl}</a></body></html>";
             mail.IsBodyHtml = true;
 
