@@ -70,15 +70,6 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About Program.
-        /// </summary>
-        public static string AboutProgram {
-            get {
-                return ResourceManager.GetString("AboutProgram", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         public static string Account {

@@ -16,6 +16,7 @@
 		<Platforms>x64</Platforms>
 		<DebugType>embedded</DebugType>
 		<AssemblyName>TiktokLiveRec</AssemblyName>
+		<RootNamespace>TiktokLiveRec</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
