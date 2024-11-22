@@ -457,4 +457,13 @@
   <data name="ButtonOfOffRemind" xml:space="preserve">
     <value>不再提示</value>
   </data>
+  <data name="CreateDesktopShortcut" xml:space="preserve">
+    <value>快捷方式</value>
+  </data>
+  <data name="CreateDesktopShortcutHint" xml:space="preserve">
+    <value>創建桌面快捷方式</value>
+  </data>
+  <data name="ButtonOfCreateNow" xml:space="preserve">
+    <value>立即創建</value>
+  </data>
 </root>

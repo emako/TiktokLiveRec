@@ -457,4 +457,13 @@
   <data name="ButtonOfOffRemind" xml:space="preserve">
     <value>Don’t show again</value>
   </data>
+  <data name="CreateDesktopShortcut" xml:space="preserve">
+    <value>Shortcut</value>
+  </data>
+  <data name="CreateDesktopShortcutHint" xml:space="preserve">
+    <value>Create Desktop Shortcut</value>
+  </data>
+  <data name="ButtonOfCreateNow" xml:space="preserve">
+    <value>Create Now</value>
+  </data>
 </root>

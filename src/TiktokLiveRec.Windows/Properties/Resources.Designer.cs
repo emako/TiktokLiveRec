@@ -142,6 +142,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Now.
+        /// </summary>
+        public static string ButtonOfCreateNow {
+            get {
+                return ResourceManager.GetString("ButtonOfCreateNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Goto.
         /// </summary>
         public static string ButtonOfGoto {
@@ -201,6 +210,24 @@ namespace TiktokLiveRec.Properties {
         public static string ComingSoon {
             get {
                 return ResourceManager.GetString("ComingSoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shortcut.
+        /// </summary>
+        public static string CreateDesktopShortcut {
+            get {
+                return ResourceManager.GetString("CreateDesktopShortcut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Desktop Shortcut.
+        /// </summary>
+        public static string CreateDesktopShortcutHint {
+            get {
+                return ResourceManager.GetString("CreateDesktopShortcutHint", resourceCulture);
             }
         }
         

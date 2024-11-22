@@ -92,6 +92,19 @@ public partial class SettingsViewModel : ReactiveObject
         TrayIconManager.GetInstance().UpdateTrayIcon();
     }
 
+    [RelayCommand]
+    private void CreateDesktopShortcut()
+    {
+        ShortcutHelper.CreateShortcutOnDesktop(
+            shortcutName: "TiktokLiveRec",
+            targetPath: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppDomain.CurrentDomain.FriendlyName),
+            arguments: null!,
+            description: "Title".Tr(),
+            iconLocation: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AppDomain.CurrentDomain.FriendlyName + ".exe"));
+
+        Toast.Success("SuccOp".Tr());
+    }
+
     [ObservableProperty]
     private bool isToNotify = Configurations.IsToNotify.Get();
 

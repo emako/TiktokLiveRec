@@ -460,4 +460,13 @@
   <data name="ButtonOfOffRemind" xml:space="preserve">
     <value>再表示しない</value>
   </data>
+  <data name="CreateDesktopShortcut" xml:space="preserve">
+    <value>ショートカット</value>
+  </data>
+  <data name="CreateDesktopShortcutHint" xml:space="preserve">
+    <value>デスクトップのショートカットを作成</value>
+  </data>
+  <data name="ButtonOfCreateNow" xml:space="preserve">
+    <value>すぐ作成</value>
+  </data>
 </root>
