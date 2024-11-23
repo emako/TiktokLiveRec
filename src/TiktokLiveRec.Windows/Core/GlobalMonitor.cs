@@ -215,17 +215,17 @@ internal static class GlobalMonitor
         {
             Notifier.AddNoticeWithButton("LiveNotification".Tr(), room.NickName, [
                 new ToastContentButtonOption()
-                    {
-                        Content = "GotoLiveRoom".Tr(),
-                        Arguments = [("RoomUrl", room.RoomUrl)],
-                        ActivationType = ToastActivationType.Background,
-                    },
-                    new ToastContentButtonOption()
-                    {
-                        Content = "ButtonOfClose".Tr(),
-                        ActivationType = ToastActivationType.Foreground,
-                    },
-                ]);
+                {
+                    Content = "GotoLiveRoom".Tr(),
+                    Arguments = [("RoomUrl", room.RoomUrl)],
+                    ActivationType = ToastActivationType.Background,
+                },
+                new ToastContentButtonOption()
+                {
+                    Content = "ButtonOfClose".Tr(),
+                    ActivationType = ToastActivationType.Foreground,
+                },
+            ]);
         }
 
         if (Configurations.IsToNotifyWithMusic.Get())

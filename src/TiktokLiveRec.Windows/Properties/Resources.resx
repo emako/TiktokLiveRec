@@ -466,4 +466,28 @@
   <data name="ButtonOfCreateNow" xml:space="preserve">
     <value>Create Now</value>
   </data>
+  <data name="LongRunningSettings" xml:space="preserve">
+    <value>Long Running Settings</value>
+  </data>
+  <data name="KeepAwake" xml:space="preserve">
+    <value>Keep Awake</value>
+  </data>
+  <data name="KeepActiveHint" xml:space="preserve">
+    <value>Keep Windows System Awake</value>
+  </data>
+  <data name="AutoShutdown" xml:space="preserve">
+    <value>Auto Shutdown</value>
+  </data>
+  <data name="AutoShutdownHint" xml:space="preserve">
+    <value>Auto shutdown when unrecording</value>
+  </data>
+  <data name="AutoShutdownTime" xml:space="preserve">
+    <value>Auto Shutdown Time (HH:MM)</value>
+  </data>
+  <data name="ButtonOfCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="AutoShutdownInTime" xml:space="preserve">
+    <value>System will be auto shutdown in 1 minute</value>
+  </data>
 </root>

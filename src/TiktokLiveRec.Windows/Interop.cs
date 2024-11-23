@@ -216,4 +216,13 @@ internal static class Interop
         int result = Kernel32.GetUserDefaultLocaleName(localeName, localeName.Capacity);
         return result > 0 ? localeName.ToString() : string.Empty;
     }
+
+    public static bool ExitWindowsEx(User32.ExitWindowsFlags uFlags)
+    {
+        HPROCESS hProc = Kernel32.GetCurrentProcess();
+        AdvApi32.OpenProcessToken(hProc, AdvApi32.TokenAccess.TOKEN_ADJUST_PRIVILEGES | AdvApi32.TokenAccess.TOKEN_QUERY, out AdvApi32.SafeHTOKEN hToken);
+        AdvApi32.LookupPrivilegeValue(null, "SeShutdownPrivilege", out AdvApi32.LUID luid);
+        AdvApi32.AdjustTokenPrivileges(hToken, false, new AdvApi32.TOKEN_PRIVILEGES(luid, AdvApi32.PrivilegeAttributes.SE_PRIVILEGE_ENABLED), out _);
+        return User32.ExitWindowsEx(uFlags, SystemShutDownReason.SHTDN_REASON_MAJOR_NONE);
+    }
 }

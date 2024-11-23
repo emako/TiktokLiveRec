@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.ViewModels;
+using Vanara.PInvoke;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 using Wpf.Ui.Violeta.Appearance;
@@ -16,6 +17,12 @@ public partial class MainWindow : FluentWindow
     {
         DataContext = ViewModel = new();
         InitializeComponent();
+
+        if (Configurations.IsUseKeepAwake.Get())
+        {
+            // Start keep awake
+            _ = Kernel32.SetThreadExecutionState(Kernel32.EXECUTION_STATE.ES_CONTINUOUS | Kernel32.EXECUTION_STATE.ES_SYSTEM_REQUIRED | Kernel32.EXECUTION_STATE.ES_AWAYMODE_REQUIRED);
+        }
     }
 
     protected override void OnSourceInitialized(EventArgs e)
@@ -56,6 +63,14 @@ public partial class MainWindow : FluentWindow
                         ActivationType = ToastActivationType.Foreground,
                     },
                 ]);
+            }
+        }
+        else
+        {
+            if (Configurations.IsUseKeepAwake.Get())
+            {
+                // Stop keep awake
+                _ = Kernel32.SetThreadExecutionState(Kernel32.EXECUTION_STATE.ES_CONTINUOUS);
             }
         }
     }

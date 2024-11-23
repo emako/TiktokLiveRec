@@ -469,4 +469,28 @@
   <data name="ButtonOfCreateNow" xml:space="preserve">
     <value>すぐ作成</value>
   </data>
+  <data name="LongRunningSettings" xml:space="preserve">
+    <value>放置設定</value>
+  </data>
+  <data name="KeepAwake" xml:space="preserve">
+    <value>スリープ防止</value>
+  </data>
+  <data name="KeepActiveHint" xml:space="preserve">
+    <value>Windows システムがスリープモードに入らないようにする</value>
+  </data>
+  <data name="AutoShutdown" xml:space="preserve">
+    <value>自動シャットダウン</value>
+  </data>
+  <data name="AutoShutdownHint" xml:space="preserve">
+    <value>録画のない状態に自動シャットダウン</value>
+  </data>
+  <data name="AutoShutdownTime" xml:space="preserve">
+    <value>自動シャットダウン時刻（時 : 分）</value>
+  </data>
+  <data name="ButtonOfCancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="AutoShutdownInTime" xml:space="preserve">
+    <value>システムは1分後に自動シャットダウン</value>
+  </data>
 </root>

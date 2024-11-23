@@ -466,4 +466,28 @@
   <data name="ButtonOfCreateNow" xml:space="preserve">
     <value>立即創建</value>
   </data>
+  <data name="LongRunningSettings" xml:space="preserve">
+    <value>挂機設定</value>
+  </data>
+  <data name="KeepAwake" xml:space="preserve">
+    <value>保持喚醒</value>
+  </data>
+  <data name="KeepActiveHint" xml:space="preserve">
+    <value>保持 Windows 系統不進入睡眠</value>
+  </data>
+  <data name="AutoShutdown" xml:space="preserve">
+    <value>自動關機</value>
+  </data>
+  <data name="AutoShutdownHint" xml:space="preserve">
+    <value>沒有錄製狀態時自動關機</value>
+  </data>
+  <data name="AutoShutdownTime" xml:space="preserve">
+    <value>自動關機時間 （時 : 分）</value>
+  </data>
+  <data name="ButtonOfCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="AutoShutdownInTime" xml:space="preserve">
+    <value>系統將會在1分鐘后自動關機</value>
+  </data>
 </root>

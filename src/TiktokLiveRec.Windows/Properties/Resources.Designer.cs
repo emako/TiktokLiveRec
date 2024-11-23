@@ -124,11 +124,56 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto Shutdown.
+        /// </summary>
+        public static string AutoShutdown {
+            get {
+                return ResourceManager.GetString("AutoShutdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto shutdown when unrecording.
+        /// </summary>
+        public static string AutoShutdownHint {
+            get {
+                return ResourceManager.GetString("AutoShutdownHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System will be auto shutdown in 1 minute.
+        /// </summary>
+        public static string AutoShutdownInTime {
+            get {
+                return ResourceManager.GetString("AutoShutdownInTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto Shutdown Time (HH:MM).
+        /// </summary>
+        public static string AutoShutdownTime {
+            get {
+                return ResourceManager.GetString("AutoShutdownTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string ButtonOfAdd {
             get {
                 return ResourceManager.GetString("ButtonOfAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ButtonOfCancel {
+            get {
+                return ResourceManager.GetString("ButtonOfCancel", resourceCulture);
             }
         }
         
@@ -313,6 +358,24 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keep Windows System Awake.
+        /// </summary>
+        public static string KeepActiveHint {
+            get {
+                return ResourceManager.GetString("KeepActiveHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep Awake.
+        /// </summary>
+        public static string KeepAwake {
+            get {
+                return ResourceManager.GetString("KeepAwake", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
@@ -408,6 +471,15 @@ namespace TiktokLiveRec.Properties {
         public static string LiveRoom {
             get {
                 return ResourceManager.GetString("LiveRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Long Running Settings.
+        /// </summary>
+        public static string LongRunningSettings {
+            get {
+                return ResourceManager.GetString("LongRunningSettings", resourceCulture);
             }
         }
         

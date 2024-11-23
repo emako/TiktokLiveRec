@@ -71,6 +71,7 @@
 		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="4.0.4" />
 		<PackageReference Include="Vanara.PInvoke.DwmApi" Version="4.0.4" />
 		<PackageReference Include="Vanara.PInvoke.NtDll" Version="4.0.4" />
+		<PackageReference Include="Vanara.PInvoke.Security" Version="4.0.4" />
 		<PackageReference Include="MediaInfoDLL" Version="24.11.0" />
 		<PackageReference Include="WindowsAPICodePack.Shell.CommonFileDialogs" Version="1.1.5" />
 		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />

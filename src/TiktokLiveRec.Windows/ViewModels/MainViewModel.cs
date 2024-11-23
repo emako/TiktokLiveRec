@@ -1,12 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -16,10 +21,11 @@ using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Threading;
 using TiktokLiveRec.Views;
+using Vanara.PInvoke;
 using Windows.Storage;
 using Windows.System;
 using Wpf.Ui.Violeta.Controls;
-using DataGrid = System.Windows.Controls.DataGrid;
+using Wpf.Ui.Violeta.Threading;
 
 namespace TiktokLiveRec.ViewModels;
 
@@ -36,6 +42,11 @@ public partial class MainViewModel : ReactiveObject
 
     [ObservableProperty]
     private bool isRecording = false;
+
+    [ObservableProperty]
+    private bool isReadyToShutdown = false;
+
+    public CancellationTokenSource? ShutdownCancellationTokenSource { get; private set; } = null;
 
     partial void OnIsRecordingChanged(bool value)
     {
@@ -62,6 +73,21 @@ public partial class MainViewModel : ReactiveObject
             }
         };
 
+        WeakReferenceMessenger.Default.Register<ToastNotificationActivatedMessage>(this, (_, msg) =>
+        {
+            string arguments = msg.EventArgs.Argument;
+
+            if (!string.IsNullOrEmpty(arguments))
+            {
+                NameValueCollection parsedArgs = HttpUtility.ParseQueryString(arguments);
+
+                if (parsedArgs["AutoShutdownCancel"] != null)
+                {
+                    ShutdownCancellationTokenSource?.Cancel();
+                }
+            }
+        });
+
         GlobalMonitor.Start();
         ChildProcessTracerPeriodicTimer.Default.Start();
         DispatcherTimer.Start();
@@ -85,6 +111,54 @@ public partial class MainViewModel : ReactiveObject
         }
 
         IsRecording = RoomStatuses.Any(roomStatusReactive => roomStatusReactive.RecordStatus == RecordStatus.Recording);
+
+        if (Configurations.IsUseAutoShutdown.Get()
+         && TimeSpan.TryParse(Configurations.AutoShutdownTime.Get(), out TimeSpan targetTime))
+        {
+            int timeOffset = (int)(DateTime.Now.TimeOfDay - targetTime).TotalSeconds;
+
+            if (timeOffset >= 0 && timeOffset <= 60)
+            {
+                IsReadyToShutdown = true;
+            }
+
+            if (IsReadyToShutdown && !IsRecording)
+            {
+                if (ShutdownCancellationTokenSource == null)
+                {
+                    ShutdownCancellationTokenSource = new();
+
+                    Notifier.AddNoticeWithButton("Title".Tr(), "AutoShutdownInTime".Tr(), [
+                        new ToastContentButtonOption()
+                            {
+                                Content = "ButtonOfCancel".Tr(),
+                                Arguments = [("AutoShutdownCancel", string.Empty)],
+                                ActivationType = ToastActivationType.Foreground,
+                            }
+                    ]);
+
+                    ApplicationDispatcher.BeginInvoke(async () =>
+                    {
+                        await Task.Delay(60000);
+
+                        if (!ShutdownCancellationTokenSource.IsCancellationRequested && !IsRecording)
+                        {
+                            if (Debugger.IsAttached)
+                            {
+                                _ = MessageBox.Information("AutoShutdown".Tr());
+                            }
+                            else
+                            {
+                                _ = Interop.ExitWindowsEx(User32.ExitWindowsFlags.EWX_SHUTDOWN | User32.ExitWindowsFlags.EWX_FORCE);
+                            }
+                        }
+
+                        ShutdownCancellationTokenSource = null;
+                        IsReadyToShutdown = false;
+                    });
+                }
+            }
+        }
     }
 
     [RelayCommand]

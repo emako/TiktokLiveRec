@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
+using Vanara.PInvoke;
 using Windows.Storage;
 using Windows.System;
 using WindowsAPICodePack.Dialogs;
@@ -269,6 +270,7 @@ public partial class SettingsViewModel : ReactiveObject
     [SuppressMessage("Performance", "CA1822:Mark members as static")]
     private async Task OpenSaveFolderAsync()
     {
+        // TODO: Implement for other platforms
         await Launcher.LaunchFolderAsync(
             await StorageFolder.GetFolderFromPathAsync(
                 SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get())
@@ -299,6 +301,52 @@ public partial class SettingsViewModel : ReactiveObject
     partial void OnIsPlayerRectChanged(bool value)
     {
         Configurations.IsPlayerRect.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private bool isUseKeepAwake = Configurations.IsUseKeepAwake.Get();
+
+    partial void OnIsUseKeepAwakeChanged(bool value)
+    {
+        if (value)
+        {
+            // Start keep awake
+            _ = Kernel32.SetThreadExecutionState(Kernel32.EXECUTION_STATE.ES_CONTINUOUS | Kernel32.EXECUTION_STATE.ES_SYSTEM_REQUIRED | Kernel32.EXECUTION_STATE.ES_AWAYMODE_REQUIRED);
+        }
+        else
+        {
+            // Stop keep awake
+            _ = Kernel32.SetThreadExecutionState(Kernel32.EXECUTION_STATE.ES_CONTINUOUS);
+        }
+        Configurations.IsUseKeepAwake.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private bool isUseAutoShutdown = Configurations.IsUseAutoShutdown.Get();
+
+    partial void OnIsUseAutoShutdownChanged(bool value)
+    {
+        Configurations.IsUseAutoShutdown.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private int autoShutdownTimeHour = Configurations.AutoShutdownTime.Get().Split(':')[0].IntParse(fallback: 0);
+
+    partial void OnAutoShutdownTimeHourChanged(int value)
+    {
+        Configurations.AutoShutdownTime.Set($"{value:D2}:{AutoShutdownTimeMinute:D2}");
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private int autoShutdownTimeMinute = Configurations.AutoShutdownTime.Get().Split(':')[1].IntParse(fallback: 0);
+
+    partial void OnAutoShutdownTimeMinuteChanged(int value)
+    {
+        Configurations.AutoShutdownTime.Set($"{AutoShutdownTimeHour:D2}:{value:D2}");
         ConfigurationManager.Save();
     }
 
@@ -399,6 +447,8 @@ public partial class SettingsViewModel : ReactiveObject
         string filePath = Path.GetFullPath(ConfigurationSpecialPath.GetPath("GETCOOKIE.html", AppConfig.PackName));
 
         File.WriteAllText(filePath, html);
+
+        // TODO: Implement for other platforms
         await Launcher.LaunchUriAsync(new Uri($"file://{filePath}"));
     }
 
@@ -426,5 +476,17 @@ public partial class SettingsViewModel : ReactiveObject
     {
         Configurations.UserAgent.Set(value);
         ConfigurationManager.Save();
+    }
+}
+
+file static class Extensions
+{
+    public static int IntParse(this string value, int fallback = default)
+    {
+        if (int.TryParse(value, out int output))
+        {
+            return output;
+        }
+        return fallback;
     }
 }
