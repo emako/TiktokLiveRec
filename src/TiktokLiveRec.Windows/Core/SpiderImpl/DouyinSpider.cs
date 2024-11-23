@@ -109,7 +109,7 @@ public sealed partial class DouyinSpider : ISpider
             result.IsLiveStreaming = false;
         }
 
-        Match match = GetNickNameRegex().Match(htmlStr.Replace("\\\"nickname\\\":\\\"$undefined\\\",", string.Empty));
+        Match match = NickNameRegex.Match(htmlStr.Replace("\\\"nickname\\\":\\\"$undefined\\\",", string.Empty));
         if (match.Success)
         {
             result.Nickname = match.Groups[1].Value;
@@ -120,7 +120,7 @@ public sealed partial class DouyinSpider : ISpider
             return result;
         }
 
-        match = GetHlsPullUrlMapRegex().Match(htmlStr);
+        match = HlsPullUrlMapRegex.Match(htmlStr);
         if (match.Success)
         {
             result.HlsUrl = match.Groups[1].Value
@@ -131,10 +131,10 @@ public sealed partial class DouyinSpider : ISpider
     }
 
     [GeneratedRegex("\\\\\"nickname\\\\\":\\\\\"(.*?)\\\\\",\\\\\"avatar_thumb")]
-    private static partial Regex GetNickNameRegex();
+    private static partial Regex NickNameRegex { get; }
 
     [GeneratedRegex("\\\\\"hls_pull_url_map\\\\\":{\\\\\"FULL_HD1\\\\\":\\\\\"(.*?)\\\\\"")]
-    private static partial Regex GetHlsPullUrlMapRegex();
+    private static partial Regex HlsPullUrlMapRegex { get; }
 }
 
 public sealed class DouyinSpiderResult : ISpiderResult
