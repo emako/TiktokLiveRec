@@ -125,13 +125,16 @@ internal static class GlobalMonitor
                                 // Start Streaming Recording
                                 if (room.IsToRecord)
                                 {
-                                    if (spiderResult.IsLiveStreaming ?? false)
+                                    if (Configurations.IsToRecord.Get())
                                     {
-                                        _ = roomStatus.Recorder.Start(new RecorderStartInfo()
+                                        if (spiderResult.IsLiveStreaming ?? false)
                                         {
-                                            NickName = room.NickName,
-                                            HlsUrl = roomStatus.HlsUrl,
-                                        });
+                                            _ = roomStatus.Recorder.Start(new RecorderStartInfo()
+                                            {
+                                                NickName = room.NickName,
+                                                HlsUrl = roomStatus.HlsUrl,
+                                            });
+                                        }
                                     }
                                 }
 
