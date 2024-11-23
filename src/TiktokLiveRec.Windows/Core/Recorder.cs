@@ -11,7 +11,7 @@ namespace TiktokLiveRec.Core;
 
 public sealed class Recorder
 {
-    public RecordStatus RecordStatus { get; private set; } = RecordStatus.Initialized;
+    public RecordStatus RecordStatus { get; internal set; } = RecordStatus.Initialized;
 
     public CancellationTokenSource? TokenSource { get; private set; } = null;
 
@@ -32,6 +32,7 @@ public sealed class Recorder
         }
 
         RecordStatus = RecordStatus.Recording;
+
         // Start a recording task that does not use the default ThreadPool
         return Task.Factory.StartNew(async () =>
         {
@@ -113,6 +114,7 @@ public sealed class Recorder
                 .ToArguments();
                 TokenSource = tokenSource ?? new CancellationTokenSource();
 
+                EndTime = DateTime.MinValue;
                 StartTime = DateTime.Now;
 
                 await recorderPath

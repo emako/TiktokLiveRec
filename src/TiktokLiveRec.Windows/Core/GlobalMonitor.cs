@@ -8,7 +8,6 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Web;
-using TiktokLiveRec.Models;
 using TiktokLiveRec.Threading;
 using Windows.System;
 using Wpf.Ui.Violeta.Resources;
@@ -90,78 +89,86 @@ internal static class GlobalMonitor
             // Routine Can't be stopped from throwables
             try
             {
+                Room[] rooms = Configurations.Rooms.Get();
+
                 // Check Global Settings
-                if (Configurations.IsToNotify.Get() || Configurations.IsToRecord.Get())
+                bool isGlobalToNotify = Configurations.IsToNotify.Get();
+                bool isGlobalToRecord = Configurations.IsToRecord.Get();
+
+                foreach (Room room in rooms)
                 {
-                    Room[] rooms = Configurations.Rooms.Get();
-
-                    foreach (Room room in rooms)
+                    if (TryGetRoomStatus(room) is RoomStatus roomStatus)
                     {
-                        if (TryGetRoomStatus(room) is RoomStatus roomStatus)
+                        // Check Room Settings
+                        bool isRoomToNotify = room.IsToNotify;
+                        bool isRoomToRecord = room.IsToRecord;
+
+                        if ((isGlobalToNotify || isGlobalToRecord) && (isRoomToNotify || isRoomToRecord))
                         {
-                            // Check Room Settings
-                            if (room.IsToNotify || room.IsToRecord)
+                            // Spider Room Status
+                            ISpiderResult? spiderResult = Spider.GetResult(room.RoomUrl);
+
+                            if (spiderResult == null)
                             {
-                                // Spider Room Status
-                                ISpiderResult? spiderResult = Spider.GetResult(room.RoomUrl);
+                                // Not supported streaming live or error
+                                continue;
+                            }
 
-                                if (spiderResult == null)
+                            StreamStatus prevStreamStatus = roomStatus.StreamStatus;
+
+                            // Update Room Status
+                            roomStatus.HlsUrl = spiderResult.HlsUrl!;
+                            roomStatus.StreamStatus = spiderResult.IsLiveStreaming switch
+                            {
+                                true => StreamStatus.Streaming,
+                                false => StreamStatus.NotStreaming,
+                                null or _ => roomStatus.StreamStatus,
+                            };
+
+                            // Start Streaming Recording
+                            if (isRoomToRecord && isGlobalToRecord)
+                            {
+                                if (spiderResult.IsLiveStreaming ?? false)
                                 {
-                                    // Not supported streaming live or error
-                                    continue;
-                                }
-
-                                StreamStatus prevStreamStatus = roomStatus.StreamStatus;
-
-                                // Update Room Status
-                                roomStatus.HlsUrl = spiderResult.HlsUrl!;
-                                roomStatus.StreamStatus = spiderResult.IsLiveStreaming switch
-                                {
-                                    true => StreamStatus.Streaming,
-                                    false => StreamStatus.NotStreaming,
-                                    null or _ => roomStatus.StreamStatus,
-                                };
-
-                                // Start Streaming Recording
-                                if (room.IsToRecord)
-                                {
-                                    if (Configurations.IsToRecord.Get())
+                                    _ = roomStatus.Recorder.Start(new RecorderStartInfo()
                                     {
-                                        if (spiderResult.IsLiveStreaming ?? false)
-                                        {
-                                            _ = roomStatus.Recorder.Start(new RecorderStartInfo()
-                                            {
-                                                NickName = room.NickName,
-                                                HlsUrl = roomStatus.HlsUrl,
-                                            });
-                                        }
-                                    }
+                                        NickName = room.NickName,
+                                        HlsUrl = roomStatus.HlsUrl,
+                                    });
                                 }
-
-                                // Start Broadcast Notification
-                                if (room.IsToNotify)
-                                {
-                                    // Only to notify when first detected
-                                    if (prevStreamStatus != StreamStatus.Streaming)
-                                    {
-                                        if (spiderResult.IsLiveStreaming ?? false)
-                                        {
-                                            await Notify(room, token);
-                                        }
-                                    }
-                                }
-
-                                // ?
-                                _ = WeakReferenceMessenger.Default.Send(new RecMessage()
-                                {
-                                    Type = RecMessageType.Default,
-                                });
                             }
                             else
                             {
-                                // Update Room Status
+                                if (roomStatus.RecordStatus != RecordStatus.Recording)
+                                {
+                                    roomStatus.RecordStatus = RecordStatus.Disabled;
+                                }
+                            }
+
+                            // Start Broadcast Notification
+                            if (isRoomToNotify && isGlobalToNotify)
+                            {
+                                // Only to notify when first detected
+                                if (prevStreamStatus != StreamStatus.Streaming)
+                                {
+                                    if (spiderResult.IsLiveStreaming ?? false)
+                                    {
+                                        await Notify(room, token);
+                                    }
+                                }
+                            }
+                            else
+                            {
                                 roomStatus.StreamStatus = StreamStatus.Disabled;
                             }
+                        }
+                        else
+                        {
+                            if (roomStatus.RecordStatus != RecordStatus.Recording)
+                            {
+                                roomStatus.RecordStatus = RecordStatus.Disabled;
+                            }
+                            roomStatus.StreamStatus = StreamStatus.Disabled;
                         }
                     }
                 }
@@ -203,11 +210,6 @@ internal static class GlobalMonitor
     /// </summary>
     private static async Task Notify(Room room, CancellationToken token = default)
     {
-        if (!Configurations.IsToNotify.Get())
-        {
-            return;
-        }
-
         if (Configurations.IsToNotifyWithSystem.Get())
         {
             Notifier.AddNoticeWithButton("LiveNotification".Tr(), room.NickName, [

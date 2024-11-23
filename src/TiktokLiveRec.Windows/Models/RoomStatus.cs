@@ -10,7 +10,11 @@ public sealed class RoomStatus
 
     public StreamStatus StreamStatus { get; set; } = default;
 
-    public RecordStatus RecordStatus => Recorder.RecordStatus;
+    public RecordStatus RecordStatus
+    {
+        get => Recorder.RecordStatus;
+        internal set => Recorder.RecordStatus = value;
+    }
 
     public Recorder Recorder { get; } = new();
 
