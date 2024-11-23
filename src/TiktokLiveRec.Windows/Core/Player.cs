@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using TiktokLiveRec.Extensions;
+using Windows.System;
 
 namespace TiktokLiveRec.Core;
 
@@ -25,10 +26,11 @@ public sealed class Player
         string? playerPath = null;
         string playerArgs = string.Empty;
 
-        if (player.Equals("System", StringComparison.OrdinalIgnoreCase))
+        if (player.Equals("system", StringComparison.OrdinalIgnoreCase))
         {
-            playerPath = "cmd"; // Windows Only
-            playerArgs = $"/c start \"{mediaPath}\"";
+            // In Windows here.
+            await Launcher.LaunchUriAsync(new Uri(mediaPath));
+            return;
         }
         else
         {

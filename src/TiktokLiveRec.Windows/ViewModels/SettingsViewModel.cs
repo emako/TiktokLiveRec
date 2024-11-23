@@ -279,16 +279,16 @@ public partial class SettingsViewModel : ReactiveObject
     [ObservableProperty]
     private int playerIndex = Configurations.Player.Get() switch
     {
-        "FFplay" => 1,
-        "System" or _ => 0,
+        "ffplay" => 0,
+        "system" or _ => 1,
     };
 
     partial void OnPlayerIndexChanged(int value)
     {
         Configurations.Player.Set(value switch
         {
-            1 => "FFplay",
-            0 or _ => string.Empty,
+            0 => "ffplay",
+            1 or _ => "system",
         });
         ConfigurationManager.Save();
     }
