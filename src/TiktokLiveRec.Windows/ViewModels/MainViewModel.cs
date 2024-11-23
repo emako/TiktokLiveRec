@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
 using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
@@ -14,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
-using TiktokLiveRec.Models;
 using TiktokLiveRec.Threading;
 using TiktokLiveRec.Views;
 using Windows.Storage;
@@ -54,11 +52,6 @@ public partial class MainViewModel : ReactiveObject
             IsToNotify = room.IsToNotify,
             IsToRecord = room.IsToRecord,
         }));
-
-        WeakReferenceMessenger.Default.Register<RecMessage>(this, (_, msg) =>
-        {
-            ReloadRoomStatus();
-        });
 
         Locale.CultureChanged += (_, _) =>
         {
