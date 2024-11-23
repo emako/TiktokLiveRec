@@ -28,7 +28,7 @@ Support following live site.
 | Site          | Status    |
 | ------------- | --------- |
 | Douyin (抖音) | Available |
-| Tiktok        | TBD       |
+| Tiktok        | Available |
 
 How to add live room:
 

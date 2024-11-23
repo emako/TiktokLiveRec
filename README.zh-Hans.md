@@ -25,10 +25,10 @@ For Others: [.NET Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotne
 
 支持以下直播平台
 
-| 平台              | 状态   |
-| ----------------- | ------ |
-| Douyin (中国抖音) | 支持   |
-| Tiktok (海外抖音) | 待开发 |
+| 平台              | 状态 |
+| ----------------- | ---- |
+| Douyin (中国抖音) | 支持 |
+| Tiktok (海外抖音) | 支持 |
 
 怎么添加直播间：
 
