@@ -28,7 +28,7 @@ public sealed class Player
 
         if (player.Equals("system", StringComparison.OrdinalIgnoreCase))
         {
-            // In Windows here.
+            // TODO: Implement for other platforms
             await Launcher.LaunchUriAsync(new Uri(mediaPath));
             return;
         }

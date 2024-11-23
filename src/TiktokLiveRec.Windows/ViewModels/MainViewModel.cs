@@ -6,6 +6,7 @@ using Flucli;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -133,6 +134,7 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task OpenSaveFolderAsync()
     {
+        // TODO: Implement for other platforms
         await Launcher.LaunchFolderAsync(
             await StorageFolder.GetFolderFromPathAsync(
                 SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get())
@@ -143,9 +145,17 @@ public partial class MainViewModel : ReactiveObject
     [RelayCommand]
     private async Task OpenSettingsFileFolderAsync()
     {
-        await $"explorer"
-            .WithArguments($"/select,\"{ConfigurationManager.FilePath}\"")
-            .ExecuteAsync();
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            await "explorer"
+                .WithArguments($"/select,\"{ConfigurationManager.FilePath}\"")
+                .ExecuteAsync();
+        }
+        else
+        {
+            // TODO: Implement for other platforms
+            await Launcher.LaunchUriAsync(new Uri(ConfigurationManager.FilePath));
+        }
     }
 
     [RelayCommand]
@@ -243,6 +253,7 @@ public partial class MainViewModel : ReactiveObject
             return;
         }
 
+        // TODO: Implement for other platforms
         await Launcher.LaunchUriAsync(new Uri(SelectedItem.RoomUrl));
     }
 

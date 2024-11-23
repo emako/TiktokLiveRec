@@ -44,6 +44,7 @@ internal static class GlobalMonitor
                 {
                     try
                     {
+                        // TODO: Implement for other platforms
                         await Launcher.LaunchUriAsync(new Uri(parsedArgs["RoomUrl"]!));
                     }
                     catch (Exception e)
@@ -273,6 +274,7 @@ internal static class GlobalMonitor
 
         if (Configurations.IsToNotifyGotoRoomUrl.Get())
         {
+            // TODO: Implement for other platforms
             _ = await Launcher.LaunchUriAsync(new Uri(room.RoomUrl));
 
             if (Configurations.IsToNotifyGotoRoomUrlAndMute.Get())
