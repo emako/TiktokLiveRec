@@ -218,18 +218,18 @@ public partial class SettingsViewModel : ReactiveObject
     [ObservableProperty]
     private int recordFormatIndex = Configurations.RecordFormat.Get() switch
     {
-        "TS+MP4" => 1,
-        "TS+MKV" => 2,
-        "TS" or _ => 0,
+        "TS/FLV -> MP4" => 1,
+        "TS/FLV -> MKV" => 2,
+        "TS/FLV" or _ => 0,
     };
 
     partial void OnRecordFormatIndexChanged(int value)
     {
         Configurations.RecordFormat.Set(value switch
         {
-            1 => "TS+MP4",
-            2 => "TS+MKV",
-            0 or _ => "TS",
+            1 => "TS/FLV -> MP4",
+            2 => "TS/FLV -> MKV",
+            0 or _ => "TS/FLV",
         });
         ConfigurationManager.Save();
     }

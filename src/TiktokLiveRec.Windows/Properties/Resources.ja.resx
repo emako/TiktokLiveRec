@@ -356,10 +356,10 @@
     <value>録画フォーマット</value>
   </data>
   <data name="RecordFormatHint" xml:space="preserve">
-    <value>安定性を保証するため TS のみサポートし、後に他のフォーマットに変換可能</value>
+    <value>安定性を保証するため TS/FLV のみサポートし、後に他のフォーマットに変換可能</value>
   </data>
   <data name="RecordFormatAutoRemove" xml:space="preserve">
-    <value>フォーマット変換後に TS ファイルを削除</value>
+    <value>フォーマット変換後に TS/FLV ファイルを削除</value>
   </data>
   <data name="SaveFolderHint" xml:space="preserve">
     <value>録画ファイルの保存フォルダ</value>

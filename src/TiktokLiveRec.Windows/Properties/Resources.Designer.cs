@@ -727,7 +727,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whether to auto delete the original TS file after converting the format.
+        ///   Looks up a localized string similar to Whether to auto delete the original TS/FLV file after converting the format.
         /// </summary>
         public static string RecordFormatAutoRemove {
             get {
@@ -736,7 +736,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To ensure stable recording, only supports TS or will be auto converted later.
+        ///   Looks up a localized string similar to To ensure stable recording, only supports TS/FLV or will be auto converted later.
         /// </summary>
         public static string RecordFormatHint {
             get {

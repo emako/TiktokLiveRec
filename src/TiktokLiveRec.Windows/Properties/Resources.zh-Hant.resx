@@ -353,10 +353,10 @@
     <value>錄製格式</value>
   </data>
   <data name="RecordFormatHint" xml:space="preserve">
-    <value>為保證錄製穩定源格式僅支持 TS 或稍後自動轉格式</value>
+    <value>為保證錄製穩定源格式僅支持 TS/FLV 或稍後自動轉格式</value>
   </data>
   <data name="RecordFormatAutoRemove" xml:space="preserve">
-    <value>是否轉換格式後自動刪除原 TS 文件</value>
+    <value>是否轉換格式後自動刪除原 TS/FLV 文件</value>
   </data>
   <data name="SaveFolderHint" xml:space="preserve">
     <value>指定錄製視頻的保存目錄</value>

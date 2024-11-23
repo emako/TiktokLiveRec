@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
+using Downloader;
 using Flucli;
 using Flucli.Utils.Extensions;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Text;
 using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Models;
@@ -14,6 +16,8 @@ public sealed class Recorder
     public RecordStatus RecordStatus { get; internal set; } = RecordStatus.Initialized;
 
     public CancellationTokenSource? TokenSource { get; private set; } = null;
+
+    public string? Url { get; set; } = null;
 
     public string? FileName { get; set; } = null;
 
@@ -59,11 +63,15 @@ public sealed class Recorder
                 string httpProxy = Configurations.ProxyUrl.Get();
                 bool isUseProxy = Configurations.IsUseProxy.Get() && !string.IsNullOrWhiteSpace(httpProxy);
 
-                string url = startInfo.HlsUrl;
-
-                if (string.IsNullOrWhiteSpace(url))
+                if (!string.IsNullOrWhiteSpace(startInfo.HlsUrl))
                 {
-                    url = startInfo.FlvUrl;
+                    Url = startInfo.HlsUrl;
+                    FileName = Path.Combine(saveFolder, $"{startInfo.NickName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.flv");
+                }
+                else
+                {
+                    Url = startInfo.FlvUrl;
+                    FileName = Path.Combine(saveFolder, $"{startInfo.NickName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.ts");
                 }
 
                 if (string.IsNullOrWhiteSpace(userAgent))
@@ -73,7 +81,6 @@ public sealed class Recorder
                               + "Safari/537.36";
                 }
 
-                FileName = Path.Combine(saveFolder, $"{startInfo.NickName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.ts");
                 Parameters = new List<string>() {
                     "-y",                             // Overwrite output files.
                     "-v", "verbose",                  // Set logging level to `verbose`.
@@ -99,7 +106,7 @@ public sealed class Recorder
                                                       // Must be an integer not lesser than 32. It is 5000000 by default.
                     "-fflags", "+discardcorrupt",     // Set format flags. Some are implemented for a limited number of formats.
                                                       // Set to +discardcorrupt: Discard corrupted packets.
-                    "-i", url,                        // Input infile.
+                    "-i", Url,                        // Input infile.
                     "-bufsize", "8000k",              // Specifies the decoder buffer size, which determines the variability of the output bitrate.
                     "-sn",                            // Disable subtitle.
                     "-dn",                            // Disable data.
@@ -117,7 +124,7 @@ public sealed class Recorder
                 }
                 .AddIf(isUseProxy, "-http_proxy", httpProxy)
                 .AddIf(false, "-f", "segment", "-segment_time", "999999", "-segment_format", "mpegts", "-reset_timestamps", "1")
-                .AddIf(true, FileName) // _%03d.ts
+                .AddIf(true, FileName) // _%03d
                 .ToArguments();
                 TokenSource = tokenSource ?? new CancellationTokenSource();
 
@@ -133,6 +140,32 @@ public sealed class Recorder
                 if (!result.IsSuccess)
                 {
                     Debug.WriteLine(result.ExitCode);
+
+                    // Fallback to flv downloading.
+                    if (!string.IsNullOrWhiteSpace(startInfo.FlvUrl))
+                    {
+                        EndTime = DateTime.MinValue;
+                        StartTime = DateTime.Now;
+
+                        Url = startInfo.FlvUrl;
+                        FileName = Path.Combine(saveFolder, $"{startInfo.NickName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.flv");
+
+                        DownloadConfiguration downloadOpt = new();
+
+                        if (isUseProxy)
+                        {
+                            if (Uri.TryCreate($"https://{httpProxy}", UriKind.Absolute, out Uri? proxyUri))
+                            {
+                                downloadOpt.RequestConfiguration = new()
+                                {
+                                    Proxy = new WebProxy(proxyUri.Host, proxyUri.Port),
+                                };
+                            }
+                        }
+
+                        DownloadService downloader = new(downloadOpt);
+                        await downloader.DownloadFileTaskAsync(startInfo.FlvUrl, FileName, cancellationToken: TokenSource.Token);
+                    }
                 }
             }
             catch (Exception e)

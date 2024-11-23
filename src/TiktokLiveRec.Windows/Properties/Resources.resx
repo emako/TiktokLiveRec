@@ -353,10 +353,10 @@
     <value>Recording Format</value>
   </data>
   <data name="RecordFormatHint" xml:space="preserve">
-    <value>To ensure stable recording, only supports TS or will be auto converted later</value>
+    <value>To ensure stable recording, only supports TS/FLV or will be auto converted later</value>
   </data>
   <data name="RecordFormatAutoRemove" xml:space="preserve">
-    <value>Whether to auto delete the original TS file after converting the format</value>
+    <value>Whether to auto delete the original TS/FLV file after converting the format</value>
   </data>
   <data name="SaveFolderHint" xml:space="preserve">
     <value>Specify the saving directory of recorded videos</value>
