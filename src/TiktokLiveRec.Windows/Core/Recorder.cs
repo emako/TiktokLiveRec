@@ -124,11 +124,16 @@ public sealed class Recorder
                 EndTime = DateTime.MinValue;
                 StartTime = DateTime.Now;
 
-                await recorderPath
+                CliResult result = await recorderPath
                     .WithArguments(Parameters)
                     .WithStandardErrorPipe(PipeTarget.ToDelegate(OnStandardErrorReceived, Encoding.UTF8))
                     .WithStandardOutputPipe(PipeTarget.ToDelegate(OnStandardOutputReceived, Encoding.UTF8))
                     .ExecuteAsync(cancellationToken: TokenSource.Token);
+
+                if (!result.IsSuccess)
+                {
+                    Debug.WriteLine(result.ExitCode);
+                }
             }
             catch (Exception e)
             {
