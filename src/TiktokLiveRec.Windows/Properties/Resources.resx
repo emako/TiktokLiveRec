@@ -422,13 +422,13 @@
     <value>Tiktok Cookie</value>
   </data>
   <data name="UserAgent" xml:space="preserve">
-    <value>User Agent</value>
+    <value>Browser UserAgent</value>
   </data>
   <data name="UserAgentHint" xml:space="preserve">
-    <value>You can use a custom browser User Agent</value>
+    <value>You can use a custom browser UserAgent</value>
   </data>
   <data name="UserAgentEnterHint" xml:space="preserve">
-    <value>Leave blank to use the built-in User Agent</value>
+    <value>Leave blank to use the built-in browser UserAgent</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>

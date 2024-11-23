@@ -422,13 +422,13 @@
     <value>海外 Cookie</value>
   </data>
   <data name="UserAgent" xml:space="preserve">
-    <value>UA 标识</value>
+    <value>浏览器 UserAgent</value>
   </data>
   <data name="UserAgentHint" xml:space="preserve">
     <value>您可以使用自定义浏览器 UserAgent</value>
   </data>
   <data name="UserAgentEnterHint" xml:space="preserve">
-    <value>留白则使用内置 UA 标识</value>
+    <value>留白则使用内置浏览器 UserAgent 标识</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>设置</value>

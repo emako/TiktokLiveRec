@@ -1204,7 +1204,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Agent.
+        ///   Looks up a localized string similar to Browser UserAgent.
         /// </summary>
         public static string UserAgent {
             get {
@@ -1213,7 +1213,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Leave blank to use the built-in User Agent.
+        ///   Looks up a localized string similar to Leave blank to use the built-in browser UserAgent.
         /// </summary>
         public static string UserAgentEnterHint {
             get {
@@ -1222,7 +1222,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can use a custom browser User Agent.
+        ///   Looks up a localized string similar to You can use a custom browser UserAgent.
         /// </summary>
         public static string UserAgentHint {
             get {

@@ -410,7 +410,7 @@
     <value>Cookie</value>
   </data>
   <data name="UseCookieHint" xml:space="preserve">
-    <value>Douyinの録画には Cookie が必要です</value>
+    <value>Douyinの録画には Cookie が必要</value>
   </data>
   <data name="UseCookieOfDouyin" xml:space="preserve">
     <value>Douyin Cookie</value>
@@ -425,13 +425,13 @@
     <value>いかに獲得？</value>
   </data>
   <data name="UserAgent" xml:space="preserve">
-    <value>UA</value>
+    <value>ブラウザ UserAgent</value>
   </data>
   <data name="UserAgentHint" xml:space="preserve">
-    <value>UA「ユーザーエージェント」をカスタマイズ可能です</value>
+    <value>UserAgent をカスタマイズ可能</value>
   </data>
   <data name="UserAgentEnterHint" xml:space="preserve">
-    <value>空白の場合は内蔵 UA を使用</value>
+    <value>空白の場合は内蔵ブラウザ UserAgent を使用</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
