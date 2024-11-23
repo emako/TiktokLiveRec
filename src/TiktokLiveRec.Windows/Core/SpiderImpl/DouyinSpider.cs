@@ -154,6 +154,11 @@ public sealed class DouyinSpiderResult : ISpiderResult
     public string? Nickname { get; set; }
 
     /// <summary>
+    /// TODO
+    /// </summary>
+    public string? FlvUrl { get; set; }
+
+    /// <summary>
     /// "\"hls_pull_url_map\":{\"FULL_HD1\":\"(.*?)\""
     /// </summary>
     public string? HlsUrl { get; set; }

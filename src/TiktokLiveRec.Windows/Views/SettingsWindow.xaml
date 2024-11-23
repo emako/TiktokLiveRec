@@ -611,9 +611,7 @@
                                         Command="{Binding OpenHowToGetCookieChinaCommand}"
                                         Content="{I18N HowToGet}" />
                             </ui:Grid>
-                            <ui:Grid Margin="42,0,28,0"
-                                     ColumnDefinitions="Auto,*,Auto"
-                                     IsEnabled="False">
+                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto">
                                 <TextBlock VerticalAlignment="Center" Text="{I18N UseCookieOfOversea}" />
                                 <ui:TextBox Grid.Column="1"
                                             Margin="8,0,0,0"
@@ -622,7 +620,8 @@
                                 <Button Grid.Column="2"
                                         Margin="8,0,0,0"
                                         Command="{Binding OpenHowToGetCookieOverseaCommand}"
-                                        Content="{I18N HowToGet}" />
+                                        Content="{I18N HowToGet}"
+                                        Visibility="Hidden" />
                             </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>

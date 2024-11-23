@@ -6,6 +6,8 @@ public sealed class RoomStatus
 
     public string RoomUrl { get; set; } = string.Empty;
 
+    public string FlvUrl { get; set; } = string.Empty;
+
     public string HlsUrl { get; set; } = string.Empty;
 
     public StreamStatus StreamStatus { get; set; } = default;

@@ -59,6 +59,13 @@ public sealed class Recorder
                 string httpProxy = Configurations.ProxyUrl.Get();
                 bool isUseProxy = Configurations.IsUseProxy.Get() && !string.IsNullOrWhiteSpace(httpProxy);
 
+                string url = startInfo.HlsUrl;
+
+                if (string.IsNullOrWhiteSpace(url))
+                {
+                    url = startInfo.FlvUrl;
+                }
+
                 if (string.IsNullOrWhiteSpace(userAgent))
                 {
                     userAgent = "Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-G973U) AppleWebKit/537.36 ("
@@ -92,7 +99,7 @@ public sealed class Recorder
                                                       // Must be an integer not lesser than 32. It is 5000000 by default.
                     "-fflags", "+discardcorrupt",     // Set format flags. Some are implemented for a limited number of formats.
                                                       // Set to +discardcorrupt: Discard corrupted packets.
-                    "-i", startInfo.HlsUrl,           // Input infile.
+                    "-i", url,                        // Input infile.
                     "-bufsize", "8000k",              // Specifies the decoder buffer size, which determines the variability of the output bitrate.
                     "-sn",                            // Disable subtitle.
                     "-dn",                            // Disable data.
@@ -173,6 +180,8 @@ public enum RecordStatus
 public record RecorderStartInfo
 {
     public string NickName { get; set; } = string.Empty;
+
+    public string FlvUrl { get; set; } = string.Empty;
 
     public string HlsUrl { get; set; } = string.Empty;
 }

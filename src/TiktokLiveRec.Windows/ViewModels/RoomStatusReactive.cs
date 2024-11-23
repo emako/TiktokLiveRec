@@ -18,6 +18,9 @@ public partial class RoomStatusReactive : ReactiveObject
     private string roomUrl = string.Empty;
 
     [ObservableProperty]
+    private string flvUrl = string.Empty;
+
+    [ObservableProperty]
     private string hlsUrl = string.Empty;
 
     [ObservableProperty]

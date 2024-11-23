@@ -103,6 +103,7 @@ public partial class MainViewModel : ReactiveObject
             {
                 roomStatusReactive.StreamStatus = roomStatus.StreamStatus;
                 roomStatusReactive.RecordStatus = roomStatus.RecordStatus;
+                roomStatusReactive.FlvUrl = roomStatus.FlvUrl;
                 roomStatusReactive.HlsUrl = roomStatus.HlsUrl;
                 roomStatusReactive.StartTime = roomStatus.Recorder.StartTime;
                 roomStatusReactive.EndTime = roomStatus.Recorder.EndTime;

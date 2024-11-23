@@ -118,6 +118,7 @@ internal static class GlobalMonitor
                             StreamStatus prevStreamStatus = roomStatus.StreamStatus;
 
                             // Update Room Status
+                            roomStatus.FlvUrl = spiderResult.FlvUrl!;
                             roomStatus.HlsUrl = spiderResult.HlsUrl!;
                             roomStatus.StreamStatus = spiderResult.IsLiveStreaming switch
                             {
@@ -134,6 +135,7 @@ internal static class GlobalMonitor
                                     _ = roomStatus.Recorder.Start(new RecorderStartInfo()
                                     {
                                         NickName = room.NickName,
+                                        FlvUrl = roomStatus.FlvUrl,
                                         HlsUrl = roomStatus.HlsUrl,
                                     });
                                 }
@@ -193,6 +195,7 @@ internal static class GlobalMonitor
             {
                 NickName = room.NickName,
                 RoomUrl = room.RoomUrl,
+                FlvUrl = null!,
                 HlsUrl = null!,
                 StreamStatus = StreamStatus.Initialized,
             });
