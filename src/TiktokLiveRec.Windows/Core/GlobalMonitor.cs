@@ -200,6 +200,11 @@ internal static class GlobalMonitor
     /// </summary>
     private static async Task Notify(Room room, CancellationToken token = default)
     {
+        if (!Configurations.IsToNotify.Get())
+        {
+            return;
+        }
+
         if (Configurations.IsToNotifyWithSystem.Get())
         {
             Notifier.AddNoticeWithButton("LiveNotification".Tr(), room.NickName, [
