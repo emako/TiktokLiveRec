@@ -5,7 +5,6 @@ using ComputedConverters;
 using Fischless.Configuration;
 using Flucli;
 using Microsoft.Toolkit.Uwp.Notifications;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
@@ -43,15 +42,36 @@ public partial class MainViewModel : ReactiveObject
     [ObservableProperty]
     private bool isRecording = false;
 
-    [ObservableProperty]
-    private bool isReadyToShutdown = false;
-
-    public CancellationTokenSource? ShutdownCancellationTokenSource { get; private set; } = null;
-
     partial void OnIsRecordingChanged(bool value)
     {
         TrayIconManager.GetInstance().UpdateTrayIcon();
     }
+
+    [ObservableProperty]
+    private bool statusOfIsToNotify = Configurations.IsToNotify.Get();
+
+    [ObservableProperty]
+    private bool statusOfIsToRecord = Configurations.IsToRecord.Get();
+
+    [ObservableProperty]
+    private bool statusOfIsUseProxy = Configurations.IsUseProxy.Get();
+
+    [ObservableProperty]
+    private bool statusOfIsUseAutoShutdown = Configurations.IsUseAutoShutdown.Get();
+
+    [ObservableProperty]
+    private string statusOfAutoShutdownTime = Configurations.AutoShutdownTime.Get();
+
+    [ObservableProperty]
+    private string statusOfRecordFormat = Configurations.RecordFormat.Get();
+
+    [ObservableProperty]
+    private int statusOfRoutineInterval = Configurations.RoutineInterval.Get();
+
+    [ObservableProperty]
+    private bool isReadyToShutdown = false;
+
+    public CancellationTokenSource? ShutdownCancellationTokenSource { get; private set; } = null;
 
     public MainViewModel()
     {
@@ -113,8 +133,15 @@ public partial class MainViewModel : ReactiveObject
 
         IsRecording = RoomStatuses.Any(roomStatusReactive => roomStatusReactive.RecordStatus == RecordStatus.Recording);
 
-        if (Configurations.IsUseAutoShutdown.Get()
-         && TimeSpan.TryParse(Configurations.AutoShutdownTime.Get(), out TimeSpan targetTime))
+        StatusOfIsToNotify = Configurations.IsToNotify.Get();
+        StatusOfIsToRecord = Configurations.IsToRecord.Get();
+        StatusOfIsUseAutoShutdown = Configurations.IsUseAutoShutdown.Get();
+        StatusOfAutoShutdownTime = Configurations.AutoShutdownTime.Get();
+        StatusOfRecordFormat = Configurations.RecordFormat.Get();
+        StatusOfRoutineInterval = Configurations.RoutineInterval.Get();
+        StatusOfIsUseProxy = Configurations.IsUseProxy.Get();
+
+        if (StatusOfIsUseAutoShutdown && TimeSpan.TryParse(StatusOfAutoShutdownTime, out TimeSpan targetTime))
         {
             int timeOffset = (int)(DateTime.Now.TimeOfDay - targetTime).TotalSeconds;
 
@@ -480,30 +507,5 @@ public partial class MainViewModel : ReactiveObject
                 return element as DataGridRow;
             }
         }
-    }
-}
-
-public static class ObservableCollectionExtensions
-{
-    public static void MoveUp<T>(this ObservableCollection<T> collection, T item)
-    {
-        int index = collection.IndexOf(item);
-
-        if (index <= 0)
-        {
-            return;
-        }
-        collection.Move(index, index - 1);
-    }
-
-    public static void MoveDown<T>(this ObservableCollection<T> collection, T item)
-    {
-        int index = collection.IndexOf(item);
-
-        if (index < 0 || index >= collection.Count - 1)
-        {
-            return;
-        }
-        collection.Move(index, index + 1);
     }
 }

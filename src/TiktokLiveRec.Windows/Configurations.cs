@@ -23,7 +23,7 @@ public static class Configurations
     public static ConfigurationDefinition<bool> IsToNotifyGotoRoomUrl { get; } = new(nameof(IsToNotifyGotoRoomUrl), false);
     public static ConfigurationDefinition<bool> IsToNotifyGotoRoomUrlAndMute { get; } = new(nameof(IsToNotifyGotoRoomUrlAndMute), false);
     public static ConfigurationDefinition<bool> IsToRecord { get; } = new(nameof(IsToRecord), true);
-    public static ConfigurationDefinition<string> RecordFormat { get; } = new(nameof(RecordFormat), "TS");
+    public static ConfigurationDefinition<string> RecordFormat { get; } = new(nameof(RecordFormat), "TS/FLV");
     public static ConfigurationDefinition<bool> IsRemoveTs { get; } = new(nameof(IsRemoveTs), false);
     public static ConfigurationDefinition<string> SaveFolder { get; } = new(nameof(SaveFolder), string.Empty);
     public static ConfigurationDefinition<string> Player { get; } = new(nameof(Player), "ffplay");

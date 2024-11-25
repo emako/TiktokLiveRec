@@ -17,7 +17,7 @@ internal static class Locale
         set => SetCulture(value);
     }
 
-    private static void SetCulture(CultureInfo value)
+    private static void SetCulture(CultureInfo? value)
     {
         CultureInfo culture = value ?? Fallback;
 

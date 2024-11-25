@@ -925,6 +925,24 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabled.
+        /// </summary>
+        public static string StatusOff {
+            get {
+                return ResourceManager.GetString("StatusOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string StatusOn {
+            get {
+                return ResourceManager.GetString("StatusOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop Recording.
         /// </summary>
         public static string StopRecord {

@@ -490,4 +490,10 @@
   <data name="AutoShutdownInTime" xml:space="preserve">
     <value>System will be auto shutdown in 1 minute</value>
   </data>
+  <data name="StatusOn" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="StatusOff" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
 </root>

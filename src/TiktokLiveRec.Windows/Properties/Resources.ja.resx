@@ -493,4 +493,10 @@
   <data name="AutoShutdownInTime" xml:space="preserve">
     <value>システムは1分後に自動シャットダウン</value>
   </data>
+  <data name="StatusOn" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="StatusOff" xml:space="preserve">
+    <value>無効</value>
+  </data>
 </root>

@@ -490,4 +490,10 @@
   <data name="AutoShutdownInTime" xml:space="preserve">
     <value>系統將會在1分鐘后自動關機</value>
   </data>
+  <data name="StatusOn" xml:space="preserve">
+    <value>已啟用</value>
+  </data>
+  <data name="StatusOff" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
 </root>
