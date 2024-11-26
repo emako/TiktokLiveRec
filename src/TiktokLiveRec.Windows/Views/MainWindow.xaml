@@ -321,13 +321,8 @@
                         <TextBlock VerticalAlignment="Center"
                                    FontSize="12"
                                    Opacity="0.6"
-                                   Text="{Binding StatusOfRoutineInterval}"
+                                   Text="{Binding StatusOfRoutineIntervalWithUnit}"
                                    ToolTip="{I18N RoutineInterval}" />
-                        <TextBlock Margin="1,0,0,0"
-                                   VerticalAlignment="Center"
-                                   FontSize="12"
-                                   Opacity="0.6"
-                                   Text="ms" />
                     </ui:StackPanel>
                     <Separator />
                     <TextBlock VerticalAlignment="Center"

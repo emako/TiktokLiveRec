@@ -68,6 +68,8 @@ public partial class MainViewModel : ReactiveObject
     [ObservableProperty]
     private int statusOfRoutineInterval = Configurations.RoutineInterval.Get();
 
+    public string StatusOfRoutineIntervalWithUnit => Computed(() => StatusOfRoutineInterval > 1000 ? $"{StatusOfRoutineInterval / 1000}s" : $"{StatusOfRoutineInterval}ms");
+
     [ObservableProperty]
     private bool isReadyToShutdown = false;
 
