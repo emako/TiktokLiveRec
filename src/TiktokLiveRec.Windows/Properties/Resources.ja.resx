@@ -161,7 +161,7 @@
     <value>該当な録画タスクはありません</value>
   </data>
   <data name="StreamStatusOfDisabled" xml:space="preserve">
-    <value>禁止</value>
+    <value>無効</value>
   </data>
   <data name="StreamStatusOfNotStreaming" xml:space="preserve">
     <value>ライブ待ち</value>
@@ -173,7 +173,7 @@
     <value>初期化</value>
   </data>
   <data name="RecordStatusOfDisabled" xml:space="preserve">
-    <value>禁止</value>
+    <value>無効</value>
   </data>
   <data name="RecordStatusOfRecording" xml:space="preserve">
     <value>録画中</value>
