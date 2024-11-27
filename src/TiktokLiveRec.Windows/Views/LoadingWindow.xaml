@@ -17,8 +17,8 @@
         WindowStyle="None"
         mc:Ignorable="d">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <lottie:LottieAnimationView Width="64"
-                                    Height="64"
+        <lottie:LottieAnimationView Width="46"
+                                    Height="46"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     AutoPlay="True"
