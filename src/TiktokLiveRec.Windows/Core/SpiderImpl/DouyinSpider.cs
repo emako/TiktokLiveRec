@@ -1,9 +1,11 @@
 ﻿using RestSharp;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Text.RegularExpressions;
 
 namespace TiktokLiveRec.Core;
 
+[SuppressMessage("Performance", "CA1822:Mark members as static")]
 public sealed partial class DouyinSpider : ISpider
 {
     public static Lazy<DouyinSpider> Instance { get; } = new(() => new DouyinSpider());
@@ -115,6 +117,12 @@ public sealed partial class DouyinSpider : ISpider
             result.Nickname = match.Groups[1].Value;
         }
 
+        match = AvatarThumbUrlRegex.Match(htmlStr);
+        if (match.Success)
+        {
+            result.AvatarThumbUrl = match.Groups[1].Value;
+        }
+
         if (result.IsLiveStreaming == false)
         {
             return result;
@@ -132,6 +140,9 @@ public sealed partial class DouyinSpider : ISpider
 
     [GeneratedRegex("\\\\\"nickname\\\\\":\\\\\"(.*?)\\\\\",\\\\\"avatar_thumb")]
     private static partial Regex NickNameRegex { get; }
+
+    [GeneratedRegex("\\\\\"url_list\\\\\":\\[\\\\\"(.*?)\\\\\"")]
+    private static partial Regex AvatarThumbUrlRegex { get; }
 
     [GeneratedRegex("\\\\\"hls_pull_url_map\\\\\":{\\\\\"FULL_HD1\\\\\":\\\\\"(.*?)\\\\\"")]
     private static partial Regex HlsPullUrlMapRegex { get; }
@@ -152,6 +163,11 @@ public sealed class DouyinSpiderResult : ISpiderResult
     /// "\"nickname\":\"(.*?)\",\"avatar_thumb"
     /// </summary>
     public string? Nickname { get; set; }
+
+    /// <summary>
+    /// \"url_list\":[\"(.*?)\"
+    /// </summary>
+    public string? AvatarThumbUrl { get; set; }
 
     /// <summary>
     /// TODO

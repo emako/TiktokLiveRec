@@ -1,8 +1,12 @@
-﻿namespace TiktokLiveRec.Core;
+﻿using TiktokLiveRec.Core;
+
+namespace TiktokLiveRec.Models;
 
 public sealed class RoomStatus
 {
     public string NickName { get; set; } = string.Empty;
+
+    public string? AvatarThumbUrl { get; set; }
 
     public string RoomUrl { get; set; } = string.Empty;
 

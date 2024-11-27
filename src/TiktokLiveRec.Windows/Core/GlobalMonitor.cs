@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Web;
+using TiktokLiveRec.Models;
 using TiktokLiveRec.Threading;
 using Windows.System;
 using Wpf.Ui.Violeta.Resources;

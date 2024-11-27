@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
 using System.IO;
 using TiktokLiveRec.Core;
+using TiktokLiveRec.Models;
 using Windows.System;
 using Wpf.Ui.Violeta.Controls;
 

@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
-using System.Xml;
 
 namespace TiktokLiveRec.Core;
 
+[SuppressMessage("Performance", "CA1822:Mark members as static")]
 public sealed partial class TiktokSpider : ISpider
 {
     public static Lazy<TiktokSpider> Instance { get; } = new(() => new TiktokSpider());
@@ -160,6 +161,8 @@ public sealed class TiktokSpiderResult : ISpiderResult
     public bool? IsLiveStreaming { get; set; }
 
     public string? Nickname { get; set; }
+
+    public string? AvatarThumbUrl { get; set; }
 
     public string? UniqueId { get; set; }
 

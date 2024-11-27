@@ -32,6 +32,8 @@ public interface ISpiderResult
 
     public string? Nickname { get; set; }
 
+    public string? AvatarThumbUrl { get; set; }
+
     public string? FlvUrl { get; set; }
 
     public string? HlsUrl { get; set; }

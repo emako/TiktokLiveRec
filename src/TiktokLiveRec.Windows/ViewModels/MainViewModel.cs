@@ -18,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.Extensions;
+using TiktokLiveRec.Models;
 using TiktokLiveRec.Threading;
 using TiktokLiveRec.Views;
 using Vanara.PInvoke;
