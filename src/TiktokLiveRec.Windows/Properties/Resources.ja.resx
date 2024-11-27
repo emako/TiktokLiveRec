@@ -499,4 +499,7 @@
   <data name="StatusOff" xml:space="preserve">
     <value>無効</value>
   </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>アバター</value>
+  </data>
 </root>

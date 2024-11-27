@@ -496,4 +496,7 @@
   <data name="StatusOff" xml:space="preserve">
     <value>已禁用</value>
   </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>頭像</value>
+  </data>
 </root>

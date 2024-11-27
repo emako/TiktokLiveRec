@@ -16,6 +16,9 @@ public partial class RoomStatusReactive : ReactiveObject
     private string nickName = string.Empty;
 
     [ObservableProperty]
+    private string avatarThumbUrl = string.Empty;
+
+    [ObservableProperty]
     private string roomUrl = string.Empty;
 
     [ObservableProperty]

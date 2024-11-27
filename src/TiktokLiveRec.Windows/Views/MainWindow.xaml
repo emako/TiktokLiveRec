@@ -178,6 +178,24 @@
                     </ContextMenu>
                 </DataGrid.ContextMenu>
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="0.5*">
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style BasedOn="{StaticResource DefaultDataGridCellStyle}" TargetType="{x:Type DataGridCell}">
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                            <vio:PersonPicture Width="28"
+                                                               Height="28"
+                                                               ProfilePicture="{Binding AvatarThumbUrl}"
+                                                               RenderOptions.BitmapScalingMode="HighQuality"
+                                                               SnapsToDevicePixels="True" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding NickName}"
                                         CellStyle="{StaticResource CenteredDataGridTextColumnCellStyle}"
@@ -199,7 +217,7 @@
                                         ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
                                         Header="{I18N RecordStatus}"
                                         IsReadOnly="True" />
-                    <DataGridTemplateColumn Width="2*" Header="{I18N Operation}">
+                    <DataGridTemplateColumn Width="1.8*" Header="{I18N Operation}">
                         <DataGridTemplateColumn.CellStyle>
                             <Style BasedOn="{StaticResource DefaultDataGridCellStyle}" TargetType="{x:Type DataGridCell}">
                                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -333,7 +351,6 @@
                                Opacity="0.6"
                                Text="{Binding StatusOfRecordFormat}"
                                ToolTip="{I18N RecordFormat}" />
-                    <!--<Separator />-->
                 </ui:StackPanel>
             </ui:Grid>
         </ui:Grid>

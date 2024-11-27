@@ -127,6 +127,7 @@ public partial class MainViewModel : ReactiveObject
 
             if (roomStatusReactive != null)
             {
+                roomStatusReactive.AvatarThumbUrl = roomStatus.AvatarThumbUrl;
                 roomStatusReactive.StreamStatus = roomStatus.StreamStatus;
                 roomStatusReactive.RecordStatus = roomStatus.RecordStatus;
                 roomStatusReactive.FlvUrl = roomStatus.FlvUrl;

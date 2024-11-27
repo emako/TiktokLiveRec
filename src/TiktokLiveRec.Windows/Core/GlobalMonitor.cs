@@ -119,6 +119,10 @@ internal static class GlobalMonitor
                             StreamStatus prevStreamStatus = roomStatus.StreamStatus;
 
                             // Update Room Status
+                            if (string.IsNullOrWhiteSpace(roomStatus.AvatarThumbUrl))
+                            {
+                                roomStatus.AvatarThumbUrl = spiderResult.AvatarThumbUrl!;
+                            }
                             roomStatus.FlvUrl = spiderResult.FlvUrl!;
                             roomStatus.HlsUrl = spiderResult.HlsUrl!;
                             roomStatus.StreamStatus = spiderResult.IsLiveStreaming switch

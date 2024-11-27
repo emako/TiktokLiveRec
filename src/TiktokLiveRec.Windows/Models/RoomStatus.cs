@@ -6,7 +6,7 @@ public sealed class RoomStatus
 {
     public string NickName { get; set; } = string.Empty;
 
-    public string? AvatarThumbUrl { get; set; }
+    public string AvatarThumbUrl { get; set; } = string.Empty;
 
     public string RoomUrl { get; set; } = string.Empty;
 
