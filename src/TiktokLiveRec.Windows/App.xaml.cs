@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Threading;
 using TiktokLiveRec.Extensions;
 using Wpf.Ui.Violeta.Controls;
+using Wpf.Ui.Violeta.Win32;
 
 namespace TiktokLiveRec;
 
@@ -12,6 +13,7 @@ public partial class App : Application
 {
     static App()
     {
+        _ = DpiAware.SetProcessDpiAwareness();
         ConfigurationManager.ConfigurationSerializer = new YamlConfigurationSerializer();
         ConfigurationManager.Setup(ConfigurationSpecialPath.GetPath("config.yaml", AppConfig.PackName));
         Locale.Culture = string.IsNullOrWhiteSpace(Configurations.Language.Get()) ? CultureInfo.CurrentUICulture : new CultureInfo(Configurations.Language.Get());
