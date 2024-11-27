@@ -10,7 +10,7 @@
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                  xmlns:vio="http://schemas.lepo.co/wpfui/2022/xaml/violeta"
                  Title="TiktokLiveRec"
-                 Width="800"
+                 Width="830"
                  Height="600"
                  d:Background="#FF101010"
                  ExtendsContentIntoTitleBar="True"
