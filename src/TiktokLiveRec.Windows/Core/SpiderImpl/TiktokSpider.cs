@@ -33,13 +33,13 @@ public sealed partial class TiktokSpider : ISpider
 
         string userId = uri.Segments.Last();
 
-        if (!userId.StartsWith("@"))
+        if (!userId.StartsWith('@'))
         {
             if (uri.Segments.Length >= 2)
             {
                 userId = uri.Segments[^2].Trim('/');
 
-                if (userId.StartsWith("@"))
+                if (userId.StartsWith('@'))
                 {
                     string roomUrl = $"https://www.tiktok.com/{userId}/live";
                     return roomUrl;
@@ -128,6 +128,7 @@ public sealed partial class TiktokSpider : ISpider
 
                 result.UniqueId = user["uniqueId"];
                 result.Nickname = user["nickname"];
+                result.AvatarThumbUrl = user["avatarThumb"];
                 result.IsLiveStreaming = user["status"] == "2";
 
                 if (result.IsLiveStreaming == false)
