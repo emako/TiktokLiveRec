@@ -286,36 +286,39 @@
                             </c:If.FalseValue>
                         </c:If>
                     </ContentControl>
-                    <ContentControl ToolTip="{I18N AutoShutdown}">
-                        <c:If Condition="{Binding StatusOfIsUseAutoShutdown, Mode=OneWay}">
+                    <ContentControl ToolTip="{I18N KeepAwake}">
+                        <c:If Condition="{Binding StatusOfIsUseKeepAwake, Mode=OneWay}">
                             <c:If.TrueValue>
-                                <ui:StackPanel Orientation="Horizontal" Spacing="4">
-                                    <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                                 FontSize="12"
-                                                 Foreground="{DynamicResource SystemAccentColorPrimaryBrush}"
-                                                 Glyph="{x:Static ui:FontSymbols.PowerButton}">
-                                        <!--<ui:FontIcon.RenderTransform>
-                                            <ScaleTransform CenterX="6" CenterY="6" ScaleX="0.8" ScaleY="0.8" />
-                                        </ui:FontIcon.RenderTransform>-->
-                                    </ui:FontIcon>
-                                    <TextBlock VerticalAlignment="Center"
-                                               FontSize="12"
-                                               Foreground="{DynamicResource SystemAccentColorPrimaryBrush}"
-                                               Text="{Binding StatusOfAutoShutdownTime}" />
-                                </ui:StackPanel>
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             Foreground="{DynamicResource SystemAccentColorPrimaryBrush}"
+                                             Glyph="{x:Static ui:FontSymbols.Recent}" />
                             </c:If.TrueValue>
                             <c:If.FalseValue>
                                 <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                             FontSize="12"
                                              Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
-                                             Glyph="{x:Static ui:FontSymbols.PowerButton}">
-                                    <ui:FontIcon.RenderTransform>
-                                        <ScaleTransform CenterX="6" CenterY="6" ScaleX="0.8" ScaleY="0.8" />
-                                    </ui:FontIcon.RenderTransform>
-                                </ui:FontIcon>
+                                             Glyph="{x:Static ui:FontSymbols.Recent}" />
                             </c:If.FalseValue>
                         </c:If>
                     </ContentControl>
+                    <ContentControl ToolTip="{I18N AutoShutdown}">
+                        <c:If Condition="{Binding StatusOfIsUseAutoShutdown, Mode=OneWay}">
+                            <c:If.TrueValue>
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             Foreground="{DynamicResource SystemAccentColorPrimaryBrush}"
+                                             Glyph="{x:Static ui:FontSymbols.PowerButton}" />
+                            </c:If.TrueValue>
+                            <c:If.FalseValue>
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                             Glyph="{x:Static ui:FontSymbols.PowerButton}" />
+                            </c:If.FalseValue>
+                        </c:If>
+                    </ContentControl>
+                    <TextBlock FontSize="12"
+                               Foreground="{DynamicResource SystemAccentColorPrimaryBrush}"
+                               Text="{Binding StatusOfAutoShutdownTime}"
+                               ToolTip="{I18N AutoShutdown}"
+                               Visibility="{Binding StatusOfIsUseAutoShutdown, Converter={x:Static c:BoolToVisibilityConverter.Instance}}" />
                     <Separator />
                     <ui:StackPanel Orientation="Horizontal" ToolTip="{I18N RoutineInterval}">
                         <TextBlock VerticalAlignment="Center"

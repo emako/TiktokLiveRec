@@ -57,6 +57,9 @@ public partial class MainViewModel : ReactiveObject
     private bool statusOfIsUseProxy = Configurations.IsUseProxy.Get();
 
     [ObservableProperty]
+    private bool statusOfIsUseKeepAwake = Configurations.IsUseKeepAwake.Get();
+
+    [ObservableProperty]
     private bool statusOfIsUseAutoShutdown = Configurations.IsUseAutoShutdown.Get();
 
     [ObservableProperty]
@@ -137,11 +140,12 @@ public partial class MainViewModel : ReactiveObject
 
         StatusOfIsToNotify = Configurations.IsToNotify.Get();
         StatusOfIsToRecord = Configurations.IsToRecord.Get();
+        StatusOfIsUseProxy = Configurations.IsUseProxy.Get();
+        StatusOfIsUseKeepAwake = Configurations.IsUseKeepAwake.Get();
         StatusOfIsUseAutoShutdown = Configurations.IsUseAutoShutdown.Get();
         StatusOfAutoShutdownTime = Configurations.AutoShutdownTime.Get();
         StatusOfRecordFormat = Configurations.RecordFormat.Get();
         StatusOfRoutineInterval = Configurations.RoutineInterval.Get();
-        StatusOfIsUseProxy = Configurations.IsUseProxy.Get();
 
         if (StatusOfIsUseAutoShutdown && TimeSpan.TryParse(StatusOfAutoShutdownTime, out TimeSpan targetTime))
         {

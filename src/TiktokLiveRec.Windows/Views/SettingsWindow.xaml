@@ -216,7 +216,7 @@
                                            VerticalAlignment="Center"
                                            FontFamily="{DynamicResource SymbolThemeFontFamily}"
                                            FontSize="18"
-                                           Text="{x:Static ui:FontSymbols.Record}" />
+                                           Text="{x:Static ui:FontSymbols.Video}" />
                             </Grid>
                             <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
                                 <TextBlock Grid.Row="0" Text="{I18N EnableRecord}" />
@@ -266,7 +266,7 @@
                                                VerticalAlignment="Center"
                                                FontFamily="{DynamicResource SymbolThemeFontFamily}"
                                                FontSize="18"
-                                               Text="{x:Static ui:FontSymbols.Video}" />
+                                               Text="{x:Static ui:FontSymbols.Filter}" />
                                 </Grid>
                                 <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
                                     <TextBlock Grid.Row="0" Text="{I18N RecordFormat}" />
