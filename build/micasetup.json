@@ -4,7 +4,7 @@
   "Output": "./${AppName}_v${Version}_win64.exe",
   "AppName": "TiktokLiveRec",
   "KeyName": "TiktokLiveRec",
-  "ExeName": "TiktokLiveRec/TiktokLiveRec.exe",
+  "ExeName": "TiktokLiveRec.exe",
   "Publisher": "ema",
   "Version": "1.4.0.0",
   "TargetFramework": "net472",
