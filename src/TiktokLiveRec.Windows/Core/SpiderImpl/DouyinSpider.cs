@@ -121,7 +121,8 @@ public sealed partial class DouyinSpider : ISpider
         match = AvatarThumbUrlRegex.Match(htmlStr);
         if (match.Success)
         {
-            result.AvatarThumbUrl = match.Groups[1].Value;
+            result.AvatarThumbUrl = match.Groups[1].Value
+                .Replace("\\u0026", "&");
         }
 
         if (result.IsLiveStreaming == false)
@@ -142,7 +143,7 @@ public sealed partial class DouyinSpider : ISpider
     [GeneratedRegex("\\\\\"nickname\\\\\":\\\\\"(.*?)\\\\\",\\\\\"avatar_thumb")]
     private static partial Regex NickNameRegex { get; }
 
-    [GeneratedRegex("\\\\\"url_list\\\\\":\\[\\\\\"(.*?)\\\\\"")]
+    [GeneratedRegex("avatar_thumb\\\\\":\\{\\\\\"url_list\\\\\":\\[\\\\\"(.*?)\\\\\"")]
     private static partial Regex AvatarThumbUrlRegex { get; }
 
     [GeneratedRegex("\\\\\"hls_pull_url_map\\\\\":{\\\\\"FULL_HD1\\\\\":\\\\\"(.*?)\\\\\"")]
