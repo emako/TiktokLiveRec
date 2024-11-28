@@ -88,7 +88,7 @@ internal static class GlobalMonitor
             // Delay Routine Interval
             _ = await RoutinePeriodicWait.WaitForNextTickAsync(token);
 
-            // Routine Can't be stopped from throwables
+            // Routine can not be stopped from throwables
             try
             {
                 Room[] rooms = Configurations.Rooms.Get();
@@ -168,6 +168,12 @@ internal static class GlobalMonitor
                             else
                             {
                                 roomStatus.StreamStatus = StreamStatus.Disabled;
+                            }
+
+                            if (isRoomToRecord && roomStatus.RecordStatus == RecordStatus.Disabled)
+                            {
+                                // Restore to initialized
+                                roomStatus.RecordStatus = RecordStatus.Initialized;
                             }
                         }
                         else
