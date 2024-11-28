@@ -31,7 +31,7 @@ public sealed class Converter
             return false;
         }
 
-        if (sourceFileInfo.Extension.ToLower() == targetFormat.ToLower())
+        if (sourceFileInfo.Extension.Equals(targetFormat, StringComparison.CurrentCultureIgnoreCase))
         {
             return false;
         }
@@ -40,7 +40,7 @@ public sealed class Converter
         string parameters = string.Empty;
 
         // From TS to other format
-        if (sourceFileInfo.Extension.ToLower() == ".ts")
+        if (sourceFileInfo.Extension.Equals(".ts", StringComparison.CurrentCultureIgnoreCase))
         {
             parameters = new List<string>()
             {
@@ -50,7 +50,7 @@ public sealed class Converter
                 "-c", "copy", targetFileName,
             }.ToArguments();
         }
-        else if (sourceFileInfo.Extension.ToLower() == ".flv")
+        else if (sourceFileInfo.Extension.Equals(".flv", StringComparison.CurrentCultureIgnoreCase))
         {
             parameters = new List<string>()
             {
