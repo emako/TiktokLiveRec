@@ -139,7 +139,8 @@ public sealed class Recorder
 
                 if (!result.IsSuccess)
                 {
-                    Debug.WriteLine(result.ExitCode);
+                    Debug.WriteLine($"[Recorder] FFmpeg not work, exit code is {result.ExitCode}.");
+                    Debug.WriteLine($"[Recorder] Now fallback to flv direct download mode.");
 
                     // Fallback to flv downloading.
                     if (!string.IsNullOrWhiteSpace(startInfo.FlvUrl))
@@ -173,6 +174,44 @@ public sealed class Recorder
                 Debug.WriteLine(e);
             }
 
+            try
+            {
+                // Converter to target format if recorded.
+                if (File.Exists(FileName))
+                {
+                    string formatArrow = Configurations.RecordFormat.Get();
+
+                    if (!string.IsNullOrEmpty(formatArrow) && formatArrow.Contains("->"))
+                    {
+                        formatArrow = "." + formatArrow.Split('>')[1].Trim().ToLower();
+
+                        // Execute the converter asynchronously.
+                        // So don't use await here.
+                        _ = new Converter().ExecuteAsync(FileName, formatArrow)
+                            .ContinueWith(task =>
+                            {
+                                if (task.Result && Configurations.IsRemoveTs.Get())
+                                {
+                                    try
+                                    {
+                                        File.Delete(FileName);
+                                        FileName = Path.ChangeExtension(FileName, formatArrow);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        Debug.WriteLine(e);
+                                    }
+                                }
+                            })
+                            .ConfigureAwait(false);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+
             EndTime = DateTime.Now;
             RecordStatus = RecordStatus.NotRecording;
         }, TaskCreationOptions.LongRunning);
@@ -185,6 +224,7 @@ public sealed class Recorder
 
     private Task OnStandardErrorReceived(string data, CancellationToken token)
     {
+        // TODO
         Debug.WriteLine(data);
         _ = WeakReferenceMessenger.Default.Send(new RecorderMessage()
         {
@@ -196,6 +236,7 @@ public sealed class Recorder
 
     private Task OnStandardOutputReceived(string data, CancellationToken token)
     {
+        // TODO
         Debug.WriteLine(data);
         _ = WeakReferenceMessenger.Default.Send(new RecorderMessage()
         {

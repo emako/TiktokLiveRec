@@ -278,8 +278,8 @@
                                 <Grid Grid.Column="2" Margin="0,0,12,0">
                                     <ComboBox MinWidth="150" SelectedIndex="{Binding RecordFormatIndex, Mode=TwoWay}">
                                         <ComboBoxItem Content="TS/FLV" />
-                                        <ComboBoxItem Content="TS/FLV -&gt; MP4" IsEnabled="False" />
-                                        <ComboBoxItem Content="TS/FLV -&gt; MKV" IsEnabled="False" />
+                                        <ComboBoxItem Content="TS/FLV -&gt; MP4" />
+                                        <ComboBoxItem Content="TS/FLV -&gt; MKV" />
                                     </ComboBox>
                                 </Grid>
                             </ui:Grid>
