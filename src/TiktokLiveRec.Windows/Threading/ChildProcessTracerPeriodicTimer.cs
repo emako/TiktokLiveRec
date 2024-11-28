@@ -61,6 +61,7 @@ public partial class ChildProcessTracerPeriodicTimer(TimeSpan period) : IDisposa
     }
 
     [SuppressMessage("Usage", "CA1816:Dispose methods should call SuppressFinalize")]
+    [SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression")]
     public void Dispose()
     {
         Tracer.Dispose();
@@ -72,7 +73,7 @@ public partial class ChildProcessTracerPeriodicTimer(TimeSpan period) : IDisposa
 /// Make sures that child processes are automatically terminated
 /// if the parent process exits unexpectedly.
 /// </summary>
-public class ChildProcessTracer : IDisposable
+public partial class ChildProcessTracer : IDisposable
 {
     private readonly Kernel32.SafeHJOB? hJob;
 
