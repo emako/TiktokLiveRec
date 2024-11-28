@@ -67,6 +67,7 @@ public sealed partial class TiktokSpider : ISpider
         RestRequest request = new()
         {
             Method = Method.Get,
+            Timeout = TimeSpan.FromSeconds(5),
         };
 
         string cookie = Configurations.CookieOversea.Get();

@@ -68,6 +68,7 @@ public sealed partial class DouyinSpider : ISpider
         RestRequest request = new()
         {
             Method = Method.Get,
+            Timeout = TimeSpan.FromSeconds(5),
         };
 
         string cookie = Configurations.CookieChina.Get();
