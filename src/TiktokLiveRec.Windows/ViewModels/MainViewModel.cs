@@ -70,9 +70,27 @@ public partial class MainViewModel : ReactiveObject
     private string statusOfRecordFormat = Configurations.RecordFormat.Get();
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(StatusOfRoutineIntervalWithUnit))]
     private int statusOfRoutineInterval = Configurations.RoutineInterval.Get();
 
-    public string StatusOfRoutineIntervalWithUnit => Computed(() => StatusOfRoutineInterval > 1000 ? $"{StatusOfRoutineInterval / 1000}s" : $"{StatusOfRoutineInterval}ms");
+    public string StatusOfRoutineIntervalWithUnit
+    {
+        get
+        {
+            if (StatusOfRoutineInterval > 60000d)
+            {
+                return $"{Math.Round(StatusOfRoutineInterval / 60000d, 1)}min";
+            }
+            else if (StatusOfRoutineInterval > 1000d)
+            {
+                return $"{StatusOfRoutineInterval / 1000d}s";
+            }
+            else
+            {
+                return $"{StatusOfRoutineInterval}ms";
+            }
+        }
+    }
 
     [ObservableProperty]
     private bool isReadyToShutdown = false;
