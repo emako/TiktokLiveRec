@@ -174,7 +174,6 @@
                                   IsCheckable="True"
                                   IsChecked="{Binding SelectedItem.IsToRecord, Mode=TwoWay}"
                                   ToolTip="{I18N EnableRecordHint}" />
-                        <Separator />
                     </ContextMenu>
                 </DataGrid.ContextMenu>
                 <DataGrid.Columns>
