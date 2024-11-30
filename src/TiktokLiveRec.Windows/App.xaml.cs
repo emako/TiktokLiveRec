@@ -1,6 +1,7 @@
 ﻿using Fischless.Configuration;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Threading;
 using TiktokLiveRec.Extensions;
@@ -13,6 +14,7 @@ public partial class App : Application
 {
     static App()
     {
+        Directory.SetCurrentDirectory(AppContext.BaseDirectory);
         _ = DpiAware.SetProcessDpiAwareness();
         ConfigurationManager.ConfigurationSerializer = new YamlConfigurationSerializer();
         ConfigurationManager.Setup(ConfigurationSpecialPath.GetPath("config.yaml", AppConfig.PackName));
