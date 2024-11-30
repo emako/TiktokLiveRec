@@ -52,7 +52,7 @@ public sealed class Recorder
 
                 string saveFolder = SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get());
 
-                saveFolder = Path.Combine(saveFolder, startInfo.NickName);
+                saveFolder = Path.Combine(saveFolder, startInfo.NickName.ReplaceTrailingDotsWithUnderscores());
                 if (!Directory.Exists(saveFolder))
                 {
                     Directory.CreateDirectory(saveFolder);
@@ -65,12 +65,12 @@ public sealed class Recorder
                 if (!string.IsNullOrWhiteSpace(startInfo.HlsUrl))
                 {
                     Url = startInfo.HlsUrl;
-                    FileName = Path.Combine(saveFolder, $"{startInfo.NickName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.ts");
+                    FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.ts");
                 }
                 else
                 {
                     Url = startInfo.FlvUrl;
-                    FileName = Path.Combine(saveFolder, $"{startInfo.NickName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.flv");
+                    FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.flv");
                 }
 
                 if (string.IsNullOrWhiteSpace(userAgent))
@@ -148,7 +148,7 @@ public sealed class Recorder
                         StartTime = DateTime.Now;
 
                         Url = startInfo.FlvUrl;
-                        FileName = Path.Combine(saveFolder, $"{startInfo.NickName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.flv");
+                        FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.flv");
 
                         DownloadConfiguration downloadOpt = new();
 
