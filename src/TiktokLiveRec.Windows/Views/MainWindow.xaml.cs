@@ -23,6 +23,12 @@ public partial class MainWindow : FluentWindow
             // Start keep awake
             _ = Kernel32.SetThreadExecutionState(Kernel32.EXECUTION_STATE.ES_CONTINUOUS | Kernel32.EXECUTION_STATE.ES_SYSTEM_REQUIRED | Kernel32.EXECUTION_STATE.ES_AWAYMODE_REQUIRED);
         }
+
+        if (Environment.GetCommandLineArgs().Any(cli => cli == "/autorun"))
+        {
+            Visibility = System.Windows.Visibility.Hidden;
+            WindowState = System.Windows.WindowState.Minimized;
+        }
     }
 
     protected override void OnSourceInitialized(EventArgs e)

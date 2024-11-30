@@ -7,17 +7,17 @@ internal static class AutoStartupHelper
 {
     public static bool IsAutorun()
     {
-        return RegistyAutoRunHelper.IsEnabled("DouyinLiveRecorder.Tray", $"\"{Process.GetCurrentProcess().MainModule?.FileName!}\" /autorun");
+        return RegistyAutoRunHelper.IsEnabled("TiktokLiveRec", $"\"{Process.GetCurrentProcess().MainModule?.FileName!}\" /autorun");
     }
 
     public static void RemoveAutorunShortcut()
     {
-        RegistyAutoRunHelper.Disable("DouyinLiveRecorder.Tray");
+        RegistyAutoRunHelper.Disable("TiktokLiveRec");
     }
 
     public static void CreateAutorunShortcut()
     {
-        RegistyAutoRunHelper.Enable("DouyinLiveRecorder.Tray", $"\"{Process.GetCurrentProcess().MainModule?.FileName!}\" /autorun");
+        RegistyAutoRunHelper.Enable("TiktokLiveRec", $"\"{Process.GetCurrentProcess().MainModule?.FileName!}\" /autorun");
     }
 }
 
