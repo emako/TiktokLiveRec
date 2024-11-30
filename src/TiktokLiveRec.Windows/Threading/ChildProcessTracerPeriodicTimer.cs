@@ -13,6 +13,7 @@ public partial class ChildProcessTracerPeriodicTimer(TimeSpan period) : IDisposa
     public PeriodicTimer PeriodicTimer { get; } = new PeriodicTimer(period);
     public CancellationTokenSource? TokenSource { get; protected set; } = null;
     public HashSet<int> TracedChildProcessIds { get; } = [];
+    public HashSet<string>? WhiteList { get; set; } = null;
 
     public void Start(CancellationTokenSource? tokenSource = null)
     {
@@ -35,6 +36,14 @@ public partial class ChildProcessTracerPeriodicTimer(TimeSpan period) : IDisposa
                 if (childProcessName == "conhost")
                 {
                     continue;
+                }
+
+                if (WhiteList != null && WhiteList.Count > 0)
+                {
+                    if (!WhiteList.Contains(childProcessName))
+                    {
+                        continue;
+                    }
                 }
 
                 if (TracedChildProcessIds.Add(childId))

@@ -133,6 +133,7 @@ public partial class MainViewModel : ReactiveObject
         });
 
         GlobalMonitor.Start();
+        ChildProcessTracerPeriodicTimer.Default.WhiteList = ["ffmpeg", "ffplay"];
         ChildProcessTracerPeriodicTimer.Default.Start();
         DispatcherTimer.Start();
     }
