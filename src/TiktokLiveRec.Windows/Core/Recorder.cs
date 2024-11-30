@@ -37,7 +37,7 @@ public sealed class Recorder
 
         RecordStatus = RecordStatus.Recording;
 
-        // Start a recording task that does not use the default ThreadPool
+        // Start a recording task that does not use the default ThreadPool.
         return Task.Factory.StartNew(async () =>
         {
             try
@@ -46,8 +46,7 @@ public sealed class Recorder
 
                 if (recorderPath == null)
                 {
-                    // Error on Recorder not found
-                    RecordStatus = RecordStatus.Error;
+                    // Recorder not found so you should reinstall the program.
                     return;
                 }
 
@@ -190,6 +189,7 @@ public sealed class Recorder
                         _ = new Converter().ExecuteAsync(FileName, formatArrow)
                             .ContinueWith(task =>
                             {
+                                // Remove only the conversion is successful.
                                 if (task.Result && Configurations.IsRemoveTs.Get())
                                 {
                                     try
@@ -253,6 +253,8 @@ public enum RecordStatus
     Disabled,
     NotRecording,
     Recording,
+
+    [Obsolete("Should retry recording instead of pushing an Error Status")]
     Error,
 }
 

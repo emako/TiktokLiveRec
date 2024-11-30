@@ -56,7 +56,9 @@ public partial class RoomStatusReactive : ReactiveObject
         RecordStatus.Disabled => "RecordStatusOfDisabled".Tr(),
         RecordStatus.NotRecording => "RecordStatusOfNotRecording".Tr(),
         RecordStatus.Recording => "RecordStatusOfRecording".Tr() + " " + Duration,
+#pragma warning disable CS0618 // Type or member is obsolete
         RecordStatus.Error => "RecordStatusOfError".Tr(),
+#pragma warning restore CS0618 // Type or member is obsolete
         _ => "RecordStatusOfUnknown".Tr(),
     };
 
