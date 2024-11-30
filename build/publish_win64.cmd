@@ -11,7 +11,7 @@ del /s /q publish.7z
 7z a publish.7z ..\src\TiktokLiveRec.Windows\bin\x64\Release\net9.0-windows10.0.26100.0\publish\win-x64\* -t7z -mx=5 -mf=BCJ2 -r -y
 for /f "usebackq delims=" %%i in (`powershell -NoLogo -NoProfile -Command "Get-Content '..\src\TiktokLiveRec.Windows\TiktokLiveRec.Windows.csproj' | Select-String -Pattern '<AssemblyVersion>(.*?)</AssemblyVersion>' | ForEach-Object { $_.Matches.Groups[1].Value }"`) do @set version=%%i
 del /s /q TiktokLiveRec_v%version%_win64.7z
-"C:\Program Files\MicaSetup\makemica" micasetup.json
+makemica micasetup.json
 rename publish.7z TiktokLiveRec_v%version%_win64.7z
 
 @pause
