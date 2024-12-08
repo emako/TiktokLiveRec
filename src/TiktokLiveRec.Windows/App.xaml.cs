@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Threading;
 using TiktokLiveRec.Extensions;
+using Wpf.Ui.Violeta.Appearance;
 using Wpf.Ui.Violeta.Controls;
 using Wpf.Ui.Violeta.Win32;
 
@@ -14,6 +15,7 @@ public partial class App : Application
 {
     static App()
     {
+        SystemMenuThemeManager.Apply();
         Directory.SetCurrentDirectory(AppContext.BaseDirectory);
         _ = DpiAware.SetProcessDpiAwareness();
         ConfigurationManager.ConfigurationSerializer = new YamlConfigurationSerializer();
