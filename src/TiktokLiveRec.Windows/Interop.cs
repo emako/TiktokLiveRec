@@ -141,6 +141,57 @@ internal static class Interop
         _ = User32.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, 0, 0, User32.SetWindowPosFlags.SWP_NOMOVE | User32.SetWindowPosFlags.SWP_NOSIZE | User32.SetWindowPosFlags.SWP_NOZORDER | User32.SetWindowPosFlags.SWP_FRAMECHANGED);
     }
 
+    /// <param name="ratio">Screen ratio in maximum orientation</param>
+    public static void SetWindowCenterRatio(nint hWnd, double ratio = 1d)
+    {
+        // Fit the window size and center it.
+        if (User32.GetWindowRect(hWnd, out RECT lpRect))
+        {
+            Screen screen = Screen.FromHandle(hWnd);
+            int screenWidth = screen.WorkingArea.Width;
+            int screenHeight = screen.WorkingArea.Height;
+
+            // Calculate the current width and height of the window
+            int windowWidth = lpRect.Right - lpRect.Left;
+            int windowHeight = lpRect.Bottom - lpRect.Top;
+
+            // Define the maximum allowed width and height (80% of the screen size)
+            int maxWidth = (int)(screenWidth * ratio);
+            int maxHeight = (int)(screenHeight * ratio);
+
+            // Check if the window exceeds the screen's 80% size and scale down if necessary
+            if (windowWidth > maxWidth || windowHeight > maxHeight)
+            {
+                // Calculate the scaling factor
+                float scaleWidth = (float)maxWidth / windowWidth;
+                float scaleHeight = (float)maxHeight / windowHeight;
+
+                // Use the smaller scaling factor to maintain the aspect ratio
+                float scaleFactor = Math.Min(scaleWidth, scaleHeight);
+
+                // Calculate the new size
+                int newWidth = (int)(windowWidth * scaleFactor);
+                int newHeight = (int)(windowHeight * scaleFactor);
+
+                // Calculate the new position to center the window on the screen
+                int newX = (screenWidth - newWidth) / 2;
+                int newY = (screenHeight - newHeight) / 2;
+
+                // Set the new window size and position (you can use SetWindowPos or a similar API)
+                User32.SetWindowPos(hWnd, IntPtr.Zero, newX, newY, newWidth, newHeight, User32.SetWindowPosFlags.SWP_NOZORDER);
+            }
+            else
+            {
+                // If the window doesn't exceed 80% of the screen, just center it
+                int newX = (screenWidth - windowWidth) / 2;
+                int newY = (screenHeight - windowHeight) / 2;
+
+                // Move the window to the centered position without resizing
+                User32.SetWindowPos(hWnd, IntPtr.Zero, newX, newY, windowWidth, windowHeight, User32.SetWindowPosFlags.SWP_NOZORDER);
+            }
+        }
+    }
+
     public static void RestoreWindow(nint hWnd)
     {
         if (User32.IsWindow(hWnd))

@@ -2,7 +2,9 @@
 using System.Diagnostics;
 using System.IO;
 using TiktokLiveRec.Extensions;
+using Vanara.PInvoke;
 using Windows.System;
+using Wpf.Ui.Violeta.Resources;
 
 namespace TiktokLiveRec.Core;
 
@@ -70,6 +72,7 @@ public sealed class Player
             {
                 FileName = playerPath,
                 Arguments = playerArgs,
+                WindowStyle = ProcessWindowStyle.Hidden,
                 UseShellExecute = false,
                 CreateNoWindow = true,
             },
@@ -79,26 +82,51 @@ public sealed class Player
 
         if (isFFplay)
         {
-            await Task.Delay(1);
-            _ = SpinWait.SpinUntil(() => process.HasExited || process.MainWindowHandle != IntPtr.Zero, 30000);
+            await Task.Delay(700);
+
+            // Not needed because of `ProcessWindowStyle.Hidden`.
+            // await Task.Run(() => _ = SpinWait.SpinUntil(() => process.HasExited || process.MainWindowHandle != IntPtr.Zero, 3000));
 
             if (process.HasExited)
             {
                 return;
             }
 
-            foreach (nint hWnd in Interop.GetWindowHandleByProcessId(process.Id))
+            nint[] hWnds = Interop.GetWindowHandleByProcessId(process.Id);
+
+            if (hWnds.Length == 0)
             {
+                await Task.Delay(700);
+                hWnds = Interop.GetWindowHandleByProcessId(process.Id);
+
+                if (hWnds.Length == 0)
+                {
+                    // No fallback more.
+                }
+            }
+
+            foreach (nint hWnd in hWnds)
+            {
+                // Not needed because of `ProcessWindowStyle.Hidden`.
+                // _ = User32.ShowWindow(hWnd, ShowWindowCommand.SW_HIDE);
+
                 if (!Interop.IsDarkModeForWindow(hWnd))
                 {
                     Interop.EnableDarkModeForWindow(hWnd);
-                    Interop.SetRoundedCorners(hWnd, enable: !isPlayerRect);
-                    Interop.SetWindowTitle(hWnd, new FileInfo(mediaPath).Name);
-                    Interop.SetHideFromTaskBar(hWnd);
-
-                    // FFplay will lost icon when maximize.
-                    Interop.SetWindowIcon(hWnd, new(Wpf.Ui.Violeta.Resources.ResourcesProvider.GetStream("pack://application:,,,/TiktokLiveRec;component/Assets/Favicon.ico")));
                 }
+
+                Interop.SetRoundedCorners(hWnd, enable: !isPlayerRect);
+                Interop.SetWindowTitle(hWnd, new FileInfo(mediaPath).Name);
+                Interop.SetHideFromTaskBar(hWnd);
+
+                // FFplay will lost icon when maximize.
+                Interop.SetWindowIcon(hWnd, new(ResourcesProvider.GetStream("pack://application:,,,/TiktokLiveRec;component/Assets/Favicon.ico")));
+
+                // Fit the player window size and center it.
+                Interop.SetWindowCenterRatio(hWnd, 0.98d);
+
+                // Show the window first time here.
+                _ = User32.ShowWindow(hWnd, ShowWindowCommand.SW_NORMAL);
             }
 
             if (process.HasExited)
