@@ -47,6 +47,7 @@ public sealed class Recorder
                 if (recorderPath == null)
                 {
                     // Recorder not found so you should reinstall the program.
+                    RecordStatus = RecordStatus.NotRecording;
                     return;
                 }
 
