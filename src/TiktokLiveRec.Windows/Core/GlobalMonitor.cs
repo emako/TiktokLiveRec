@@ -125,12 +125,30 @@ internal static class GlobalMonitor
                             }
                             roomStatus.FlvUrl = spiderResult.FlvUrl!;
                             roomStatus.HlsUrl = spiderResult.HlsUrl!;
-                            roomStatus.StreamStatus = spiderResult.IsLiveStreaming switch
+
+                            // If current status is `StreamStatus.Streaming`, don't update it in 30s.
+                            if (roomStatus.StreamStatus == StreamStatus.Streaming
+                                && roomStatus.RecordStatus == RecordStatus.Recording
+                                && (roomStatus.Recorder.EndTime - roomStatus.Recorder.StartTime).TotalSeconds < 30)
                             {
-                                true => StreamStatus.Streaming,
-                                false => StreamStatus.NotStreaming,
-                                null or _ => roomStatus.StreamStatus,
-                            };
+                                // Update stream status next 30s.
+                                // https://github.com/emako/TiktokLiveRec/issues/20
+                            }
+                            else
+                            {
+                                roomStatus.StreamStatus = spiderResult.IsLiveStreaming switch
+                                {
+                                    true => StreamStatus.Streaming,
+                                    false => StreamStatus.NotStreaming,
+                                    null or _ => roomStatus.StreamStatus,
+                                };
+                            }
+
+                            // If current status is `StreamStatus.Streaming`, don't update it in 30s.
+                            if (roomStatus.StreamStatus == StreamStatus.Streaming
+                                && (roomStatus.Recorder.EndTime - roomStatus.Recorder.StartTime).TotalSeconds >= 30)
+                            {
+                            }
 
                             // Start Streaming Recording
                             if (isRoomToRecord && isGlobalToRecord)
