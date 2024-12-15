@@ -31,20 +31,6 @@ public partial class MainWindow : FluentWindow
         }
     }
 
-    protected override void OnSourceInitialized(EventArgs e)
-    {
-        base.OnSourceInitialized(e);
-
-        if (Enum.TryParse(Configurations.Theme.Get(), out ApplicationTheme applicationTheme))
-        {
-            ThemeManager.Apply(applicationTheme);
-        }
-        else
-        {
-            ThemeManager.Apply(ApplicationTheme.Unknown);
-        }
-    }
-
     protected override void OnClosing(CancelEventArgs e)
     {
         base.OnClosing(e);

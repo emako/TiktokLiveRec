@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Threading;
 using TiktokLiveRec.Extensions;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Violeta.Appearance;
 using Wpf.Ui.Violeta.Controls;
 using Wpf.Ui.Violeta.Win32;
@@ -32,6 +33,15 @@ public partial class App : Application
             e.Handled = true;
             ExceptionReport.Show(e.Exception);
         };
+
+        if (Enum.TryParse(Configurations.Theme.Get(), out ApplicationTheme applicationTheme))
+        {
+            ThemeManager.Apply(applicationTheme);
+        }
+        else
+        {
+            ThemeManager.Apply(ApplicationTheme.Unknown);
+        }
     }
 
     /// <summary>
