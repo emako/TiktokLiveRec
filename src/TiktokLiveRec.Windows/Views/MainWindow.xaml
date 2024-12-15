@@ -10,7 +10,7 @@
                  xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
                  xmlns:vio="http://schemas.lepo.co/wpfui/2022/xaml/violeta"
                  Title="TiktokLiveRec"
-                 Width="830"
+                 Width="860"
                  Height="600"
                  d:Background="#FF101010"
                  ExtendsContentIntoTitleBar="True"
@@ -216,7 +216,7 @@
                                         ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
                                         Header="{I18N RecordStatus}"
                                         IsReadOnly="True" />
-                    <DataGridTemplateColumn Width="1.8*" Header="{I18N Operation}">
+                    <DataGridTemplateColumn Width="1.6*" Header="{I18N Operation}">
                         <DataGridTemplateColumn.CellStyle>
                             <Style BasedOn="{StaticResource DefaultDataGridCellStyle}" TargetType="{x:Type DataGridCell}">
                                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
