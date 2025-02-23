@@ -53,7 +53,7 @@ public sealed class Recorder
 
                 string saveFolder = SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get());
 
-                saveFolder = Path.Combine(saveFolder, startInfo.NickName.ReplaceTrailingDotsWithUnderscores());
+                saveFolder = Path.Combine(saveFolder, startInfo.NickName.SanitizeFileName().ReplaceTrailingDotsWithUnderscores());
                 if (!Directory.Exists(saveFolder))
                 {
                     Directory.CreateDirectory(saveFolder);
