@@ -171,3 +171,10 @@ UpgradeLog*.txt
 
 # Backup files when performing XAML Binding debugging
 *.backupid-*.BindingExpression
+
+
+# macOS
+.DS_Store
+
+# Rider
+.idea/
