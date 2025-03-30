@@ -1,9 +1,39 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="TiktokLiveRec.macOS.MainWindow"
-        Title="TiktokLiveRec.macOS">
-    Welcome to Avalonia!
-</Window>
+<uu:FluentWindow x:Class="TiktokLiveRec.macOS.MainWindow"
+                 xmlns="https://github.com/avaloniaui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:u="https://irihi.tech/ursa"
+                 xmlns:uu="urn:UrsaAvaloniaUI"
+                 Name="sdf"
+                 Title="TiktokLiveRec"
+                 d:DesignHeight="450"
+                 d:DesignWidth="800"
+                 u:TitleBar.IsTitleBarHitTestVisible="True"
+                 Background="Transparent"
+                 ExtendClientAreaTitleBarHeightHint="-1"
+                 ExtendClientAreaToDecorationsHint="True"
+                 Icon="/Assets/Favicon.ico"
+                 IsTitleBarVisible="True"
+                 TransparencyLevelHint="Mica"
+                 WindowStartupLocation="CenterScreen"
+                 mc:Ignorable="d">
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="0">
+            <StackPanel x:Name="TitleBar"
+                        Orientation="Horizontal"
+                        Spacing="8">
+                <Image Height="18"
+                       Margin="16,16,0,0"
+                       Source="Assets/Favicon.png" />
+                <TextBlock Margin="0,16,0,0"
+                           VerticalAlignment="Center"
+                           FontSize="12"
+                           Text="TiktokLiveRec" />
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="1" Margin="20">
+            <u:TagInput />
+        </StackPanel>
+    </Grid>
+</uu:FluentWindow>

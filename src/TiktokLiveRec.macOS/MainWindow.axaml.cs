@@ -1,8 +1,8 @@
-using Avalonia.Controls;
+using UrsaAvaloniaUI.Controls;
 
 namespace TiktokLiveRec.macOS;
 
-public partial class MainWindow : Window
+public partial class MainWindow : FluentWindow
 {
     public MainWindow()
     {

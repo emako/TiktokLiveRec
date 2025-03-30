@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.tvOS", "src\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.macOS", "src\TiktokLiveRec.macOS\TiktokLiveRec.macOS.csproj", "{880A6A31-3BC7-444C-A71B-0851F3D265B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{595F050A-BF3B-4408-AF04-AE80AD627B81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrsaAvaloniaUI", "src\Irihi.Ursa.Themes.Fluent\UrsaAvaloniaUI.csproj", "{5238F94C-DB28-47B4-A5E8-4406478CC0C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,9 +45,20 @@ Global
 		{880A6A31-3BC7-444C-A71B-0851F3D265B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{880A6A31-3BC7-444C-A71B-0851F3D265B3}.Release|x64.ActiveCfg = Release|Any CPU
 		{880A6A31-3BC7-444C-A71B-0851F3D265B3}.Release|x64.Build.0 = Release|Any CPU
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Debug|x64.Build.0 = Debug|Any CPU
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Release|x64.ActiveCfg = Release|Any CPU
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5238F94C-DB28-47B4-A5E8-4406478CC0C2} = {595F050A-BF3B-4408-AF04-AE80AD627B81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26AED16E-0614-4F53-B1E5-8ACB6CDC2F2C}
