@@ -18,37 +18,32 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
-	
+
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
 		<Watch Include="**\*.axaml" />
 	</ItemGroup>
-	
+
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.2.1" />
-        <PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1" />
+        <PackageReference Include="Avalonia" Version="11.2.6" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.6" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.6" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.6" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.6">
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
 		<PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
         <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.10.0" />
         <PackageReference Include="Semi.Avalonia" Version="11.2.1.6" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
     </ItemGroup>
-	
+
     <ItemGroup>
       <ProjectReference Include="..\Irihi.Ursa.Themes.Fluent\UrsaAvaloniaUI.csproj" />
-    </ItemGroup>
-	
-    <ItemGroup>
-      <Resource Include="Assets\Favicon.ico" />
-      <Resource Include="Assets\Favicon.png" />
     </ItemGroup>
 
 </Project>

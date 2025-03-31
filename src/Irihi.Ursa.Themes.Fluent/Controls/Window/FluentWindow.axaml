@@ -1,0 +1,70 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:u="https://irihi.tech/ursa"
+                    xmlns:uu="urn:UrsaAvaloniaUI">
+
+    <ControlTheme x:Key="{x:Type uu:FluentWindow}" TargetType="uu:FluentWindow">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1" />
+        <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
+        <Setter Property="TransparencyLevelHint" Value="Mica" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="ArrowCaptionButton"
+                  BasedOn="{StaticResource CaptionButton}"
+                  TargetType="Button">
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="CornerRadius" Value="0,0,3,3" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type uu:FluentCaptionButtons}" TargetType="uu:FluentCaptionButtons">
+        <Setter Property="Foreground" Value="{DynamicResource CaptionButtonForeground}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="u:CaptionButtons">
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="PART_FullScreenButton" Theme="{StaticResource ArrowCaptionButton}">
+                        <PathIcon Name="PART_FullScreenButtonIcon"
+                                  Data="{StaticResource WindowExpandGlyph}"
+                                  Foreground="{Binding $parent[Button].Foreground}"
+                                  Theme="{StaticResource InnerPathIcon}" />
+                    </Button>
+                    <Button Name="PART_MinimizeButton" Theme="{StaticResource ArrowCaptionButton}">
+                        <PathIcon Name="PART_MinimizeButtonIcon"
+                                  Data="{StaticResource WindowMinimizeGlyph}"
+                                  Foreground="{Binding $parent[Button].Foreground}"
+                                  Theme="{StaticResource InnerPathIcon}" />
+                    </Button>
+                    <Button Name="PART_RestoreButton" Theme="{StaticResource ArrowCaptionButton}">
+                        <PathIcon Name="PART_RestoreButtonIcon"
+                                  Data="{StaticResource WindowMaximizeGlyph}"
+                                  Foreground="{Binding $parent[Button].Foreground}"
+                                  Theme="{StaticResource InnerPathIcon}" />
+                    </Button>
+                    <Button Name="PART_CloseButton" Theme="{StaticResource ArrowCaptionButton}">
+                        <PathIcon Name="PART_CloseButtonIcon"
+                                  Data="{StaticResource WindowCloseIconGlyph}"
+                                  Foreground="{Binding $parent[Button].Foreground}"
+                                  Theme="{StaticResource InnerPathIcon}" />
+                    </Button>
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Button#PART_CloseButton:pointerover">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{DynamicResource CaptionButtonClosePointeroverBackground}" />
+        </Style>
+        <Style Selector="^ /template/ Button#PART_CloseButton:pressed">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{DynamicResource CaptionButtonClosePressedBackground}" />
+        </Style>
+
+        <Style Selector="^:maximized /template/ PathIcon#PART_RestoreButtonIcon">
+            <Setter Property="Data" Value="{StaticResource WindowRestoreGlyph}" />
+        </Style>
+        <Style Selector="^:fullscreen /template/ PathIcon#PART_FullScreenButtonIcon">
+            <Setter Property="Data" Value="{StaticResource WindowCollapseGlyph}" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

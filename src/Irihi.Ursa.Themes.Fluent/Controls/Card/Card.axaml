@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:c="clr-namespace:UrsaAvaloniaUI.Controls"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls">
+    <Design.PreviewWith>
+        <Border Width="500"
+                Height="500"
+                Background="#333333">
+            <c:Card Width="200"
+                    Height="46"
+                    MinHeight="46">
+                <TextBlock Text="TEST" />
+            </c:Card>
+        </Border>
+    </Design.PreviewWith>
+    <SolidColorBrush x:Key="ExpanderHeaderBorderBrush1">#232323</SolidColorBrush>
+    <ControlTheme x:Key="{x:Type c:Card}" TargetType="c:Card">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <ui:FABorder Background="{DynamicResource ExpanderHeaderBackground}"
+                                 BackgroundSizing="InnerBorderEdge"
+                                 BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                                 BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
+                                 CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </ui:FABorder>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

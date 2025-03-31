@@ -3,7 +3,7 @@ using Avalonia.Dialogs;
 using Avalonia.Media;
 using System.Runtime.Versioning;
 
-namespace TiktokLiveRec.macOS;
+namespace TiktokLiveRec;
 
 [SupportedOSPlatform("Windows")]
 [SupportedOSPlatform("macOS")]

@@ -1,6 +1,6 @@
 using UrsaAvaloniaUI.Controls;
 
-namespace TiktokLiveRec.macOS;
+namespace TiktokLiveRec;
 
 public partial class MainWindow : FluentWindow
 {

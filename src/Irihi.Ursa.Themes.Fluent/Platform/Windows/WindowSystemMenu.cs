@@ -1,37 +1,53 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
-using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
+using UrsaAvaloniaUI.Platform.Windows.Natives;
 
 namespace UrsaAvaloniaUI.Platform.Windows;
 
 [SupportedOSPlatform("Windows")]
-internal class WindowSystemMenu
+public static class WindowSystemMenu
 {
-    private const int WM_SYSMENU = 0x313;
-    private const int MF_BYCOMMAND = 0x00000000;
-    private const int MF_ENABLED = 0x00000000;
-    private const int SC_CLOSE = 0xF060;
+    [Obsolete("Isn't suitable for Avalonia")]
+    public static int GetTitleBarHeight(nint hwnd)
+    {
+        if (Dwmapi.DwmGetWindowAttribute(hwnd, Dwmapi.DWMWA_CAPTION_HEIGHT, out int height, sizeof(int)) == 0)
+        {
+            return height;
+        }
 
-    [DllImport("user32.dll")]
-    private static extern nint SendMessage(nint hWnd, int msg, nint wParam, nint lParam);
-
-    [DllImport("user32.dll")]
-    private static extern nint GetSystemMenu(nint hWnd, bool bRevert);
-
-    [DllImport("user32.dll")]
-    private static extern bool EnableMenuItem(nint hMenu, uint uIDEnableItem, uint uEnable);
+        // Fallback to -1.
+        return -1;
+    }
 
     public static void ShowSystemMenu(Window window, PointerEventArgs e)
     {
         nint hWnd = new WindowInteropHelper(window).Handle;
 
-        nint hMenu = GetSystemMenu(hWnd, false);
-        EnableMenuItem(hMenu, SC_CLOSE, MF_BYCOMMAND | MF_ENABLED);
+        nint hMenu = User32.GetSystemMenu(hWnd, false);
+        User32.EnableMenuItem(hMenu, User32.SC_CLOSE, User32.MF_BYCOMMAND | User32.MF_ENABLED);
 
         var pos = window.PointToScreen(e.GetPosition(window));
         nint lParam = (pos.Y << 16) | (pos.X & 0xFFFF);
-        SendMessage(hWnd, WM_SYSMENU, nint.Zero, lParam);
+        User32.SendMessage(hWnd, User32.WM_SYSMENU, nint.Zero, lParam);
+    }
+
+    public static void ApplySystemMenuTheme(bool isDark)
+    {
+        if (Environment.OSVersion.Version.Build < 18362)
+        {
+            return;
+        }
+
+        if (isDark)
+        {
+            _ = UxTheme.SetPreferredAppMode(UxTheme.PreferredAppMode.ForceDark);
+        }
+        else
+        {
+            _ = UxTheme.SetPreferredAppMode(UxTheme.PreferredAppMode.ForceLight);
+        }
+        UxTheme.FlushMenuThemes();
     }
 }
