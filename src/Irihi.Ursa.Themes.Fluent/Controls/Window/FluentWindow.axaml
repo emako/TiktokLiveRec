@@ -21,6 +21,9 @@
         <Setter Property="VerticalAlignment" Value="Top" />
     </ControlTheme>
 
+    <SolidColorBrush x:Key="FluentCaptionButtonClosePointeroverBackground" Color="#CCC53434" />
+    <SolidColorBrush x:Key="FluentCaptionButtonClosePressedBackground" Color="#DE6D6C" />
+
     <ControlTheme x:Key="{x:Type uu:FluentCaptionButtons}" TargetType="uu:FluentCaptionButtons">
         <Setter Property="Foreground" Value="{DynamicResource CaptionButtonForeground}" />
         <Setter Property="Template">
@@ -68,11 +71,11 @@
 
         <Style Selector="^ /template/ Button#PART_CloseButton:pointerover">
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="Background" Value="{DynamicResource CaptionButtonClosePointeroverBackground}" />
+            <Setter Property="Background" Value="{DynamicResource FluentCaptionButtonClosePointeroverBackground}" />
         </Style>
         <Style Selector="^ /template/ Button#PART_CloseButton:pressed">
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="Background" Value="{DynamicResource CaptionButtonClosePressedBackground}" />
+            <Setter Property="Background" Value="{DynamicResource FluentCaptionButtonClosePressedBackground}" />
         </Style>
 
         <Style Selector="^:maximized /template/ ui|FontIcon#PART_RestoreButtonIcon">
