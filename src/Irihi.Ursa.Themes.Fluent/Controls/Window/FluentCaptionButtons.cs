@@ -5,9 +5,11 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
 using Irihi.Avalonia.Shared.Helpers;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Ursa.Controls;
 using UrsaAvaloniaUI.Extensions;
+using UrsaAvaloniaUI.Platform.Windows;
 
 namespace UrsaAvaloniaUI.Controls;
 
@@ -36,14 +38,13 @@ public class FluentCaptionButtons : Avalonia.Controls.Chrome.CaptionButtons
 
     private WindowState? _oldWindowState;
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         if (this.FindParentOfType<TitleBar>() is { } titleBar)
         {
             // Use customized caption buttons instead of the ursa one.
-
             Attach(titleBar.GetVisualRoot() as Window);
-
             titleBar.Detach();
         }
 
@@ -62,6 +63,11 @@ public class FluentCaptionButtons : Avalonia.Controls.Chrome.CaptionButtons
             _restoreButton.IsEnabled = false;
         }
         UpdateVisibility();
+
+        if (HostWindow is not null && SnapLayout.IsSupported && SnapLayout.IsEnabled)
+        {
+            SnapLayout.EnableWindowsSnapLayout(HostWindow, _restoreButton);
+        }
     }
 
     private void WindowStateChanged(Window window, AvaloniaPropertyChangedEventArgs<WindowState> e)
@@ -83,7 +89,7 @@ public class FluentCaptionButtons : Avalonia.Controls.Chrome.CaptionButtons
             }
             else
             {
-                HostWindow.WindowState = _oldWindowState.HasValue ? _oldWindowState.Value : WindowState.Normal;
+                HostWindow.WindowState = _oldWindowState ?? WindowState.Normal;
             }
         }
     }
@@ -96,7 +102,7 @@ public class FluentCaptionButtons : Avalonia.Controls.Chrome.CaptionButtons
         {
             UpdateVisibility();
         });
-        Action<bool> a = (_) => UpdateVisibility();
+        void a(bool _) => UpdateVisibility();
         _fullScreenSubscription = HostWindow?.GetObservable(UrsaWindow.IsFullScreenButtonVisibleProperty).Subscribe(a);
         _minimizeSubscription = HostWindow?.GetObservable(UrsaWindow.IsMinimizeButtonVisibleProperty).Subscribe(a);
         _restoreSubscription = HostWindow?.GetObservable(UrsaWindow.IsRestoreButtonVisibleProperty).Subscribe(a);

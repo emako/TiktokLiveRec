@@ -9,28 +9,16 @@ namespace UrsaAvaloniaUI.Platform.Windows;
 [SupportedOSPlatform("Windows")]
 public static class WindowSystemMenu
 {
-    [Obsolete("Isn't suitable for Avalonia")]
-    public static int GetTitleBarHeight(nint hwnd)
-    {
-        if (Dwmapi.DwmGetWindowAttribute(hwnd, Dwmapi.DWMWA_CAPTION_HEIGHT, out int height, sizeof(int)) == 0)
-        {
-            return height;
-        }
-
-        // Fallback to -1.
-        return -1;
-    }
-
     public static void ShowSystemMenu(Window window, PointerEventArgs e)
     {
         nint hWnd = new WindowInteropHelper(window).Handle;
 
         nint hMenu = User32.GetSystemMenu(hWnd, false);
-        User32.EnableMenuItem(hMenu, User32.SC_CLOSE, User32.MF_BYCOMMAND | User32.MF_ENABLED);
+        _ = User32.EnableMenuItem(hMenu, (uint)User32.SysCommand.SC_CLOSE, (uint)(User32.MenuFlags.MF_BYCOMMAND | User32.MenuFlags.MF_ENABLED));
 
         var pos = window.PointToScreen(e.GetPosition(window));
         nint lParam = (pos.Y << 16) | (pos.X & 0xFFFF);
-        User32.SendMessage(hWnd, User32.WM_SYSMENU, nint.Zero, lParam);
+        _ = User32.SendMessage(hWnd, (int)User32.WindowMessage.WM_SYSMENU, nint.Zero, lParam);
     }
 
     public static void ApplySystemMenuTheme(bool isDark)

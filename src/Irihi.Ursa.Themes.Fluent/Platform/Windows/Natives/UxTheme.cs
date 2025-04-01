@@ -8,15 +8,6 @@ namespace UrsaAvaloniaUI.Platform.Windows.Natives;
 [SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]
 internal static class UxTheme
 {
-    public enum PreferredAppMode
-    {
-        Default,
-        AllowDark,
-        ForceDark,
-        ForceLight,
-        Max
-    }
-
     [DllImport("uxtheme.dll", CharSet = CharSet.Unicode, EntryPoint = "#132", SetLastError = true)]
     public static extern bool ShouldAppsUseDarkMode();
 
@@ -32,4 +23,13 @@ internal static class UxTheme
 
     [DllImport("uxtheme.dll", CharSet = CharSet.Unicode, EntryPoint = "#138", SetLastError = true)]
     public static extern bool ShouldSystemUseDarkMode();
+
+    public enum PreferredAppMode
+    {
+        Default,
+        AllowDark,
+        ForceDark,
+        ForceLight,
+        Max
+    }
 }
