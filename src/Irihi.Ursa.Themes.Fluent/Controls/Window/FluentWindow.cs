@@ -26,6 +26,11 @@ public class FluentWindow : UrsaWindow
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
+
+        if (TitleBarContent is Control titleBar)
+        {
+            titleBar.PointerPressed += OnFluentWindowDragMove;
+        }
     }
 
     protected virtual void OnFluentWindowDeactivated(object? sender, EventArgs e)
@@ -68,5 +73,10 @@ public class FluentWindow : UrsaWindow
                 WindowSystemMenu.ShowSystemMenu(this, e);
             }
         }
+    }
+
+    protected virtual void OnFluentWindowDragMove(object? sender, PointerPressedEventArgs e)
+    {
+        BeginMoveDrag(e);
     }
 }
