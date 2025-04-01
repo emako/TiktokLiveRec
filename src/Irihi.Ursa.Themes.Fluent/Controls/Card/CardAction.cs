@@ -10,28 +10,33 @@ using System.Windows.Input;
 
 namespace UrsaAvaloniaUI.Controls;
 
-[TemplatePart("PART_ContentPresenter", typeof(ContentPresenter))]
+[TemplatePart(PART_ContentPresenter, typeof(ContentPresenter))]
 public class CardAction : ContentControl
 {
-    public new static readonly StyledProperty<object?> ContentProperty = AvaloniaProperty.Register<CardAction, object?>(nameof(Content));
+    private const string PART_ContentPresenter = "PART_ContentPresenter";
+
+    public new static readonly StyledProperty<object?> ContentProperty =
+        AvaloniaProperty.Register<CardAction, object?>(nameof(Content));
+
+    public static readonly StyledProperty<ICommand?> CommandProperty =
+        AvaloniaProperty.Register<CardAction, ICommand>(nameof(Command), null!, inherits: false, BindingMode.OneWay, null, null, enableDataValidation: true)!;
+
+    public static readonly StyledProperty<object?> CommandParameterProperty =
+        AvaloniaProperty.Register<CardAction, object>(nameof(CommandParameter))!;
 
     [Content]
-    [DependsOn("ContentTemplate")]
+    [DependsOn(nameof(ContentTemplate))]
     public new object? Content
     {
         get => GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
     }
 
-    public static readonly StyledProperty<ICommand?> CommandProperty = AvaloniaProperty.Register<CardAction, ICommand>(nameof(Command), null!, inherits: false, BindingMode.OneWay, null, null, enableDataValidation: true)!;
-
     public ICommand? Command
     {
         get => GetValue(CommandProperty);
         set => SetValue(CommandProperty, value);
     }
-
-    public static readonly StyledProperty<object?> CommandParameterProperty = AvaloniaProperty.Register<CardAction, object>(nameof(CommandParameter))!;
 
     public object? CommandParameter
     {

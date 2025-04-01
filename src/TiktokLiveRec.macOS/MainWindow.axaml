@@ -27,11 +27,19 @@
     <uu:FluentWindow.RightContent>
         <uu:FluentCaptionButtons />
     </uu:FluentWindow.RightContent>
-    <Grid RowDefinitions="*">
-        <StackPanel Grid.Row="0" Margin="20">
+    <Grid Margin="8,48,8,4" RowDefinitions="*">
+        <StackPanel Grid.Row="0" Orientation="Vertical">
             <uu:Card>
-                <Button Content="sdf" Theme="{StaticResource CaptionButton}" />
+                <Button Content="sdf" />
             </uu:Card>
+            <uu:CardExpander Margin="0,16,0,0">
+                <uu:CardExpander.HeaderContent>
+                    <TextBlock Text="CardExpander.HeaderContent" />
+                </uu:CardExpander.HeaderContent>
+                <uu:CardExpander.CardContent>
+                    <TextBlock Text="CardExpander.CardContent" />
+                </uu:CardExpander.CardContent>
+            </uu:CardExpander>
         </StackPanel>
     </Grid>
 </uu:FluentWindow>

@@ -6,13 +6,16 @@ using Avalonia.Metadata;
 
 namespace UrsaAvaloniaUI.Controls;
 
-[TemplatePart("PART_ContentPresenter", typeof(ContentPresenter))]
+[TemplatePart(PART_ContentPresenter, typeof(ContentPresenter))]
 public class Card : ContentControl
 {
-    public new static readonly StyledProperty<object?> ContentProperty = AvaloniaProperty.Register<Card, object?>(nameof(Content));
+    private const string PART_ContentPresenter = "PART_ContentPresenter";
+
+    public new static readonly StyledProperty<object?> ContentProperty =
+        AvaloniaProperty.Register<Card, object?>(nameof(Content));
 
     [Content]
-    [DependsOn("ContentTemplate")]
+    [DependsOn(nameof(ContentTemplate))]
     public new object? Content
     {
         get => GetValue(ContentProperty);
