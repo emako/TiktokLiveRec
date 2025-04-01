@@ -1,45 +1,53 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
+    
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<LangVersion>latest</LangVersion>
-		<ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
-		<AssemblyVersion>1.6.3.0</AssemblyVersion>
-		<FileVersion>1.6.3.0</FileVersion>
-		<Version>$(VersionPrefix)1.6.3.0</Version>
-		<DebugType>embedded</DebugType>
-		<AssemblyName>TiktokLiveRec</AssemblyName>
-		<RootNamespace>TiktokLiveRec</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>latest</LangVersion>
+        <ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
+        <AssemblyVersion>1.6.3.0</AssemblyVersion>
+        <FileVersion>1.6.3.0</FileVersion>
+        <Version>$(VersionPrefix)1.6.3.0</Version>
+        <DebugType>embedded</DebugType>
+        <AssemblyName>TiktokLiveRec</AssemblyName>
+        <RootNamespace>TiktokLiveRec</RootNamespace>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <HotAvaloniaLite>enable</HotAvaloniaLite>
     </PropertyGroup>
 
-	<ItemGroup>
-		<AvaloniaResource Include="Assets\**" />
-		<Watch Include="**\*.axaml" />
-	</ItemGroup>
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**" />
+        <Watch Include="**\*.axaml" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <DefineConstants>$(DefineConstants);ENABLE_XAML_HOT_RELOAD;HOTAVALONIA_ENABLE;</DefineConstants>
+    </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.2.6" />
         <PackageReference Include="Avalonia.Desktop" Version="11.2.6" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.6" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.6" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.2.6" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Include="Avalonia.Diagnostics" Version="11.2.6">
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
-		<PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
+        <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia" Version="2.1.0" PrivateAssets="All" />
+        <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia.Extensions" Version="2.1.0" PrivateAssets="All" />
+        <PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
         <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.10.0" />
         <PackageReference Include="Semi.Avalonia" Version="11.2.1.6" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
     </ItemGroup>
 
     <ItemGroup>

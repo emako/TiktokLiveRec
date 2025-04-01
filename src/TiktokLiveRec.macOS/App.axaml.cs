@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
+using HotAvalonia;
 using System.Diagnostics.CodeAnalysis;
 using UrsaAvaloniaUI.Platform.Windows;
 
@@ -10,8 +11,12 @@ namespace TiktokLiveRec;
 public partial class App : Application
 {
     [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
+    [SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression")]
     public override void Initialize()
     {
+        // Enable Hot Reload provided by HotAvalonia.
+        this.EnableHotReload();
+
         // Apply Windows system features.
         if (Environment.OSVersion.Platform == PlatformID.Win32NT)
         {
