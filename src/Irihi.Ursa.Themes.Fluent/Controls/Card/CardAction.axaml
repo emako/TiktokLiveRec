@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:c="clr-namespace:UrsaAvaloniaUI.Controls"
                     xmlns:ui="using:FluentAvalonia.UI.Controls">
+
     <Design.PreviewWith>
         <Border Width="500"
                 Height="500"
@@ -11,6 +12,7 @@
             </c:CardAction>
         </Border>
     </Design.PreviewWith>
+
     <ControlTheme x:Key="{x:Type c:CardAction}" TargetType="c:CardAction">
         <Setter Property="Template">
             <Setter.Value>
@@ -45,17 +47,21 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ ui|FABorder#PART_FABorder">
                 <Setter Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
             </Style>
         </Style>
+
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ ui|FABorder#PART_FABorder">
                 <Setter Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource ExpanderBorderPressedBrush}" />
             </Style>
         </Style>
+
     </ControlTheme>
+
 </ResourceDictionary>

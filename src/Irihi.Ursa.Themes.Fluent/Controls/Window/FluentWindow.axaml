@@ -73,6 +73,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Background" Value="{DynamicResource FluentCaptionButtonClosePointeroverBackground}" />
         </Style>
+
         <Style Selector="^ /template/ Button#PART_CloseButton:pressed">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Background" Value="{DynamicResource FluentCaptionButtonClosePressedBackground}" />
@@ -81,9 +82,11 @@
         <Style Selector="^:maximized /template/ ui|FontIcon#PART_RestoreButtonIcon">
             <Setter Property="Glyph" Value="{x:Static uu:FontSymbols.ChromeRestore}" />
         </Style>
+
         <Style Selector="^:fullscreen /template/ ui|FontIcon#PART_FullScreenButtonIcon">
             <Setter Property="Glyph" Value="{x:Static uu:FontSymbols.ChromeBackToWindow}" />
         </Style>
+
     </ControlTheme>
 
 </ResourceDictionary>

@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:c="clr-namespace:UrsaAvaloniaUI.Controls"
                     xmlns:ui="using:FluentAvalonia.UI.Controls">
+
     <Design.PreviewWith>
         <Border Width="500"
                 Height="500"
@@ -13,7 +14,7 @@
             </c:Card>
         </Border>
     </Design.PreviewWith>
-    <SolidColorBrush x:Key="ExpanderHeaderBorderBrush1">#232323</SolidColorBrush>
+
     <ControlTheme x:Key="{x:Type c:Card}" TargetType="c:Card">
         <Setter Property="Template">
             <Setter.Value>
@@ -33,4 +34,5 @@
             </Setter.Value>
         </Setter>
     </ControlTheme>
+
 </ResourceDictionary>
