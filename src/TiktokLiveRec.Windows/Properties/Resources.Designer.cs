@@ -1087,7 +1087,7 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TiktokRec - Live Streaming Recorder.
+        ///   Looks up a localized string similar to TiktokLiveRec - Live Streaming Recorder.
         /// </summary>
         public static string Title {
             get {
