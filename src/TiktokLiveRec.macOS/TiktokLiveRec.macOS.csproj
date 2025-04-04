@@ -8,6 +8,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
+        <MacOSBundleIcon>Assets/Favicon.icns</MacOSBundleIcon>
         <AssemblyVersion>1.6.3.0</AssemblyVersion>
         <FileVersion>1.6.3.0</FileVersion>
         <Version>$(VersionPrefix)1.6.3.0</Version>
@@ -23,6 +24,7 @@
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
         <Watch Include="**\*.axaml" />
+        <BundleResource Include="Assets/Favicon.icns" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
