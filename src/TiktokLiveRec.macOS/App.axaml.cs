@@ -2,7 +2,6 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
-using HotAvalonia;
 using System.Diagnostics.CodeAnalysis;
 using UrsaAvaloniaUI.Platform.Windows;
 
@@ -15,7 +14,9 @@ public partial class App : Application
     public override void Initialize()
     {
         // Enable Hot Reload provided by HotAvalonia.
-        this.EnableHotReload();
+#if DEBUG
+        HotAvalonia.AvaloniaHotReloadExtensions.EnableHotReload(this);
+#endif
 
         // Apply Windows system features.
         if (Environment.OSVersion.Platform == PlatformID.Win32NT)
