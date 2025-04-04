@@ -5,9 +5,11 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:u="https://irihi.tech/ursa"
                  xmlns:uu="urn:UrsaAvaloniaUI"
+                 xmlns:vm="clr-namespace:TiktokLiveRec.ViewModels"
                  Title="TiktokLiveRec"
                  d:DesignHeight="450"
                  d:DesignWidth="800"
+                 x:DataType="vm:MainViewModel"
                  Icon="/Assets/Favicon.ico"
                  WindowStartupLocation="CenterScreen"
                  mc:Ignorable="d">
@@ -40,6 +42,12 @@
                     <TextBlock Text="CardExpander.CardContent" />
                 </uu:CardExpander.CardContent>
             </uu:CardExpander>
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RoomStatuses}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding NickName}" Header="NickName" />
+                    <DataGridTextColumn Binding="{Binding RoomUrl}" Header="RoomUrl" />
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
     </Grid>
 </uu:FluentWindow>

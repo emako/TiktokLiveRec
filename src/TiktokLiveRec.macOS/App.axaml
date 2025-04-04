@@ -9,8 +9,9 @@
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.Styles>
-		<uu:UrsaAvaloniaTheme />
+        <uu:UrsaAvaloniaTheme />
         <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
         <semi:SemiTheme Locale="zh-CN" />
         <u-semi:SemiTheme Locale="zh-CN" />
         <sty:FluentAvaloniaTheme />
