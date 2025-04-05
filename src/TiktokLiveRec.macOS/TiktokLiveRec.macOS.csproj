@@ -8,7 +8,6 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
-        <MacOSBundleIcon>Assets/Favicon.icns</MacOSBundleIcon>
         <AssemblyVersion>1.6.3.0</AssemblyVersion>
         <FileVersion>1.6.3.0</FileVersion>
         <Version>$(VersionPrefix)1.6.3.0</Version>
@@ -19,12 +18,27 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <HotAvaloniaLite>enable</HotAvaloniaLite>
+        <RuntimeIdentifiers>win-x64;linux-x64;linux-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
     </PropertyGroup>
-
+    
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'osx-x64' OR '$(RuntimeIdentifier)' == 'osx-arm64'">
+        <UseAppHost>true</UseAppHost>
+        <PublishSingleFile>true</PublishSingleFile>
+        <SelfContained>true</SelfContained>
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <EnableMacOSBundle>true</EnableMacOSBundle>
+        <MacOSBundleName>TiktokLiveRec</MacOSBundleName>
+        <MacOSBundleIdentifier>com.github.tiktokliverec</MacOSBundleIdentifier>
+        <MacOSBundleIcon>Assets/Favicon.icns</MacOSBundleIcon>
+        <MacOSBundleInfoPlist>../build/Info.plist</MacOSBundleInfoPlist>
+        <CFBundleShortVersionString>1.6.3.0</CFBundleShortVersionString>
+        <CFBundleVersion>1.6.3.0</CFBundleVersion>
+    </PropertyGroup>
+    
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
         <Watch Include="**\*.axaml" />
-        <BundleResource Include="Assets/Favicon.icns" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -51,6 +65,7 @@
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
+        <PackageReference Include="Dotnet.Bundle" Version="*" />
     </ItemGroup>
 
     <ItemGroup>
