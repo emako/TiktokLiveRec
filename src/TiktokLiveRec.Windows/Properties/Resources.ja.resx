@@ -502,4 +502,7 @@
   <data name="Avatar" xml:space="preserve">
     <value>アバター</value>
   </data>
+  <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
+    <value>保存フォルダは作者によって作られる</value>
+  </data>
 </root>

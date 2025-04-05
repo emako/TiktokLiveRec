@@ -334,6 +334,9 @@
                                         Command="{Binding OpenSaveFolderCommand}"
                                         Content="{I18N OpenFolder}" />
                             </ui:Grid>
+                            <ui:Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto,Auto">
+                                <CheckBox Content="{I18N SaveFolderDistinguishedByAuthors}" IsChecked="{Binding SaveFolderDistinguishedByAuthors}" />
+                            </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>
                     <ui:CardExpander>

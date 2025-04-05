@@ -499,4 +499,7 @@
   <data name="Avatar" xml:space="preserve">
     <value>头像</value>
   </data>
+  <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
+    <value>保存目录是否以作者区分</value>
+  </data>
 </root>

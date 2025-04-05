@@ -26,6 +26,7 @@ public static class Configurations
     public static ConfigurationDefinition<string> RecordFormat { get; } = new(nameof(RecordFormat), "TS/FLV");
     public static ConfigurationDefinition<bool> IsRemoveTs { get; } = new(nameof(IsRemoveTs), false);
     public static ConfigurationDefinition<string> SaveFolder { get; } = new(nameof(SaveFolder), string.Empty);
+    public static ConfigurationDefinition<bool> SaveFolderDistinguishedByAuthors { get; } = new(nameof(SaveFolderDistinguishedByAuthors), true);
     public static ConfigurationDefinition<string> Player { get; } = new(nameof(Player), "ffplay");
     public static ConfigurationDefinition<bool> IsPlayerRect { get; } = new(nameof(IsPlayerRect), false);
     public static ConfigurationDefinition<bool> IsUseKeepAwake { get; } = new(nameof(IsUseKeepAwake), false);

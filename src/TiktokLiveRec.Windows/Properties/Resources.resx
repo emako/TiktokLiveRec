@@ -499,4 +499,7 @@
   <data name="Avatar" xml:space="preserve">
     <value>Avatar</value>
   </data>
+  <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
+    <value>Is the saving directory distinguished by authors</value>
+  </data>
 </root>

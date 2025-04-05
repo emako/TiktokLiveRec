@@ -889,6 +889,15 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Is the saving directory distinguished by authors.
+        /// </summary>
+        public static string SaveFolderDistinguishedByAuthors {
+            get {
+                return ResourceManager.GetString("SaveFolderDistinguishedByAuthors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Specify the saving directory of recorded videos.
         /// </summary>
         public static string SaveFolderHint {

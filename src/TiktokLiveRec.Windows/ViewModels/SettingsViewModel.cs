@@ -252,6 +252,15 @@ public partial class SettingsViewModel : ReactiveObject
         ConfigurationManager.Save();
     }
 
+    [ObservableProperty]
+    private bool saveFolderDistinguishedByAuthors = Configurations.SaveFolderDistinguishedByAuthors.Get();
+
+    partial void OnSaveFolderDistinguishedByAuthorsChanged(bool value)
+    {
+        Configurations.SaveFolderDistinguishedByAuthors.Set(value);
+        ConfigurationManager.Save();
+    }
+
     [RelayCommand]
     private void SelectSaveFolder()
     {
