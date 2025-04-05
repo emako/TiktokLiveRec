@@ -2,19 +2,17 @@
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:semi="https://irihi.tech/semi"
-             xmlns:sty="using:FluentAvalonia.Styling"
              xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
+             xmlns:ui="using:FluentAvalonia.Styling"
              xmlns:uu="urn:UrsaAvaloniaUI"
              RequestedThemeVariant="Default">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.Styles>
-        <uu:UrsaAvaloniaTheme />
-        <FluentTheme />
-        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
-        <semi:SemiTheme Locale="zh-CN" />
-        <u-semi:SemiTheme Locale="zh-CN" />
-        <sty:FluentAvaloniaTheme />
+        <ui:FluentAvaloniaTheme PreferUserAccentColor="True" />
+        <semi:SemiTheme />
+        <u-semi:SemiTheme />
+        <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
         <uu:UrsaAvaloniaTheme />
     </Application.Styles>
 </Application>

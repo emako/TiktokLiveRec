@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Bring Button from Ursa style to Fluent style  -->
+    <ControlTheme x:Key="{x:Type Button}"
+                  BasedOn="{StaticResource {x:Type Button}}"
+                  TargetType="Button">
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Foreground" Value="{DynamicResource ToastCardContentForeground}" />
+        <Setter Property="FontWeight" Value="Normal" />
+    </ControlTheme>
+
+</ResourceDictionary>

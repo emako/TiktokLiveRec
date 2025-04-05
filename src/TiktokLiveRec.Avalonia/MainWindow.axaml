@@ -7,8 +7,9 @@
                  xmlns:uu="urn:UrsaAvaloniaUI"
                  xmlns:vm="clr-namespace:TiktokLiveRec.ViewModels"
                  Title="TiktokLiveRec"
-                 d:DesignHeight="450"
-                 d:DesignWidth="800"
+                 Width="860"
+                 Height="600"
+                 d:Background="#FF101010"
                  x:DataType="vm:MainViewModel"
                  Icon="/Assets/Favicon.ico"
                  WindowStartupLocation="CenterScreen"
@@ -31,10 +32,13 @@
     <uu:FluentWindow.RightContent>
         <uu:FluentCaptionButtons />
     </uu:FluentWindow.RightContent>
-    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,24,8,4', x:TypeArguments=Thickness}" RowDefinitions="*">
+    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,28,8,4', x:TypeArguments=Thickness}" RowDefinitions="*">
         <StackPanel Grid.Row="0" Orientation="Vertical">
             <uu:Card>
-                <Button Content="sdf" />
+                <StackPanel>
+                    <Button Content="sdf" />
+                    <CheckBox Content="aa" />
+                </StackPanel>
             </uu:Card>
             <uu:CardExpander Margin="0,16,0,0">
                 <uu:CardExpander.HeaderContent>
@@ -44,6 +48,7 @@
                     <TextBlock Text="CardExpander.CardContent" />
                 </uu:CardExpander.CardContent>
             </uu:CardExpander>
+            <TextBox Text="123050" />
             <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RoomStatuses}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding NickName}" Header="NickName" />
