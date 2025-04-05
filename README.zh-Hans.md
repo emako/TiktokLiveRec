@@ -17,9 +17,9 @@
 
 ## 依赖运行时
 
-For Windows: [.NET Desktop Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+For Windows: [.NET Desktop Runtime 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 
-For Others: [.NET Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+For Others: [.NET Runtime 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 
 ## 直播录制
 

@@ -8,9 +8,9 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
-        <AssemblyVersion>1.6.3.0</AssemblyVersion>
-        <FileVersion>1.6.3.0</FileVersion>
-        <Version>$(VersionPrefix)1.6.3.0</Version>
+        <AssemblyVersion>1.6.4.0</AssemblyVersion>
+        <FileVersion>1.6.4.0</FileVersion>
+        <Version>$(VersionPrefix)1.6.4.0</Version>
         <DebugType>embedded</DebugType>
         <AssemblyName>TiktokLiveRec</AssemblyName>
         <RootNamespace>TiktokLiveRec</RootNamespace>
@@ -32,8 +32,8 @@
         <MacOSBundleIdentifier>com.github.tiktokliverec</MacOSBundleIdentifier>
         <MacOSBundleIcon>Assets/Favicon.icns</MacOSBundleIcon>
         <MacOSBundleInfoPlist>../build/Info.plist</MacOSBundleInfoPlist>
-        <CFBundleShortVersionString>1.6.3.0</CFBundleShortVersionString>
-        <CFBundleVersion>1.6.3.0</CFBundleVersion>
+        <CFBundleShortVersionString>1.6.4.0</CFBundleShortVersionString>
+        <CFBundleVersion>1.6.4.0</CFBundleVersion>
     </PropertyGroup>
     
     <ItemGroup>
