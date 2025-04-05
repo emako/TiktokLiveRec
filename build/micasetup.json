@@ -1,7 +1,7 @@
 {
   "Template": "${MicaDir}/template/default.7z",
   "Package": "./publish.7z",
-  "Output": "./${AppName}_v${Version}_win64.exe",
+  "Output": "./${AppName}_v${Version}_win-x64.exe",
   "AppName": "TiktokLiveRec",
   "KeyName": "TiktokLiveRec",
   "ExeName": "TiktokLiveRec.exe",

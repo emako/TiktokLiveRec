@@ -1,11 +1,11 @@
 # Publish Application
-dotnet publish ../src/TiktokLiveRec.macOS/TiktokLiveRec.macOS.csproj -c Release -r osx-arm64
+dotnet publish ../src/TiktokLiveRec.Avalonia/TiktokLiveRec.Avalonia.csproj -c Release -r osx-arm64
 
 # Create .app structure
 mkdir -p TiktokLiveRec.app/Contents/{MacOS,Resources}
 
 # Copy executable files
-cp -r ../src/TikTokLiveRec.macOS/bin/Release/net9.0/osx-arm64/publish/* TiktokLiveRec.app/Contents/MacOS/
+cp -r ../src/TikTokLiveRec.Avalonia/bin/Release/net9.0/osx-arm64/publish/* TiktokLiveRec.app/Contents/MacOS/
 
 # Copy Info.plist from project directory
 cp ./Info.plist TiktokLiveRec.app/Contents/

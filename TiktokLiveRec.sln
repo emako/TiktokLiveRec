@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiktokLiveRec.Windows", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.tvOS", "src\TiktokLiveRec.tvOS\TiktokLiveRec.tvOS.csproj", "{E467B6C8-095E-4872-A20A-6EB0D0875944}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.macOS", "src\TiktokLiveRec.macOS\TiktokLiveRec.macOS.csproj", "{880A6A31-3BC7-444C-A71B-0851F3D265B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.Avalonia", "src\TiktokLiveRec.Avalonia\TiktokLiveRec.Avalonia.csproj", "{880A6A31-3BC7-444C-A71B-0851F3D265B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{595F050A-BF3B-4408-AF04-AE80AD627B81}"
 EndProject
