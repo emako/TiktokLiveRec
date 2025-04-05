@@ -15,6 +15,8 @@
                  mc:Ignorable="d">
     <uu:FluentWindow.TitleBarContent>
         <StackPanel x:Name="TitleBar"
+                    IsVisible="{OnPlatform macOS=False,
+                                           Default=True}"
                     Orientation="Horizontal"
                     Spacing="8">
             <Image Height="18"
@@ -29,7 +31,7 @@
     <uu:FluentWindow.RightContent>
         <uu:FluentCaptionButtons />
     </uu:FluentWindow.RightContent>
-    <Grid Margin="8,48,8,4" RowDefinitions="*">
+    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,24,8,4', x:TypeArguments=Thickness}" RowDefinitions="*">
         <StackPanel Grid.Row="0" Orientation="Vertical">
             <uu:Card>
                 <Button Content="sdf" />

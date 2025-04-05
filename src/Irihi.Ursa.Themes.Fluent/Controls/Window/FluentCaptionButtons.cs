@@ -38,6 +38,11 @@ public class FluentCaptionButtons : Avalonia.Controls.Chrome.CaptionButtons
 
     private WindowState? _oldWindowState;
 
+    public FluentCaptionButtons()
+    {
+        IsVisible = !OperatingSystem.IsMacOS();
+    }
+
     [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
