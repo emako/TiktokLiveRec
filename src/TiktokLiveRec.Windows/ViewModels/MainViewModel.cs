@@ -26,6 +26,7 @@ using Windows.Storage;
 using Windows.System;
 using Wpf.Ui.Violeta.Controls;
 using Wpf.Ui.Violeta.Threading;
+using CheckBox = System.Windows.Controls.CheckBox;
 
 namespace TiktokLiveRec.ViewModels;
 
@@ -398,9 +399,44 @@ public partial class MainViewModel : ReactiveObject
         {
             if (roomStatus.RecordStatus == RecordStatus.Recording)
             {
-                MessageBoxResult result = await MessageBox.QuestionAsync("SureStopRecord".Tr(roomStatus.NickName));
+                // https://github.com/emako/TiktokLiveRec/issues/13
+                // https://github.com/emako/TiktokLiveRec/issues/19
 
-                if (result == MessageBoxResult.Yes)
+                StackPanel content = new();
+                CheckBox checkBox = new()
+                {
+                    Content = "EnableRecord".Tr(),
+                    DataContext = SelectedItem,
+                };
+
+                // Do not use `CheckBox::Checked`, because it will be triggered when the CheckBox is loaded
+                checkBox.Click += (_, _) =>
+                {
+                    IsToRecord();
+                    Toast.Success("SuccOp".Tr());
+                };
+
+                // We not need to binding with two way, because we update the config through method `IsToRecord()`.
+                checkBox.SetBinding(CheckBox.IsCheckedProperty, nameof(RoomStatusReactive.IsToRecord));
+
+                content.Children.Add(new TextBlock()
+                {
+                    Text = "SureStopRecord".Tr(roomStatus.NickName)
+                });
+                content.Children.Add(checkBox);
+
+                ContentDialog dialog = new()
+                {
+                    Title = "StopRecord".Tr(),
+                    Content = content,
+                    CloseButtonText = "ButtonOfCancel".Tr(),
+                    PrimaryButtonText = "StopRecord".Tr(),
+                    DefaultButton = ContentDialogButton.Primary,
+                };
+
+                ContentDialogResult result = await dialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
                 {
                     roomStatus.Recorder.Stop();
                     Toast.Success("SuccOp".Tr());
