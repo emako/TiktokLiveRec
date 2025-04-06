@@ -4,6 +4,7 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:u="https://irihi.tech/ursa"
+                 xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
                  xmlns:uu="urn:UrsaAvaloniaUI"
                  xmlns:vm="clr-namespace:TiktokLiveRec.ViewModels"
                  Title="TiktokLiveRec"
@@ -36,8 +37,47 @@
         <StackPanel Grid.Row="0" Orientation="Vertical">
             <uu:Card>
                 <StackPanel>
-                    <Button Content="sdf" />
-                    <CheckBox Content="aa" />
+                    <Button Content="Button">
+                        <Button.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Parent" IsSubMenuOpen="False">
+                                    <MenuItem Header="Child 1" />
+                                    <MenuItem Header="Child 2" />
+                                    <MenuItem Header="Child 3" />
+                                    <Separator />
+                                    <MenuItem Header="Child 4" />
+                                    <MenuItem Header="Child 5" />
+                                    <MenuItem Header="Child 6" />
+                                    <MenuItem Header="Child 7" />
+                                    <MenuItem Header="Child 8" />
+                                    <MenuItem Header="Child 9" />
+                                    <MenuItem Header="Child 10" />
+                                    <MenuItem Header="Child 11" />
+                                    <MenuItem Header="Child 12" />
+                                    <MenuItem Header="Child 13" />
+                                    <MenuItem Header="Child 14" />
+                                    <MenuItem Header="Child 15" />
+                                    <MenuItem Header="Child 16" />
+                                    <MenuItem Header="Child 17" />
+                                    <MenuItem Header="Child 18" />
+                                    <MenuItem Header="Child 19" />
+                                </MenuItem>
+                                <MenuItem Header="Disabled Parent" IsEnabled="False">
+                                    <MenuItem Header="Child" />
+                                </MenuItem>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+                    <CheckBox Content="CheckBox" />
+                    <ToggleButton Content="ToggleButton" />
+                    <ToggleSwitch Content="ToggleButton" />
+                    <Expander />
+                    <ui:NumberBox />
+                    <ComboBox SelectedIndex="0">
+                        <ComboBoxItem Content="苹果" />
+                        <ComboBoxItem Content="香蕉" />
+                        <ComboBoxItem Content="橙子" />
+                    </ComboBox>
                 </StackPanel>
             </uu:Card>
             <uu:CardExpander Margin="0,16,0,0">
