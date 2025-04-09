@@ -1,5 +1,6 @@
 ﻿using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace TiktokLiveRec.ViewModels;
@@ -29,5 +30,20 @@ public partial class MainViewModel : ObservableObject
                 RoomUrl = "123",
             },
         };
+    }
+
+    [RelayCommand]
+    private void OpenSaveFolder()
+    {
+    }
+
+    [RelayCommand]
+    private void OpenSettingsFileFolder()
+    {
+    }
+
+    [RelayCommand]
+    private void OpenAbout()
+    {
     }
 }

@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 using System.Diagnostics.CodeAnalysis;
+using TiktokLiveRec.Views;
 using UrsaAvaloniaUI.Platform.Windows;
 
 namespace TiktokLiveRec;

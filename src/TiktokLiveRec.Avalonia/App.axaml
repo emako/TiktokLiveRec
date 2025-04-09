@@ -12,7 +12,6 @@
         <ui:FluentAvaloniaTheme PreferUserAccentColor="True" />
         <semi:SemiTheme />
         <u-semi:SemiTheme />
-        <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
         <uu:UrsaAvaloniaTheme />
     </Application.Styles>
 </Application>

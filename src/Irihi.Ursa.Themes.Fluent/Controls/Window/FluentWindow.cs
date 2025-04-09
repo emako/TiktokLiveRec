@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Styling;
 using System.Diagnostics.CodeAnalysis;
@@ -64,10 +65,20 @@ public class FluentWindow : UrsaWindow
 
     protected virtual void OnFluentWindowPointerPressed(object? sender, PointerPressedEventArgs e)
     {
+        PointerPoint pointerPoint = e.GetCurrentPoint(this);
+
         // ExtendClientAreaTitleBarHeightHint 32 is the default title bar height for us.
-        if (e.GetCurrentPoint(this).Position.Y <= 32)
+        if (pointerPoint.Properties.IsRightButtonPressed && pointerPoint.Position.Y <= 32)
         {
-            if (e.GetCurrentPoint(this).Properties.IsRightButtonPressed)
+            if (RightContent is Layoutable rightContent && rightContent.IsVisible)
+            {
+                if (pointerPoint.Position.X < Bounds.Width - rightContent.Bounds.Width)
+                {
+                    // Show system menu
+                    WindowSystemMenu.ShowSystemMenu(this, e);
+                }
+            }
+            else
             {
                 // Show system menu
                 WindowSystemMenu.ShowSystemMenu(this, e);

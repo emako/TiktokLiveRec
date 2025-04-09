@@ -3,9 +3,7 @@ using System.ComponentModel;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.ViewModels;
 using Vanara.PInvoke;
-using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
-using Wpf.Ui.Violeta.Appearance;
 
 namespace TiktokLiveRec.Views;
 
