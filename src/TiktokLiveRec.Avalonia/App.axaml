@@ -4,14 +4,14 @@
              xmlns:semi="https://irihi.tech/semi"
              xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
              xmlns:ui="using:FluentAvalonia.Styling"
-             xmlns:uu="urn:UrsaAvaloniaUI"
+             xmlns:vio="urn:avaloniaui.violeta"
              RequestedThemeVariant="Default">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.Styles>
-        <ui:FluentAvaloniaTheme PreferUserAccentColor="True" />
         <semi:SemiTheme />
         <u-semi:SemiTheme />
-        <uu:UrsaAvaloniaTheme />
+        <ui:FluentAvaloniaTheme PreferUserAccentColor="True" />
+        <vio:FluentAvaloniaTheme />
     </Application.Styles>
 </Application>

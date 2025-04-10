@@ -1,0 +1,92 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:u="https://irihi.tech/ursa"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls"
+                    xmlns:vio="urn:avaloniaui.violeta">
+
+    <ControlTheme x:Key="{x:Type vio:FluentWindow}" TargetType="vio:FluentWindow">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1" />
+        <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
+        <Setter Property="TransparencyLevelHint" Value="Mica" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="FluentCaptionButton"
+                  BasedOn="{StaticResource CaptionButton}"
+                  TargetType="Button">
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Width" Value="47" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </ControlTheme>
+
+    <SolidColorBrush x:Key="FluentCaptionButtonClosePointeroverBackground" Color="#CCC53434" />
+    <SolidColorBrush x:Key="FluentCaptionButtonClosePressedBackground" Color="#DE6D6C" />
+
+    <ControlTheme x:Key="{x:Type vio:FluentCaptionButtons}" TargetType="vio:FluentCaptionButtons">
+        <Setter Property="Foreground" Value="{DynamicResource CaptionButtonForeground}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="u:CaptionButtons">
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="PART_FullScreenButton" Theme="{StaticResource FluentCaptionButton}">
+                        <ui:FontIcon Name="PART_FullScreenButtonIcon"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                     FontSize="14"
+                                     Foreground="{Binding $parent[Button].Foreground}"
+                                     Glyph="{x:Static vio:FontSymbols.FullScreen}" />
+                    </Button>
+                    <Button Name="PART_MinimizeButton" Theme="{StaticResource FluentCaptionButton}">
+                        <ui:FontIcon Name="PART_MinimizeButtonIcon"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                     FontSize="10"
+                                     Foreground="{Binding $parent[Button].Foreground}"
+                                     Glyph="{x:Static vio:FontSymbols.ChromeMinimize}" />
+                    </Button>
+                    <Button Name="PART_RestoreButton" Theme="{StaticResource FluentCaptionButton}">
+                        <ui:FontIcon Name="PART_RestoreButtonIcon"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                     FontSize="10"
+                                     Foreground="{Binding $parent[Button].Foreground}"
+                                     Glyph="{x:Static vio:FontSymbols.ChromeMaximize}" />
+                    </Button>
+                    <Button Name="PART_CloseButton" Theme="{StaticResource FluentCaptionButton}">
+                        <ui:FontIcon Name="PART_CloseButtonIcon"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                     FontSize="10"
+                                     Foreground="{Binding $parent[Button].Foreground}"
+                                     Glyph="{x:Static vio:FontSymbols.ChromeClose}" />
+                    </Button>
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Button#PART_CloseButton:pointerover">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{DynamicResource FluentCaptionButtonClosePointeroverBackground}" />
+        </Style>
+
+        <Style Selector="^ /template/ Button#PART_CloseButton:pressed">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{DynamicResource FluentCaptionButtonClosePressedBackground}" />
+        </Style>
+
+        <Style Selector="^:maximized /template/ ui|FontIcon#PART_RestoreButtonIcon">
+            <Setter Property="Glyph" Value="{x:Static vio:FontSymbols.ChromeRestore}" />
+        </Style>
+
+        <Style Selector="^:fullscreen /template/ ui|FontIcon#PART_FullScreenButtonIcon">
+            <Setter Property="Glyph" Value="{x:Static vio:FontSymbols.ChromeBackToWindow}" />
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

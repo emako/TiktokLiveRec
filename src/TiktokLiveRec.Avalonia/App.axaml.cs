@@ -2,14 +2,20 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
+using AvaloniaUI.Violeta.Platform.Windows;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using TiktokLiveRec.Views;
-using UrsaAvaloniaUI.Platform.Windows;
 
 namespace TiktokLiveRec;
 
 public partial class App : Application
 {
+    static App()
+    {
+        Locale.Culture = CultureInfo.CurrentUICulture;
+    }
+
     [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     [SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression")]
     public override void Initialize()

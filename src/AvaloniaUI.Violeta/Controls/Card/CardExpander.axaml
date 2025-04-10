@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls"
+                    xmlns:vio="urn:avaloniaui.violeta">
+
+    <ControlTheme x:Key="{x:Type vio:CardExpander}" TargetType="vio:CardExpander">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid RowDefinitions="Auto, Auto">
+                        <ui:FABorder Name="PART_HeaderContentBorder"
+                                     Grid.Row="0"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch"
+                                     Background="{DynamicResource ExpanderHeaderBackground}"
+                                     BackgroundSizing="InnerBorderEdge"
+                                     BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                                     BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
+                                     CornerRadius="{DynamicResource ControlCornerRadius}">
+                            <Grid Margin="10" ColumnDefinitions="*,Auto">
+                                <ContentPresenter Name="PART_HeaderContentPresenter"
+                                                  Grid.Column="0"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
+                                                  Content="{TemplateBinding HeaderContent}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                <ui:FontIcon Name="PART_ChevronButtonIcon"
+                                             Grid.Column="1"
+                                             HorizontalAlignment="Right"
+                                             FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                             FontSize="16"
+                                             Glyph="{x:Static vio:FontSymbols.ChevronDown}" />
+                            </Grid>
+                        </ui:FABorder>
+                        <ui:FABorder Name="PART_CardContentBorder"
+                                     Grid.Row="1"
+                                     Background="{DynamicResource ExpanderHeaderBackground}"
+                                     BackgroundSizing="InnerBorderEdge"
+                                     BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                                     BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
+                                     CornerRadius="{DynamicResource ControlCornerRadius}"
+                                     IsVisible="{TemplateBinding IsExpanded}">
+                            <ContentPresenter Name="PART_ContentPresenter"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              Content="{TemplateBinding CardContent}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </ui:FABorder>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style Selector="^[IsExpanded=true] /template/ ui|FontIcon#PART_ChevronButtonIcon">
+            <Setter Property="Glyph" Value="{x:Static vio:FontSymbols.ChevronUp}" />
+        </Style>
+
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ ui|FABorder#PART_HeaderContentBorder">
+                <Setter Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Style Selector="^ /template/ ui|FABorder#PART_HeaderContentBorder">
+                <Setter Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderBorderPressedBrush}" />
+            </Style>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

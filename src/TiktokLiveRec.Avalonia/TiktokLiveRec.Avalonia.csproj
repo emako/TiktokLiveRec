@@ -59,7 +59,8 @@
         </PackageReference>
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia" Version="2.1.0" PrivateAssets="All" />
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia.Extensions" Version="2.1.0" PrivateAssets="All" />
-        <PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
+		<PackageReference Include="Antelcat.I18N.Avalonia" Version="1.1.0" />
+		<PackageReference Include="FluentAvaloniaUI" Version="2.0.5" />
         <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.10.0" />
         <PackageReference Include="Semi.Avalonia" Version="11.2.1.6" />
         <PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.6" />
@@ -70,7 +71,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Irihi.Ursa.Themes.Fluent\UrsaAvaloniaUI.csproj" />
+        <ProjectReference Include="..\AvaloniaUI.Violeta\AvaloniaUI.Violeta.csproj" />
+		<ProjectReference Include="..\TiktokLiveRec.Globalization\TiktokLiveRec.Avalonia.Globalization.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

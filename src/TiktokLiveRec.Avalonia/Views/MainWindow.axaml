@@ -1,21 +1,21 @@
-<uu:FluentWindow x:Class="TiktokLiveRec.Views.MainWindow"
-                 xmlns="https://github.com/avaloniaui"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:u="https://irihi.tech/ursa"
-                 xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
-                 xmlns:uu="urn:UrsaAvaloniaUI"
-                 xmlns:vm="clr-namespace:TiktokLiveRec.ViewModels"
-                 Title="TiktokLiveRec"
-                 Width="860"
-                 Height="600"
-                 d:Background="#FF101010"
-                 x:DataType="vm:MainViewModel"
-                 Icon="avares://TiktokLiveRec/Assets/Favicon.ico"
-                 WindowStartupLocation="CenterScreen"
-                 mc:Ignorable="d">
-    <uu:FluentWindow.TitleBarContent>
+<vio:FluentWindow x:Class="TiktokLiveRec.Views.MainWindow"
+                  xmlns="https://github.com/avaloniaui"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:u="https://irihi.tech/ursa"
+                  xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+                  xmlns:vio="urn:avaloniaui.violeta"
+                  xmlns:vm="clr-namespace:TiktokLiveRec.ViewModels"
+                  Title="TiktokLiveRec"
+                  Width="860"
+                  Height="600"
+                  d:Background="#FF101010"
+                  x:DataType="vm:MainViewModel"
+                  Icon="avares://TiktokLiveRec/Assets/Favicon.ico"
+                  WindowStartupLocation="CenterScreen"
+                  mc:Ignorable="d">
+    <vio:FluentWindow.TitleBarContent>
         <StackPanel x:Name="TitleBar"
                     IsVisible="{OnPlatform macOS=False,
                                            Default=True}"
@@ -27,10 +27,10 @@
             <TextBlock Margin="0,16,0,0"
                        VerticalAlignment="Center"
                        FontSize="12"
-                       Text="TiktokLiveRec" />
+                       Text="{I18N Title}" />
         </StackPanel>
-    </uu:FluentWindow.TitleBarContent>
-    <uu:FluentWindow.RightContent>
+    </vio:FluentWindow.TitleBarContent>
+    <vio:FluentWindow.RightContent>
         <StackPanel Orientation="Horizontal">
             <Button Name="MoreButton" Theme="{DynamicResource FluentCaptionButton}">
                 <Button.Content>
@@ -39,32 +39,32 @@
                                  VerticalAlignment="Center"
                                  FontFamily="{StaticResource SymbolThemeFontFamily}"
                                  FontSize="8"
-                                 Glyph="{x:Static uu:FontSymbols.CaretDown8}" />
+                                 Glyph="{x:Static vio:FontSymbols.CaretDown8}" />
                 </Button.Content>
-                <Button.ContextMenu>
-                    <ContextMenu FontSize="12">
+                <Button.Flyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
                         <MenuItem Command="{Binding OpenSaveFolderCommand}" Header="SaveFolder">
                             <MenuItem.Icon>
-                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static uu:FontSymbols.FolderOpen}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.FolderOpen}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Command="{Binding OpenSettingsFileFolderCommand}" Header="SettingsFile">
                             <MenuItem.Icon>
-                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static uu:FontSymbols.OpenLocal}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.OpenLocal}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <Separator />
                         <MenuItem Command="{Binding OpenAboutCommand}" Header="About">
-                            <!--<MenuItem.Icon>
-                                <ui:SymbolIcon FontSize="16" Symbol="Info16" />
-                            </MenuItem.Icon>-->
+                            <MenuItem.Icon>
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.Info}" />
+                            </MenuItem.Icon>
                         </MenuItem>
-                    </ContextMenu>
-                </Button.ContextMenu>
+                    </MenuFlyout>
+                </Button.Flyout>
             </Button>
-            <uu:FluentCaptionButtons />
+            <vio:FluentCaptionButtons />
         </StackPanel>
-    </uu:FluentWindow.RightContent>
+    </vio:FluentWindow.RightContent>
     <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,28,8,4', x:TypeArguments=Thickness}" RowDefinitions="Auto,*">
         <Grid Grid.Row="0">
             <StackPanel Orientation="Vertical">
@@ -135,4 +135,4 @@
         <!-- </uu:CardExpander> -->
         <!-- <TextBox Text="123050" /> -->
     </Grid>
-</uu:FluentWindow>
+</vio:FluentWindow>

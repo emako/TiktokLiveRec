@@ -16,13 +16,36 @@ internal partial class TrayIconManager
 
     private TrayIconManager()
     {
-        _icon = new()
+        if (Environment.OSVersion.Platform == PlatformID.Win32NT)
         {
-            ToolTipText = "TiktokLiveRec",
-            Icon = new WindowIcon(AssetLoader.Open(new Uri("avares://TiktokLiveRec/Assets/Favicon.png"))),
-            Menu =
-            [
-                new NativeMenuItem()
+            _icon = new()
+            {
+                ToolTipText = "TiktokLiveRec",
+                Icon = new WindowIcon(AssetLoader.Open(new Uri("avares://TiktokLiveRec/Assets/Favicon.png"))),
+            };
+
+            _icon.Clicked += (_, _) =>
+            {
+                if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                {
+                    if (desktop.MainWindow is not null)
+                    {
+                        desktop.MainWindow.WindowState = WindowState.Normal;
+                        desktop.MainWindow.Show();
+                        desktop.MainWindow.Activate();
+                    }
+                }
+            };
+        }
+        else
+        {
+            _icon = new()
+            {
+                ToolTipText = "TiktokLiveRec",
+                Icon = new WindowIcon(AssetLoader.Open(new Uri("avares://TiktokLiveRec/Assets/Favicon.png"))),
+                Menu =
+                [
+                    new NativeMenuItem()
                 {
                     Header = Version,
                     IsEnabled = false,
@@ -32,8 +55,9 @@ internal partial class TrayIconManager
                     Header = "Exit",
                     Command = ExitCommand,
                 }
-            ]
-        };
+                ]
+            };
+        }
     }
 
     public static TrayIconManager GetInstance()

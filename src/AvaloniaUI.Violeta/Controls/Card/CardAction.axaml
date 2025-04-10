@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls"
+                    xmlns:vio="clr-namespace:AvaloniaUI.Violeta.Controls">
+
+    <Design.PreviewWith>
+        <Border Width="500"
+                Height="500"
+                Background="#333333">
+            <vio:CardAction Height="48">
+                <TextBlock Text="a" />
+            </vio:CardAction>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type vio:CardAction}" TargetType="vio:CardAction">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <ui:FABorder x:Name="PART_FABorder"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 Background="{DynamicResource ExpanderHeaderBackground}"
+                                 BackgroundSizing="InnerBorderEdge"
+                                 BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                                 BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
+                                 CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <Grid HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              ColumnDefinitions="*, Auto">
+                            <Grid Grid.Column="0">
+                                <ContentPresenter x:Name="PART_ContentPresenter"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <ui:FontIcon Margin="0,0,14,0"
+                                             HorizontalAlignment="Right"
+                                             FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                             FontSize="16"
+                                             Glyph="{x:Static vio:FontSymbols.ChevronRight}" />
+                            </Grid>
+                        </Grid>
+                    </ui:FABorder>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ ui|FABorder#PART_FABorder">
+                <Setter Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Style Selector="^ /template/ ui|FABorder#PART_FABorder">
+                <Setter Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderBorderPressedBrush}" />
+            </Style>
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

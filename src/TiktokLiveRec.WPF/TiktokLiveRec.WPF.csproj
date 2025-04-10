@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<LangVersion>latest</LangVersion>
+		<ApplicationIcon>Assets\Favicon.ico</ApplicationIcon>
+		<AssemblyVersion>1.6.4.0</AssemblyVersion>
+		<FileVersion>1.6.4.0</FileVersion>
+		<Version>$(VersionPrefix)1.6.4.0</Version>
+		<Platforms>x64</Platforms>
+		<DebugType>embedded</DebugType>
+		<AssemblyName>TiktokLiveRec</AssemblyName>
+		<RootNamespace>TiktokLiveRec</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\*" />
+		<Content Remove="$(NuGetPackageRoot)lottiesharp\2.4.0\contentFiles\any\net8.0-windows7.0\lottie_sharp.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Antelcat.I18N.WPF" Version="1.1.0" />
+		<PackageReference Include="Flucli" Version="0.3.2" />
+		<PackageReference Include="NotifyIconEx" Version="1.1.2" />
+		<PackageReference Include="WPF-UI" Version="3.0.5" />
+		<PackageReference Include="WPF-UI.Violeta" Version="3.0.5.27" />
+		<PackageReference Include="ComputedConverters.WPF" Version="0.4.9" />
+		<PackageReference Include="ComputedBehaviors.WPF" Version="0.4.9" />
+		<PackageReference Include="ComputedAnimations.WPF" Version="0.4.9" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="Fischless.Configuration" Version="1.0.0" />
+		<PackageReference Include="Fischless.Configuration.Json" Version="1.0.0" />
+		<PackageReference Include="Fischless.Configuration.Yaml" Version="1.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="RestSharp" Version="112.1.0" />
+		<PackageReference Include="Vanara.PInvoke.SHCore" Version="4.0.4" />
+		<PackageReference Include="Vanara.PInvoke.User32" Version="4.0.4" />
+		<PackageReference Include="Vanara.PInvoke.Kernel32" Version="4.0.4" />
+		<PackageReference Include="Vanara.PInvoke.DwmApi" Version="4.0.4" />
+		<PackageReference Include="Vanara.PInvoke.NtDll" Version="4.0.4" />
+		<PackageReference Include="Vanara.PInvoke.Security" Version="4.0.4" />
+		<PackageReference Include="MediaInfoDLL" Version="24.11.0" />
+		<PackageReference Include="WindowsAPICodePack.Shell.CommonFileDialogs" Version="1.1.5" />
+		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+		<PackageReference Include="System.Drawing.Common" Version="9.0.0" />
+		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="NAudio.Core" Version="2.2.1" />
+		<PackageReference Include="LottieSharp" Version="2.4.0" />
+		<PackageReference Include="Downloader" Version="3.3.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\TiktokLiveRec.Globalization\TiktokLiveRec.WPF.Globalization.csproj" />
+	</ItemGroup>
+
+</Project>
