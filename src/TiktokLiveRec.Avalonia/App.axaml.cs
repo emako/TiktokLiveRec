@@ -27,6 +27,8 @@ public partial class App : Application
         }
 
         AvaloniaXamlLoader.Load(this);
+
+        TrayIconManager.Start();
     }
 
     public override void OnFrameworkInitializationCompleted()
