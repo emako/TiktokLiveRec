@@ -12,15 +12,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
-
-      - name: Setup Windows SDK
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.5
 
       - name: Install dependencies
         run: cd src\TiktokLiveRec.WPF && dotnet restore TiktokLiveRec.WPF.csproj
