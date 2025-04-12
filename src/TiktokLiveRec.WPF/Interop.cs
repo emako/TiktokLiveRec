@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using Vanara.PInvoke;
@@ -78,7 +78,7 @@ internal static class Interop
                 hWnds.Add(hWnd.DangerousGetHandle());
             }
             return true;
-        }, IntPtr.Zero);
+        }, nint.Zero);
 
         return [.. hWnds];
     }
@@ -138,7 +138,7 @@ internal static class Interop
         exStyle &= ~((int)User32.WindowStylesEx.WS_EX_APPWINDOW);
         exStyle |= (int)User32.WindowStylesEx.WS_EX_TOOLWINDOW;
         _ = User32.SetWindowLong(hWnd, User32.WindowLongFlags.GWL_EXSTYLE, exStyle);
-        _ = User32.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, 0, 0, User32.SetWindowPosFlags.SWP_NOMOVE | User32.SetWindowPosFlags.SWP_NOSIZE | User32.SetWindowPosFlags.SWP_NOZORDER | User32.SetWindowPosFlags.SWP_FRAMECHANGED);
+        _ = User32.SetWindowPos(hWnd, nint.Zero, 0, 0, 0, 0, User32.SetWindowPosFlags.SWP_NOMOVE | User32.SetWindowPosFlags.SWP_NOSIZE | User32.SetWindowPosFlags.SWP_NOZORDER | User32.SetWindowPosFlags.SWP_FRAMECHANGED);
     }
 
     /// <param name="ratio">Screen ratio in maximum orientation</param>
@@ -178,7 +178,7 @@ internal static class Interop
                 int newY = (screenHeight - newHeight) / 2;
 
                 // Set the new window size and position (you can use SetWindowPos or a similar API)
-                User32.SetWindowPos(hWnd, IntPtr.Zero, newX, newY, newWidth, newHeight, User32.SetWindowPosFlags.SWP_NOZORDER);
+                User32.SetWindowPos(hWnd, nint.Zero, newX, newY, newWidth, newHeight, User32.SetWindowPosFlags.SWP_NOZORDER);
             }
             else
             {
@@ -187,7 +187,7 @@ internal static class Interop
                 int newY = (screenHeight - windowHeight) / 2;
 
                 // Move the window to the centered position without resizing
-                User32.SetWindowPos(hWnd, IntPtr.Zero, newX, newY, windowWidth, windowHeight, User32.SetWindowPosFlags.SWP_NOZORDER);
+                User32.SetWindowPos(hWnd, nint.Zero, newX, newY, windowWidth, windowHeight, User32.SetWindowPosFlags.SWP_NOZORDER);
             }
         }
     }
@@ -227,7 +227,7 @@ internal static class Interop
     {
         using var hProcess = Kernel32.OpenProcess(ACCESS_MASK.GENERIC_READ, false, (uint)pid);
 
-        if (hProcess == IntPtr.Zero)
+        if (hProcess == nint.Zero)
         {
             return null!;
         }

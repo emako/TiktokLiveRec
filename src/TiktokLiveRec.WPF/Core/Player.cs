@@ -1,4 +1,4 @@
-﻿using MediaInfoLib;
+using MediaInfoLib;
 using System.Diagnostics;
 using System.IO;
 using TiktokLiveRec.Extensions;
@@ -85,7 +85,7 @@ public sealed class Player
             await Task.Delay(700);
 
             // Not needed because of `ProcessWindowStyle.Hidden`.
-            // await Task.Run(() => _ = SpinWait.SpinUntil(() => process.HasExited || process.MainWindowHandle != IntPtr.Zero, 3000));
+            // await Task.Run(() => _ = SpinWait.SpinUntil(() => process.HasExited || process.MainWindowHandle != nint.Zero, 3000));
 
             if (process.HasExited)
             {

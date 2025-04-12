@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -56,7 +56,7 @@ internal static class RuntimeHelper
 
         try
         {
-            Process process = new()
+            using Process process = new()
             {
                 StartInfo = new ProcessStartInfo()
                 {

@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Platform;
 using Avalonia.VisualTree;
@@ -26,7 +26,7 @@ public sealed class WindowInteropHelper
     /// <remarks>
     ///     Callers must have UIPermission(UIPermissionWindow.AllWindows) to call this API.
     /// </remarks>
-    public nint Handle { get; } = IntPtr.Zero;
+    public nint Handle { get; } = nint.Zero;
 
     /// <summary>
     /// Get/Set the Owner handle of the window
@@ -97,6 +97,6 @@ public sealed class WindowInteropHelper
         {
             return new WindowInteropHelper(topLevel).Handle;
         }
-        return IntPtr.Zero;
+        return nint.Zero;
     }
 }

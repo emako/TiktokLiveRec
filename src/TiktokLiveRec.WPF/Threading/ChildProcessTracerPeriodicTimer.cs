@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Vanara.PInvoke;
@@ -50,7 +50,7 @@ public partial class ChildProcessTracerPeriodicTimer(TimeSpan period) : IDisposa
                 {
                     using Process childProcess = Process.GetProcessById(childId);
 
-                    if (childProcess != null && childProcess.Handle != IntPtr.Zero)
+                    if (childProcess != null && childProcess.Handle != nint.Zero)
                     {
                         Tracer.AddChildProcess(childProcess.Handle);
                     }

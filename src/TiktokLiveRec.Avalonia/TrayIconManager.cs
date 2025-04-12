@@ -1,10 +1,16 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Platform;
+using AvaloniaUI.Violeta.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace TiktokLiveRec;
 
@@ -14,25 +20,67 @@ internal partial class TrayIconManager
 
     private readonly TrayIcon _icon = null!;
 
+    [Description("Only for Windows")]
+    private readonly TrayIconHost? _iconHost = null;
+
+    public bool IsShutdownTriggered { get; private set; } = false;
+
+    [SuppressMessage("Interoperability", "CA1416: Validate platform compatibility")]
+    [SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression")]
     private TrayIconManager()
     {
         if (Environment.OSVersion.Platform == PlatformID.Win32NT)
         {
-            _icon = new()
+            using Icon icon = new(AssetLoader.Open(new Uri("avares://TiktokLiveRec/Assets/Favicon.ico")));
+
+            _iconHost = new TrayIconHost()
             {
                 ToolTipText = "TiktokLiveRec",
-                Icon = new WindowIcon(AssetLoader.Open(new Uri("avares://TiktokLiveRec/Assets/Favicon.png"))),
+                Icon = icon.Handle,
+                Menu =
+                [
+                    new TrayMenuItem()
+                    {
+                        Header = Version,
+                        IsEnabled = false,
+                    },
+                    new TraySeparator(),
+                    new TrayMenuItem()
+                    {
+                        Header = "TrayMenuShowMainWindow".Tr(),
+                        Command = ActivateMainWindowCommand,
+                    },
+                    new TrayMenuItem()
+                    {
+                        Header = "TrayMenuOpenSettings".Tr(),
+                        Command = OpenSettingsCommand,
+                    },
+                    new TrayMenuItem()
+                    {
+                        Header = "TrayMenuAutoRun".Tr(),
+                        Command = ToggleAutoRunCommand,
+                    },
+                    new TrayMenuItem()
+                    {
+                        Header = "TrayMenuRestart".Tr(),
+                        Command = RestartCommand,
+                    },
+                    new TrayMenuItem()
+                    {
+                        Header = "TrayMenuExit".Tr(),
+                        Command = ExitCommand,
+                    }
+                ],
             };
 
-            _icon.Clicked += (_, _) =>
+            _iconHost.LeftDoubleClick += (_, _) => ActivateMainWindow();
+            _iconHost.Menu!.Opening += (_, _) =>
             {
-                if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                foreach (var item in _iconHost.Menu?.OfType<TrayMenuItem>() ?? [])
                 {
-                    if (desktop.MainWindow is not null)
+                    if (item.Header == "TrayMenuAutoRun".Tr())
                     {
-                        desktop.MainWindow.WindowState = WindowState.Normal;
-                        desktop.MainWindow.Show();
-                        desktop.MainWindow.Activate();
+                        //item!.IsChecked = AutoStartupHelper.IsAutorun();
                     }
                 }
             };
@@ -46,18 +94,82 @@ internal partial class TrayIconManager
                 Menu =
                 [
                     new NativeMenuItem()
-                {
-                    Header = Version,
-                    IsEnabled = false,
-                },
-                new NativeMenuItem()
-                {
-                    Header = "Exit",
-                    Command = ExitCommand,
-                }
+                    {
+                        Header = Version,
+                        IsEnabled = false,
+                    },
+                    new NativeMenuItem()
+                    {
+                        Header = "-",
+                    },
+                    new NativeMenuItem()
+                    {
+                        Header = "TrayMenuShowMainWindow".Tr(),
+                        Command = ActivateMainWindowCommand,
+                    },
+                    new NativeMenuItem()
+                    {
+                        Header = "TrayMenuOpenSettings".Tr(),
+                        Command = OpenSettingsCommand,
+                    },
+                    new NativeMenuItem()
+                    {
+                        Header = "TrayMenuAutoRun".Tr(),
+                        Command = ToggleAutoRunCommand,
+                    },
+                    new NativeMenuItem()
+                    {
+                        Header = "TrayMenuRestart".Tr(),
+                        Command = RestartCommand,
+                    },
+                    new NativeMenuItem()
+                    {
+                        Header = "TrayMenuExit".Tr(),
+                        Command = ExitCommand,
+                    }
                 ]
             };
+
+            _icon.Clicked += (_, _) => ActivateMainWindow();
         }
+
+        UpdateTrayIcon();
+
+        Locale.CultureChanged += (_, _) =>
+        {
+            dynamic menu = Environment.OSVersion.Platform == PlatformID.Win32NT ?
+                _iconHost?.Menu! :
+                _icon.Menu!;
+
+            foreach (dynamic item in menu)
+            {
+                if (item.Header?.Contains("(&V)") ?? false)
+                {
+                    item.Header = "TrayMenuShowMainWindow".Tr();
+                }
+                else if (item.Header?.Contains("(&S)") ?? false)
+                {
+                    item.Header = "TrayMenuOpenSettings".Tr();
+                }
+                else if (item.Header?.Contains("(&A)") ?? false)
+                {
+                    item.Header = "TrayMenuAutoRun".Tr();
+                }
+                else if (item.Header?.Contains("(&R)") ?? false)
+                {
+                    item.Header = "TrayMenuRestart".Tr();
+                }
+                else if (item.Header?.Contains("(&E)") ?? false)
+                {
+                    item.Header = "TrayMenuExit".Tr();
+                }
+            }
+        };
+    }
+
+    public void UpdateTrayIcon()
+    {
+        // TODO
     }
 
     public static TrayIconManager GetInstance()
@@ -71,10 +183,82 @@ internal partial class TrayIconManager
     }
 }
 
+[SuppressMessage("Performance", "CA1822:Mark members as static")]
 internal partial class TrayIconManager : ObservableObject
 {
     [ObservableProperty]
     private string version = $"v{Assembly.GetExecutingAssembly().GetName().Version!.ToString(3)}";
+
+    [RelayCommand]
+    private void ActivateMainWindow()
+    {
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            if (desktop.MainWindow is not null)
+            {
+                if (desktop.MainWindow.IsVisible)
+                {
+                    desktop.MainWindow.Hide();
+                }
+                else
+                {
+                    desktop.MainWindow.Show();
+                    desktop.MainWindow.Activate();
+                }
+            }
+        }
+    }
+
+    [RelayCommand]
+    private void OpenSettings()
+    {
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            //foreach (var win in desktop.Windows.OfType<SettingsWindow>())
+            //{
+            //    win.Close();
+            //}
+        }
+    }
+
+    [RelayCommand]
+    private void ToggleAutoRun()
+    {
+    }
+
+    [RelayCommand]
+    private void Restart()
+    {
+        try
+        {
+            using Process process = new()
+            {
+                StartInfo = new ProcessStartInfo()
+                {
+                    FileName = GetExecutablePath(),
+                    WorkingDirectory = Environment.CurrentDirectory,
+                    UseShellExecute = true,
+                },
+            };
+            process.Start();
+        }
+        catch (Win32Exception)
+        {
+            return;
+        }
+
+        Process.GetCurrentProcess().Kill();
+
+        static string GetExecutablePath()
+        {
+            string fileName = AppDomain.CurrentDomain.FriendlyName;
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                fileName += ".exe";
+
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+        }
+    }
 
     [RelayCommand]
     private void Exit()

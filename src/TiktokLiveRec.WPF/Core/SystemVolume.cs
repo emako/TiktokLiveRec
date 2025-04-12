@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace TiktokLiveRec.Core;
 
@@ -87,7 +87,7 @@ file static class SystemVolumeService
             _ = deviceEnumerator.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia, out speakers);
 
             Guid iidIAudioEndpointVolume = typeof(IAudioEndpointVolume).GUID;
-            _ = speakers.Activate(ref iidIAudioEndpointVolume, 0, IntPtr.Zero, out object o);
+            _ = speakers.Activate(ref iidIAudioEndpointVolume, 0, nint.Zero, out object o);
             IAudioEndpointVolume masterVol = (IAudioEndpointVolume)o;
 
             return masterVol;

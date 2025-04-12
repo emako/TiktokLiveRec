@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Microsoft.Win32;
@@ -61,11 +61,11 @@ public static class SnapLayout
                     break;
             }
 
-            return IntPtr.Zero;
+            return nint.Zero;
 
             static int ToInt32(nint ptr)
             {
-                return IntPtr.Size == 4
+                return nint.Size == 4
                     ? ptr.ToInt32()
                     : (int)(ptr.ToInt64() & 0xffffffff);
             }

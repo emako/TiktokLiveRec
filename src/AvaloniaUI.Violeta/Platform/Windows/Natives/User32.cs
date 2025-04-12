@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
@@ -12,15 +12,66 @@ internal static class User32
     public static extern nint SendMessage(nint hWnd, int msg, nint wParam, nint lParam);
 
     [DllImport("user32.dll")]
+    public static extern bool PostMessage(nint hWnd, uint Msg, nint wParam, nint lParam);
+
+    [DllImport("user32.dll")]
+    public static extern bool SetForegroundWindow(nint hWnd);
+
+    [DllImport("user32.dll")]
     public static extern nint GetSystemMenu(nint hWnd, bool bRevert);
 
     [DllImport("user32.dll")]
     public static extern bool EnableMenuItem(nint hMenu, uint uIDEnableItem, uint uEnable);
 
-    public enum MenuFlags
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+    public static extern ushort RegisterClass(ref WNDCLASS lpWndClass);
+
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+    public static extern nint CreateWindowEx(
+        int dwExStyle, string lpClassName, string lpWindowName, int dwStyle,
+        int x, int y, int nWidth, int nHeight,
+        nint hWndParent, nint hMenu, nint hInstance, nint lpParam);
+
+    [DllImport("user32.dll")]
+    public static extern nint DefWindowProc(nint hWnd, uint uMsg, nint wParam, nint lParam);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern nint CopyIcon(nint hIcon);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool DestroyIcon(nint hIcon);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern nint CreatePopupMenu();
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool DestroyMenu(nint hMenu);
+
+    [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+    public static extern bool AppendMenu(nint hMenu, uint uFlags, uint uIDNewItem, string lpNewItem);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern uint TrackPopupMenuEx(nint hMenu, uint uFlags, int x, int y, nint hWnd, nint lpTPMParams);
+
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static extern bool GetCursorPos(out POINT lpPoint);
+
+    public delegate nint WndProcDelegate(nint hWnd, uint msg, nint wParam, nint lParam);
+
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    public struct WNDCLASS
     {
-        MF_BYCOMMAND = 0x00000000,
-        MF_ENABLED = 0x00000000
+        public uint style;
+        public nint lpfnWndProc;
+        public int cbClsExtra;
+        public int cbWndExtra;
+        public nint hInstance;
+        public nint hIcon;
+        public nint hCursor;
+        public nint hbrBackground;
+        public string lpszMenuName;
+        public string lpszClassName;
     }
 
     public enum SysCommand
@@ -232,6 +283,7 @@ internal static class User32
         WM_PENWINLAST = 0x038F,
         WM_APP = 0x8000,
         WM_USER = 0x0400,
+        WM_TRAYICON = WM_USER + 0x0001,
         WM_REFLECT = WM_USER + 0x1c00,
     }
 
@@ -266,5 +318,48 @@ internal static class User32
         HTOBJECT = 19,
         HTCLOSE = 20,
         HTHELP = 21,
+    }
+
+    [Flags]
+    public enum MenuFlags : uint
+    {
+        MF_STRING = 0x0000,
+        MF_DISABLED = 0x0002,
+        MF_CHECKED = 0x0008,
+        MF_GRAYED = 0x0001,
+        MF_SEPARATOR = 0x0800,
+    }
+
+    [Flags]
+    [SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
+    public enum TrackPopupMenuFlags : uint
+    {
+        TPM_LEFTBUTTON = 0u,
+        TPM_RIGHTBUTTON = 2u,
+        TPM_LEFTALIGN = 0u,
+        TPM_CENTERALIGN = 4u,
+        TPM_RIGHTALIGN = 8u,
+        TPM_TOPALIGN = 0u,
+        TPM_VCENTERALIGN = 0x10u,
+        TPM_BOTTOMALIGN = 0x20u,
+        TPM_HORIZONTAL = 0u,
+        TPM_VERTICAL = 0x40u,
+        TPM_NONOTIFY = 0x80u,
+        TPM_RETURNCMD = 0x100u,
+        TPM_RECURSE = 1u,
+        TPM_HORPOSANIMATION = 0x400u,
+        TPM_HORNEGANIMATION = 0x800u,
+        TPM_VERPOSANIMATION = 0x1000u,
+        TPM_VERNEGANIMATION = 0x2000u,
+        TPM_NOANIMATION = 0x4000u,
+        TPM_LAYOUTRTL = 0x8000u,
+        TPM_WORKAREA = 0x10000u,
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct POINT
+    {
+        public int X;
+        public int Y;
     }
 }
