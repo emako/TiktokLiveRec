@@ -73,7 +73,7 @@ internal partial class TrayIconManager
                 ],
             };
 
-            _iconHost.LeftDoubleClick += (_, _) => ActivateMainWindow();
+            _iconHost.LeftDoubleClick += (_, _) => ActivateOrRestoreMainWindow();
             _iconHost.Menu!.Opening += (_, _) =>
             {
                 foreach (var item in _iconHost.Menu?.OfType<TrayMenuItem>() ?? [])
@@ -98,10 +98,7 @@ internal partial class TrayIconManager
                         Header = Version,
                         IsEnabled = false,
                     },
-                    new NativeMenuItem()
-                    {
-                        Header = "-",
-                    },
+                    new NativeMenuItemSeparator(),
                     new NativeMenuItem()
                     {
                         Header = "TrayMenuShowMainWindow".Tr(),
@@ -130,7 +127,7 @@ internal partial class TrayIconManager
                 ]
             };
 
-            _icon.Clicked += (_, _) => ActivateMainWindow();
+            _icon.Clicked += (_, _) => ActivateOrRestoreMainWindow();
         }
 
         UpdateTrayIcon();
@@ -191,6 +188,19 @@ internal partial class TrayIconManager : ObservableObject
 
     [RelayCommand]
     private void ActivateMainWindow()
+    {
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            if (desktop.MainWindow is not null)
+            {
+                desktop.MainWindow.Show();
+                desktop.MainWindow.Activate();
+            }
+        }
+    }
+
+    [RelayCommand]
+    private void ActivateOrRestoreMainWindow()
     {
         if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {

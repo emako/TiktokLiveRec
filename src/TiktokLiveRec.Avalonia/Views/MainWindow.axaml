@@ -16,7 +16,8 @@
                   mc:Ignorable="d">
     <vio:FluentWindow.TitleBarContent>
         <StackPanel x:Name="TitleBar"
-                    IsVisible="{OnPlatform macOS=False, Default=True}"
+                    IsVisible="{OnPlatform macOS=False,
+                                           Default=True}"
                     Orientation="Horizontal"
                     Spacing="8">
             <Image Height="18"
@@ -30,8 +31,7 @@
     </vio:FluentWindow.TitleBarContent>
     <vio:FluentWindow.RightContent>
         <StackPanel Orientation="Horizontal">
-            <Button Name="MoreButton"
-                    Theme="{DynamicResource FluentCaptionButton}">
+            <Button Name="MoreButton" Theme="{DynamicResource FluentCaptionButton}">
                 <Button.Content>
                     <ui:FontIcon Margin="0,0,0,0"
                                  HorizontalAlignment="Center"
@@ -42,26 +42,20 @@
                 </Button.Content>
                 <Button.Flyout>
                     <MenuFlyout Placement="BottomEdgeAlignedLeft">
-                        <MenuItem Command="{Binding OpenSaveFolderCommand}"
-                                  Header="{I18N SaveFolder}">
+                        <MenuItem Command="{Binding OpenSaveFolderCommand}" Header="{I18N SaveFolder}">
                             <MenuItem.Icon>
-                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                             Glyph="{x:Static vio:FontSymbols.FolderOpen}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.FolderOpen}" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Command="{Binding OpenSettingsFileFolderCommand}"
-                                  Header="{I18N SettingsFile}">
+                        <MenuItem Command="{Binding OpenSettingsFileFolderCommand}" Header="{I18N SettingsFile}">
                             <MenuItem.Icon>
-                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                             Glyph="{x:Static vio:FontSymbols.OpenLocal}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.OpenLocal}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <Separator />
-                        <MenuItem Command="{Binding OpenAboutCommand}"
-                                  Header="{I18N About}">
+                        <MenuItem Command="{Binding OpenAboutCommand}" Header="{I18N About}">
                             <MenuItem.Icon>
-                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                             Glyph="{x:Static vio:FontSymbols.Info}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.Info}" />
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuFlyout>
@@ -70,78 +64,19 @@
             <vio:FluentCaptionButtons />
         </StackPanel>
     </vio:FluentWindow.RightContent>
-    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,28,8,4', x:TypeArguments=Thickness}"
-          RowDefinitions="Auto,*">
+    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,28,8,4', x:TypeArguments=Thickness}" RowDefinitions="Auto,*">
         <Grid Grid.Row="0">
             <StackPanel Orientation="Vertical">
-                <!--  K  -->
                 <Button Content="dsf" />
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid AutoGenerateColumns="False"
-                      ItemsSource="{Binding RoomStatuses}">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RoomStatuses}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding NickName}"
-                                        Header="NickName" />
-                    <DataGridTextColumn Binding="{Binding RoomUrl}"
-                                        Header="RoomUrl" />
+                    <DataGridTextColumn Binding="{Binding NickName}" Header="NickName" />
+                    <DataGridTextColumn Binding="{Binding RoomUrl}" Header="RoomUrl" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <!-- <uu:Card> -->
-        <!--     <StackPanel> -->
-        <!--         <Button Content="Button"> -->
-        <!--             <Button.ContextMenu> -->
-        <!--                 <ContextMenu> -->
-        <!--                     <MenuItem Header="Parent" IsSubMenuOpen="False"> -->
-        <!--                         <MenuItem Header="Child 1" /> -->
-        <!--                         <MenuItem Header="Child 2" /> -->
-        <!--                         <MenuItem Header="Child 3" /> -->
-        <!--                         <Separator /> -->
-        <!--                         <MenuItem Header="Child 4" /> -->
-        <!--                         <MenuItem Header="Child 5" /> -->
-        <!--                         <MenuItem Header="Child 6" /> -->
-        <!--                         <MenuItem Header="Child 7" /> -->
-        <!--                         <MenuItem Header="Child 8" /> -->
-        <!--                         <MenuItem Header="Child 9" /> -->
-        <!--                         <MenuItem Header="Child 10" /> -->
-        <!--                         <MenuItem Header="Child 11" /> -->
-        <!--                         <MenuItem Header="Child 12" /> -->
-        <!--                         <MenuItem Header="Child 13" /> -->
-        <!--                         <MenuItem Header="Child 14" /> -->
-        <!--                         <MenuItem Header="Child 15" /> -->
-        <!--                         <MenuItem Header="Child 16" /> -->
-        <!--                         <MenuItem Header="Child 17" /> -->
-        <!--                         <MenuItem Header="Child 18" /> -->
-        <!--                         <MenuItem Header="Child 19" /> -->
-        <!--                     </MenuItem> -->
-        <!--                     <MenuItem Header="Disabled Parent" IsEnabled="False"> -->
-        <!--                         <MenuItem Header="Child" /> -->
-        <!--                     </MenuItem> -->
-        <!--                 </ContextMenu> -->
-        <!--             </Button.ContextMenu> -->
-        <!--         </Button> -->
-        <!--         <CheckBox Content="CheckBox" /> -->
-        <!--         <ToggleButton Content="ToggleButton" /> -->
-        <!--         <ToggleSwitch Content="ToggleButton" /> -->
-        <!--         <Expander /> -->
-        <!--         <ui:NumberBox /> -->
-        <!--         <ComboBox SelectedIndex="0"> -->
-        <!--             <ComboBoxItem Content="苹果" /> -->
-        <!--             <ComboBoxItem Content="香蕉" /> -->
-        <!--             <ComboBoxItem Content="橙子" /> -->
-        <!--         </ComboBox> -->
-        <!--     </StackPanel> -->
-        <!-- </uu:Card> -->
-        <!-- <uu:CardExpander Margin="0,16,0,0"> -->
-        <!--     <uu:CardExpander.HeaderContent> -->
-        <!--         <TextBlock Text="CardExpander.HeaderContent" /> -->
-        <!--     </uu:CardExpander.HeaderContent> -->
-        <!--     <uu:CardExpander.CardContent> -->
-        <!--         <TextBlock Text="CardExpander.CardContent" /> -->
-        <!--     </uu:CardExpander.CardContent> -->
-        <!-- </uu:CardExpander> -->
-        <!-- <TextBox Text="123050" /> -->
     </Grid>
 </vio:FluentWindow>

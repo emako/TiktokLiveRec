@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Windows.System;
 
@@ -16,7 +16,6 @@ public partial class AboutContentDialog : ContentDialog
     [RelayCommand]
     private async Task OpenHyperlink()
     {
-        // TODO: Implement for other platforms
         _ = await Launcher.LaunchUriAsync(new Uri(AppConfig.Url));
     }
 }
