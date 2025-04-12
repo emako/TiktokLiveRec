@@ -30,7 +30,7 @@ public class FluentWindow : UrsaWindow
 
         if (TitleBarContent is Control titleBar)
         {
-            titleBar.PointerPressed += OnFluentWindowDragMove;
+            titleBar.PointerPressed += OnTitleBarPointerPressed;
         }
     }
 
@@ -67,7 +67,7 @@ public class FluentWindow : UrsaWindow
     {
         PointerPoint pointerPoint = e.GetCurrentPoint(this);
 
-        // ExtendClientAreaTitleBarHeightHint 32 is the default title bar height for us.
+        // ExtendClientAreaTitleBarHeightHint 32 is the default title bar height for us
         if (pointerPoint.Properties.IsRightButtonPressed && pointerPoint.Position.Y <= 32)
         {
             if (RightContent is Layoutable rightContent && rightContent.IsVisible)
@@ -86,8 +86,29 @@ public class FluentWindow : UrsaWindow
         }
     }
 
-    protected virtual void OnFluentWindowDragMove(object? sender, PointerPressedEventArgs e)
+    protected virtual void OnTitleBarPointerPressed(object? sender, PointerPressedEventArgs e)
     {
-        BeginMoveDrag(e);
+        PointerPoint pointerPoint = e.GetCurrentPoint(this);
+
+        if (pointerPoint.Properties.IsLeftButtonPressed)
+        {
+            if (e.ClickCount == 2)
+            {
+                // Custom content requires double-click to maximize function
+                if (WindowState == WindowState.Normal)
+                {
+                    WindowState = WindowState.Maximized;
+                }
+                else if (WindowState == WindowState.Maximized)
+                {
+                    WindowState = WindowState.Normal;
+                }
+            }
+            else
+            {
+                // Custom content requires window move drag function
+                BeginMoveDrag(e);
+            }
+        }
     }
 }

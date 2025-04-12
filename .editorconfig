@@ -21,7 +21,6 @@ indent_style = space
 indent_size = 4
 
 # JetBrains Rider specific C# formatting rules
-dotnet_separate_import_directive_groups = true
 csharp_new_line_before_open_brace = all
 csharp_indent_case_contents = true
 csharp_indent_switch_labels = true
