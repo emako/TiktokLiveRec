@@ -1,13 +1,10 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
-using Avalonia.Input;
-using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Styling;
 using System.Diagnostics.CodeAnalysis;
 using Ursa.Controls;
-using AvaloniaUI.Violeta.Platform.Windows;
 
 namespace AvaloniaUI.Violeta.Controls;
 
@@ -18,7 +15,8 @@ public class FluentWindow : UrsaWindow
     {
         if (Environment.OSVersion.Platform == PlatformID.Win32NT)
         {
-            PointerPressed += OnFluentWindowPointerPressed;
+            _ = this.UseAsTitleBarForWindowSystemMenu(this);
+
             Deactivated += OnFluentWindowDeactivated;
             Activated += OnFluentWindowActivated;
         }
@@ -28,9 +26,12 @@ public class FluentWindow : UrsaWindow
     {
         base.OnApplyTemplate(e);
 
-        if (TitleBarContent is Control titleBar)
+        if (Environment.OSVersion.Platform == PlatformID.Win32NT)
         {
-            titleBar.PointerPressed += OnTitleBarPointerPressed;
+            if (TitleBarContent is Control titleBar)
+            {
+                _ = titleBar.UseAsTitleBarForWindowFrame(this);
+            }
         }
     }
 
@@ -60,55 +61,6 @@ public class FluentWindow : UrsaWindow
             // Just case the window is activated, we will re-apply the backdrop
             TransparencyLevelHint = [WindowTransparencyLevel.Mica];
             Background = Brushes.Transparent;
-        }
-    }
-
-    protected virtual void OnFluentWindowPointerPressed(object? sender, PointerPressedEventArgs e)
-    {
-        PointerPoint pointerPoint = e.GetCurrentPoint(this);
-
-        // ExtendClientAreaTitleBarHeightHint 32 is the default title bar height for us
-        if (pointerPoint.Properties.IsRightButtonPressed && pointerPoint.Position.Y <= 32)
-        {
-            if (RightContent is Layoutable rightContent && rightContent.IsVisible)
-            {
-                if (pointerPoint.Position.X < Bounds.Width - rightContent.Bounds.Width)
-                {
-                    // Show system menu
-                    WindowSystemMenu.ShowSystemMenu(this, e);
-                }
-            }
-            else
-            {
-                // Show system menu
-                WindowSystemMenu.ShowSystemMenu(this, e);
-            }
-        }
-    }
-
-    protected virtual void OnTitleBarPointerPressed(object? sender, PointerPressedEventArgs e)
-    {
-        PointerPoint pointerPoint = e.GetCurrentPoint(this);
-
-        if (pointerPoint.Properties.IsLeftButtonPressed)
-        {
-            if (e.ClickCount == 2)
-            {
-                // Custom content requires double-click to maximize function
-                if (WindowState == WindowState.Normal)
-                {
-                    WindowState = WindowState.Maximized;
-                }
-                else if (WindowState == WindowState.Maximized)
-                {
-                    WindowState = WindowState.Normal;
-                }
-            }
-            else
-            {
-                // Custom content requires window move drag function
-                BeginMoveDrag(e);
-            }
         }
     }
 }

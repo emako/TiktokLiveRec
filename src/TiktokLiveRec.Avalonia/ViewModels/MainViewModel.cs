@@ -1,3 +1,7 @@
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+using AvaloniaUI.Violeta.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FluentAvalonia.UI.Controls;
@@ -51,13 +55,21 @@ public partial class MainViewModel : ObservableObject
     [SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression")]
     private async Task OpenAboutAsync()
     {
-        ContentDialog dialog = new()
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            Title = "About".Tr(),
-            Content = new AboutDialogContent(),
-            CloseButtonText = "ButtonOfClose".Tr(),
-            FontSize = 14d,
-        };
-        _ = await dialog.ShowAsync();
+            if (desktop.MainWindow is Window window)
+            {
+                ContentDialog dialog = new()
+                {
+                    Title = "About".Tr(),
+                    Content = new AboutDialogContent(),
+                    CloseButtonText = "ButtonOfClose".Tr(),
+                };
+
+                _ = dialog.UseAsTitleBarForWindowFrame(window, true)
+                    .UseAsTitleBarForWindowSystemMenu(window);
+                _ = await dialog.ShowAsync();
+            }
+        }
     }
 }
