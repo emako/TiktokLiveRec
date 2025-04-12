@@ -1,5 +1,5 @@
-﻿using Antelcat.I18N.Attributes;
-using TiktokLiveRec.Globalization.Properties;
+using Antelcat.I18N.Attributes;
+using TiktokLiveRec.Properties;
 
 namespace TiktokLiveRec.Globalization;
 

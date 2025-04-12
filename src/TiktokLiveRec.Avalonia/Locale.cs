@@ -1,6 +1,8 @@
-﻿using Avalonia.Markup.Xaml.MarkupExtensions;
+using Avalonia.Markup.Xaml.MarkupExtensions;
+
 using System.Globalization;
-using TiktokLiveRec.Globalization.Properties;
+
+using TiktokLiveRec.Properties;
 
 namespace TiktokLiveRec;
 

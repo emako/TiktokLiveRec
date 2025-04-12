@@ -12,24 +12,27 @@ public partial class MainViewModel : ObservableObject
 
     public MainViewModel()
     {
-        RoomStatuses = new ObservableCollection<RoomStatusReactive>()
-        {
+        RoomStatuses =
+        [
             new RoomStatusReactive()
             {
                 NickName = "123",
                 RoomUrl = "123",
             },
+
             new RoomStatusReactive()
             {
                 NickName = "123",
                 RoomUrl = "123",
             },
+
             new RoomStatusReactive()
             {
                 NickName = "123",
                 RoomUrl = "123",
-            },
-        };
+            }
+
+        ];
     }
 
     [RelayCommand]

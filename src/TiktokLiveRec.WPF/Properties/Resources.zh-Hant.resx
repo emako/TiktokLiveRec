@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="LiveNotification" xml:space="preserve">
+    <value>開播通知</value>
+  </data>
+  <data name="GotoLiveRoom" xml:space="preserve">
+    <value>進入直播間</value>
+  </data>
+  <data name="MailBodyElement" xml:space="preserve">
+    <value>立即進入{0}的直播間</value>
+  </data>
+  <data name="PlayerErrorOfFFplayNotFound" xml:space="preserve">
+    <value>未找到文件 ffplay 因此無法播放！</value>
+  </data>
+  <data name="FailOp" xml:space="preserve">
+    <value>操作失敗</value>
+  </data>
+  <data name="StreamStatusOfUnknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="RecordStatusOfUnknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="StreamStatusOfInitialized" xml:space="preserve">
+    <value>初始化</value>
+  </data>
+  <data name="StreamStatusOfDisabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="StreamStatusOfNotStreaming" xml:space="preserve">
+    <value>未开播</value>
+  </data>
+  <data name="StreamStatusOfStreaming" xml:space="preserve">
+    <value>直播中</value>
+  </data>
+  <data name="RecordStatusOfInitialized" xml:space="preserve">
+    <value>初始化</value>
+  </data>
+  <data name="RecordStatusOfDisabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="RecordStatusOfNotRecording" xml:space="preserve">
+    <value>未錄製</value>
+  </data>
+  <data name="RecordStatusOfRecording" xml:space="preserve">
+    <value>錄製中</value>
+  </data>
+  <data name="RecordStatusOfError" xml:space="preserve">
+    <value>出錯啦</value>
+  </data>
+  <data name="TrayMenuShowMainWindow" xml:space="preserve">
+    <value>顯示界面 (&amp;V)</value>
+  </data>
+  <data name="SureStopRecord" xml:space="preserve">
+    <value>是否停止 {0} 的錄製？</value>
+  </data>
+  <data name="NoRecordTask" xml:space="preserve">
+    <value>當前沒有錄製任務</value>
+  </data>
+  <data name="SuccOp" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="SureRemoveRoom" xml:space="preserve">
+    <value>是否刪除 {0} 直播間？</value>
+  </data>
+  <data name="TrayMenuExit" xml:space="preserve">
+    <value>退出 (&amp;E)</value>
+  </data>
+  <data name="TrayMenuRestart" xml:space="preserve">
+    <value>重啟 (&amp;R)</value>
+  </data>
+  <data name="TrayMenuAutoRun" xml:space="preserve">
+    <value>啟動時自動運行 (&amp;A)</value>
+  </data>
+  <data name="TrayMenuOpenSettings" xml:space="preserve">
+    <value>打開設置 (&amp;S)</value>
+  </data>
+  <data name="PlayerErrorOfNoFile" xml:space="preserve">
+    <value>沒有可播放的錄製文件</value>
+  </data>
+  <data name="ProxyErrorOfEmptyUrl" xml:space="preserve">
+    <value>代理 URL 不能為空</value>
+  </data>
+  <data name="ProxyErrorOfMissHostOrPort" xml:space="preserve">
+    <value>代理 URL 缺失主機名或端口號</value>
+  </data>
+  <data name="ProxyErrorOfFormat" xml:space="preserve">
+    <value>代理 URL 格式有誤</value>
+  </data>
+  <data name="ProxyErrorOfHostFormatError" xml:space="preserve">
+    <value>代理 URL 主機名格式有誤</value>
+  </data>
+  <data name="ProxyErrorOfPortFormatError" xml:space="preserve">
+    <value>代理 URL 端口號格式有誤</value>
+  </data>
+  <data name="ProxyErrorOfPortOutOfRange" xml:space="preserve">
+    <value>代理 URL 端口號超出範圍</value>
+  </data>
+  <data name="ProxySuccOfStatusCode" xml:space="preserve">
+    <value>代理可用，響應狀態 {0}</value>
+  </data>
+  <data name="ProxyErrorOfExceptionMessage" xml:space="preserve">
+    <value>代理無效或請求失敗：{0}</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="ButtonOfClose" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="ButtonOfAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="AddRoom" xml:space="preserve">
+    <value>添加房間</value>
+  </data>
+  <data name="EnterRoomUrl" xml:space="preserve">
+    <value>輸入直播間鏈接</value>
+  </data>
+  <data name="GetRoomInfoError" xml:space="preserve">
+    <value>獲取直播間信息失敗</value>
+  </data>
+  <data name="AddRoomSucc" xml:space="preserve">
+    <value>成功添加 {0} 直播間</value>
+  </data>
+  <data name="ErrorRoomUrl" xml:space="preserve">
+    <value>錯誤的直播間鏈接</value>
+  </data>
+  <data name="ButtonOfSettings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="SaveFolder" xml:space="preserve">
+    <value>保存目錄</value>
+  </data>
+  <data name="RowUpRoom" xml:space="preserve">
+    <value>上移直播間</value>
+  </data>
+  <data name="RowDownRoom" xml:space="preserve">
+    <value>下移直播間</value>
+  </data>
+  <data name="RemoveRoom" xml:space="preserve">
+    <value>移除直播間</value>
+  </data>
+  <data name="PlayRecord" xml:space="preserve">
+    <value>播放錄製</value>
+  </data>
+  <data name="StopRecord" xml:space="preserve">
+    <value>停止錄製</value>
+  </data>
+  <data name="RecordLog" xml:space="preserve">
+    <value>錄製日誌</value>
+  </data>
+  <data name="SingleSettings" xml:space="preserve">
+    <value>單獨設定</value>
+  </data>
+  <data name="LiveNotificationHint" xml:space="preserve">
+    <value>是否通過 Windows 系統通知等方式通知開播</value>
+  </data>
+  <data name="EnableRecord" xml:space="preserve">
+    <value>啟用錄製</value>
+  </data>
+  <data name="EnableRecordHint" xml:space="preserve">
+    <value>指示是否啟用直播錄製</value>
+  </data>
+  <data name="LiveRoom" xml:space="preserve">
+    <value>直播間</value>
+  </data>
+  <data name="StreamStatus" xml:space="preserve">
+    <value>直播狀態</value>
+  </data>
+  <data name="RecordStatus" xml:space="preserve">
+    <value>錄製狀態</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="ButtonOfPlay" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="ButtonOfGoto" xml:space="preserve">
+    <value>進入</value>
+  </data>
+  <data name="SettingsFile" xml:space="preserve">
+    <value>設定文件</value>
+  </data>
+  <data name="AppearanceSettings" xml:space="preserve">
+    <value>外觀設定</value>
+  </data>
+  <data name="LanguageHint" xml:space="preserve">
+    <value>默認跟隨系統語言</value>
+  </data>
+  <data name="TrackingSystem" xml:space="preserve">
+    <value>跟隨系統</value>
+  </data>
+  <data name="ThemeOfDarkMode" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="ThemeOfLightMode" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="ThemeColor" xml:space="preserve">
+    <value>主題顏色</value>
+  </data>
+  <data name="ThemeColorHint" xml:space="preserve">
+    <value>選擇您習慣使用的主題色</value>
+  </data>
+  <data name="TrayStatus" xml:space="preserve">
+    <value>托盤圖標</value>
+  </data>
+  <data name="TrayStatusHint" xml:space="preserve">
+    <value>啟用錄制中提示狀態的托盤圖標</value>
+  </data>
+  <data name="RecordSettings" xml:space="preserve">
+    <value>錄製設定</value>
+  </data>
+  <data name="LiveNotificationToSystem" xml:space="preserve">
+    <value>通過 Windows 系統通知</value>
+  </data>
+  <data name="LiveNotificationToPlayMusic" xml:space="preserve">
+    <value>通過播放音樂通知</value>
+  </data>
+  <data name="LiveNotificationToPlayMusicPath" xml:space="preserve">
+    <value>使用內置音樂或指定音樂文件路徑</value>
+  </data>
+  <data name="LiveNotificationToMail" xml:space="preserve">
+    <value>通過郵件通知</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>賬號</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="LiveNotificationToGotoLiveRoom" xml:space="preserve">
+    <value>自動進入直播間</value>
+  </data>
+  <data name="LiveNotificationToGotoLiveRoomAndMute" xml:space="preserve">
+    <value>自動系統靜音</value>
+  </data>
+  <data name="RoutineInterval" xml:space="preserve">
+    <value>循環週期</value>
+  </data>
+  <data name="RoutineIntervalHint" xml:space="preserve">
+    <value>檢測開播狀態等動作的循環週期（毫秒）</value>
+  </data>
+  <data name="RecordFormat" xml:space="preserve">
+    <value>錄製格式</value>
+  </data>
+  <data name="RecordFormatHint" xml:space="preserve">
+    <value>為保證錄製穩定源格式僅支持 TS/FLV 或稍後自動轉格式</value>
+  </data>
+  <data name="RecordFormatAutoRemove" xml:space="preserve">
+    <value>是否轉換格式後自動刪除原 TS/FLV 文件</value>
+  </data>
+  <data name="SaveFolderHint" xml:space="preserve">
+    <value>指定錄製視頻的保存目錄</value>
+  </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>選擇目錄</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>打開目錄</value>
+  </data>
+  <data name="PlayRecordHint" xml:space="preserve">
+    <value>支持播放錄製中的視頻</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>播放器</value>
+  </data>
+  <data name="PlayerInner" xml:space="preserve">
+    <value>內置播放器</value>
+  </data>
+  <data name="PlayerSystem" xml:space="preserve">
+    <value>系統播放器</value>
+  </data>
+  <data name="PlayerInnerHint" xml:space="preserve">
+    <value>啟用內置 FFplay 播放</value>
+  </data>
+  <data name="PlayerSystemHint" xml:space="preserve">
+    <value>啟用您的系統默認播放器</value>
+  </data>
+  <data name="PlayerInnerUseRect" xml:space="preserve">
+    <value>啟用直角窗口模式便於截圖</value>
+  </data>
+  <data name="NetworkSettings" xml:space="preserve">
+    <value>網絡設定</value>
+  </data>
+  <data name="UseProxy" xml:space="preserve">
+    <value>使用代理</value>
+  </data>
+  <data name="UseProxyHint" xml:space="preserve">
+    <value>指定您的網絡代理 URL</value>
+  </data>
+  <data name="ProxyHostAndPort" xml:space="preserve">
+    <value>主機名以及端口號</value>
+  </data>
+  <data name="CheckConnectivity" xml:space="preserve">
+    <value>檢查連接</value>
+  </data>
+  <data name="UseCookie" xml:space="preserve">
+    <value>使用 Cookie</value>
+  </data>
+  <data name="UseCookieHint" xml:space="preserve">
+    <value>錄製抖音必須帶有 Cookie</value>
+  </data>
+  <data name="UseCookieOfDouyin" xml:space="preserve">
+    <value>國區 Cookie</value>
+  </data>
+  <data name="UseCookieEnterHint" xml:space="preserve">
+    <value>留白則使用內置 Cookie</value>
+  </data>
+  <data name="HowToGet" xml:space="preserve">
+    <value>如何獲取？</value>
+  </data>
+  <data name="UseCookieOfOversea" xml:space="preserve">
+    <value>海外 Cookie</value>
+  </data>
+  <data name="UserAgent" xml:space="preserve">
+    <value>瀏覽器UserAgent</value>
+  </data>
+  <data name="UserAgentHint" xml:space="preserve">
+    <value>您可以使用自定義瀏覽器 UserAgent</value>
+  </data>
+  <data name="UserAgentEnterHint" xml:space="preserve">
+    <value>留白則使用內置瀏覽器 UserAgent 標識</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>抖音錄播 - TiktokLiveRec</value>
+  </data>
+  <data name="EmptyRoomHint" xml:space="preserve">
+    <value>未添加直播間~</value>
+  </data>
+  <data name="AddRoomErrorDuplicated" xml:space="preserve">
+    <value>該直播間 {0} 已添加</value>
+  </data>
+  <data name="NotSupportedOnRecording" xml:space="preserve">
+    <value>此功能在錄製模式下不受支援</value>
+  </data>
+  <data name="SureOnRecording" xml:space="preserve">
+    <value>正在錄製中，您確定要繼續您的操作嗎？</value>
+  </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>敬請期待</value>
+  </data>
+  <data name="CloseToTrayHint" xml:space="preserve">
+    <value>已進入後台運行</value>
+  </data>
+  <data name="ButtonOfOffRemind" xml:space="preserve">
+    <value>不再提示</value>
+  </data>
+  <data name="CreateDesktopShortcut" xml:space="preserve">
+    <value>快捷方式</value>
+  </data>
+  <data name="CreateDesktopShortcutHint" xml:space="preserve">
+    <value>創建桌面快捷方式</value>
+  </data>
+  <data name="ButtonOfCreateNow" xml:space="preserve">
+    <value>立即創建</value>
+  </data>
+  <data name="LongRunningSettings" xml:space="preserve">
+    <value>挂機設定</value>
+  </data>
+  <data name="KeepAwake" xml:space="preserve">
+    <value>保持喚醒</value>
+  </data>
+  <data name="KeepActiveHint" xml:space="preserve">
+    <value>保持 Windows 系統不進入睡眠</value>
+  </data>
+  <data name="AutoShutdown" xml:space="preserve">
+    <value>自動關機</value>
+  </data>
+  <data name="AutoShutdownHint" xml:space="preserve">
+    <value>沒有錄製狀態時自動關機</value>
+  </data>
+  <data name="AutoShutdownTime" xml:space="preserve">
+    <value>自動關機時間 （時 : 分）</value>
+  </data>
+  <data name="ButtonOfCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="AutoShutdownInTime" xml:space="preserve">
+    <value>系統將會在1分鐘后自動關機</value>
+  </data>
+  <data name="StatusOn" xml:space="preserve">
+    <value>已啟用</value>
+  </data>
+  <data name="StatusOff" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>頭像</value>
+  </data>
+  <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
+    <value>保存目錄是否以作者區分</value>
+  </data>
+</root>

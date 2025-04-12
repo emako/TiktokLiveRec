@@ -5,15 +5,9 @@ VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiktokLiveRec.WPF", "src\TiktokLiveRec.WPF\TiktokLiveRec.WPF.csproj", "{5642C581-F105-41C4-9FB7-3F4BC7CBF6B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.tvOS", "src\TiktokLiveRec.tvOS\TiktokLiveRec.tvOS.csproj", "{E467B6C8-095E-4872-A20A-6EB0D0875944}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.Avalonia", "src\TiktokLiveRec.Avalonia\TiktokLiveRec.Avalonia.csproj", "{880A6A31-3BC7-444C-A71B-0851F3D265B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaUI.Violeta", "src\AvaloniaUI.Violeta\AvaloniaUI.Violeta.csproj", "{5238F94C-DB28-47B4-A5E8-4406478CC0C2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.Avalonia.Globalization", "src\TiktokLiveRec.Globalization\TiktokLiveRec.Avalonia.Globalization.csproj", "{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.WPF.Globalization", "src\TiktokLiveRec.Globalization\TiktokLiveRec.WPF.Globalization.csproj", "{51D21819-FF82-B9F0-AB83-6EFB42039093}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +25,6 @@ Global
 		{5642C581-F105-41C4-9FB7-3F4BC7CBF6B1}.Release|Any CPU.Build.0 = Release|x64
 		{5642C581-F105-41C4-9FB7-3F4BC7CBF6B1}.Release|x64.ActiveCfg = Release|x64
 		{5642C581-F105-41C4-9FB7-3F4BC7CBF6B1}.Release|x64.Build.0 = Release|x64
-		{E467B6C8-095E-4872-A20A-6EB0D0875944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E467B6C8-095E-4872-A20A-6EB0D0875944}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E467B6C8-095E-4872-A20A-6EB0D0875944}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E467B6C8-095E-4872-A20A-6EB0D0875944}.Debug|x64.Build.0 = Debug|Any CPU
-		{E467B6C8-095E-4872-A20A-6EB0D0875944}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E467B6C8-095E-4872-A20A-6EB0D0875944}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E467B6C8-095E-4872-A20A-6EB0D0875944}.Release|x64.ActiveCfg = Release|Any CPU
-		{E467B6C8-095E-4872-A20A-6EB0D0875944}.Release|x64.Build.0 = Release|Any CPU
 		{880A6A31-3BC7-444C-A71B-0851F3D265B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{880A6A31-3BC7-444C-A71B-0851F3D265B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{880A6A31-3BC7-444C-A71B-0851F3D265B3}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -55,22 +41,6 @@ Global
 		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Release|x64.ActiveCfg = Release|Any CPU
 		{5238F94C-DB28-47B4-A5E8-4406478CC0C2}.Release|x64.Build.0 = Release|Any CPU
-		{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}.Debug|x64.Build.0 = Debug|Any CPU
-		{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}.Release|x64.ActiveCfg = Release|Any CPU
-		{5136AB0B-2F8F-4586-A39B-13D0ACC4725D}.Release|x64.Build.0 = Release|Any CPU
-		{51D21819-FF82-B9F0-AB83-6EFB42039093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51D21819-FF82-B9F0-AB83-6EFB42039093}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51D21819-FF82-B9F0-AB83-6EFB42039093}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{51D21819-FF82-B9F0-AB83-6EFB42039093}.Debug|x64.Build.0 = Debug|Any CPU
-		{51D21819-FF82-B9F0-AB83-6EFB42039093}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51D21819-FF82-B9F0-AB83-6EFB42039093}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51D21819-FF82-B9F0-AB83-6EFB42039093}.Release|x64.ActiveCfg = Release|Any CPU
-		{51D21819-FF82-B9F0-AB83-6EFB42039093}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

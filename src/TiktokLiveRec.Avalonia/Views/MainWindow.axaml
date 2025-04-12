@@ -3,7 +3,6 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                  xmlns:u="https://irihi.tech/ursa"
                   xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
                   xmlns:vio="urn:avaloniaui.violeta"
                   xmlns:vm="clr-namespace:TiktokLiveRec.ViewModels"
@@ -17,8 +16,7 @@
                   mc:Ignorable="d">
     <vio:FluentWindow.TitleBarContent>
         <StackPanel x:Name="TitleBar"
-                    IsVisible="{OnPlatform macOS=False,
-                                           Default=True}"
+                    IsVisible="{OnPlatform macOS=False, Default=True}"
                     Orientation="Horizontal"
                     Spacing="8">
             <Image Height="18"
@@ -32,7 +30,8 @@
     </vio:FluentWindow.TitleBarContent>
     <vio:FluentWindow.RightContent>
         <StackPanel Orientation="Horizontal">
-            <Button Name="MoreButton" Theme="{DynamicResource FluentCaptionButton}">
+            <Button Name="MoreButton"
+                    Theme="{DynamicResource FluentCaptionButton}">
                 <Button.Content>
                     <ui:FontIcon Margin="0,0,0,0"
                                  HorizontalAlignment="Center"
@@ -43,20 +42,26 @@
                 </Button.Content>
                 <Button.Flyout>
                     <MenuFlyout Placement="BottomEdgeAlignedLeft">
-                        <MenuItem Command="{Binding OpenSaveFolderCommand}" Header="SaveFolder">
+                        <MenuItem Command="{Binding OpenSaveFolderCommand}"
+                                  Header="{I18N SaveFolder}">
                             <MenuItem.Icon>
-                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.FolderOpen}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             Glyph="{x:Static vio:FontSymbols.FolderOpen}" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Command="{Binding OpenSettingsFileFolderCommand}" Header="SettingsFile">
+                        <MenuItem Command="{Binding OpenSettingsFileFolderCommand}"
+                                  Header="{I18N SettingsFile}">
                             <MenuItem.Icon>
-                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.OpenLocal}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             Glyph="{x:Static vio:FontSymbols.OpenLocal}" />
                             </MenuItem.Icon>
                         </MenuItem>
                         <Separator />
-                        <MenuItem Command="{Binding OpenAboutCommand}" Header="About">
+                        <MenuItem Command="{Binding OpenAboutCommand}"
+                                  Header="{I18N About}">
                             <MenuItem.Icon>
-                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="{x:Static vio:FontSymbols.Info}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             Glyph="{x:Static vio:FontSymbols.Info}" />
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuFlyout>
@@ -65,7 +70,8 @@
             <vio:FluentCaptionButtons />
         </StackPanel>
     </vio:FluentWindow.RightContent>
-    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,28,8,4', x:TypeArguments=Thickness}" RowDefinitions="Auto,*">
+    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,28,8,4', x:TypeArguments=Thickness}"
+          RowDefinitions="Auto,*">
         <Grid Grid.Row="0">
             <StackPanel Orientation="Vertical">
                 <!--  K  -->
@@ -73,10 +79,13 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RoomStatuses}">
+            <DataGrid AutoGenerateColumns="False"
+                      ItemsSource="{Binding RoomStatuses}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding NickName}" Header="NickName" />
-                    <DataGridTextColumn Binding="{Binding RoomUrl}" Header="RoomUrl" />
+                    <DataGridTextColumn Binding="{Binding NickName}"
+                                        Header="NickName" />
+                    <DataGridTextColumn Binding="{Binding RoomUrl}"
+                                        Header="RoomUrl" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

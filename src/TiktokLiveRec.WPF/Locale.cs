@@ -1,6 +1,6 @@
-﻿using System.Globalization;
+using TiktokLiveRec.Properties;
+using System.Globalization;
 using System.Windows;
-using TiktokLiveRec.Globalization.Properties;
 
 namespace TiktokLiveRec;
 

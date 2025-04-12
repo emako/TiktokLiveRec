@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
+    <PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
 		<Nullable>enable</Nullable>
@@ -19,7 +19,34 @@
 		<RootNamespace>TiktokLiveRec</RootNamespace>
 	</PropertyGroup>
 
-	<ItemGroup>
+    <ItemGroup>
+        <Compile Update="Properties\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Properties\Resources.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\Resources.zh-Hans.resx">
+            <DependentUpon>Resources.resx</DependentUpon>
+            <Generator>PublicResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\Resources.zh-Hant.resx">
+            <DependentUpon>Resources.resx</DependentUpon>
+            <Generator>PublicResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\Resources.ja.resx">
+            <DependentUpon>Resources.resx</DependentUpon>
+            <Generator>PublicResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
 		<Resource Include="Assets\*" />
 		<Content Remove="$(NuGetPackageRoot)lottiesharp\2.4.0\contentFiles\any\net8.0-windows7.0\lottie_sharp.ico" />
 	</ItemGroup>
@@ -53,10 +80,6 @@
 		<PackageReference Include="NAudio.Core" Version="2.2.1" />
 		<PackageReference Include="LottieSharp" Version="2.4.0" />
 		<PackageReference Include="Downloader" Version="3.3.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\TiktokLiveRec.Globalization\TiktokLiveRec.WPF.Globalization.csproj" />
 	</ItemGroup>
 
 </Project>
