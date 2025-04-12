@@ -1,0 +1,61 @@
+root = true
+# Top-most EditorConfig file
+
+# General settings for all file types
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# ReSharper properties
+resharper_xml_attribute_style = first_attribute_on_single_line
+resharper_xml_keep_user_linebreaks = false
+resharper_xml_linebreak_before_singleline_elements = true
+
+#########################
+# C# code formatting
+#########################
+[*.cs]
+indent_style = space
+indent_size = 4
+
+# JetBrains Rider specific C# formatting rules
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = true
+csharp_new_line_before_open_brace = all
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+
+#########################
+# XAML / AXAML formatting
+#########################
+[*.xaml]
+indent_style = space
+indent_size = 4
+
+[*.axaml]
+indent_style = space
+indent_size = 4
+
+# XAML attribute formatting style
+xaml_attribute_wrap = wrap_aligned # Align attributes when wrapping
+xaml_keep_blank_lines = false # Remove extra blank lines
+
+#########################
+# XML formatting (covers XAML, AXAML, csproj, etc.)
+#########################
+[*.xml]
+indent_style = space
+indent_size = 4
+
+[*.csproj]
+indent_style = space
+indent_size = 4
+
+#########################
+# JSON formatting (optional)
+#########################
+[*.json]
+indent_style = space
+indent_size = 2
