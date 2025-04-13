@@ -11,7 +11,7 @@
         <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/Menu/MenuItem.axaml" />-->
         <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/TextBox/TextBox.axaml" />-->
         <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/ToggleButton/ToggleButton.axaml" />-->
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/ToggleSwitch/ToggleSwitch.axaml" />-->
+        <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/ToggleSwitch/ToggleSwitch.axaml" />
         <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Window/FluentWindow.axaml" />
     </ResourceDictionary.MergedDictionaries>
     <FontFamily x:Key="SymbolThemeFontFamily">avares://FluentAvaloniaUI.Violeta/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons</FontFamily>

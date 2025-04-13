@@ -1,0 +1,29 @@
+<UserControl x:Class="FluentAvalonia.UI.Controls.ToastControl"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
+             mc:Ignorable="d">
+    <ui:FABorder Background="{DynamicResource ExpanderHeaderBackground}"
+                 BackgroundSizing="InnerBorderEdge"
+                 BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
+                 BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
+                 CornerRadius="{DynamicResource ControlCornerRadius}">
+        <Grid Margin="8"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              ColumnDefinitions="Auto, Auto">
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource SymbolThemeFontFamily}"
+                       Foreground="#4CC2FF"
+                       IsVisible="{Binding HasIcon}"
+                       Text="{Binding ImageGlyph}" />
+            <TextBlock Grid.Column="1"
+                       Margin="8,-2,0,0"
+                       VerticalAlignment="Center"
+                       Text="{Binding Message}" />
+        </Grid>
+    </ui:FABorder>
+</UserControl>

@@ -100,6 +100,59 @@
                         </ComboBox>
                     </Grid>
                 </ui:Card>
+                <ui:Card>
+                    <Grid MinHeight="35"
+                          Margin="16"
+                          ColumnDefinitions="Auto,*,Auto">
+                        <Grid Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock MinWidth="26"
+                                       Margin="4,0,0,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                       FontSize="18"
+                                       Text="{x:Static ui:FontSymbols.DeviceMonitorRightPic}" />
+                        </Grid>
+                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                            <TextBlock Grid.Row="0" Text="{I18N TrayStatus}" />
+                            <TextBlock Grid.Row="1"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                       Text="{I18N TrayStatusHint}" />
+                        </Grid>
+                        <ToggleSwitch Grid.Column="2"
+                                      Margin="0,0,20,0"
+                                      IsChecked="{Binding IsUseStatusTray, Mode=TwoWay}"
+                                      OffContent=""
+                                      OnContent="" />
+                    </Grid>
+                </ui:Card>
+                <ui:Card IsVisible="{OnPlatform Windows=True, Default=False}">
+                    <Grid MinHeight="35"
+                          Margin="16"
+                          ColumnDefinitions="Auto,*,Auto">
+                        <Grid Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock MinWidth="26"
+                                       Margin="4,0,0,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                       FontSize="18"
+                                       Text="{x:Static ui:FontSymbols.AppIconDefault}" />
+                        </Grid>
+                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                            <TextBlock Grid.Row="0" Text="{I18N CreateDesktopShortcut}" />
+                            <TextBlock Grid.Row="1"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                       Text="{I18N CreateDesktopShortcutHint}" />
+                        </Grid>
+                        <Button Grid.Column="2"
+                                Margin="0,0,28,0"
+                                Command="{Binding CreateDesktopShortcutCommand}"
+                                Content="{I18N ButtonOfCreateNow}" />
+                    </Grid>
+                </ui:Card>
                 <!-- <uu:Card> -->
                 <!--     <StackPanel> -->
                 <!--         <Button Content="Button"> -->
