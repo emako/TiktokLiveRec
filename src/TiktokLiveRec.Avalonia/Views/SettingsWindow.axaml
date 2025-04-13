@@ -31,9 +31,9 @@
     <ui:FluentWindow.RightContent>
         <ui:FluentCaptionButtons />
     </ui:FluentWindow.RightContent>
-    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,28,8,4', x:TypeArguments=Thickness}" RowDefinitions="Auto,*">
+    <Grid Margin="{OnPlatform '8,48,8,4', macOS='8,28,8,4', x:TypeArguments=Thickness}">
         <ScrollViewer VerticalScrollBarVisibility="Visible">
-            <StackPanel Margin="8,0,12,0" Spacing="8">
+            <StackPanel Margin="8,0,14,0" Spacing="8">
                 <TextBlock Margin="4,0,0,4"
                            FontSize="14"
                            Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"
@@ -153,60 +153,142 @@
                                 Content="{I18N ButtonOfCreateNow}" />
                     </Grid>
                 </ui:Card>
-                <!-- <uu:Card> -->
-                <!--     <StackPanel> -->
-                <!--         <Button Content="Button"> -->
-                <!--             <Button.ContextMenu> -->
-                <!--                 <ContextMenu> -->
-                <!--                     <MenuItem Header="Parent" IsSubMenuOpen="False"> -->
-                <!--                         <MenuItem Header="Child 1" /> -->
-                <!--                         <MenuItem Header="Child 2" /> -->
-                <!--                         <MenuItem Header="Child 3" /> -->
-                <!--                         <Separator /> -->
-                <!--                         <MenuItem Header="Child 4" /> -->
-                <!--                         <MenuItem Header="Child 5" /> -->
-                <!--                         <MenuItem Header="Child 6" /> -->
-                <!--                         <MenuItem Header="Child 7" /> -->
-                <!--                         <MenuItem Header="Child 8" /> -->
-                <!--                         <MenuItem Header="Child 9" /> -->
-                <!--                         <MenuItem Header="Child 10" /> -->
-                <!--                         <MenuItem Header="Child 11" /> -->
-                <!--                         <MenuItem Header="Child 12" /> -->
-                <!--                         <MenuItem Header="Child 13" /> -->
-                <!--                         <MenuItem Header="Child 14" /> -->
-                <!--                         <MenuItem Header="Child 15" /> -->
-                <!--                         <MenuItem Header="Child 16" /> -->
-                <!--                         <MenuItem Header="Child 17" /> -->
-                <!--                         <MenuItem Header="Child 18" /> -->
-                <!--                         <MenuItem Header="Child 19" /> -->
-                <!--                     </MenuItem> -->
-                <!--                     <MenuItem Header="Disabled Parent" IsEnabled="False"> -->
-                <!--                         <MenuItem Header="Child" /> -->
-                <!--                     </MenuItem> -->
-                <!--                 </ContextMenu> -->
-                <!--             </Button.ContextMenu> -->
-                <!--         </Button> -->
-                <!--         <CheckBox Content="CheckBox" /> -->
-                <!--         <ToggleButton Content="ToggleButton" /> -->
-                <!--         <ToggleSwitch Content="ToggleButton" /> -->
-                <!--         <Expander /> -->
-                <!--         <ui:NumberBox /> -->
-                <!--         <ComboBox SelectedIndex="0"> -->
-                <!--             <ComboBoxItem Content="苹果" /> -->
-                <!--             <ComboBoxItem Content="香蕉" /> -->
-                <!--             <ComboBoxItem Content="橙子" /> -->
-                <!--         </ComboBox> -->
-                <!--     </StackPanel> -->
-                <!-- </uu:Card> -->
-                <!-- <uu:CardExpander Margin="0,16,0,0"> -->
-                <!--     <uu:CardExpander.HeaderContent> -->
-                <!--         <TextBlock Text="CardExpander.HeaderContent" /> -->
-                <!--     </uu:CardExpander.HeaderContent> -->
-                <!--     <uu:CardExpander.CardContent> -->
-                <!--         <TextBlock Text="CardExpander.CardContent" /> -->
-                <!--     </uu:CardExpander.CardContent> -->
-                <!-- </uu:CardExpander> -->
-                <!-- <TextBox Text="123050" /> -->
+                <TextBlock Margin="4,0,0,4"
+                           FontSize="14"
+                           Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"
+                           Text="{I18N RecordSettings}" />
+                <Expander>
+                    <Expander.Header>
+                        <Grid Margin="0,16,0,16"
+                              HorizontalAlignment="Stretch"
+                              ColumnDefinitions="Auto,*,Auto">
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.Ringer}" />
+                            </Grid>
+                            <Grid Grid.Column="1"
+                                  HorizontalAlignment="Stretch"
+                                  RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0" Text="{I18N LiveNotification}" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                           Text="{I18N LiveNotificationHint}" />
+                            </Grid>
+                            <Grid Grid.Column="2" Margin="0,0,-24,0">
+                                <ToggleSwitch IsChecked="{Binding IsToNotify, Mode=TwoWay}"
+                                              OffContent=""
+                                              OnContent="" />
+                            </Grid>
+                        </Grid>
+                    </Expander.Header>
+                    <StackPanel Spacing="8">
+                        <StackPanel Margin="42,0,28,0"
+                                    IsEnabled="{Binding IsToNotify}"
+                                    Spacing="12">
+                            <CheckBox Content="{I18N LiveNotificationToSystem}" IsChecked="{Binding IsToNotifyWithSystem, Mode=TwoWay}" />
+                            <Grid ColumnDefinitions="Auto,*">
+                                <CheckBox Grid.Column="0"
+                                          Content="{I18N LiveNotificationToPlayMusic}"
+                                          IsChecked="{Binding IsToNotifyWithMusic, Mode=TwoWay}" />
+                                <TextBox Grid.Column="1"
+                                         Margin="8,0,0,0"
+                                         Text="{Binding ToNotifyWithMusicPath, Mode=TwoWay}"
+                                         Watermark="{I18N LiveNotificationToPlayMusicPath}" />
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <CheckBox Grid.Column="0"
+                                          Content="{I18N LiveNotificationToMail}"
+                                          IsChecked="{Binding IsToNotifyWithEmail, Mode=TwoWay}" />
+                                <Grid Grid.Column="1" ColumnDefinitions="*,*,*">
+                                    <TextBox Grid.Column="0"
+                                             Margin="8,0,0,0"
+                                             Text="{Binding ToNotifyWithEmailSmtp, Mode=TwoWay}"
+                                             Watermark="SMTP" />
+                                    <TextBox Grid.Column="1"
+                                             Margin="8,0,0,0"
+                                             Text="{Binding ToNotifyWithEmailUserName, Mode=TwoWay}"
+                                             Watermark="{I18N Account}" />
+                                    <TextBox Grid.Column="2"
+                                             Margin="8,0,0,0"
+                                             Text="{Binding ToNotifyWithEmailPassword, Mode=TwoWay}"
+                                             Watermark="{I18N Password}" />
+                                </Grid>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <CheckBox Grid.Column="0"
+                                          Content="{I18N LiveNotificationToGotoLiveRoom}"
+                                          IsChecked="{Binding IsToNotifyGotoRoomUrl, Mode=TwoWay}" />
+                                <ToggleSwitch Grid.Column="1"
+                                              Margin="8,0,0,0"
+                                              IsChecked="{Binding IsToNotifyGotoRoomUrlAndMute, Mode=TwoWay}"
+                                              OffContent="{I18N LiveNotificationToGotoLiveRoomAndMute}"
+                                              OnContent="{I18N LiveNotificationToGotoLiveRoomAndMute}" />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                <ui:Card>
+                    <Grid MinHeight="35"
+                          Margin="16"
+                          ColumnDefinitions="Auto,*,Auto">
+                        <Grid Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock MinWidth="26"
+                                       Margin="4,0,0,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                       FontSize="18"
+                                       Text="{x:Static ui:FontSymbols.Video}" />
+                        </Grid>
+                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                            <TextBlock Grid.Row="0" Text="{I18N EnableRecord}" />
+                            <TextBlock Grid.Row="1"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                       Text="{I18N EnableRecordHint}" />
+                        </Grid>
+                        <ToggleSwitch Grid.Column="2"
+                                      Margin="0,0,20,0"
+                                      IsChecked="{Binding IsToRecord, Mode=TwoWay}"
+                                      OffContent=""
+                                      OnContent="" />
+                    </Grid>
+                </ui:Card>
+                <ui:Card>
+                    <Grid MinHeight="35"
+                          Margin="16"
+                          ColumnDefinitions="Auto,*,Auto">
+                        <Grid Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock MinWidth="26"
+                                       Margin="4,0,0,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                       FontSize="18"
+                                       Text="{x:Static ui:FontSymbols.DeviceMonitorRightPic}" />
+                        </Grid>
+                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                            <TextBlock Grid.Row="0" Text="{I18N RoutineInterval}" />
+                            <TextBlock Grid.Row="1"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                       Text="{I18N RoutineIntervalHint}" />
+                        </Grid>
+                        <ui:NumberBox Grid.Column="2"
+                                      MinWidth="150"
+                                      Margin="0,0,28,0"
+                                      Maximum="999999999999"
+                                      Minimum="500"
+                                      Value="{Binding RoutineInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                </ui:Card>
+                <Control Height="50" />
             </StackPanel>
         </ScrollViewer>
     </Grid>
