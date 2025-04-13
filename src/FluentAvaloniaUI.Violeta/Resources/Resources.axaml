@@ -1,17 +1,17 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/Button/Button.axaml" />-->
+        <!--<ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Button/Button.axaml" />-->
         <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Card/Card.axaml" />
         <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Card/CardAction.axaml" />
         <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Card/CardExpander.axaml" />
         <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Card/Expander.axaml" />
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/CheckBox/CheckBox.axaml" />-->
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/ComboBox/ComboBox.axaml" />-->
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/Expander/Expander.axaml" />-->
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/Menu/Menu.axaml" />-->
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/Menu/MenuItem.axaml" />-->
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/TextBox/TextBox.axaml" />-->
-        <!--<ResourceInclude Source="avares://AvaloniaUI.Violeta/Controls/ToggleButton/ToggleButton.axaml" />-->
+        <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/CheckBox/CheckBox.axaml" />
+        <!--<ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/ComboBox/ComboBox.axaml" />-->
+        <!--<ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Expander/Expander.axaml" />-->
+        <!--<ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Menu/Menu.axaml" />-->
+        <!--<ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Menu/MenuItem.axaml" />-->
+        <!--<ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/TextBox/TextBox.axaml" />-->
+        <!--<ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/ToggleButton/ToggleButton.axaml" />-->
         <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/ToggleSwitch/ToggleSwitch.axaml" />
         <ResourceInclude Source="avares://FluentAvaloniaUI.Violeta/Controls/Window/FluentWindow.axaml" />
     </ResourceDictionary.MergedDictionaries>
