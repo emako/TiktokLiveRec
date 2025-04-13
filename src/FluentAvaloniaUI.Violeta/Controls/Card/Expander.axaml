@@ -5,7 +5,7 @@
     <Design.PreviewWith>
         <Border Width="550" Padding="50">
             <StackPanel Spacing="5">
-                <!--<Expander Header="Expand me!" IsExpanded="True">
+                <Expander Header="Expand me!" IsExpanded="True">
                     <Panel>
                         <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                     </Panel>
@@ -21,7 +21,7 @@
 
                 <Expander ExpandDirection="Left" Header="Expand me Left!">
                     <TextBox />
-                </Expander>-->
+                </Expander>
 
                 <Expander>
                     <Expander.Header>
