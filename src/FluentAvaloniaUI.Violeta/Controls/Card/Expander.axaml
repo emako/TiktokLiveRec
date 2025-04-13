@@ -1,0 +1,414 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls"
+                    x:CompileBindings="True">
+    <Design.PreviewWith>
+        <Border Width="550" Padding="50">
+            <StackPanel Spacing="5">
+                <!--<Expander Header="Expand me!" IsExpanded="True">
+                    <Panel>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                    </Panel>
+                </Expander>
+
+                <Expander ExpandDirection="Up" Header="Expand me up!">
+                    <TextBox />
+                </Expander>
+
+                <Expander ExpandDirection="Right" Header="Expand me right!">
+                    <TextBox />
+                </Expander>
+
+                <Expander ExpandDirection="Left" Header="Expand me Left!">
+                    <TextBox />
+                </Expander>-->
+
+                <Expander>
+                    <Expander.Header>
+                        <Grid Margin="0,16,0,16" ColumnDefinitions="Auto,*,Auto">
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.System}" />
+                            </Grid>
+                            <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0" Text="Header" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                           Text="Hint" />
+                            </Grid>
+                            <Grid Grid.Column="2" Margin="0,0,0,0">
+                                <ToggleSwitch OffContent="" OnContent="" />
+                            </Grid>
+                        </Grid>
+                    </Expander.Header>
+                    <TextBox />
+                </Expander>
+
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!--  Shared header/content  -->
+    <x:Double x:Key="ExpanderMinHeight">48</x:Double>
+
+    <!--  Header  -->
+    <Thickness x:Key="ExpanderHeaderPadding">16,0,0,0</Thickness>
+    <Thickness x:Key="ExpanderChevronMargin">20,0,8,0</Thickness>
+    <x:String x:Key="ExpanderChevronUpGlyph">&#xE70E;</x:String>
+    <x:String x:Key="ExpanderChevronDownGlyph">&#xE70D;</x:String>
+    <x:String x:Key="ExpanderChevronLeftGlyph">&#xE76B;</x:String>
+    <x:String x:Key="ExpanderChevronRightGlyph">&#xE76C;</x:String>
+    <x:Double x:Key="ExpanderChevronButtonSize">32</x:Double>
+
+    <!--  Content  -->
+    <Thickness x:Key="ExpanderContentPadding">16</Thickness>
+    <Thickness x:Key="ExpanderContentDownBorderThickness">1,0,1,1</Thickness>
+    <Thickness x:Key="ExpanderContentUpBorderThickness">1,1,1,0</Thickness>
+    <Thickness x:Key="ExpanderContentRightBorderThickness">0,1,1,1</Thickness>
+    <Thickness x:Key="ExpanderContentLeftBorderThickness">1,1,0,1</Thickness>
+
+    <!--  Header Toggle Button Style  -->
+    <ControlTheme x:Key="ExpanderToggleButtonTheme" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource ExpanderHeaderBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource ExpanderHeaderBorderThickness}" />
+        <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+        <Setter Property="Padding" Value="{DynamicResource ExpanderHeaderPadding}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="Root"
+                        Width="{TemplateBinding Width}"
+                        MinWidth="{TemplateBinding MinWidth}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        MaxWidth="{TemplateBinding MaxWidth}"
+                        Padding="{TemplateBinding Padding}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        Background="{TemplateBinding Background}"
+                        BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+
+                    <Grid ColumnDefinitions="*,Auto">
+
+                        <ContentPresenter Name="ContentPresenter"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Foreground="{TemplateBinding Foreground}" />
+
+                        <Border Name="ExpandCollapseChevronBorder"
+                                Grid.Column="1"
+                                Width="{DynamicResource ExpanderChevronButtonSize}"
+                                Height="{DynamicResource ExpanderChevronButtonSize}"
+                                Margin="{DynamicResource ExpanderChevronMargin}"
+                                Background="{DynamicResource ExpanderChevronBackground}"
+                                BorderBrush="{DynamicResource ExpanderChevronBorderBrush}"
+                                BorderThickness="{DynamicResource ExpanderChevronBorderThickness}"
+                                CornerRadius="{DynamicResource ControlCornerRadius}">
+
+                            <TextBlock Name="ExpandCollapseChevron"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                       FontSize="15"
+                                       Foreground="{DynamicResource ExpanderChevronForeground}"
+                                       RenderTransform="none">
+                                <TextBlock.Transitions>
+                                    <Transitions>
+                                        <TransformOperationsTransition Property="RenderTransform" Duration="00:00:00.167" />
+                                    </Transitions>
+                                </TextBlock.Transitions>
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Border#Root">
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+            </Style>
+            <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
+                <Setter Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
+            </Style>
+            <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+                <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Style Selector="^ /template/ Border#Root">
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderBorderPressedBrush}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+            </Style>
+            <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
+                <Setter Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
+            </Style>
+            <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+                <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ Border#Root">
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+            </Style>
+            <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderDisabledBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
+            </Style>
+            <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^[Tag=expanded] /template/ TextBlock#ExpandCollapseChevron">
+            <Setter Property="RenderTransform" Value="rotate(180deg)" />
+        </Style>
+
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Border#Root">
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForeground}" />
+            </Style>
+            <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
+                <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
+            </Style>
+            <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+                <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronForeground}" />
+            </Style>
+
+            <Style Selector="^:pointerover">
+                <Style Selector="^ /template/ Border#Root">
+                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPointerOverBrush}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPointerOver}" />
+                </Style>
+                <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
+                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPointerOverBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource ExpanderChevronPointerOverBackground}" />
+                </Style>
+                <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+                    <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronPointerOverForeground}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^:pressed">
+                <Style Selector="^ /template/ Border#Root">
+                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderPressedBrush}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderForegroundPressed}" />
+                </Style>
+                <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
+                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderChevronBorderPressedBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource ExpanderChevronPressedBackground}" />
+                </Style>
+                <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+                    <Setter Property="Foreground" Value="{DynamicResource ExpanderChevronPressedForeground}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Border#Root">
+                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderDisabledBorderBrush}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource ExpanderHeaderDisabledForeground}" />
+                </Style>
+                <Style Selector="^ /template/ Border#ExpandCollapseChevronBorder">
+                    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderDisabledBorderBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource ExpanderChevronBackground}" />
+                </Style>
+                <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+                    <Setter Property="Foreground" Value="{DynamicResource ExpanderDisabledForeground}" />
+                </Style>
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ExpanderToggleButtonUpTheme"
+                  BasedOn="{StaticResource ExpanderToggleButtonTheme}"
+                  TargetType="ToggleButton">
+        <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+            <Setter Property="Text" Value="{StaticResource ExpanderChevronUpGlyph}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ExpanderToggleButtonDownTheme"
+                  BasedOn="{StaticResource ExpanderToggleButtonTheme}"
+                  TargetType="ToggleButton">
+        <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+            <Setter Property="Text" Value="{StaticResource ExpanderChevronDownGlyph}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ExpanderToggleButtonLeftTheme"
+                  BasedOn="{StaticResource ExpanderToggleButtonTheme}"
+                  TargetType="ToggleButton">
+        <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+            <Setter Property="Text" Value="{StaticResource ExpanderChevronLeftGlyph}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="ExpanderToggleButtonRightTheme"
+                  BasedOn="{StaticResource ExpanderToggleButtonTheme}"
+                  TargetType="ToggleButton">
+        <Style Selector="^ /template/ TextBlock#ExpandCollapseChevron">
+            <Setter Property="Text" Value="{StaticResource ExpanderChevronRightGlyph}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type Expander}" TargetType="Expander">
+        <Setter Property="Background" Value="{DynamicResource ExpanderContentBackground}" />
+        <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}" />
+        <Setter Property="MinHeight" Value="{DynamicResource ExpanderMinHeight}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ExpanderContentBorderBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="{DynamicResource ExpanderContentPadding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="ContentTransition">
+            <Setter.Value>
+                <CrossFade Duration="00:00:00.25" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel MinWidth="{TemplateBinding MinWidth}"
+                           MaxWidth="{TemplateBinding MaxWidth}"
+                           HorizontalAlignment="Stretch">
+                    <ToggleButton Name="ExpanderHeader"
+                                  MinHeight="{TemplateBinding MinHeight}"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  Content="{TemplateBinding Header}"
+                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                  IsChecked="{TemplateBinding IsExpanded,
+                                                              Mode=TwoWay}"
+                                  IsEnabled="{TemplateBinding IsEnabled}" />
+
+                    <Border Name="ExpanderContent"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            Background="{TemplateBinding Background}"
+                            BackgroundSizing="InnerBorderEdge"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            IsVisible="False">
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Margin="0"
+                                          Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          IsVisible="{TemplateBinding IsExpanded}" />
+                    </Border>
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:left /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="DockPanel.Dock" Value="Right" />
+            <Setter Property="Theme" Value="{DynamicResource ExpanderToggleButtonLeftTheme}" />
+        </Style>
+        <Style Selector="^:up /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="DockPanel.Dock" Value="Bottom" />
+            <Setter Property="Theme" Value="{DynamicResource ExpanderToggleButtonUpTheme}" />
+        </Style>
+        <Style Selector="^:right /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="DockPanel.Dock" Value="Left" />
+            <Setter Property="Theme" Value="{DynamicResource ExpanderToggleButtonRightTheme}" />
+        </Style>
+        <Style Selector="^:down /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="DockPanel.Dock" Value="Top" />
+            <Setter Property="Theme" Value="{DynamicResource ExpanderToggleButtonDownTheme}" />
+        </Style>
+
+        <Style Selector="^:down">
+            <Setter Property="BorderThickness" Value="{DynamicResource ExpanderContentDownBorderThickness}" />
+
+            <Style Selector="^:expanded /template/ ToggleButton#ExpanderHeader">
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+            </Style>
+            <Style Selector="^:expanded /template/ Border#ExpanderContent">
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:up">
+            <Setter Property="BorderThickness" Value="{DynamicResource ExpanderContentUpBorderThickness}" />
+
+            <Style Selector="^:expanded /template/ ToggleButton#ExpanderHeader">
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={StaticResource BottomCornerRadiusFilterConverter}}" />
+            </Style>
+            <Style Selector="^:expanded /template/ Border#ExpanderContent">
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:left">
+            <Setter Property="BorderThickness" Value="{DynamicResource ExpanderContentLeftBorderThickness}" />
+
+            <Style Selector="^:expanded /template/ ToggleButton#ExpanderHeader">
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
+            </Style>
+            <Style Selector="^:expanded /template/ Border#ExpanderContent">
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:right">
+            <Setter Property="BorderThickness" Value="{DynamicResource ExpanderContentRightBorderThickness}" />
+
+            <Style Selector="^:expanded /template/ ToggleButton#ExpanderHeader">
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={StaticResource LeftCornerRadiusFilterConverter}}" />
+            </Style>
+            <Style Selector="^:expanded /template/ Border#ExpanderContent">
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={StaticResource RightCornerRadiusFilterConverter}}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:expanded /template/ Border#ExpanderContent">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^:expanded /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="Tag" Value="expanded" />
+        </Style>
+
+        <Style Selector="^:not(:expanded) /template/ ToggleButton#ExpanderHeader">
+            <Setter Property="Tag" Value="collapsed" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
