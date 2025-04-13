@@ -99,7 +99,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AvaloniaUI.Violeta\AvaloniaUI.Violeta.csproj" />
+        <ProjectReference Include="..\FluentAvaloniaUI.Violeta\FluentAvaloniaUI.Violeta.csproj" />
     </ItemGroup>
 
 </Project>

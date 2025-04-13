@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiktokLiveRec.WPF", "src\Ti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiktokLiveRec.Avalonia", "src\TiktokLiveRec.Avalonia\TiktokLiveRec.Avalonia.csproj", "{880A6A31-3BC7-444C-A71B-0851F3D265B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaUI.Violeta", "src\AvaloniaUI.Violeta\AvaloniaUI.Violeta.csproj", "{5238F94C-DB28-47B4-A5E8-4406478CC0C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentAvaloniaUI.Violeta", "src\FluentAvaloniaUI.Violeta\FluentAvaloniaUI.Violeta.csproj", "{5238F94C-DB28-47B4-A5E8-4406478CC0C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

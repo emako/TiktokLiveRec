@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
-using AvaloniaUI.Violeta.Platform.Windows;
+using FluentAvalonia.UI.Violeta.Platform.Windows;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using TiktokLiveRec.Views;

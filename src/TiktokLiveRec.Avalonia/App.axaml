@@ -4,7 +4,7 @@
              xmlns:semi="https://irihi.tech/semi"
              xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
              xmlns:ui="using:FluentAvalonia.Styling"
-             xmlns:vio="urn:avaloniaui.violeta"
+             xmlns:vio="using:FluentAvalonia.UI.Violeta.Stylings"
              RequestedThemeVariant="Default">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 

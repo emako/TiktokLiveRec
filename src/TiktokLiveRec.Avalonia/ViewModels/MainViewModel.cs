@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
-using AvaloniaUI.Violeta.Controls;
+using FluentAvalonia.UI.Violeta.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FluentAvalonia.UI.Controls;
@@ -38,6 +38,40 @@ public partial class MainViewModel : ObservableObject
                 RoomUrl = "123",
             }
         ];
+    }
+
+    [RelayCommand]
+    private void AddRoom()
+    {
+    }
+
+    [RelayCommand]
+    private void OpenSettingsDialog()
+    {
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            foreach (SettingsWindow win in desktop.Windows.OfType<SettingsWindow>().ToArray())
+            {
+                win.Close();
+            }
+
+            if (desktop.MainWindow?.IsVisible ?? false)
+            {
+                SettingsWindow win = new()
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                };
+                win.ShowDialog(desktop.MainWindow);
+            }
+            else
+            {
+                SettingsWindow win = new()
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                };
+                win.Show();
+            }
+        }
     }
 
     [RelayCommand]
