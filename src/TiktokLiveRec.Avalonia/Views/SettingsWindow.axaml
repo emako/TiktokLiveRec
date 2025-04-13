@@ -38,7 +38,68 @@
                            FontSize="14"
                            Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"
                            Text="{I18N AppearanceSettings}" />
-                <ui:Card />
+                <ui:Card>
+                    <Grid MinHeight="35"
+                          Margin="16"
+                          ColumnDefinitions="Auto,*,Auto">
+                        <Grid Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock MinWidth="26"
+                                       Margin="4,0,0,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                       FontSize="18"
+                                       Text="{x:Static ui:FontSymbols.LocaleLanguage}" />
+                        </Grid>
+                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                            <TextBlock Grid.Row="0" Text="{I18N Language}" />
+                            <TextBlock Grid.Row="1"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                       Text="{I18N LanguageHint}" />
+                        </Grid>
+                        <ComboBox Grid.Column="2"
+                                  MinWidth="150"
+                                  Margin="0,0,28,0"
+                                  SelectedIndex="{Binding LanguageIndex}">
+                            <ComboBoxItem Content="{I18N TrackingSystem}" />
+                            <ComboBoxItem Content="简体中文" />
+                            <ComboBoxItem Content="繁體中文" />
+                            <ComboBoxItem Content="English" />
+                            <ComboBoxItem Content="日本語" />
+                        </ComboBox>
+                    </Grid>
+                </ui:Card>
+                <ui:Card>
+                    <Grid MinHeight="35"
+                          Margin="16"
+                          ColumnDefinitions="Auto,*,Auto">
+                        <Grid Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock MinWidth="26"
+                                       Margin="4,0,0,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                       FontSize="18"
+                                       Text="{x:Static ui:FontSymbols.Color}" />
+                        </Grid>
+                        <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                            <TextBlock Grid.Row="0" Text="{I18N ThemeColor}" />
+                            <TextBlock Grid.Row="1"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                       Text="{I18N ThemeColorHint}" />
+                        </Grid>
+                        <ComboBox Grid.Column="2"
+                                  MinWidth="150"
+                                  Margin="0,0,28,0"
+                                  SelectedIndex="{Binding ThemeIndex}">
+                            <ComboBoxItem Content="{I18N TrackingSystem}" />
+                            <ComboBoxItem Content="{I18N ThemeOfDarkMode}" />
+                            <ComboBoxItem Content="{I18N ThemeOfLightMode}" />
+                        </ComboBox>
+                    </Grid>
+                </ui:Card>
                 <!-- <uu:Card> -->
                 <!--     <StackPanel> -->
                 <!--         <Button Content="Button"> -->

@@ -19,6 +19,8 @@ public class FluentWindow : UrsaWindow
 
             Deactivated += OnFluentWindowDeactivated;
             Activated += OnFluentWindowActivated;
+
+            ActualThemeVariantChanged += OnFluentWindowActualThemeVariantChanged;
         }
     }
 
@@ -31,6 +33,23 @@ public class FluentWindow : UrsaWindow
             if (TitleBarContent is Control titleBar)
             {
                 _ = titleBar.UseAsTitleBarForWindowFrame(this);
+            }
+        }
+    }
+
+    protected virtual void OnFluentWindowActualThemeVariantChanged(object? sender, EventArgs e)
+    {
+        if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+        {
+            ThemeVariant? themeVariant = Application.Current?.ActualThemeVariant;
+
+            if (themeVariant == ThemeVariant.Dark)
+            {
+                Background = new SolidColorBrush(Color.FromRgb(0x27, 0x27, 0x27));
+            }
+            else
+            {
+                Background = new SolidColorBrush(Color.FromRgb(0xFF, 0xFF, 0xFF));
             }
         }
     }

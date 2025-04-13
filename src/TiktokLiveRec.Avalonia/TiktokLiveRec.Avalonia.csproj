@@ -86,8 +86,11 @@
         </PackageReference>
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia" Version="2.1.0" PrivateAssets="All" />
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia.Extensions" Version="2.1.0" PrivateAssets="All" />
-		<PackageReference Include="Antelcat.I18N.Avalonia" Version="1.1.0" />
+		<PackageReference Include="Antelcat.I18N.Avalonia" Version="1.0.3" />
 		<PackageReference Include="FluentAvaloniaUI" Version="2.3.0" />
+        <PackageReference Include="Fischless.Configuration" Version="1.0.0" />
+        <PackageReference Include="Fischless.Configuration.Json" Version="1.0.0" />
+        <PackageReference Include="Fischless.Configuration.Yaml" Version="1.0.0" />
         <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.10.0" />
         <PackageReference Include="Semi.Avalonia" Version="11.2.1.6" />
         <PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.6" />

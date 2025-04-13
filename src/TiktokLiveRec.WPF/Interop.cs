@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 using Vanara.PInvoke;
@@ -245,6 +246,7 @@ internal static class Interop
         }
     }
 
+    [SuppressMessage("Style", "IDE0305:Simplify collection initialization")]
     public static int[] GetChildProcessId(int pid)
     {
         return Process.GetProcesses()
@@ -253,6 +255,7 @@ internal static class Interop
             .ToArray();
     }
 
+    [SuppressMessage("Style", "IDE0305:Simplify collection initialization")]
     public static (int, string)[] GetChildProcessIdAndName(int pid)
     {
         return Process.GetProcesses()
