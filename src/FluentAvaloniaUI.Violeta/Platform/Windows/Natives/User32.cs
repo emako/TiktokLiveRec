@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
+using System.Text;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Natives;
 
@@ -56,6 +57,9 @@ internal static class User32
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool GetCursorPos(out POINT lpPoint);
+
+    [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+    public static extern int LoadString(nint instanceHandle, int id, StringBuilder buffer, int bufferSize);
 
     public delegate nint WndProcDelegate(nint hWnd, uint msg, nint wParam, nint lParam);
 
@@ -361,5 +365,27 @@ internal static class User32
     {
         public int X;
         public int Y;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RECT
+    {
+        public readonly int Left;
+        public readonly int Top;
+        public readonly int Right;
+        public readonly int Bottom;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SIZE()
+    {
+        public double Width;
+        public double Height;
+
+        public SIZE(double width, double height) : this()
+        {
+            Width = width;
+            Height = height;
+        }
     }
 }

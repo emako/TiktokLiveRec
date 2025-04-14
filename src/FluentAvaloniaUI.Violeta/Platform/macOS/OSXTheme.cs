@@ -4,7 +4,7 @@ using System.Runtime.Versioning;
 
 #pragma warning disable CA2101 // Specify marshaling for P/Invoke string arguments
 
-namespace FluentAvaloniaUI.Violeta.Platform.macOS;
+namespace FluentAvalonia.UI.Violeta.Platform.macOS;
 
 [SupportedOSPlatform("macOS")]
 [SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]

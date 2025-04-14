@@ -293,11 +293,94 @@
                         <ui:NumberBox Grid.Column="2"
                                       MinWidth="150"
                                       Margin="0,0,28,0"
-                                      Maximum="999999999999"
+                                      Maximum="2147483647"
                                       Minimum="500"
                                       Value="{Binding RoutineInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                 </ui:Card>
+                <Expander>
+                    <Expander.Header>
+                        <Grid Margin="16" ColumnDefinitions="Auto,*,Auto">
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.Filter}" />
+                            </Grid>
+                            <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0" Text="{I18N RecordFormat}" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                           Text="{I18N RecordFormatHint}" />
+                            </Grid>
+                            <Grid Grid.Column="2" Margin="0,0,-32,0">
+                                <ComboBox MinWidth="150" SelectedIndex="{Binding RecordFormatIndex, Mode=TwoWay}">
+                                    <ComboBoxItem Content="TS/FLV" />
+                                    <ComboBoxItem Content="TS/FLV -&gt; MP4" />
+                                    <ComboBoxItem Content="TS/FLV -&gt; MKV" />
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                    </Expander.Header>
+                    <StackPanel Spacing="8">
+                        <StackPanel Margin="42,0,28,0" Spacing="12">
+                            <CheckBox Grid.Column="0"
+                                      Content="{I18N RecordFormatAutoRemove}"
+                                      IsChecked="{Binding IsRemoveTs, Mode=TwoWay}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                <Expander>
+                    <Expander.Header>
+                        <Grid Margin="16" ColumnDefinitions="Auto,*,Auto">
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.Folder}" />
+                            </Grid>
+                            <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0" Text="{I18N SaveFolder}" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                           Text="{I18N SaveFolderHint}" />
+                            </Grid>
+                            <Grid Grid.Column="2" Margin="0,0,-32,0">
+                                <!--  EMPTY  -->
+                            </Grid>
+                        </Grid>
+                    </Expander.Header>
+                    <StackPanel Spacing="8">
+                        <Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto,Auto">
+                            <TextBlock Grid.Column="0"
+                                       VerticalAlignment="Center"
+                                       Text="{I18N SaveFolder}" />
+                            <TextBox Grid.Column="1"
+                                     Margin="8,0,0,0"
+                                     Text="{Binding SaveFolder, Mode=TwoWay}"
+                                     Watermark="downloads" />
+                            <Button Grid.Column="2"
+                                    Margin="8,0,0,0"
+                                    Command="{Binding SelectSaveFolderCommand}"
+                                    Content="{I18N SelectFolder}" />
+                            <Button Grid.Column="3"
+                                    Margin="8,0,0,0"
+                                    Command="{Binding OpenSaveFolderCommand}"
+                                    Content="{I18N OpenFolder}" />
+                        </Grid>
+                        <Grid Margin="42,0,28,0" ColumnDefinitions="Auto,*,Auto,Auto">
+                            <CheckBox Content="{I18N SaveFolderDistinguishedByAuthors}" IsChecked="{Binding SaveFolderDistinguishedByAuthors}" />
+                        </Grid>
+                    </StackPanel>
+                </Expander>
                 <Control Height="50" />
             </StackPanel>
         </ScrollViewer>

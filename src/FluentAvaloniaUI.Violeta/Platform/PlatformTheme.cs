@@ -1,10 +1,10 @@
-using FluentAvaloniaUI.Violeta.Platform.macOS;
-using FluentAvaloniaUI.Violeta.Platform.Windows;
+using FluentAvalonia.UI.Violeta.Platform.macOS;
+using FluentAvalonia.UI.Violeta.Platform.Windows;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-namespace FluentAvaloniaUI.Violeta.Platform;
+namespace FluentAvalonia.UI.Violeta.Platform;
 
 [SupportedOSPlatform("Windows")]
 [SupportedOSPlatform("macOS")]

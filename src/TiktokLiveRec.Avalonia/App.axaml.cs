@@ -4,7 +4,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 using Fischless.Configuration;
 using FluentAvalonia.UI.Violeta.Platform.Windows;
-using FluentAvaloniaUI.Violeta.Platform;
+using FluentAvalonia.UI.Violeta.Platform;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using TiktokLiveRec.Views;

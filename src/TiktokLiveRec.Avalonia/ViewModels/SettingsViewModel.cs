@@ -1,12 +1,17 @@
 using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Platform.Storage;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Fischless.Configuration;
-using FluentAvaloniaUI.Violeta.Platform;
+using FluentAvalonia.UI.Violeta.Platform;
+using MicaSetup.Shell.Dialogs;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using TiktokLiveRec.Extensions;
 
 namespace TiktokLiveRec.ViewModels;
@@ -223,5 +228,105 @@ public partial class SettingsViewModel : ObservableObject
         // GlobalMonitor.RoutinePeriodicWait.Period = TimeSpan.FromMilliseconds(int.Max(value, 500));
         Configurations.RoutineInterval.Set(value);
         ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private int recordFormatIndex = Configurations.RecordFormat.Get() switch
+    {
+        "TS/FLV -> MP4" => 1,
+        "TS/FLV -> MKV" => 2,
+        "TS/FLV" or _ => 0,
+    };
+
+    partial void OnRecordFormatIndexChanged(int value)
+    {
+        Configurations.RecordFormat.Set(value switch
+        {
+            1 => "TS/FLV -> MP4",
+            2 => "TS/FLV -> MKV",
+            0 or _ => "TS/FLV",
+        });
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private bool isRemoveTs = Configurations.IsRemoveTs.Get();
+
+    partial void OnIsRemoveTsChanged(bool value)
+    {
+        Configurations.IsRemoveTs.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private string saveFolder = Configurations.SaveFolder.Get();
+
+    partial void OnSaveFolderChanged(string value)
+    {
+        Configurations.SaveFolder.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private bool saveFolderDistinguishedByAuthors = Configurations.SaveFolderDistinguishedByAuthors.Get();
+
+    partial void OnSaveFolderDistinguishedByAuthorsChanged(bool value)
+    {
+        Configurations.SaveFolderDistinguishedByAuthors.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [RelayCommand]
+    private async Task SelectSaveFolderAsync()
+    {
+        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            if (desktop.Windows.Where(w => w.IsActive).FirstOrDefault() is Window win)
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    using CommonOpenFileDialog dialog1 = new()
+                    {
+                        DefaultFileName = "asdf.rae",
+                    };
+
+                    if (dialog1.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        SaveFolder = dialog1.FileName;
+                    }
+                    using CommonOpenFileDialog dialog = new()
+                    {
+                        IsFolderPicker = true,
+                    };
+
+                    if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                    {
+                        SaveFolder = dialog.FileName;
+                    }
+                }
+                else
+                {
+                    IReadOnlyList<IStorageFolder> folders =
+                        await win.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions()
+                        {
+                            AllowMultiple = false
+                        });
+
+                    SaveFolder = folders.FirstOrDefault()?.Name ?? string.Empty;
+                }
+            }
+        }
+    }
+
+    [RelayCommand]
+    [SuppressMessage("Performance", "CA1822:Mark members as static")]
+    private async Task OpenSaveFolderAsync()
+    {
+        // TODO: Implement for other platforms
+        //await Launcher.LaunchFolderAsync(
+        //    await StorageFolder.GetFolderFromPathAsync(
+        //        SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get())
+        //    )
+        //);
     }
 }
