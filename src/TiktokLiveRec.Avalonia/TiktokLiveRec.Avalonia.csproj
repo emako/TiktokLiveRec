@@ -21,7 +21,7 @@
         <RuntimeIdentifiers>win-x64;linux-x64;linux-arm64;osx-x64;osx-arm64</RuntimeIdentifiers>
     </PropertyGroup>
 
-	<PropertyGroup Condition="'$(RuntimeIdentifier)' == 'osx-x64' OR '$(RuntimeIdentifier)' == 'osx-arm64'">
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'osx-x64' OR '$(RuntimeIdentifier)' == 'osx-arm64'">
         <UseAppHost>true</UseAppHost>
         <PublishSingleFile>true</PublishSingleFile>
         <SelfContained>true</SelfContained>
@@ -45,40 +45,41 @@
         <DefineConstants>$(DefineConstants);ENABLE_XAML_HOT_RELOAD;HOTAVALONIA_ENABLE;</DefineConstants>
     </PropertyGroup>
 
-	<ItemGroup>
-		<Compile Update="Properties\Resources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Resources.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
+    <ItemGroup>
+        <Compile Update="Properties\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
 
-	<ItemGroup>
-		<EmbeddedResource Update="Properties\Resources.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Properties\Resources.zh-Hans.resx">
-			<DependentUpon>Resources.resx</DependentUpon>
-			<Generator>PublicResXFileCodeGenerator</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Properties\Resources.zh-Hant.resx">
-			<DependentUpon>Resources.resx</DependentUpon>
-			<Generator>PublicResXFileCodeGenerator</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Properties\Resources.ja.resx">
-			<DependentUpon>Resources.resx</DependentUpon>
-			<Generator>PublicResXFileCodeGenerator</Generator>
-		</EmbeddedResource>
-	</ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Update="Properties\Resources.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\Resources.zh-Hans.resx">
+            <DependentUpon>Resources.resx</DependentUpon>
+            <Generator>PublicResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\Resources.zh-Hant.resx">
+            <DependentUpon>Resources.resx</DependentUpon>
+            <Generator>PublicResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\Resources.ja.resx">
+            <DependentUpon>Resources.resx</DependentUpon>
+            <Generator>PublicResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+    </ItemGroup>
 
-	<ItemGroup>
+    <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.2.6" />
-		<PackageReference Include="Avalonia.Desktop" Version="11.2.6" />
-		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.2.6" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.6" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.2.6" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.6" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.6" />
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.2.6" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.6" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Include="Avalonia.Diagnostics" Version="11.2.6">
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
@@ -86,8 +87,8 @@
         </PackageReference>
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia" Version="2.1.0" PrivateAssets="All" />
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia.Extensions" Version="2.1.0" PrivateAssets="All" />
-		<PackageReference Include="Antelcat.I18N.Avalonia" Version="1.0.3" />
-		<PackageReference Include="FluentAvaloniaUI" Version="2.3.0" />
+        <PackageReference Include="Antelcat.I18N.Avalonia" Version="1.1.2" />
+        <PackageReference Include="FluentAvaloniaUI" Version="2.3.0" />
         <PackageReference Include="Fischless.Configuration" Version="1.0.0" />
         <PackageReference Include="Fischless.Configuration.Json" Version="1.0.0" />
         <PackageReference Include="Fischless.Configuration.Yaml" Version="1.0.0" />

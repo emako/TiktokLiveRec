@@ -1,7 +1,9 @@
 <ui:FluentWindow x:Class="TiktokLiveRec.Views.SettingsWindow"
                  xmlns="https://github.com/avaloniaui"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:b="using:TiktokLiveRec.Views.Behaviors"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:i="using:Avalonia.Xaml.Interactivity"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:ui="using:FluentAvalonia.UI.Controls"
                  xmlns:vm="using:TiktokLiveRec.ViewModels"
@@ -58,16 +60,20 @@
                                        Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                        Text="{I18N LanguageHint}" />
                         </Grid>
-                        <ComboBox Grid.Column="2"
-                                  MinWidth="150"
-                                  Margin="0,0,28,0"
-                                  SelectedIndex="{Binding LanguageIndex}">
-                            <ComboBoxItem Content="{I18N TrackingSystem}" />
-                            <ComboBoxItem Content="简体中文" />
-                            <ComboBoxItem Content="繁體中文" />
-                            <ComboBoxItem Content="English" />
-                            <ComboBoxItem Content="日本語" />
-                        </ComboBox>
+                        <ui:FAComboBox Name="LanguageComboBox"
+                                       Grid.Column="2"
+                                       MinWidth="150"
+                                       Margin="0,0,28,0"
+                                       SelectedIndex="{Binding LanguageIndex}">
+                            <i:Interaction.Behaviors>
+                                <b:FixFAComboBoxBehavior />
+                            </i:Interaction.Behaviors>
+                            <ui:FAComboBoxItem Content="{I18N TrackingSystem}" />
+                            <ui:FAComboBoxItem Content="简体中文" />
+                            <ui:FAComboBoxItem Content="繁體中文" />
+                            <ui:FAComboBoxItem Content="English" />
+                            <ui:FAComboBoxItem Content="日本語" />
+                        </ui:FAComboBox>
                     </Grid>
                 </ui:Card>
                 <ui:Card>
@@ -90,14 +96,18 @@
                                        Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
                                        Text="{I18N ThemeColorHint}" />
                         </Grid>
-                        <ComboBox Grid.Column="2"
-                                  MinWidth="150"
-                                  Margin="0,0,28,0"
-                                  SelectedIndex="{Binding ThemeIndex}">
-                            <ComboBoxItem Content="{I18N TrackingSystem}" />
-                            <ComboBoxItem Content="{I18N ThemeOfDarkMode}" />
-                            <ComboBoxItem Content="{I18N ThemeOfLightMode}" />
-                        </ComboBox>
+                        <ui:FAComboBox Name="ThemeComboBox"
+                                       Grid.Column="2"
+                                       MinWidth="150"
+                                       Margin="0,0,28,0"
+                                       SelectedIndex="{Binding ThemeIndex}">
+                            <i:Interaction.Behaviors>
+                                <b:FixFAComboBoxBehavior />
+                            </i:Interaction.Behaviors>
+                            <ui:FAComboBoxItem Content="{I18N TrackingSystem}" />
+                            <ui:FAComboBoxItem Content="{I18N ThemeOfDarkMode}" />
+                            <ui:FAComboBoxItem Content="{I18N ThemeOfLightMode}" />
+                        </ui:FAComboBox>
                     </Grid>
                 </ui:Card>
                 <ui:Card>
