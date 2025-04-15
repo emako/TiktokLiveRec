@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
+[SuppressMessage("Style", "IDE0090:Use 'new(...)'")]
 internal static class FolderTypes
 {
     internal static Guid Communications = new Guid(

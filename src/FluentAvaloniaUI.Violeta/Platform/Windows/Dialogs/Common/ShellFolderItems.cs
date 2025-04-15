@@ -1,7 +1,10 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 #pragma warning disable CS8618
 
@@ -37,6 +40,7 @@ internal class ShellFolderItems : IEnumerator<ShellObject>
 
     object IEnumerator.Current => currentItem;
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     public void Dispose()
     {
         if (nativeEnumIdList != null)

@@ -1,9 +1,11 @@
-using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8605 // Unboxing a possibly null value.
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
+
+[SuppressMessage("Style", "IDE0090:Use 'new(...)'")]
 internal static class FolderIdentifiers
 {
     internal static Guid AddNewPrograms = new Guid(0xde61d971, 0x5ebc, 0x4f02, 0xa3, 0xa9, 0x6c, 0x82, 0x89, 0x5e, 0x5c, 0x04);
@@ -216,7 +218,7 @@ internal static class FolderIdentifiers
 
     static FolderIdentifiers()
     {
-        folders = new Dictionary<Guid, string>();
+        folders = [];
         var folderIDs = typeof(FolderIdentifiers);
 
         var fields = folderIDs.GetFields(BindingFlags.NonPublic | BindingFlags.Static);
@@ -248,7 +250,7 @@ internal static class FolderIdentifiers
     {
         if (!folders.TryGetValue(folderId, out var folder))
         {
-            throw new ArgumentException(LocalizedMessages.FolderIdsUnknownGuid, "folderId");
+            throw new ArgumentException(LocalizedMessages.FolderIdsUnknownGuid, nameof(folderId));
         }
         return folder;
     }

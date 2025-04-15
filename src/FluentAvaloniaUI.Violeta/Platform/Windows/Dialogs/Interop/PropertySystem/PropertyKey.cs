@@ -1,7 +1,10 @@
-﻿using System;
+using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 
 [StructLayout(LayoutKind.Sequential, Pack = 4)]
 public struct PropertyKey : IEquatable<PropertyKey>
@@ -34,7 +37,7 @@ public struct PropertyKey : IEquatable<PropertyKey>
         if (obj == null)
             return false;
 
-        if (!(obj is PropertyKey))
+        if (obj is not PropertyKey)
             return false;
 
         var other = (PropertyKey)obj;
@@ -45,7 +48,7 @@ public struct PropertyKey : IEquatable<PropertyKey>
 
     public static bool operator !=(PropertyKey propKey1, PropertyKey propKey2) => !propKey1.Equals(propKey2);
 
-    public override string ToString() => string.Format(System.Globalization.CultureInfo.InvariantCulture,
+    public override string ToString() => string.Format(CultureInfo.InvariantCulture,
             LocalizedMessages.PropertyKeyFormatString,
             formatId.ToString("B"), propertyId);
 }

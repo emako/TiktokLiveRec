@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+using System.Diagnostics.CodeAnalysis;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 #pragma warning disable CS8618
 
@@ -8,22 +9,23 @@ internal class ShellPropertyDescriptionsCache
 {
     private static ShellPropertyDescriptionsCache cacheInstance;
 
-    private readonly IDictionary<PropertyKey, ShellPropertyDescription> propsDictionary;
+    private readonly IDictionary<PropertyKey, ShellPropertyDescription> propsDictionary = null!;
 
-    private ShellPropertyDescriptionsCache() => propsDictionary = new Dictionary<PropertyKey, ShellPropertyDescription>();
+    private ShellPropertyDescriptionsCache()
+    {
+        propsDictionary = new Dictionary<PropertyKey, ShellPropertyDescription>();
+    }
 
     public static ShellPropertyDescriptionsCache Cache
     {
         get
         {
-            if (cacheInstance == null)
-            {
-                cacheInstance = new ShellPropertyDescriptionsCache();
-            }
+            cacheInstance ??= new ShellPropertyDescriptionsCache();
             return cacheInstance;
         }
     }
 
+    [SuppressMessage("Performance", "CA1854:Prefer the 'IDictionary.TryGetValue(TKey, out TValue)' method")]
     public ShellPropertyDescription GetPropertyDescription(PropertyKey key)
     {
         if (!propsDictionary.ContainsKey(key))

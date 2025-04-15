@@ -1,10 +1,11 @@
-﻿using System.IO;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using System.Diagnostics.CodeAnalysis;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public class ShellFile : ShellObject
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     internal ShellFile(string path)
     {
         var absPath = ShellHelper.GetAbsolutePath(path);

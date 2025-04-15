@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 #pragma warning disable CS8618
 
+[SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
+[SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value")]
 public class ShellPropertyCollection : ReadOnlyCollection<IShellProperty>, IDisposable
 {
     public ShellPropertyCollection(ShellObject parent)
-        : base(new List<IShellProperty>())
+        : base([])
     {
         ParentShellObject = parent;
         IPropertyStore nativePropertyStore = null!;
@@ -41,7 +46,7 @@ public class ShellPropertyCollection : ReadOnlyCollection<IShellProperty>, IDisp
     }
 
     internal ShellPropertyCollection(IPropertyStore nativePropertyStore)
-        : base(new List<IShellProperty>())
+        : base([])
     {
         NativePropertyStore = nativePropertyStore;
     }

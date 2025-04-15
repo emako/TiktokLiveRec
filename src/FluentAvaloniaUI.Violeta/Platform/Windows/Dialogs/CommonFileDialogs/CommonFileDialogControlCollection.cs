@@ -1,7 +1,7 @@
-using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 using System.Collections.ObjectModel;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 public sealed class CommonFileDialogControlCollection<T> : Collection<T> where T : DialogControl
 {

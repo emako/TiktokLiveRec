@@ -1,7 +1,8 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 public static class SystemProperties
 {

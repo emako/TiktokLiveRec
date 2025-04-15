@@ -1,8 +1,14 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 #pragma warning disable CS8073
 #pragma warning disable CS8618

@@ -1,7 +1,8 @@
-﻿using System;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable SYSLIB0051 // Type or member is obsolete
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 [Serializable]
 public class PropertySystemException : ExternalException

@@ -1,10 +1,10 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.StockIcons;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Natives;
-using System;
-using System.Drawing;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using System.Windows;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.StockIcons;
 
 public class StockIcon : IDisposable
 {
@@ -70,100 +70,7 @@ public class StockIcon : IDisposable
         }
     }
 
-    //public Bitmap Bitmap
-    //{
-    //    get
-    //    {
-    //        UpdateHIcon();
-
-    //        return hIcon != 0 ? Bitmap.FromHicon(hIcon) : null!;
-    //    }
-    //}
-
-    //public BitmapSource BitmapSource
-    //{
-    //    get
-    //    {
-    //        UpdateHIcon();
-
-    //        return (hIcon != 0) ?
-    //            Imaging.CreateBitmapSourceFromHIcon(hIcon, Int32Rect.Empty, null!) : null!;
-    //    }
-    //}
-
-    //public Icon Icon
-    //{
-    //    get
-    //    {
-    //        UpdateHIcon();
-
-    //        return hIcon != 0 ? Icon.FromHandle(hIcon) : null!;
-    //    }
-    //}
-
-    private void UpdateHIcon()
-    {
-        if (invalidateIcon)
-        {
-            if (hIcon != 0)
-                _ = User32.DestroyIcon(hIcon);
-
-            hIcon = GetHIcon();
-
-            invalidateIcon = false;
-        }
-    }
-
-    private nint GetHIcon()
-    {
-        var flags = StockIconsNativeMethods.StockIconOptions.Handle;
-
-        if (CurrentSize == StockIconSize.Small)
-        {
-            flags |= StockIconsNativeMethods.StockIconOptions.Small;
-        }
-        else if (CurrentSize == StockIconSize.ShellSize)
-        {
-            flags |= StockIconsNativeMethods.StockIconOptions.ShellSize;
-        }
-        else
-        {
-            flags |= StockIconsNativeMethods.StockIconOptions.Large;
-        }
-
-        if (Selected)
-        {
-            flags |= StockIconsNativeMethods.StockIconOptions.Selected;
-        }
-
-        if (LinkOverlay)
-        {
-            flags |= StockIconsNativeMethods.StockIconOptions.LinkOverlay;
-        }
-
-        var info = new StockIconsNativeMethods.StockIconInfo
-        {
-            StuctureSize = (uint)Marshal.SizeOf(typeof(StockIconsNativeMethods.StockIconInfo))
-        };
-
-        var hr = StockIconsNativeMethods.SHGetStockIconInfo(identifier, flags, ref info);
-
-        if (hr != HResult.Ok)
-        {
-            if (hr == HResult.InvalidArguments)
-            {
-                throw new InvalidOperationException(
-                    string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    LocalizedMessages.StockIconInvalidGuid,
-                    identifier));
-            }
-
-            return 0;
-        }
-
-        return info.Handle;
-    }
-
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     protected virtual void Dispose(bool disposing)
     {
         if (disposing)

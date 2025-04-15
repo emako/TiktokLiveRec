@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public sealed class DialogControlCollection<T> : Collection<T> where T : DialogControl
 {
@@ -17,11 +17,11 @@ public sealed class DialogControlCollection<T> : Collection<T> where T : DialogC
                 throw new ArgumentException(LocalizedMessages.DialogCollectionControlNameNull, nameof(name));
             }
 
-            return Items.FirstOrDefault(x => x.Name == name);
+            return Items.FirstOrDefault(x => x.Name == name)!;
         }
     }
 
-    internal DialogControl GetControlbyId(int id) => Items.FirstOrDefault(x => x.Id == id);
+    internal DialogControl GetControlbyId(int id) => Items.FirstOrDefault(x => x.Id == id)!;
 
     protected override void InsertItem(int index, T control)
     {

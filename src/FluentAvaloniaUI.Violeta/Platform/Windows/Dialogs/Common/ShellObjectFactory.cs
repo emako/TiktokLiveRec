@@ -1,7 +1,11 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 internal static class ShellObjectFactory
 {

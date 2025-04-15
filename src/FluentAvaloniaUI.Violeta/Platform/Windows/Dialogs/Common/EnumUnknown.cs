@@ -1,6 +1,9 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 internal class EnumUnknownClass : IEnumUnknown
 {
@@ -15,6 +18,7 @@ internal class EnumUnknownClass : IEnumUnknown
         return HResult.Ok;
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     public HResult Next(uint requestedNumber, ref nint buffer, ref uint fetchedNumber)
     {
         current++;

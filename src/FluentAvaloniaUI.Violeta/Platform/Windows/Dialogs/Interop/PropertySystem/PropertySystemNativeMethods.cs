@@ -1,7 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 
+[SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible")]
+[SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]
 public static class PropertySystemNativeMethods
 {
     public enum RelativeDescriptionType

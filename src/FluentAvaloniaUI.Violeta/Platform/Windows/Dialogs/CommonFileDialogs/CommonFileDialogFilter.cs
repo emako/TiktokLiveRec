@@ -1,8 +1,8 @@
-using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 #pragma warning disable CS8618
 
@@ -50,7 +50,7 @@ public class CommonFileDialogFilter
         {
             if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
             rawDisplayName = value;
         }
@@ -74,7 +74,7 @@ public class CommonFileDialogFilter
         var filterList = new StringBuilder();
         foreach (var extension in extensions)
         {
-            if (filterList.Length > 0) { filterList.Append(";"); }
+            if (filterList.Length > 0) { filterList.Append(';'); }
 
             filterList.Append("*.");
             filterList.Append(extension);

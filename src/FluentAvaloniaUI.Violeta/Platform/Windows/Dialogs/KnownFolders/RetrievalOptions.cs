@@ -1,4 +1,4 @@
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
 internal enum RetrievalOptions
 {

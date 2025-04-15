@@ -1,9 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 
 [Flags]
-[SuppressMessage("Microsoft.Design", "CA1008:")]
+[SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 public enum AccessModes
 {
     Direct = 0x00000000,

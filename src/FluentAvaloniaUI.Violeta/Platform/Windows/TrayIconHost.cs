@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Windows.Input;
 
-namespace FluentAvalonia.UI.Violeta.Controls;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows;
 
 [SupportedOSPlatform("Windows")]
 [SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]

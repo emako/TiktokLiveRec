@@ -1,8 +1,11 @@
-namespace MicaSetup.Shell.Dialogs;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
 
 internal class ChangeNotifyEventManager
 {
-    private static readonly ShellObjectChangeTypes[] _changeOrder = {
+    private static readonly ShellObjectChangeTypes[] _changeOrder =
+    [
         ShellObjectChangeTypes.ItemCreate,
         ShellObjectChangeTypes.ItemRename,
         ShellObjectChangeTypes.ItemDelete,
@@ -32,9 +35,9 @@ internal class ChangeNotifyEventManager
         ShellObjectChangeTypes.DiskEventsMask,
         ShellObjectChangeTypes.GlobalEventsMask,
         ShellObjectChangeTypes.AllEventsMask
-    };
+    ];
 
-    private readonly Dictionary<ShellObjectChangeTypes, Delegate> _events = new();
+    private readonly Dictionary<ShellObjectChangeTypes, Delegate> _events = [];
 
     public void Register(ShellObjectChangeTypes changeType, Delegate handler)
     {

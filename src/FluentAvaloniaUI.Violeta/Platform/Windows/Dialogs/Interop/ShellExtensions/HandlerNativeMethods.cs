@@ -1,16 +1,17 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions;
 
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("b7d14566-0509-4cce-a71f-0a554233bd9b")]
 public interface IInitializeWithFile
 {
-    void Initialize([MarshalAs(UnmanagedType.LPWStr)] string filePath, AccessModes fileMode);
+    public void Initialize([MarshalAs(UnmanagedType.LPWStr)] string filePath, AccessModes fileMode);
 }
 
 [ComImport]
@@ -18,7 +19,7 @@ public interface IInitializeWithFile
 [Guid("7f73be3f-fb79-493c-a6c7-7ee14e245841")]
 public interface IInitializeWithItem
 {
-    void Initialize([In, MarshalAs(UnmanagedType.IUnknown)] object shellItem, AccessModes accessMode);
+    public void Initialize([In, MarshalAs(UnmanagedType.IUnknown)] object shellItem, AccessModes accessMode);
 }
 
 [SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")]
@@ -27,7 +28,7 @@ public interface IInitializeWithItem
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public interface IInitializeWithStream
 {
-    void Initialize(IStream stream, AccessModes fileMode);
+    public void Initialize(IStream stream, AccessModes fileMode);
 }
 
 [ComVisible(true)]
@@ -36,7 +37,7 @@ public interface IInitializeWithStream
 public interface IThumbnailProvider
 {
     [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "2#"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "1#")]
-    void GetThumbnail(uint squareLength, out nint bitmapHandle, out uint bitmapType);
+    public void GetThumbnail(uint squareLength, out nint bitmapHandle, out uint bitmapType);
 }
 
 [ComImport]
@@ -44,63 +45,67 @@ public interface IThumbnailProvider
 [Guid("fc4801a3-2ba9-11cf-a229-00aa003d7352")]
 internal interface IObjectWithSite
 {
-    void SetSite([In, MarshalAs(UnmanagedType.IUnknown)] object pUnkSite);
+    public void SetSite([In, MarshalAs(UnmanagedType.IUnknown)] object pUnkSite);
 
-    void GetSite(ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppvSite);
+    public void GetSite(ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppvSite);
 }
 
 [ComImport]
 [Guid("00000114-0000-0000-C000-000000000046")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 internal interface IOleWindow
 {
-    void GetWindow(out nint phwnd);
+    public void GetWindow(out nint phwnd);
 
-    void ContextSensitiveHelp([MarshalAs(UnmanagedType.Bool)] bool fEnterMode);
+    public void ContextSensitiveHelp([MarshalAs(UnmanagedType.Bool)] bool fEnterMode);
 }
 
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("8895b1c6-b41f-4c1c-a562-0d564250836f")]
+[SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 internal interface IPreviewHandler
 {
-    void SetWindow(nint hwnd, ref RECT rect);
+    public void SetWindow(nint hwnd, ref RECT rect);
 
-    void SetRect(ref RECT rect);
+    public void SetRect(ref RECT rect);
 
-    void DoPreview();
+    public void DoPreview();
 
-    void Unload();
+    public void Unload();
 
-    void SetFocus();
+    public void SetFocus();
 
-    void QueryFocus(out nint phwnd);
+    public void QueryFocus(out nint phwnd);
 
     [PreserveSig]
-    HResult TranslateAccelerator(ref MSG pmsg);
+    public HResult TranslateAccelerator(ref MSG pmsg);
 }
 
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("fec87aaf-35f9-447a-adb7-20234491401a")]
+[SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 internal interface IPreviewHandlerFrame
 {
-    void GetWindowContext(nint pinfo);
+    public void GetWindowContext(nint pinfo);
 
     [PreserveSig]
-    HResult TranslateAccelerator(ref MSG pmsg);
+    public HResult TranslateAccelerator(ref MSG pmsg);
 };
 
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("8327b13c-b63f-4b24-9b8a-d010dcc3f599")]
+[SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 internal interface IPreviewHandlerVisuals
 {
-    void SetBackgroundColor(COLORREF color);
+    public void SetBackgroundColor(COLORREF color);
 
-    void SetFont(ref LogFont plf);
+    public void SetFont(ref LogFont plf);
 
-    void SetTextColor(COLORREF color);
+    public void SetTextColor(COLORREF color);
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -108,6 +113,7 @@ internal struct COLORREF
 {
     public uint Dword;
 
+    [SuppressMessage("Style", "IDE0251:Make member 'readonly'")]
     public Color Color => Color.FromArgb(
                 (int)(0x000000FFU & Dword),
                 (int)(0x0000FF00U & Dword) >> 8,
@@ -148,16 +154,11 @@ internal class LogFont
 }
 
 [StructLayout(LayoutKind.Sequential)]
-public struct POINT : IEquatable<POINT>
+[SuppressMessage("Style", "IDE0251:Make member 'readonly'")]
+public struct POINT(int x, int y) : IEquatable<POINT>
 {
-    public int X;
-    public int Y;
-
-    public POINT(int x, int y)
-    {
-        X = x;
-        Y = y;
-    }
+    public int X = x;
+    public int Y = y;
 
     public bool Equals(POINT other)
     {
@@ -180,6 +181,7 @@ public struct POINT : IEquatable<POINT>
 }
 
 [StructLayout(LayoutKind.Sequential)]
+[SuppressMessage("Style", "IDE0250:Make struct 'readonly'")]
 public struct RECT
 {
     public readonly int Left;
@@ -203,9 +205,13 @@ public struct SIZE()
 
 public struct MESSAGE
 {
-    public IntPtr HWnd { readonly get; set; }
+    public nint HWnd { readonly get; set; }
+
     public int Msg { readonly get; set; }
-    public IntPtr WParam { readonly get; set; }
-    public IntPtr LParam { readonly get; set; }
-    public IntPtr Result { readonly get; set; }
+
+    public nint WParam { readonly get; set; }
+
+    public nint LParam { readonly get; set; }
+
+    public nint Result { readonly get; set; }
 }

@@ -1,46 +1,44 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
 public interface IKnownFolder : IDisposable, IEnumerable<ShellObject>
 {
-    string CanonicalName { get; }
+    public string CanonicalName { get; }
 
-    FolderCategory Category { get; }
+    public FolderCategory Category { get; }
 
-    DefinitionOptions DefinitionOptions { get; }
+    public DefinitionOptions DefinitionOptions { get; }
 
-    string Description { get; }
+    public string Description { get; }
 
-    FileAttributes FileAttributes { get; }
+    public FileAttributes FileAttributes { get; }
 
-    Guid FolderId { get; }
+    public Guid FolderId { get; }
 
-    string FolderType { get; }
+    public string FolderType { get; }
 
-    Guid FolderTypeId { get; }
+    public Guid FolderTypeId { get; }
 
-    string LocalizedName { get; }
+    public string LocalizedName { get; }
 
-    string LocalizedNameResourceId { get; }
+    public string LocalizedNameResourceId { get; }
 
-    Guid ParentId { get; }
+    public Guid ParentId { get; }
 
-    string ParsingName { get; }
+    public string ParsingName { get; }
 
-    string Path { get; }
+    public string Path { get; }
 
-    bool PathExists { get; }
+    public bool PathExists { get; }
 
-    RedirectionCapability Redirection { get; }
+    public RedirectionCapability Redirection { get; }
 
-    string RelativePath { get; }
+    public string RelativePath { get; }
 
-    string Security { get; }
+    public string Security { get; }
 
-    string Tooltip { get; }
+    public string Tooltip { get; }
 
-    string TooltipResourceId { get; }
+    public string TooltipResourceId { get; }
 }

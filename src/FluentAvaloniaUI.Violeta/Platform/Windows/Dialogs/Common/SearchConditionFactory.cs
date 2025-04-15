@@ -1,7 +1,10 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Globalization;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public static class SearchConditionFactory
 {
@@ -40,10 +43,8 @@ public static class SearchConditionFactory
 
     public static SearchCondition CreateLeafCondition(string propertyName, string value, SearchConditionOperation operation)
     {
-        using (var propVar = new PropVariant(value))
-        {
-            return CreateLeafCondition(propertyName, propVar, null!, operation);
-        }
+        using PropVariant propVar = new(value);
+        return CreateLeafCondition(propertyName, propVar, null!, operation);
     }
 
     public static SearchCondition CreateLeafCondition(string propertyName, DateTime value, SearchConditionOperation operation)

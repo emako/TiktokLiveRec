@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.StockIcons;
 
 public class StockIcons
 {
@@ -14,7 +11,7 @@ public class StockIcons
     {
         stockIconCache = new Dictionary<StockIconIdentifier, StockIcon>();
 
-        var allIdentifiers = Enum.GetValues(typeof(StockIconIdentifier));
+        var allIdentifiers = Enum.GetValues<StockIconIdentifier>();
 
         foreach (StockIconIdentifier id in allIdentifiers)
         {
@@ -30,7 +27,7 @@ public class StockIcons
 
         stockIconCache = new Dictionary<StockIconIdentifier, StockIcon>();
 
-        var allIdentifiers = Enum.GetValues(typeof(StockIconIdentifier));
+        var allIdentifiers = Enum.GetValues<StockIconIdentifier>();
 
         foreach (StockIconIdentifier id in allIdentifiers)
         {

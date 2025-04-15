@@ -1,8 +1,12 @@
-using System;
-using System.IO;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 #pragma warning disable IDE0059
 
@@ -50,18 +54,18 @@ internal static class ShellHelper
             pszPath = 0;
         }
 
-        return path;
+        return path!;
     }
 
     internal static nint PidlFromParsingName(string name)
     {
         var retCode = Shell32.SHParseDisplayName(
-            name, 0, out nint pidl, 0,
-            out _);
+            name, 0, out nint pidl, 0, out _);
 
         return (CoreErrorHelper.Succeeded(retCode) ? pidl : 0);
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>")]
     internal static nint PidlFromShellItem(IShellItem nativeShellItem)
     {
         var unknown = Marshal.GetIUnknownForObject(nativeShellItem);

@@ -1,6 +1,4 @@
-using System;
-
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
 [Flags]
 public enum DefinitionOptions

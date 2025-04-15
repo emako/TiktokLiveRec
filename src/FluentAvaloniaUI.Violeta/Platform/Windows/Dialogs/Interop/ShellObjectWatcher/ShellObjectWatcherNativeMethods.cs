@@ -1,9 +1,14 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellObjectWatcher;
 
 [StructLayout(LayoutKind.Sequential)]
+[SuppressMessage("Style", "IDE0251:Make member 'readonly'")]
 public struct Message
 {
     private readonly nint windowHandle;
@@ -47,6 +52,7 @@ public struct Message
 
     public override bool Equals(object obj) => (obj != null && obj is Message) ? this == (Message)obj : false;
 
+    [SuppressMessage("Style", "IDE0070:Use 'System.HashCode'")]
     public override int GetHashCode()
     {
         var hash = WindowHandle.GetHashCode();
@@ -80,6 +86,7 @@ internal struct WindowClassEx
     internal nint SmallIconHandle;
 }
 
+[SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]
 internal static class ShellObjectWatcherNativeMethods
 {
     public delegate int WndProcDelegate(nint hwnd, uint msg, nint wparam, nint lparam);
@@ -126,6 +133,5 @@ internal static class ShellObjectWatcherNativeMethods
 
     [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
     public static extern uint RegisterClassEx(
-        ref WindowClassEx windowClass
-        );
+        ref WindowClassEx windowClass);
 }

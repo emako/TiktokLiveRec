@@ -1,4 +1,4 @@
-﻿namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 internal static class DialogsDefaults
 {

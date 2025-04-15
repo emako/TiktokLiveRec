@@ -1,7 +1,6 @@
-﻿using System;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Taskbar;
 
 public enum ThumbnailAlphaType
 {

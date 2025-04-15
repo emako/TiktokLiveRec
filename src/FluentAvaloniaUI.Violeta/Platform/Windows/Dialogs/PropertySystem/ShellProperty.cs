@@ -1,11 +1,16 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Natives;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
-#pragma warning disable CS8618
-#pragma warning disable IDE0059
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 public class ShellProperty<T> : IShellProperty
 {
@@ -58,6 +63,8 @@ public class ShellProperty<T> : IShellProperty
 
     public PropertyKey PropertyKey => propertyKey;
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
+    [SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value")]
     public object ValueAsObject
     {
         get
@@ -122,9 +129,10 @@ public class ShellProperty<T> : IShellProperty
         if (!CoreErrorHelper.Succeeded(hr))
             throw new ShellException(hr);
 
-        return formattedString;
+        return formattedString!;
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     private void GetImageReference()
     {
         var store = ShellPropertyCollection.CreateDefaultPropertyStore(ParentShellObject);
@@ -148,6 +156,7 @@ public class ShellProperty<T> : IShellProperty
         }
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     private void StorePropVariantValue(PropVariant propVar)
     {
         var guid = new Guid(ShellIIDGuid.IPropertyStore);
@@ -169,7 +178,7 @@ public class ShellProperty<T> : IShellProperty
 
             if (!AllowSetTruncatedValue && (int)result == ShellNativeMethods.InPlaceStringTruncated)
             {
-                throw new ArgumentOutOfRangeException("propVar", LocalizedMessages.ShellPropertyValueTruncated);
+                throw new ArgumentOutOfRangeException(nameof(propVar), LocalizedMessages.ShellPropertyValueTruncated);
             }
 
             if (!CoreErrorHelper.Succeeded(result))

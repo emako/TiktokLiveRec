@@ -1,4 +1,6 @@
-namespace MicaSetup.Shell.Dialogs;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 #pragma warning disable CS8618
 
@@ -41,11 +43,9 @@ public class ShellPropertyEnumType
         {
             if (minValue == null)
             {
-                using (var propVar = new PropVariant())
-                {
-                    NativePropertyEnumType.GetRangeMinValue(propVar);
-                    minValue = propVar.Value;
-                }
+                using PropVariant propVar = new();
+                NativePropertyEnumType.GetRangeMinValue(propVar);
+                minValue = propVar.Value;
             }
             return minValue;
         }
@@ -57,11 +57,9 @@ public class ShellPropertyEnumType
         {
             if (setValue == null)
             {
-                using (var propVar = new PropVariant())
-                {
-                    NativePropertyEnumType.GetRangeSetValue(propVar);
-                    setValue = propVar.Value;
-                }
+                using PropVariant propVar = new();
+                NativePropertyEnumType.GetRangeSetValue(propVar);
+                setValue = propVar.Value;
             }
             return setValue;
         }
@@ -73,11 +71,9 @@ public class ShellPropertyEnumType
         {
             if (enumerationValue == null)
             {
-                using (var propVar = new PropVariant())
-                {
-                    NativePropertyEnumType.GetValue(propVar);
-                    enumerationValue = propVar.Value;
-                }
+                using PropVariant propVar = new();
+                NativePropertyEnumType.GetValue(propVar);
+                enumerationValue = propVar.Value;
             }
             return enumerationValue;
         }

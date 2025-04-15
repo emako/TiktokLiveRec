@@ -1,8 +1,11 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
 #pragma warning disable CS8618
 
@@ -87,6 +90,7 @@ public class FileSystemKnownFolder : ShellFileSystemFolder, IKnownFolder, IDispo
         }
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     protected override void Dispose(bool disposing)
     {
         if (disposing)

@@ -1,6 +1,6 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
 
 public class ShellObjectNotificationEventArgs : EventArgs
 {

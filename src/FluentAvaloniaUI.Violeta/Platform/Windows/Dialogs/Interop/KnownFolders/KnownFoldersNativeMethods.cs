@@ -1,8 +1,9 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
+using System;
 using System.Runtime.InteropServices;
 using System.Security;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 
 [SuppressUnmanagedCodeSecurity]
 internal static class KnownFoldersSafeNativeMethods

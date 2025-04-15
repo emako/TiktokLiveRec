@@ -1,6 +1,7 @@
-﻿using System.Diagnostics;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
+using System.Diagnostics;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 public class CommonFileDialogSeparator : CommonFileDialogControl
 {

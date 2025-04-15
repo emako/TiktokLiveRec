@@ -1,11 +1,16 @@
 using Avalonia.Controls.ApplicationLifetimes;
 using FluentAvalonia.UI.Violeta.Platform.Windows;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ExplorerBrowser;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 public abstract class CommonFileDialog : IDialogControlHost, IDisposable
 {

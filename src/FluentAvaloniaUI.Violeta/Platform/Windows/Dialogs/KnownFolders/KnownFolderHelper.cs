@@ -1,17 +1,22 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
 public static class KnownFolderHelper
 {
+    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance")]
     public static IKnownFolder FromCanonicalName(string canonicalName)
     {
         var knownFolderManager = (IKnownFolderManager)new KnownFolderManagerClass();
 
         knownFolderManager.GetFolderByName(canonicalName, out var knownFolderNative);
         var kf = KnownFolderHelper.GetKnownFolder(knownFolderNative);
-        return kf ?? throw new ArgumentException(LocalizedMessages.ShellInvalidCanonicalName, "canonicalName");
+        return kf ?? throw new ArgumentException(LocalizedMessages.ShellInvalidCanonicalName, nameof(canonicalName));
     }
 
     public static IKnownFolder FromKnownFolderId(Guid knownFolderId)
@@ -22,15 +27,12 @@ public static class KnownFolderHelper
         if (hr != HResult.Ok) { throw new ShellException(hr); }
 
         var kf = GetKnownFolder(knownFolderNative);
-        return kf ?? throw new ArgumentException(LocalizedMessages.KnownFolderInvalidGuid, "knownFolderId");
+        return kf ?? throw new ArgumentException(LocalizedMessages.KnownFolderInvalidGuid, nameof(knownFolderId));
     }
 
     public static IKnownFolder FromParsingName(string parsingName)
     {
-        if (parsingName == null)
-        {
-            throw new ArgumentNullException("parsingName");
-        }
+        ArgumentNullException.ThrowIfNull(parsingName);
 
         nint pidl = 0;
         nint pidl2 = 0;
@@ -41,13 +43,13 @@ public static class KnownFolderHelper
 
             if (pidl == 0)
             {
-                throw new ArgumentException(LocalizedMessages.KnownFolderParsingName, "parsingName");
+                throw new ArgumentException(LocalizedMessages.KnownFolderParsingName, nameof(parsingName));
             }
 
-            var knownFolderNative = KnownFolderHelper.FromPIDL(pidl);
+            var knownFolderNative = FromPIDL(pidl);
             if (knownFolderNative != null)
             {
-                var kf = KnownFolderHelper.GetKnownFolder(knownFolderNative);
+                var kf = GetKnownFolder(knownFolderNative);
                 return kf ?? throw new ArgumentException(LocalizedMessages.KnownFolderParsingName, "parsingName");
             }
 
@@ -55,10 +57,10 @@ public static class KnownFolderHelper
 
             if (pidl2 == 0)
             {
-                throw new ArgumentException(LocalizedMessages.KnownFolderParsingName, "parsingName");
+                throw new ArgumentException(LocalizedMessages.KnownFolderParsingName, nameof(parsingName));
             }
 
-            var kf2 = KnownFolderHelper.GetKnownFolder(KnownFolderHelper.FromPIDL(pidl));
+            var kf2 = GetKnownFolder(FromPIDL(pidl));
             return kf2 ?? throw new ArgumentException(LocalizedMessages.KnownFolderParsingName, "parsingName");
         }
         finally
@@ -70,6 +72,7 @@ public static class KnownFolderHelper
 
     public static IKnownFolder FromPath(string path) => KnownFolderHelper.FromParsingName(path);
 
+    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance")]
     internal static IKnownFolder FromKnownFolderIdInternal(Guid knownFolderId)
     {
         var knownFolderManager = (IKnownFolderManager)new KnownFolderManagerClass();

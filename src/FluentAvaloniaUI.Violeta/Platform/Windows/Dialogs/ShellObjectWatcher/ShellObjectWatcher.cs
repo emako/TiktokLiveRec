@@ -1,8 +1,8 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.ComponentModel;
-using System.Threading;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
 
 public class ShellObjectWatcher : IDisposable
 {
@@ -16,7 +16,7 @@ public class ShellObjectWatcher : IDisposable
     private uint _registrationId;
     private volatile bool _running;
 
-    private readonly SynchronizationContext _context = SynchronizationContext.Current;
+    private readonly SynchronizationContext _context = SynchronizationContext.Current!;
 
     public ShellObjectWatcher(ShellObject shellObject, bool recursive)
     {
@@ -26,7 +26,7 @@ public class ShellObjectWatcher : IDisposable
             SynchronizationContext.SetSynchronizationContext(_context);
         }
 
-        _shellObject = shellObject ?? throw new ArgumentNullException("shellObject");
+        _shellObject = shellObject ?? throw new ArgumentNullException(nameof(shellObject));
         _recursive = recursive;
 
         var result = MessageListenerFilter.Register(OnWindowMessageReceived);
@@ -44,7 +44,7 @@ public class ShellObjectWatcher : IDisposable
     {
         if (Running) { return; }
 
-        var entry = new SHChangeNotifyEntry
+        SHChangeNotifyEntry entry = new()
         {
             recursively = _recursive,
 
@@ -97,7 +97,7 @@ public class ShellObjectWatcher : IDisposable
     protected virtual void ProcessChangeNotificationEvent(WindowMessageEventArgs e)
     {
         if (!Running) { return; }
-        if (e == null) { throw new ArgumentNullException("e"); }
+        ArgumentNullException.ThrowIfNull(e);
 
         var notifyLock = new ChangeNotifyLock(e.Message);
         ShellObjectNotificationEventArgs args = notifyLock.ChangeType switch

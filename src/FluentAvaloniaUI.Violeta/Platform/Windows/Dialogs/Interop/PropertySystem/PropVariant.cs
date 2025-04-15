@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 
 [StructLayout(LayoutKind.Explicit)]
 public sealed class PropVariant : IDisposable
@@ -156,8 +156,9 @@ public sealed class PropVariant : IDisposable
         }
     }
 
-    private static readonly Dictionary<Type, Func<object, PropVariant>> _cache = new();
+    private static readonly Dictionary<Type, Func<object, PropVariant>> _cache = [];
 
+    [SuppressMessage("Style", "IDE0330:Use 'System.Threading.Lock'")]
     private static readonly object _padlock = new();
 
     private static Func<object, PropVariant> GetDynamicConstructor(Type type)
@@ -166,8 +167,7 @@ public sealed class PropVariant : IDisposable
         {
             if (!_cache.TryGetValue(type, out var action))
             {
-                System.Reflection.ConstructorInfo constructor = typeof(PropVariant)
-                    .GetConstructor(new Type[] { type });
+                ConstructorInfo? constructor = typeof(PropVariant).GetConstructor([type]);
 
                 if (constructor == null)
                 {
@@ -196,6 +196,7 @@ public sealed class PropVariant : IDisposable
     private readonly Blob _blob;
 
     [FieldOffset(8)]
+    [SuppressMessage("Style", "IDE0044:Add readonly modifier")]
     private nint _ptr;
 
     [FieldOffset(8)]
@@ -236,7 +237,7 @@ public sealed class PropVariant : IDisposable
     {
         if (value == null)
         {
-            throw new ArgumentException(LocalizedMessages.PropVariantNullString, "value");
+            throw new ArgumentException(LocalizedMessages.PropVariantNullString, nameof(value));
         }
 
         _valueType = (ushort)VarEnum.VT_LPWSTR;
@@ -277,10 +278,12 @@ public sealed class PropVariant : IDisposable
 
     public bool IsNullOrEmpty => (_valueType == (ushort)VarEnum.VT_EMPTY || _valueType == (ushort)VarEnum.VT_NULL);
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     public object Value
     {
         get
         {
+#pragma warning disable CS8603 // Possible null reference return.
             return (VarEnum)_valueType switch
             {
                 VarEnum.VT_I1 => _sbyte,
@@ -320,6 +323,7 @@ public sealed class PropVariant : IDisposable
                 (VarEnum.VT_VECTOR | VarEnum.VT_DECIMAL) => GetVector<decimal>(),
                 _ => null!,
             };
+#pragma warning restore CS8603 // Possible null reference return.
         }
     }
 
@@ -337,6 +341,7 @@ public sealed class PropVariant : IDisposable
         return ft;
     }
 
+    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance")]
     private object GetBlobData()
     {
         byte[] blobData = new byte[_int32];
@@ -371,11 +376,12 @@ public sealed class PropVariant : IDisposable
         return array;
     }
 
+    [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance")]
     private static Array CrackSingleDimSafeArray(nint psa)
     {
         uint cDims = PropVariantNativeMethods.SafeArrayGetDim(psa);
         if (cDims != 1)
-            throw new ArgumentException(LocalizedMessages.PropVariantMultiDimArray, "psa");
+            throw new ArgumentException(LocalizedMessages.PropVariantMultiDimArray, nameof(psa));
 
         int lBound = PropVariantNativeMethods.SafeArrayGetLBound(psa, 1U);
         int uBound = PropVariantNativeMethods.SafeArrayGetUBound(psa, 1U);

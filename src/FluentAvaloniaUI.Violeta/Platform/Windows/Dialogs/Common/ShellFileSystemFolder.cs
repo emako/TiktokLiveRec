@@ -1,6 +1,6 @@
-using System.IO;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public class ShellFileSystemFolder : ShellFolder
 {

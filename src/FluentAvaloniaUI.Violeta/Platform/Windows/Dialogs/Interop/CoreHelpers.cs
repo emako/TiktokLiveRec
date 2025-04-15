@@ -1,9 +1,11 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Natives;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 
+[SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 public static class CoreHelpers
 {
     public static bool RunningOnVista => Environment.OSVersion.Version.Major >= 6;

@@ -1,10 +1,14 @@
-using System.Collections.Generic;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CA2263 // Prefer generic overload when type is known
+#pragma warning disable CS8605 // Unboxing a possibly null value.
 
-public static class KnownFolders
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
+
+public static class KnownFoldersProvider
 {
     public static ICollection<IKnownFolder> All => GetAllFolders();
 
@@ -333,7 +337,7 @@ public static class KnownFolders
 
     private static ReadOnlyCollection<IKnownFolder> GetAllFolders()
     {
-        IList<IKnownFolder> foldersList = new List<IKnownFolder>();
+        IList<IKnownFolder> foldersList = [];
 
         nint folders = 0;
 

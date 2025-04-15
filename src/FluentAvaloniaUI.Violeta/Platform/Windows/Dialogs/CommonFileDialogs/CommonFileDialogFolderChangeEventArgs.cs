@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 public class CommonFileDialogFolderChangeEventArgs : CancelEventArgs
 {

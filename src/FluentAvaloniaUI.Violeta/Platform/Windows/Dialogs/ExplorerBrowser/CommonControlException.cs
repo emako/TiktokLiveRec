@@ -1,7 +1,7 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ExplorerBrowser;
 
 [Serializable]
 public class CommonControlException : COMException
@@ -30,7 +30,9 @@ public class CommonControlException : COMException
     protected CommonControlException(
         System.Runtime.Serialization.SerializationInfo info,
         System.Runtime.Serialization.StreamingContext context)
+#pragma warning disable SYSLIB0051 // Type or member is obsolete
         : base(info, context)
+#pragma warning restore SYSLIB0051 // Type or member is obsolete
     {
     }
 }

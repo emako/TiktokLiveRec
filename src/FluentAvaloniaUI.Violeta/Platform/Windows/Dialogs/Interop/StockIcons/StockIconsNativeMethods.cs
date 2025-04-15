@@ -1,7 +1,10 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.StockIcons;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.StockIcons;
 
+[SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]
 internal static class StockIconsNativeMethods
 {
     [Flags]
@@ -17,14 +20,13 @@ internal static class StockIconsNativeMethods
     }
 
     [PreserveSig]
-    [DllImport("shell32.dll", CharSet = CharSet.Unicode,
-    ExactSpelling = true, SetLastError = false)]
+    [DllImport("shell32.dll", CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = false)]
     internal static extern HResult SHGetStockIconInfo(
         StockIconIdentifier identifier,
         StockIconOptions flags,
         ref StockIconInfo info);
 
-    [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal struct StockIconInfo
     {
         internal uint StuctureSize;

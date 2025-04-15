@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 internal static class ShellPropertyFactory
 {
-    private static readonly Dictionary<int, Func<PropertyKey, ShellPropertyDescription, object, IShellProperty>> _storeCache = new();
+    private static readonly Dictionary<int, Func<PropertyKey, ShellPropertyDescription, object, IShellProperty>> _storeCache = [];
 
     public static IShellProperty CreateShellProperty(PropertyKey propKey, ShellObject shellObject) => GenericCreateShellProperty(propKey, shellObject);
 
@@ -61,13 +60,8 @@ internal static class ShellPropertyFactory
         var typeHash = GetTypeHash(argTypes);
 
         var ctorInfo = type.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)
-            .FirstOrDefault(x => typeHash == GetTypeHash(x.GetParameters().Select(a => a.ParameterType)));
-
-        if (ctorInfo == null)
-        {
-            throw new ArgumentException(LocalizedMessages.ShellPropertyFactoryConstructorNotFound, "type");
-        }
-
+            .FirstOrDefault(x => typeHash == GetTypeHash(x.GetParameters().Select(a => a.ParameterType)))
+            ?? throw new ArgumentException(LocalizedMessages.ShellPropertyFactoryConstructorNotFound, nameof(type));
         var key = Expression.Parameter(argTypes[0], "propKey");
         var desc = Expression.Parameter(argTypes[1], "desc");
         var third = Expression.Parameter(typeof(object), "third");
@@ -91,7 +85,7 @@ internal static class ShellPropertyFactory
 
         if (!_storeCache.TryGetValue(hash, out var ctor))
         {
-            Type[] argTypes = { typeof(PropertyKey), typeof(ShellPropertyDescription), thirdType };
+            Type[] argTypes = [typeof(PropertyKey), typeof(ShellPropertyDescription), thirdType];
             ctor = ExpressConstructor(type, argTypes);
             _storeCache.Add(hash, ctor);
         }

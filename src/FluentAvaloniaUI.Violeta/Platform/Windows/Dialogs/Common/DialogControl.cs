@@ -1,6 +1,9 @@
 using System.Diagnostics;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public abstract class DialogControl
 {

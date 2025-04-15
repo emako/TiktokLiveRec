@@ -1,6 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 
 internal static class ShellNativeMethods
 {
@@ -19,6 +20,8 @@ internal static class ShellNativeMethods
     internal const uint SetShield = 0x0000160C;
 }
 
+[SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible")]
+[SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time", Justification = "<Pending>")]
 public static partial class Shell32
 {
     [DllImport("shell32.dll", CharSet = CharSet.None)]
@@ -110,19 +113,13 @@ public static partial class Shell32
 }
 
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-public struct FilterSpec
+public struct FilterSpec(string name, string spec)
 {
     [MarshalAs(UnmanagedType.LPWStr)]
-    public string Name;
+    public string Name = name;
 
     [MarshalAs(UnmanagedType.LPWStr)]
-    public string Spec;
-
-    public FilterSpec(string name, string spec)
-    {
-        Name = name;
-        Spec = spec;
-    }
+    public string Spec = spec;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -142,6 +139,7 @@ public struct ShellNotifyStruct
 };
 
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+[SuppressMessage("Style", "IDE0250:Make struct 'readonly'")]
 public struct ThumbnailId
 {
     [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 16)]
@@ -264,6 +262,7 @@ public enum LibraryManageDialogOptions
 };
 
 [Flags]
+[SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 public enum LibraryOptions
 {
     Default = 0,
@@ -288,6 +287,7 @@ public enum ShellChangeNotifyEventSource
 }
 
 [Flags]
+[SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 public enum ShellFileGetAttributesOptions
 {
     CanCopy = 0x00000001,
@@ -344,6 +344,7 @@ public enum ShellFolderEnumerationOptions : ushort
     EnableAsync = 0x8000,
 }
 
+[SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 public enum ShellItemAttributeOptions
 {
     And = 0x00000001,

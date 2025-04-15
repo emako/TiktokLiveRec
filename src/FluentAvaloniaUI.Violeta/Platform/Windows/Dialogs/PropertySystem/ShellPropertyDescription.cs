@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8601 // Possible null reference assignment.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
-#pragma warning disable CS8618
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
+[SuppressMessage("Performance", "CA1806:Do not ignore method results")]
 public class ShellPropertyDescription : IDisposable
 {
     private PropertyAggregationType? aggregationTypes;
@@ -49,7 +53,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return aggregationTypes.HasValue ? aggregationTypes.Value : default(PropertyAggregationType);
+            return aggregationTypes ?? default;
         }
     }
 
@@ -80,7 +84,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return columnState.HasValue ? columnState.Value : default(PropertyColumnStateOptions);
+            return columnState ?? default;
         }
     }
 
@@ -99,7 +103,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return conditionOperation.HasValue ? conditionOperation.Value : default(PropertyConditionOperation);
+            return conditionOperation ?? default;
         }
     }
 
@@ -118,7 +122,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return conditionType.HasValue ? conditionType.Value : default(PropertyConditionType);
+            return conditionType ?? default;
         }
     }
 
@@ -136,7 +140,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return defaultColumWidth.HasValue ? defaultColumWidth.Value : default(uint);
+            return defaultColumWidth ?? default;
         }
     }
 
@@ -174,7 +178,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return displayType.HasValue ? displayType.Value : default(PropertyDisplayType);
+            return displayType ?? default;
         }
     }
 
@@ -211,7 +215,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return groupingRange.HasValue ? groupingRange.Value : default(PropertyGroupingRange);
+            return groupingRange ?? default;
         }
     }
 
@@ -263,7 +267,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return sortDescription.HasValue ? sortDescription.Value : default(PropertySortDescription);
+            return sortDescription ?? default;
         }
     }
 
@@ -275,10 +279,10 @@ public class ShellPropertyDescription : IDisposable
             {
                 var hr = NativePropertyDescription.GetTypeFlags(PropertyTypeOptions.MaskAll, out var tempFlags);
 
-                propertyTypeFlags = CoreErrorHelper.Succeeded(hr) ? tempFlags : default(PropertyTypeOptions);
+                propertyTypeFlags = CoreErrorHelper.Succeeded(hr) ? tempFlags : default;
             }
 
-            return propertyTypeFlags.HasValue ? propertyTypeFlags.Value : default(PropertyTypeOptions);
+            return propertyTypeFlags ?? default;
         }
     }
 
@@ -309,7 +313,7 @@ public class ShellPropertyDescription : IDisposable
                 }
             }
 
-            return varEnumType.HasValue ? varEnumType.Value : default(VarEnum);
+            return varEnumType ?? default;
         }
     }
 
@@ -321,10 +325,10 @@ public class ShellPropertyDescription : IDisposable
             {
                 var hr = NativePropertyDescription.GetViewFlags(out var tempFlags);
 
-                propertyViewFlags = CoreErrorHelper.Succeeded(hr) ? tempFlags : default(PropertyViewOptions);
+                propertyViewFlags = CoreErrorHelper.Succeeded(hr) ? tempFlags : default;
             }
 
-            return propertyViewFlags.HasValue ? propertyViewFlags.Value : default(PropertyViewOptions);
+            return propertyViewFlags ?? default;
         }
     }
 
@@ -363,9 +367,10 @@ public class ShellPropertyDescription : IDisposable
             }
         }
 
-        return label;
+        return label!;
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     protected virtual void Dispose(bool disposing)
     {
         if (nativePropertyDescription != null)

@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 #pragma warning disable CS8601
 #pragma warning disable CS8618
@@ -17,13 +15,13 @@ public sealed class ShellLibrary : ShellContainer, IList<ShellFileSystemFolder>
     internal const string FileExtension = ".library-ms";
 
     private static readonly Guid[] FolderTypesGuids =
-    {
+    [
         new Guid(ShellKFIDGuid.GenericLibrary),
         new Guid(ShellKFIDGuid.DocumentsLibrary),
         new Guid(ShellKFIDGuid.MusicLibrary),
         new Guid(ShellKFIDGuid.PicturesLibrary),
         new Guid(ShellKFIDGuid.VideosLibrary)
-    };
+    ];
 
     private readonly IKnownFolder knownFolder;
     private INativeShellLibrary nativeShellLibrary;
@@ -289,7 +287,7 @@ public sealed class ShellLibrary : ShellContainer, IList<ShellFileSystemFolder>
     {
         CoreHelpers.ThrowIfNotWin7();
 
-        var kf = KnownFolders.Libraries;
+        var kf = KnownFoldersProvider.Libraries;
         var librariesFolderPath = (kf != null) ? kf.Path : string.Empty;
 
         var guid = new Guid(ShellIIDGuid.IShellItem);

@@ -1,6 +1,7 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Collections.ObjectModel;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 public class CommonFileDialogFilterCollection : Collection<CommonFileDialogFilter>
 {

@@ -1,7 +1,13 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8604 // Possible null reference argument.
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 #pragma warning disable CS8618
 
@@ -58,6 +64,7 @@ public class ShellPropertyWriter : IDisposable
         private set => parentShellObject = value;
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     public void Close()
     {
         if (writablePropStore != null)
@@ -79,6 +86,7 @@ public class ShellPropertyWriter : IDisposable
 
     public void WriteProperty(PropertyKey key, object value) => WriteProperty(key, value, true);
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     public void WriteProperty(PropertyKey key, object value, bool allowTruncatedValue)
     {
         if (writablePropStore == null)
@@ -92,7 +100,7 @@ public class ShellPropertyWriter : IDisposable
             Marshal.ReleaseComObject(writablePropStore);
             writablePropStore = null!;
 
-            throw new ArgumentOutOfRangeException("value", LocalizedMessages.ShellPropertyValueTruncated);
+            throw new ArgumentOutOfRangeException(nameof(value), LocalizedMessages.ShellPropertyValueTruncated);
         }
 
         if (!CoreErrorHelper.Succeeded(result))
@@ -121,7 +129,7 @@ public class ShellPropertyWriter : IDisposable
 
     public void WriteProperty(IShellProperty shellProperty, object value, bool allowTruncatedValue)
     {
-        if (shellProperty == null) { throw new ArgumentNullException("shellProperty"); }
+        ArgumentNullException.ThrowIfNull(shellProperty);
         WriteProperty(shellProperty.PropertyKey, value, allowTruncatedValue);
     }
 
@@ -129,7 +137,7 @@ public class ShellPropertyWriter : IDisposable
 
     public void WriteProperty<T>(ShellProperty<T> shellProperty, T value, bool allowTruncatedValue)
     {
-        if (shellProperty == null) { throw new ArgumentNullException("shellProperty"); }
+        ArgumentNullException.ThrowIfNull(shellProperty);
         WriteProperty(shellProperty.PropertyKey, value!, allowTruncatedValue);
     }
 

@@ -1,6 +1,8 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 [Serializable]
 public class ShellException : ExternalException
@@ -9,7 +11,8 @@ public class ShellException : ExternalException
     {
     }
 
-    public ShellException(string message) : base(message)
+    public ShellException(string message)
+        : base(message)
     {
     }
 
@@ -18,7 +21,8 @@ public class ShellException : ExternalException
     {
     }
 
-    public ShellException(string message, int errorCode) : base(message, errorCode)
+    public ShellException(string message, int errorCode)
+        : base(message, errorCode)
     {
     }
 
@@ -27,18 +31,20 @@ public class ShellException : ExternalException
     {
     }
 
-    internal ShellException(HResult result) : this((int)result)
+    internal ShellException(HResult result)
+        : this((int)result)
     {
     }
 
-    internal ShellException(string message, HResult errorCode) : this(message, (int)errorCode)
+    internal ShellException(string message, HResult errorCode)
+        : this(message, (int)errorCode)
     {
     }
 
-    protected ShellException(
-        System.Runtime.Serialization.SerializationInfo info,
-        System.Runtime.Serialization.StreamingContext context)
+    protected ShellException(SerializationInfo info, StreamingContext context)
+#pragma warning disable SYSLIB0051 // Type or member is obsolete
         : base(info, context)
+#pragma warning restore SYSLIB0051 // Type or member is obsolete
     {
     }
 }

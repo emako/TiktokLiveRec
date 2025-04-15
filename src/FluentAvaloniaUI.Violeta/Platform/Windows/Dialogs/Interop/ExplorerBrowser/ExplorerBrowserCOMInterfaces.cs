@@ -1,11 +1,13 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using static FluentAvalonia.UI.Violeta.Platform.Windows.Natives.User32;
 
 #pragma warning disable CS0108
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ExplorerBrowser;
 
 internal enum CommDlgBrowser2ViewFlags
 {
@@ -14,13 +16,13 @@ internal enum CommDlgBrowser2ViewFlags
     AllowPreviewPane = 0x00000004,
     NoSelectVerb = 0x00000008,
     NoIncludeItem = 0x00000010,
-    IsFolderPicker = 0x00000020
+    IsFolderPicker = 0x00000020,
 }
 
 internal enum CommDlgBrowserNotifyType
 {
     Done = 1,
-    Start = 2
+    Start = 2,
 }
 
 internal enum CommDlgBrowserStateChange
@@ -29,7 +31,7 @@ internal enum CommDlgBrowserStateChange
     KillFocus = 1,
     SelectionChange = 2,
     Rename = 3,
-    StateChange = 4
+    StateChange = 4,
 }
 
 [Flags]
@@ -52,7 +54,7 @@ internal enum ExplorerPaneState
     DefaultOff = 0x00000002,
     StateMask = 0x0000ffff,
     InitialState = 0x00010000,
-    Force = 0x00020000
+    Force = 0x00020000,
 }
 
 [Flags]
@@ -89,9 +91,10 @@ internal enum FolderOptions
     NoBrowserViewState = 0x10000000,
     SubsetGroups = 0x20000000,
     UseSearchFolders = 0x40000000,
-    AllowRightToLeftReading = unchecked((int)0x80000000)
+    AllowRightToLeftReading = unchecked((int)0x80000000),
 }
 
+[SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 internal enum FolderViewMode
 {
     Auto = -1,
@@ -104,7 +107,7 @@ internal enum FolderViewMode
     Tile = 6,
     Thumbstrip = 7,
     Content = 8,
-    Last = 8
+    Last = 8,
 }
 
 internal enum ShellViewGetItemObject
@@ -114,393 +117,396 @@ internal enum ShellViewGetItemObject
     AllView = 0x00000002,
     Checked = 0x00000003,
     TypeMask = 0x0000000F,
-    ViewOrderFlag = unchecked((int)0x80000000)
+    ViewOrderFlag = unchecked((int)0x80000000),
 }
 
-[ComImport,
- Guid(ExplorerBrowserIIDGuid.ICommDlgBrowser3),
- InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[ComImport]
+[Guid(ExplorerBrowserIIDGuid.ICommDlgBrowser3)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface ICommDlgBrowser3
 {
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult OnDefaultCommand(nint ppshv);
+    public HResult OnDefaultCommand(nint ppshv);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult OnStateChange(
+    public HResult OnStateChange(
         nint ppshv,
         CommDlgBrowserStateChange uChange);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult IncludeObject(
+    public HResult IncludeObject(
         nint ppshv,
         nint pidl);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetDefaultMenuText(
+    public HResult GetDefaultMenuText(
         IShellView shellView,
         nint buffer,
         int bufferMaxLength);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetViewFlags(
+    public HResult GetViewFlags(
         [Out] out uint pdwFlags);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult Notify(
+    public HResult Notify(
         nint pshv, CommDlgBrowserNotifyType notifyType);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetCurrentFilter(
+    public HResult GetCurrentFilter(
         StringBuilder pszFileSpec,
         int cchFileSpec);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult OnColumnClicked(
+    public HResult OnColumnClicked(
         IShellView ppshv,
         int iColumn);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult OnPreViewCreated(IShellView ppshv);
+    public HResult OnPreViewCreated(IShellView ppshv);
 }
 
-[ComImport,
- InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
- Guid(ExplorerBrowserIIDGuid.IExplorerBrowser)]
+[ComImport]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[Guid(ExplorerBrowserIIDGuid.IExplorerBrowser)]
 internal interface IExplorerBrowser
 {
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void Initialize(nint hwndParent, [In] ref RECT prc, [In] FolderSettings pfs);
+    public void Initialize(nint hwndParent, [In] ref RECT prc, [In] FolderSettings pfs);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void Destroy();
+    public void Destroy();
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetRect([In, Out] ref nint phdwp, RECT rcBrowser);
+    public void SetRect([In, Out] ref nint phdwp, RECT rcBrowser);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetPropertyBag([MarshalAs(UnmanagedType.LPWStr)] string pszPropertyBag);
+    public void SetPropertyBag([MarshalAs(UnmanagedType.LPWStr)] string pszPropertyBag);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetEmptyText([MarshalAs(UnmanagedType.LPWStr)] string pszEmptyText);
-
-    [PreserveSig]
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult SetFolderSettings(FolderSettings pfs);
+    public void SetEmptyText([MarshalAs(UnmanagedType.LPWStr)] string pszEmptyText);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult Advise(nint psbe, out uint pdwCookie);
+    public HResult SetFolderSettings(FolderSettings pfs);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult Unadvise([In] uint dwCookie);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetOptions([In] ExplorerBrowserOptions dwFlag);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetOptions(out ExplorerBrowserOptions pdwFlag);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void BrowseToIDList(nint pidl, uint uFlags);
+    public HResult Advise(nint psbe, out uint pdwCookie);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult BrowseToObject([MarshalAs(UnmanagedType.IUnknown)] object punk, uint uFlags);
+    public HResult Unadvise([In] uint dwCookie);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void FillFromObject([MarshalAs(UnmanagedType.IUnknown)] object punk, int dwFlags);
+    public void SetOptions([In] ExplorerBrowserOptions dwFlag);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void RemoveAll();
+    public void GetOptions(out ExplorerBrowserOptions pdwFlag);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void BrowseToIDList(nint pidl, uint uFlags);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetCurrentView(ref Guid riid, out nint ppv);
+    public HResult BrowseToObject([MarshalAs(UnmanagedType.IUnknown)] object punk, uint uFlags);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void FillFromObject([MarshalAs(UnmanagedType.IUnknown)] object punk, int dwFlags);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void RemoveAll();
+
+    [PreserveSig]
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public HResult GetCurrentView(ref Guid riid, out nint ppv);
 }
 
-[ComImport,
- Guid(ExplorerBrowserIIDGuid.IExplorerBrowserEvents),
- InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[ComImport]
+[Guid(ExplorerBrowserIIDGuid.IExplorerBrowserEvents)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface IExplorerBrowserEvents
 {
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult OnNavigationPending(nint pidlFolder);
+    public HResult OnNavigationPending(nint pidlFolder);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult OnViewCreated([MarshalAs(UnmanagedType.IUnknown)] object psv);
+    public HResult OnViewCreated([MarshalAs(UnmanagedType.IUnknown)] object psv);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult OnNavigationComplete(nint pidlFolder);
+    public HResult OnNavigationComplete(nint pidlFolder);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult OnNavigationFailed(nint pidlFolder);
+    public HResult OnNavigationFailed(nint pidlFolder);
 }
 
-[ComImport,
- Guid(ExplorerBrowserIIDGuid.IExplorerPaneVisibility),
- InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[ComImport]
+[Guid(ExplorerBrowserIIDGuid.IExplorerPaneVisibility)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 internal interface IExplorerPaneVisibility
 {
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetPaneState(ref Guid explorerPane, out ExplorerPaneState peps);
+    public HResult GetPaneState(ref Guid explorerPane, out ExplorerPaneState peps);
 };
 
-[ComImport,
- Guid(ExplorerBrowserIIDGuid.IFolderView),
- InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[ComImport]
+[Guid(ExplorerBrowserIIDGuid.IFolderView)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface IFolderView
 {
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetCurrentViewMode([Out] out uint pViewMode);
+    public void GetCurrentViewMode([Out] out uint pViewMode);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetCurrentViewMode(uint ViewMode);
+    public void SetCurrentViewMode(uint ViewMode);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetFolder(ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppv);
+    public void GetFolder(ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppv);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void Item(int iItemIndex, out nint ppidl);
+    public void Item(int iItemIndex, out nint ppidl);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void ItemCount(uint uFlags, out int pcItems);
+    public void ItemCount(uint uFlags, out int pcItems);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void Items(uint uFlags, ref Guid riid, [Out, MarshalAs(UnmanagedType.IUnknown)] out object ppv);
+    public void Items(uint uFlags, ref Guid riid, [Out, MarshalAs(UnmanagedType.IUnknown)] out object ppv);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSelectionMarkedItem(out int piItem);
+    public void GetSelectionMarkedItem(out int piItem);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetFocusedItem(out int piItem);
+    public void GetFocusedItem(out int piItem);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetItemPosition(nint pidl, out POINT ppt);
+    public void GetItemPosition(nint pidl, out POINT ppt);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSpacing([Out] out POINT ppt);
+    public void GetSpacing([Out] out POINT ppt);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetDefaultSpacing(out POINT ppt);
+    public void GetDefaultSpacing(out POINT ppt);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetAutoArrange();
+    public void GetAutoArrange();
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SelectItem(int iItem, uint dwFlags);
+    public void SelectItem(int iItem, uint dwFlags);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SelectAndPositionItems(uint cidl, nint apidl, ref POINT apt, uint dwFlags);
+    public void SelectAndPositionItems(uint cidl, nint apidl, ref POINT apt, uint dwFlags);
 }
 
-[ComImport,
- Guid(ExplorerBrowserIIDGuid.IFolderView2),
- InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[ComImport]
+[Guid(ExplorerBrowserIIDGuid.IFolderView2)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface IFolderView2 : IFolderView
 {
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetCurrentViewMode(out uint pViewMode);
+    public HResult GetCurrentViewMode(out uint pViewMode);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetCurrentViewMode(uint ViewMode);
+    public void SetCurrentViewMode(uint ViewMode);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetFolder(ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppv);
+    public void GetFolder(ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppv);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void Item(int iItemIndex, out nint ppidl);
-
-    [PreserveSig]
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult ItemCount(uint uFlags, out int pcItems);
+    public void Item(int iItemIndex, out nint ppidl);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult Items(uint uFlags, ref Guid riid, [Out, MarshalAs(UnmanagedType.IUnknown)] out object ppv);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSelectionMarkedItem(out int piItem);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetFocusedItem(out int piItem);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetItemPosition(nint pidl, out POINT ppt);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSpacing([Out] out POINT ppt);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetDefaultSpacing(out POINT ppt);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetAutoArrange();
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SelectItem(int iItem, uint dwFlags);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SelectAndPositionItems(uint cidl, nint apidl, ref POINT apt, uint dwFlags);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetGroupBy(nint key, bool fAscending);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetGroupBy(ref nint pkey, ref bool pfAscending);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetViewProperty(nint pidl, nint propkey, object propvar);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetViewProperty(nint pidl, nint propkey, out object ppropvar);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetTileViewProperties(nint pidl, [MarshalAs(UnmanagedType.LPWStr)] string pszPropList);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetExtendedTileViewProperties(nint pidl, [MarshalAs(UnmanagedType.LPWStr)] string pszPropList);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetText(int iType, [MarshalAs(UnmanagedType.LPWStr)] string pwszText);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetCurrentFolderFlags(uint dwMask, uint dwFlags);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetCurrentFolderFlags(out uint pdwFlags);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSortColumnCount(out int pcColumns);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetSortColumns(nint rgSortColumns, int cColumns);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSortColumns(out nint rgSortColumns, int cColumns);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetItem(int iItem, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppv);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetVisibleItem(int iStart, bool fPrevious, out int piItem);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSelectedItem(int iStart, out int piItem);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSelection(bool fNoneImpliesFolder, out IShellItemArray ppsia);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetSelectionState(nint pidl, out uint pdwFlags);
-
-    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void InvokeVerbOnSelection([In, MarshalAs(UnmanagedType.LPWStr)] string pszVerb);
+    public HResult ItemCount(uint uFlags, out int pcItems);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult SetViewModeAndIconSize(int uViewMode, int iImageSize);
+    public HResult Items(uint uFlags, ref Guid riid, [Out, MarshalAs(UnmanagedType.IUnknown)] out object ppv);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetSelectionMarkedItem(out int piItem);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetFocusedItem(out int piItem);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetItemPosition(nint pidl, out POINT ppt);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetSpacing([Out] out POINT ppt);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetDefaultSpacing(out POINT ppt);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetAutoArrange();
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SelectItem(int iItem, uint dwFlags);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SelectAndPositionItems(uint cidl, nint apidl, ref POINT apt, uint dwFlags);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SetGroupBy(nint key, bool fAscending);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetGroupBy(ref nint pkey, ref bool pfAscending);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SetViewProperty(nint pidl, nint propkey, object propvar);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetViewProperty(nint pidl, nint propkey, out object ppropvar);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SetTileViewProperties(nint pidl, [MarshalAs(UnmanagedType.LPWStr)] string pszPropList);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SetExtendedTileViewProperties(nint pidl, [MarshalAs(UnmanagedType.LPWStr)] string pszPropList);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SetText(int iType, [MarshalAs(UnmanagedType.LPWStr)] string pwszText);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SetCurrentFolderFlags(uint dwMask, uint dwFlags);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetCurrentFolderFlags(out uint pdwFlags);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetSortColumnCount(out int pcColumns);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void SetSortColumns(nint rgSortColumns, int cColumns);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetSortColumns(out nint rgSortColumns, int cColumns);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetItem(int iItem, ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppv);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetVisibleItem(int iStart, bool fPrevious, out int piItem);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetSelectedItem(int iStart, out int piItem);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetSelection(bool fNoneImpliesFolder, out IShellItemArray ppsia);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void GetSelectionState(nint pidl, out uint pdwFlags);
+
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public void InvokeVerbOnSelection([In, MarshalAs(UnmanagedType.LPWStr)] string pszVerb);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetViewModeAndIconSize(out int puViewMode, out int piImageSize);
+    public HResult SetViewModeAndIconSize(int uViewMode, int iImageSize);
+
+    [PreserveSig]
+    [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
+    public HResult GetViewModeAndIconSize(out int puViewMode, out int piImageSize);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetGroupSubsetCount(uint cVisibleRows);
+    public void SetGroupSubsetCount(uint cVisibleRows);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void GetGroupSubsetCount(out uint pcVisibleRows);
+    public void GetGroupSubsetCount(out uint pcVisibleRows);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void SetRedraw(bool fRedrawOn);
+    public void SetRedraw(bool fRedrawOn);
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void IsMoveInSameFolder();
+    public void IsMoveInSameFolder();
 
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    void DoRename();
+    public void DoRename();
 }
 
-[ComImport,
-Guid(ExplorerBrowserIIDGuid.IInputObject),
-InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[ComImport]
+[Guid(ExplorerBrowserIIDGuid.IInputObject)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 internal interface IInputObject
 {
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult UIActivateIO(bool fActivate, ref MESSAGE pMsg);
+    public HResult UIActivateIO(bool fActivate, ref MESSAGE pMsg);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult HasFocusIO();
+    public HResult HasFocusIO();
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult TranslateAcceleratorIO(ref MESSAGE pMsg);
+    public HResult TranslateAcceleratorIO(ref MESSAGE pMsg);
 };
 
-[ComImport,
- Guid(ExplorerBrowserIIDGuid.IServiceProvider),
- InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[ComImport]
+[Guid(ExplorerBrowserIIDGuid.IServiceProvider)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 internal interface IServiceProvider
 {
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall)]
-    HResult QueryService(ref Guid guidService, ref Guid riid, out nint ppvObject);
+    public HResult QueryService(ref Guid guidService, ref Guid riid, out nint ppvObject);
 };
 
-[ComImport,
- Guid(ExplorerBrowserIIDGuid.IShellView),
- InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[ComImport]
+[Guid(ExplorerBrowserIIDGuid.IShellView)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface IShellView
 {
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetWindow(
+    public HResult GetWindow(
         out nint phwnd);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult ContextSensitiveHelp(
+    public HResult ContextSensitiveHelp(
         bool fEnterMode);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult TranslateAccelerator(
+    public HResult TranslateAccelerator(
         nint pmsg);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult EnableModeless(
+    public HResult EnableModeless(
         bool fEnable);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult UIActivate(
+    public HResult UIActivate(
         uint uState);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult Refresh();
+    public HResult Refresh();
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult CreateViewWindow(
+    public HResult CreateViewWindow(
         [MarshalAs(UnmanagedType.IUnknown)] object psvPrevious,
         nint pfs,
         [MarshalAs(UnmanagedType.IUnknown)] object psb,
@@ -509,42 +515,42 @@ internal interface IShellView
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult DestroyViewWindow();
+    public HResult DestroyViewWindow();
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetCurrentInfo(
+    public HResult GetCurrentInfo(
         out nint pfs);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult AddPropertySheetPages(
+    public HResult AddPropertySheetPages(
         uint dwReserved,
         nint pfn,
         uint lparam);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult SaveViewState();
+    public HResult SaveViewState();
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult SelectItem(
+    public HResult SelectItem(
         nint pidlItem,
         uint uFlags);
 
     [PreserveSig]
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-    HResult GetItemObject(
+    public HResult GetItemObject(
         ShellViewGetItemObject uItem,
         ref Guid riid,
         [MarshalAs(UnmanagedType.IUnknown)] out object ppv);
 }
 
-[ComImport,
- TypeLibType(TypeLibTypeFlags.FCanCreate),
- ClassInterface(ClassInterfaceType.None),
- Guid(ExplorerBrowserCLSIDGuid.ExplorerBrowser)]
+[ComImport]
+[TypeLibType(TypeLibTypeFlags.FCanCreate)]
+[ClassInterface(ClassInterfaceType.None)]
+[Guid(ExplorerBrowserCLSIDGuid.ExplorerBrowser)]
 internal class ExplorerBrowserClass : IExplorerBrowser
 {
     [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]

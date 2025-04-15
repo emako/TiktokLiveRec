@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 internal interface ICommonFileDialogIndexedControls
 {
-    event EventHandler SelectedIndexChanged;
+    public event EventHandler SelectedIndexChanged;
 
-    int SelectedIndex { get; set; }
+    public int SelectedIndex { get; set; }
 
-    void RaiseSelectedIndexChangedEvent();
+    public void RaiseSelectedIndexChangedEvent();
 }

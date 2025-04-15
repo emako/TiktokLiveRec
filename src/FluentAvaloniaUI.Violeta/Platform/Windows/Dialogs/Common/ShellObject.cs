@@ -1,9 +1,17 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8601 // Possible null reference assignment.
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
+#pragma warning disable CS8767 // Nullability of reference types in type of parameter doesn't match implicitly implemented member (possibly because of nullability attributes).
 
-#pragma warning disable CS8618
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public abstract class ShellObject : IDisposable, IEquatable<ShellObject>
 {
@@ -267,6 +275,7 @@ public abstract class ShellObject : IDisposable, IEquatable<ShellObject>
         }
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
     protected virtual void Dispose(bool disposing)
     {
         if (disposing)

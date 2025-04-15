@@ -1,20 +1,21 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 public interface IShellProperty
 {
-    string CanonicalName { get; }
+    public string CanonicalName { get; }
 
-    ShellPropertyDescription Description { get; }
+    public ShellPropertyDescription Description { get; }
 
-    IconReference IconReference { get; }
+    public IconReference IconReference { get; }
 
-    PropertyKey PropertyKey { get; }
+    public PropertyKey PropertyKey { get; }
 
-    object ValueAsObject { get; }
+    public object ValueAsObject { get; }
 
-    Type ValueType { get; }
+    public Type ValueType { get; }
 
-    string FormatForDisplay(PropertyDescriptionFormatOptions format);
+    public string FormatForDisplay(PropertyDescriptionFormatOptions format);
 }

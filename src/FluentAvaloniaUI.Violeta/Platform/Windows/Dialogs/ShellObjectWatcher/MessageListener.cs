@@ -1,10 +1,19 @@
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellObjectWatcher;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Natives;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
-namespace MicaSetup.Shell.Dialogs;
+#pragma warning disable CS8604 // Possible null reference argument.
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
 
 #pragma warning disable CS8618
 
+[SupportedOSPlatform("Windows")]
+[SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]
 internal class MessageListener : IDisposable
 {
     public const uint CreateWindowMessage = (uint)User32.WindowMessage.WM_USER + 1;
@@ -13,13 +22,15 @@ internal class MessageListener : IDisposable
 
     private const string MessageWindowClassName = "MessageListenerClass";
 
+    [SuppressMessage("Style", "IDE0330:Use 'System.Threading.Lock'")]
     private static readonly object _threadlock = new();
+
     private static uint _atom;
     private static Thread _windowThread = null!;
     private static volatile bool _running = false;
 
     private static readonly ShellObjectWatcherNativeMethods.WndProcDelegate wndProc = WndProc;
-    private static readonly Dictionary<IntPtr, MessageListener> _listeners = new();
+    private static readonly Dictionary<IntPtr, MessageListener> _listeners = [];
     private static nint _firstWindowHandle = 0;
 
     private static readonly object _crossThreadWindowLock = new();
@@ -76,6 +87,7 @@ internal class MessageListener : IDisposable
         WindowHandle = _tempHandle;
     }
 
+    [SuppressMessage("Usage", "CA2263:Prefer generic overload when type is known")]
     private static void RegisterWindowClass()
     {
         WindowClassEx classEx = new()
@@ -148,8 +160,7 @@ internal class MessageListener : IDisposable
                 break;
 
             default:
-                MessageListener listener;
-                if (_listeners.TryGetValue(hwnd, out listener))
+                if (_listeners.TryGetValue(hwnd, out MessageListener? listener))
                 {
                     Message message = new(hwnd, msg, wparam, lparam, 0, new POINT());
                     listener.MessageReceived.SafeRaise(listener, new WindowMessageEventArgs(message));

@@ -1,4 +1,9 @@
-namespace MicaSetup.Shell.Dialogs;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+
+#pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
+
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public struct IconReference
 {
@@ -34,14 +39,14 @@ public struct IconReference
         }
 
         moduleName = refParams[0];
-        ResourceId = int.Parse(refParams[1], System.Globalization.CultureInfo.InvariantCulture);
+        ResourceId = int.Parse(refParams[1], CultureInfo.InvariantCulture);
 
         referencePath = refPath;
     }
 
     public string ModuleName
     {
-        get => moduleName;
+        readonly get => moduleName;
         set
         {
             if (string.IsNullOrEmpty(value))
@@ -54,7 +59,7 @@ public struct IconReference
 
     public string ReferencePath
     {
-        get => referencePath;
+        readonly get => referencePath;
         set
         {
             if (string.IsNullOrEmpty(value))
@@ -70,7 +75,7 @@ public struct IconReference
             }
 
             ModuleName = refParams[0];
-            ResourceId = int.Parse(refParams[1], System.Globalization.CultureInfo.InvariantCulture);
+            ResourceId = int.Parse(refParams[1], CultureInfo.InvariantCulture);
 
             referencePath = value;
         }
@@ -84,12 +89,15 @@ public struct IconReference
             (icon1.referencePath == icon2.referencePath) &&
             (icon1.ResourceId == icon2.ResourceId);
 
+    [SuppressMessage("Style", "IDE0251:Make member 'readonly'")]
     public override bool Equals(object obj)
     {
         if (obj == null || obj is not IconReference) { return false; }
         return (this == (IconReference)obj);
     }
 
+    [SuppressMessage("Style", "IDE0070:Use 'System.HashCode'")]
+    [SuppressMessage("Style", "IDE0251:Make member 'readonly'")]
     public override int GetHashCode()
     {
         var hash = moduleName.GetHashCode();

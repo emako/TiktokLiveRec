@@ -1,7 +1,7 @@
-using System.Drawing;
-using System.Runtime.InteropServices;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public class ShellThumbnail
 {
@@ -22,8 +22,6 @@ public class ShellThumbnail
     }
 
     public bool AllowBiggerSize { get; set; }
-
-    //public BitmapSource BitmapSource => GetBitmapSource(CurrentSize);
 
     public SIZE CurrentSize
     {
@@ -49,12 +47,6 @@ public class ShellThumbnail
         }
     }
 
-    //public Bitmap ExtraLargeBitmap => GetBitmap(DefaultIconSize.ExtraLarge, DefaultThumbnailSize.ExtraLarge);
-
-    //public BitmapSource ExtraLargeBitmapSource => GetBitmapSource(DefaultIconSize.ExtraLarge, DefaultThumbnailSize.ExtraLarge);
-
-    //public Icon ExtraLargeIcon => Icon.FromHandle(ExtraLargeBitmap.GetHicon());
-
     public ShellThumbnailFormatOption FormatOption
     {
         get => formatOption;
@@ -70,110 +62,5 @@ public class ShellThumbnail
         }
     }
 
-    //public Icon Icon => Icon.FromHandle(Bitmap.GetHicon());
-
-    //public Bitmap LargeBitmap => GetBitmap(DefaultIconSize.Large, DefaultThumbnailSize.Large);
-
-    //public BitmapSource LargeBitmapSource => GetBitmapSource(DefaultIconSize.Large, DefaultThumbnailSize.Large);
-
-    //public Icon LargeIcon => Icon.FromHandle(LargeBitmap.GetHicon());
-
-    //public Bitmap MediumBitmap => GetBitmap(DefaultIconSize.Medium, DefaultThumbnailSize.Medium);
-
-    //public BitmapSource MediumBitmapSource => GetBitmapSource(DefaultIconSize.Medium, DefaultThumbnailSize.Medium);
-
-    //public Icon MediumIcon => Icon.FromHandle(MediumBitmap.GetHicon());
-
     public ShellThumbnailRetrievalOption RetrievalOption { get; set; }
-
-    //public Bitmap SmallBitmap => GetBitmap(DefaultIconSize.Small, DefaultThumbnailSize.Small);
-
-    //public BitmapSource SmallBitmapSource => GetBitmapSource(DefaultIconSize.Small, DefaultThumbnailSize.Small);
-
-    //public Icon SmallIcon => Icon.FromHandle(SmallBitmap.GetHicon());
-
-    //public Bitmap Bitmap => GetBitmap(CurrentSize);
-
-    private SIIGBF CalculateFlags()
-    {
-        SIIGBF flags = 0x0000;
-
-        if (AllowBiggerSize)
-        {
-            flags |= SIIGBF.BiggerSizeOk;
-        }
-
-        if (RetrievalOption == ShellThumbnailRetrievalOption.CacheOnly)
-        {
-            flags |= SIIGBF.InCacheOnly;
-        }
-        else if (RetrievalOption == ShellThumbnailRetrievalOption.MemoryOnly)
-        {
-            flags |= SIIGBF.MemoryOnly;
-        }
-
-        if (FormatOption == ShellThumbnailFormatOption.IconOnly)
-        {
-            flags |= SIIGBF.IconOnly;
-        }
-        else if (FormatOption == ShellThumbnailFormatOption.ThumbnailOnly)
-        {
-            flags |= SIIGBF.ThumbnailOnly;
-        }
-
-        return flags;
-    }
-
-    //private Bitmap GetBitmap(System.Windows.Size iconOnlySize, System.Windows.Size thumbnailSize) => GetBitmap(FormatOption == ShellThumbnailFormatOption.IconOnly ? iconOnlySize : thumbnailSize);
-
-    //private Bitmap GetBitmap(System.Windows.Size size)
-    //{
-    //    var hBitmap = GetHBitmap(size);
-
-    //    var returnValue = Bitmap.FromHbitmap(hBitmap);
-
-    //    Gdi32.DeleteObject(hBitmap);
-
-    //    return returnValue;
-    //}
-
-    //private BitmapSource GetBitmapSource(System.Windows.Size iconOnlySize, System.Windows.Size thumbnailSize) => GetBitmapSource(FormatOption == ShellThumbnailFormatOption.IconOnly ? iconOnlySize : thumbnailSize);
-
-    //private BitmapSource GetBitmapSource(System.Windows.Size size)
-    //{
-    //    var hBitmap = GetHBitmap(size);
-
-    //    var returnValue = Imaging.CreateBitmapSourceFromHBitmap(
-    //        hBitmap,
-    //        IntPtr.Zero,
-    //        System.Windows.Int32Rect.Empty,
-    //        BitmapSizeOptions.FromEmptyOptions());
-
-    //    Gdi32.DeleteObject(hBitmap);
-
-    //    return returnValue;
-    //}
-
-    private nint GetHBitmap(SIZE size)
-    {
-        var nativeSIZE = new SIZE()
-        {
-            Width = Convert.ToInt32(size.Width),
-            Height = Convert.ToInt32(size.Height)
-        };
-
-        var hr = ((IShellItemImageFactory)shellItemNative).GetImage(nativeSIZE, CalculateFlags(), out nint hbitmap);
-
-        if (hr == HResult.Ok) { return hbitmap; }
-        else if ((uint)hr == 0x8004B200 && FormatOption == ShellThumbnailFormatOption.ThumbnailOnly)
-        {
-            throw new InvalidOperationException(LocalizedMessages.ShellThumbnailDoesNotHaveThumbnail, Marshal.GetExceptionForHR((int)hr));
-        }
-        else if ((uint)hr == 0x80040154)
-        {
-            throw new NotSupportedException(LocalizedMessages.ShellThumbnailNoHandler, Marshal.GetExceptionForHR((int)hr));
-        }
-
-        throw new ShellException(hr);
-    }
 }

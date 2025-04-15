@@ -1,10 +1,9 @@
-﻿using System;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Runtime.InteropServices;
 
-namespace MicaSetup.Shell.Dialogs;
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 public class ShellObjectCollection : IEnumerable, IDisposable, IList<ShellObject>
 {
@@ -101,7 +100,7 @@ public class ShellObjectCollection : IEnumerable, IDisposable, IList<ShellObject
             {
                 if (index == 0)
                 {
-                    idls[index] = ((ShellObject)KnownFolders.Desktop).PIDL;
+                    idls[index] = ((ShellObject)KnownFoldersProvider.Desktop).PIDL;
                 }
                 else
                 {

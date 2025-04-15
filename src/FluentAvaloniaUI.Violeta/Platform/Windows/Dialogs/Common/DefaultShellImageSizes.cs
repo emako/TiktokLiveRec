@@ -1,5 +1,9 @@
-namespace MicaSetup.Shell.Dialogs;
+using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions;
+using System.Runtime.Versioning;
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+
+[SupportedOSPlatform("Windows")]
 internal static class DefaultIconSize
 {
     public static readonly SIZE ExtraLarge = new(256, 256);
