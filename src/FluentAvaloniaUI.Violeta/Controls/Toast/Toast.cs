@@ -14,7 +14,7 @@ public static class Toast
     public static void Info(string message, ToastLocation location = ToastLocation.TopCenter, Thickness offsetMargin = default, int time = ToastConfig.NormalTime)
         => _ = ShowAsync(null!, message, new ToastConfig(ToastIcon.Information, location, time) { Margin = offsetMargin });
 
-    public static void Warn(string message, ToastLocation location = ToastLocation.TopCenter, Thickness offsetMargin = default, int time = ToastConfig.NormalTime)
+    public static void Warning(string message, ToastLocation location = ToastLocation.TopCenter, Thickness offsetMargin = default, int time = ToastConfig.NormalTime)
         => _ = ShowAsync(null!, message, new ToastConfig(ToastIcon.Warning, location, time) { Margin = offsetMargin });
 
     public static void Error(string message, ToastLocation location = ToastLocation.TopCenter, Thickness offsetMargin = default, int time = ToastConfig.NormalTime)

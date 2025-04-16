@@ -8,9 +8,11 @@ using CommunityToolkit.Mvvm.Input;
 using Fischless.Configuration;
 using FluentAvalonia.UI.Violeta.Platform;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+using FluentAvaloniaUI.Violeta.Platform.Windows;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Net;
 using System.Runtime.InteropServices;
 using TiktokLiveRec.Extensions;
 
@@ -319,5 +321,186 @@ public partial class SettingsViewModel : ObservableObject
         //        SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get())
         //    )
         //);
+    }
+
+    [ObservableProperty]
+    private bool isUseKeepAwake = Configurations.IsUseKeepAwake.Get();
+
+    partial void OnIsUseKeepAwakeChanged(bool value)
+    {
+        if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+        {
+            WindowsKeepAwake.SetKeepAwake(value);
+        }
+        Configurations.IsUseKeepAwake.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private bool isUseAutoShutdown = Configurations.IsUseAutoShutdown.Get();
+
+    partial void OnIsUseAutoShutdownChanged(bool value)
+    {
+        Configurations.IsUseAutoShutdown.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private int autoShutdownTimeHour = Configurations.AutoShutdownTime.Get().Split(':')[0].IntParse(fallback: 0);
+
+    partial void OnAutoShutdownTimeHourChanged(int value)
+    {
+        Configurations.AutoShutdownTime.Set($"{value:D2}:{AutoShutdownTimeMinute:D2}");
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private int autoShutdownTimeMinute = Configurations.AutoShutdownTime.Get().Split(':')[1].IntParse(fallback: 0);
+
+    partial void OnAutoShutdownTimeMinuteChanged(int value)
+    {
+        Configurations.AutoShutdownTime.Set($"{AutoShutdownTimeHour:D2}:{value:D2}");
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private bool isUseProxy = Configurations.IsUseProxy.Get();
+
+    partial void OnIsUseProxyChanged(bool value)
+    {
+        Configurations.IsUseProxy.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private string proxyUrl = Configurations.ProxyUrl.Get();
+
+    partial void OnProxyUrlChanged(string value)
+    {
+        Configurations.ProxyUrl.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [RelayCommand]
+    private async Task CheckProxyUrlAsync()
+    {
+        if (string.IsNullOrWhiteSpace(ProxyUrl))
+        {
+            Toast.Error("ProxyErrorOfEmptyUrl".Tr());
+            return;
+        }
+
+        if (!ProxyUrl.Contains(':'))
+        {
+            Toast.Error("ProxyErrorOfMissHostOrPort".Tr());
+            return;
+        }
+
+        string[] proxy = ProxyUrl.Split(':');
+
+        if (proxy.Length < 2)
+        {
+            Toast.Error("ProxyErrorOfFormat".Tr());
+            return;
+        }
+
+        if (!IPAddress.TryParse(proxy[0], out IPAddress? address))
+        {
+            Toast.Error("ProxyErrorOfHostFormatError".Tr());
+            return;
+        }
+
+        if (!int.TryParse(proxy[1], out int port))
+        {
+            Toast.Error("ProxyErrorOfPortFormatError".Tr());
+            return;
+        }
+
+        if (port <= 0 || port > short.MaxValue)
+        {
+            Toast.Error("ProxyErrorOfPortOutOfRange".Tr());
+            return;
+        }
+
+        HttpClientHandler httpClientHandler = new()
+        {
+            Proxy = new WebProxy(address.ToString(), port),
+            UseProxy = true
+        };
+
+        using HttpClient httpClient = new(httpClientHandler);
+
+        try
+        {
+            HttpResponseMessage response = await httpClient.GetAsync("https://www.google.com");
+            response.EnsureSuccessStatusCode();
+
+            Toast.Success("ProxySuccOfStatusCode".Tr(response.StatusCode));
+        }
+        catch (HttpRequestException e)
+        {
+            Toast.Success("ProxyErrorOfExceptionMessage".Tr(e.Message));
+        }
+    }
+
+    [ObservableProperty]
+    private string cookieChina = Configurations.CookieChina.Get();
+
+    partial void OnCookieChinaChanged(string value)
+    {
+        Configurations.CookieChina.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [RelayCommand]
+    [SuppressMessage("Performance", "CA1822:Mark members as static")]
+    private async Task OpenHowToGetCookieChinaAsync()
+    {
+        // TODO: Implement for other platforms
+        //string html = ResourcesProvider.GetString("pack://application:,,,/TiktokLiveRec;component/Assets/GETCOOKIE.html");
+        //string filePath = Path.GetFullPath(ConfigurationSpecialPath.GetPath("GETCOOKIE.html", AppConfig.PackName));
+
+        //File.WriteAllText(filePath, html);
+
+        //// TODO: Implement for other platforms
+        //await Launcher.LaunchUriAsync(new Uri($"file://{filePath}"));
+    }
+
+    [ObservableProperty]
+    private string cookieOversea = Configurations.CookieOversea.Get();
+
+    partial void OnCookieOverseaChanged(string value)
+    {
+        Configurations.CookieOversea.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [RelayCommand]
+    [SuppressMessage("Performance", "CA1822:Mark members as static")]
+    private void OpenHowToGetCookieOversea()
+    {
+        // TODO
+        Toast.Warning("ComingSoon".Tr() + " ...");
+    }
+
+    [ObservableProperty]
+    private string userAgent = Configurations.UserAgent.Get();
+
+    partial void OnUserAgentChanged(string value)
+    {
+        Configurations.UserAgent.Set(value);
+        ConfigurationManager.Save();
+    }
+}
+
+file static class Extensions
+{
+    public static int IntParse(this string value, int fallback = default)
+    {
+        if (int.TryParse(value, out int output))
+        {
+            return output;
+        }
+        return fallback;
     }
 }
