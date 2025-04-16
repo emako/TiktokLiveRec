@@ -1,8 +1,10 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogFilterCollection : Collection<CommonFileDialogFilter>
 {
     internal CommonFileDialogFilterCollection()

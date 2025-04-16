@@ -1,8 +1,10 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
+[SupportedOSPlatform("Windows")]
 public sealed class CommonFileDialogControlCollection<T> : Collection<T> where T : DialogControl
 {
     private readonly IDialogControlHost hostingDialog;

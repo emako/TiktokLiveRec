@@ -1,12 +1,14 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogComboBox : CommonFileDialogProminentControl, ICommonFileDialogIndexedControls
 {
-    private readonly Collection<CommonFileDialogComboBoxItem> items = new Collection<CommonFileDialogComboBoxItem>();
+    private readonly Collection<CommonFileDialogComboBoxItem> items = [];
     private int selectedIndex = -1;
 
     public CommonFileDialogComboBox()

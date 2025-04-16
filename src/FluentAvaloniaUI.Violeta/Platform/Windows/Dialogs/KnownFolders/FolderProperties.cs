@@ -1,7 +1,9 @@
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 internal struct FolderProperties
 {

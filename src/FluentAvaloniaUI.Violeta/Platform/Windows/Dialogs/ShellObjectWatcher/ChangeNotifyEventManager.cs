@@ -1,7 +1,9 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
 
+[SupportedOSPlatform("Windows")]
 internal class ChangeNotifyEventManager
 {
     private static readonly ShellObjectChangeTypes[] _changeOrder =

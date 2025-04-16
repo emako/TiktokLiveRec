@@ -1,8 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Taskbar;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid("6332DEBF-87B5-4670-90C0-5E57B408A49E")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -41,6 +43,7 @@ internal interface ICustomDestinationList
     public void AbortList();
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid("92CA9DCD-5622-4BBA-A805-5E9F541BD8C9")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -55,6 +58,7 @@ internal interface IObjectArray
         [Out(), MarshalAs(UnmanagedType.Interface)] out object ppvObject);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid("5632B1A4-E38A-400A-928A-D4CD63230295")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -80,6 +84,7 @@ internal interface IObjectCollection
     public void Clear();
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid("c43dc798-95d1-4bea-9030-bb99e2983a1a")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -158,16 +163,19 @@ internal interface ITaskbarList4
     public void SetTabProperties(nint hwndTab, SetTabPropertiesOption stpFlags);
 }
 
+[SupportedOSPlatform("Windows")]
 [Guid("77F10CF0-3DB5-4966-B520-B7C54FD35ED6")]
 [ClassInterface(ClassInterfaceType.None)]
 [ComImport]
 internal class CDestinationList;
 
+[SupportedOSPlatform("Windows")]
 [Guid("2D3468C1-36A7-43B6-AC24-D3F02FD9607A")]
 [ClassInterface(ClassInterfaceType.None)]
 [ComImport]
 internal class CEnumerableObjectCollection;
 
+[SupportedOSPlatform("Windows")]
 [Guid("56FDF344-FD6D-11d0-958A-006097C9A090")]
 [ClassInterface(ClassInterfaceType.None)]
 [ComImport]

@@ -1,9 +1,11 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 internal class ShellItemArray : IShellItemArray
 {
     private readonly List<IShellItem> shellItemsList = [];

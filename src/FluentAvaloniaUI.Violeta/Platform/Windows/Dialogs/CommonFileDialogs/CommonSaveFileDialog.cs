@@ -6,13 +6,15 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Text;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 #pragma warning disable CS8073
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+
+[SupportedOSPlatform("Windows")]
 public sealed class CommonSaveFileDialog : CommonFileDialog
 {
     private bool alwaysAppendDefaultExtension;

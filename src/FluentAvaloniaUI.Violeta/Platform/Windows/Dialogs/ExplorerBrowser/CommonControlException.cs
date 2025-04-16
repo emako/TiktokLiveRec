@@ -1,8 +1,10 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ExplorerBrowser;
 
+[SupportedOSPlatform("Windows")]
 [Serializable]
 public class CommonControlException : COMException
 {

@@ -1,8 +1,10 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
 
+[SupportedOSPlatform("Windows")]
 internal static class MessageListenerFilter
 {
     [SuppressMessage("Style", "IDE0330:Use 'System.Threading.Lock'")]

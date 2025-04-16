@@ -1,7 +1,9 @@
 using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public sealed class DialogControlCollection<T> : Collection<T> where T : DialogControl
 {
     private readonly IDialogControlHost hostingDialog;

@@ -2,12 +2,14 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 #pragma warning disable CA2263 // Prefer generic overload when type is known
 #pragma warning disable CS8605 // Unboxing a possibly null value.
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
+[SupportedOSPlatform("Windows")]
 public static class KnownFoldersProvider
 {
     public static ICollection<IKnownFolder> All => GetAllFolders();

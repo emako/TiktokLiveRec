@@ -3,11 +3,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
 
+[SupportedOSPlatform("Windows")]
 [ComImport()]
 [Guid(ShellIIDGuid.IFileDialog)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -91,6 +93,7 @@ internal interface IFileDialog : IModalWindow
     public void SetFilter([MarshalAs(UnmanagedType.Interface)] nint pFilter);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IFileDialogControlEvents)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -119,6 +122,7 @@ internal interface IFileDialogControlEvents
         [In] int dwIDCtl);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IFileDialogCustomize)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -246,6 +250,7 @@ internal interface IFileDialogCustomize
     public void MakeProminent([In] int dwIDCtl);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IFileDialogEvents)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -282,7 +287,8 @@ internal interface IFileDialogEvents
         out FileDialogEventOverwriteResponse pResponse);
 }
 
-[ComImport()]
+[SupportedOSPlatform("Windows")]
+[ComImport]
 [Guid(ShellIIDGuid.IFileOpenDialog)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface IFileOpenDialog : IFileDialog
@@ -369,7 +375,8 @@ internal interface IFileOpenDialog : IFileDialog
     public void GetSelectedItems([MarshalAs(UnmanagedType.Interface)] out IShellItemArray ppsai);
 }
 
-[ComImport()]
+[SupportedOSPlatform("Windows")]
+[ComImport]
 [Guid(ShellIIDGuid.IFileSaveDialog)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 internal interface IFileSaveDialog : IFileDialog

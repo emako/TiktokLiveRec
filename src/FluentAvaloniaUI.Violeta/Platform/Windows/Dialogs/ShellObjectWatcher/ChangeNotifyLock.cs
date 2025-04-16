@@ -2,11 +2,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellObjectWatcher;
 using System.Diagnostics;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
+
+[SupportedOSPlatform("Windows")]
 internal class ChangeNotifyLock
 {
     private readonly uint _event = 0;

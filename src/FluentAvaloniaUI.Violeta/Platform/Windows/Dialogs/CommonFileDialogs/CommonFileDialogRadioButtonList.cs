@@ -2,9 +2,11 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogRadioButtonList : CommonFileDialogControl, ICommonFileDialogIndexedControls
 {
     private readonly Collection<CommonFileDialogRadioButtonListItem> items = [];

@@ -285,15 +285,6 @@ public partial class SettingsViewModel : ObservableObject
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    using CommonOpenFileDialog dialog1 = new()
-                    {
-                        DefaultFileName = "asdf.rae",
-                    };
-
-                    if (dialog1.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        SaveFolder = dialog1.FileName;
-                    }
                     using CommonOpenFileDialog dialog = new()
                     {
                         IsFolderPicker = true,

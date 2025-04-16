@@ -1,8 +1,10 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public class ShellThumbnail
 {
     private readonly IShellItem shellItemNative;

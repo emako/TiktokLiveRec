@@ -3,12 +3,14 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Text;
 
 #pragma warning disable CS0108
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ExplorerBrowser;
 
+[SupportedOSPlatform("Windows")]
 internal enum CommDlgBrowser2ViewFlags
 {
     ShowAllFiles = 0x00000001,
@@ -19,12 +21,14 @@ internal enum CommDlgBrowser2ViewFlags
     IsFolderPicker = 0x00000020,
 }
 
+[SupportedOSPlatform("Windows")]
 internal enum CommDlgBrowserNotifyType
 {
     Done = 1,
     Start = 2,
 }
 
+[SupportedOSPlatform("Windows")]
 internal enum CommDlgBrowserStateChange
 {
     SetFocus = 0,
@@ -34,6 +38,7 @@ internal enum CommDlgBrowserStateChange
     StateChange = 4,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 internal enum ExplorerBrowserOptions
 {
@@ -47,6 +52,7 @@ internal enum ExplorerBrowserOptions
     NoPersistViewState = 0x00000080,
 }
 
+[SupportedOSPlatform("Windows")]
 internal enum ExplorerPaneState
 {
     DoNotCare = 0x00000000,
@@ -57,6 +63,7 @@ internal enum ExplorerPaneState
     Force = 0x00020000,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 internal enum FolderOptions
 {
@@ -94,6 +101,7 @@ internal enum FolderOptions
     AllowRightToLeftReading = unchecked((int)0x80000000),
 }
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 internal enum FolderViewMode
 {
@@ -110,6 +118,7 @@ internal enum FolderViewMode
     Last = 8,
 }
 
+[SupportedOSPlatform("Windows")]
 internal enum ShellViewGetItemObject
 {
     Background = 0x00000000,
@@ -120,6 +129,7 @@ internal enum ShellViewGetItemObject
     ViewOrderFlag = unchecked((int)0x80000000),
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ExplorerBrowserIIDGuid.ICommDlgBrowser3)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -175,6 +185,7 @@ internal interface ICommDlgBrowser3
     public HResult OnPreViewCreated(IShellView ppshv);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid(ExplorerBrowserIIDGuid.IExplorerBrowser)]
@@ -231,6 +242,7 @@ internal interface IExplorerBrowser
     public HResult GetCurrentView(ref Guid riid, out nint ppv);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ExplorerBrowserIIDGuid.IExplorerBrowserEvents)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -253,6 +265,7 @@ internal interface IExplorerBrowserEvents
     public HResult OnNavigationFailed(nint pidlFolder);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ExplorerBrowserIIDGuid.IExplorerPaneVisibility)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -264,6 +277,7 @@ internal interface IExplorerPaneVisibility
     public HResult GetPaneState(ref Guid explorerPane, out ExplorerPaneState peps);
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ExplorerBrowserIIDGuid.IFolderView)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -312,6 +326,7 @@ internal interface IFolderView
     public void SelectAndPositionItems(uint cidl, nint apidl, ref POINT apt, uint dwFlags);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ExplorerBrowserIIDGuid.IFolderView2)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -440,6 +455,7 @@ internal interface IFolderView2 : IFolderView
     public void DoRename();
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ExplorerBrowserIIDGuid.IInputObject)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -459,6 +475,7 @@ internal interface IInputObject
     public HResult TranslateAcceleratorIO(ref MESSAGE pMsg);
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ExplorerBrowserIIDGuid.IServiceProvider)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -470,6 +487,7 @@ internal interface IServiceProvider
     public HResult QueryService(ref Guid guidService, ref Guid riid, out nint ppvObject);
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ExplorerBrowserIIDGuid.IShellView)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -547,6 +565,7 @@ internal interface IShellView
         [MarshalAs(UnmanagedType.IUnknown)] out object ppv);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [TypeLibType(TypeLibTypeFlags.FCanCreate)]
 [ClassInterface(ClassInterfaceType.None)]
@@ -604,6 +623,7 @@ internal class ExplorerBrowserClass : IExplorerBrowser
     public extern virtual HResult GetCurrentView(ref Guid riid, out nint ppv);
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential, Pack = 4)]
 internal class FolderSettings
 {

@@ -1,8 +1,10 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public class ShellFile : ShellObject
 {
     [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,5 +26,5 @@ public class ShellFile : ShellObject
 
     public virtual string Path => ParsingName;
 
-    public static ShellFile FromFilePath(string path) => new ShellFile(path);
+    public static ShellFile FromFilePath(string path) => new(path);
 }

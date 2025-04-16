@@ -1,5 +1,8 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public enum DisplayNameType
 {
     Default = 0x00000000,
@@ -12,12 +15,14 @@ public enum DisplayNameType
     Url = unchecked((int)0x80068000),
 }
 
+[SupportedOSPlatform("Windows")]
 public enum FileDialogAddPlaceLocation
 {
     Bottom = 0x00000000,
     Top = 0x00000001,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum FolderLogicalViewMode
 {
     Unspecified = -1,
@@ -31,6 +36,7 @@ public enum FolderLogicalViewMode
     Last = 5,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum LibraryFolderType
 {
     Generic = 0,
@@ -40,6 +46,7 @@ public enum LibraryFolderType
     Videos,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum QueryParserManagerOption
 {
     SchemaBinaryName = 0,
@@ -50,6 +57,7 @@ public enum QueryParserManagerOption
     LocalizerSupport = 5,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum SearchConditionOperation
 {
     Implicit = 0,
@@ -69,6 +77,7 @@ public enum SearchConditionOperation
     ApplicationSpecific = 14,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum SearchConditionType
 {
     And = 0,
@@ -77,6 +86,7 @@ public enum SearchConditionType
     Leaf = 3,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum SortDirection
 {
     Default = 0,
@@ -84,6 +94,7 @@ public enum SortDirection
     Ascending = 1,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum StructuredQueryMultipleOption
 {
     VirtualProperty,
@@ -92,6 +103,7 @@ public enum StructuredQueryMultipleOption
     MapProperty,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum StructuredQuerySingleOption
 {
     Schema,
@@ -107,6 +119,7 @@ public enum StructuredQuerySingleOption
     ConnectorCase,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum WindowShowCommand
 {
     Hide = 0,

@@ -2,12 +2,14 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8601 // Possible null reference assignment.
 #pragma warning disable CS8604 // Possible null reference argument.
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
+[SupportedOSPlatform("Windows")]
 internal class KnownFolderSettings
 {
     private FolderProperties knownFolderProperties;

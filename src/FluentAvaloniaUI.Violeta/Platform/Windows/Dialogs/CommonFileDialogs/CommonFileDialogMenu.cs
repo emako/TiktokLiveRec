@@ -1,12 +1,14 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogMenu : CommonFileDialogProminentControl
 {
-    private readonly Collection<CommonFileDialogMenuItem> items = new Collection<CommonFileDialogMenuItem>();
+    private readonly Collection<CommonFileDialogMenuItem> items = [];
 
     public CommonFileDialogMenu() : base()
     {
@@ -38,6 +40,7 @@ public class CommonFileDialogMenu : CommonFileDialogProminentControl
     }
 }
 
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogMenuItem : CommonFileDialogControl
 {
     public CommonFileDialogMenuItem() : base(string.Empty)

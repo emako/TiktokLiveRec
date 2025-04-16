@@ -3,11 +3,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyDescription)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -92,6 +94,7 @@ public interface IPropertyDescription
     public HResult IsValueCanonical([In] PropVariant propvar);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyDescription2)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -173,6 +176,7 @@ public interface IPropertyDescription2 : IPropertyDescription
         [Out, MarshalAs(UnmanagedType.LPWStr)] out string ppszImageRes);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyDescriptionList)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -185,6 +189,7 @@ public interface IPropertyDescriptionList
     public void GetAt([In] uint iElem, [In] ref Guid riid, [MarshalAs(UnmanagedType.Interface)] out IPropertyDescription ppv);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyEnumType)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -207,6 +212,7 @@ public interface IPropertyEnumType
     public void GetDisplayText([Out, MarshalAs(UnmanagedType.LPWStr)] out string ppszDisplay);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyEnumType2)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -232,6 +238,7 @@ public interface IPropertyEnumType2 : IPropertyEnumType
     public void GetImageReference([Out, MarshalAs(UnmanagedType.LPWStr)] out string ppszImageRes);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyEnumTypeList)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -258,6 +265,7 @@ public interface IPropertyEnumTypeList
         [Out] out uint pnIndex);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyStore)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -281,6 +289,7 @@ public interface IPropertyStore
     public HResult Commit();
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyStoreCache)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -300,6 +309,7 @@ public interface IPropertyStoreCache
     public HResult SetValueAndState(ref PropertyKey propKey, [In] PropVariant pv, PropertyStoreCacheState state);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IPropertyStoreCapabilities)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]

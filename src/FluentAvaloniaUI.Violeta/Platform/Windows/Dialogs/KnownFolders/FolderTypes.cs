@@ -1,7 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Style", "IDE0090:Use 'new(...)'")]
 internal static class FolderTypes
 {

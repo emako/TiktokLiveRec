@@ -1,7 +1,9 @@
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Taskbar;
 
+[SupportedOSPlatform("Windows")]
 public enum ThumbnailAlphaType
 {
     Unknown = 0,
@@ -11,12 +13,14 @@ public enum ThumbnailAlphaType
     HasAlphaChannel = 2,
 }
 
+[SupportedOSPlatform("Windows")]
 internal enum KnownDestinationCategory
 {
     Frequent = 1,
     Recent
 }
 
+[SupportedOSPlatform("Windows")]
 internal enum SetTabPropertiesOption
 {
     None = 0x0,
@@ -26,6 +30,7 @@ internal enum SetTabPropertiesOption
     UseAppPeekWhenActive = 0x8
 }
 
+[SupportedOSPlatform("Windows")]
 internal enum TaskbarProgressBarStatus
 {
     NoProgress = 0,
@@ -35,6 +40,7 @@ internal enum TaskbarProgressBarStatus
     Paused = 0x8
 }
 
+[SupportedOSPlatform("Windows")]
 internal enum ThumbButtonMask
 {
     Bitmap = 0x1,
@@ -43,6 +49,7 @@ internal enum ThumbButtonMask
     THB_FLAGS = 0x8
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 internal enum ThumbButtonOptions
 {
@@ -54,6 +61,7 @@ internal enum ThumbButtonOptions
     NonInteractive = 0x00000010
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
 internal struct ThumbButton
 {

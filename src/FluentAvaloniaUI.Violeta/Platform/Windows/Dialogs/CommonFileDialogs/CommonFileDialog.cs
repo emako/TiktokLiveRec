@@ -9,9 +9,15 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
+
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
+[SupportedOSPlatform("Windows")]
 public abstract class CommonFileDialog : IDialogControlHost, IDisposable
 {
     internal readonly Collection<IShellItem> items;
@@ -512,7 +518,7 @@ public abstract class CommonFileDialog : IDialogControlHost, IDisposable
             filename = Marshal.PtrToStringAuto(pszString);
             Marshal.FreeCoTaskMem(pszString);
         }
-        return filename;
+        return filename!;
     }
 
     internal static IShellItem GetShellItemAt(IShellItemArray array, int i)

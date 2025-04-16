@@ -1,5 +1,8 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs;
 
+[SupportedOSPlatform("Windows")]
 public static class LocalizedMessages
 {
     public const string ThumbnailToolbarManagerMaxButtons = "Maximum number of buttons allowed is 7.";

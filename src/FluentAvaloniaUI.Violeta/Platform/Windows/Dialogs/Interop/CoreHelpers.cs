@@ -1,10 +1,12 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Natives;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Runtime.Versioning;
 using System.Text;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 public static class CoreHelpers
 {
@@ -45,7 +47,7 @@ public static class CoreHelpers
 
     public static void ThrowIfNotVista()
     {
-        if (!CoreHelpers.RunningOnVista)
+        if (!RunningOnVista)
         {
             throw new PlatformNotSupportedException("CoreHelpersRunningOnVista");
         }
@@ -53,7 +55,7 @@ public static class CoreHelpers
 
     public static void ThrowIfNotWin7()
     {
-        if (!CoreHelpers.RunningOnWin7)
+        if (!RunningOnWin7)
         {
             throw new PlatformNotSupportedException("CoreHelpersRunningOn7");
         }
@@ -61,7 +63,7 @@ public static class CoreHelpers
 
     public static void ThrowIfNotXP()
     {
-        if (!CoreHelpers.RunningOnXP)
+        if (!RunningOnXP)
         {
             throw new PlatformNotSupportedException("CoreHelpersRunningOnXp");
         }

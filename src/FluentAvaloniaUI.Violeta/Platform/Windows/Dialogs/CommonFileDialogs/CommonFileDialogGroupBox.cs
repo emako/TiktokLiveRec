@@ -2,11 +2,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogGroupBox : CommonFileDialogProminentControl
 {
     private Collection<DialogControl> items;

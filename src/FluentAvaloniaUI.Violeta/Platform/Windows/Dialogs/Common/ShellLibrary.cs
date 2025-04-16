@@ -3,13 +3,15 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8601
 #pragma warning disable CS8618
 #pragma warning disable IDE0059
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+
+[SupportedOSPlatform("Windows")]
 public sealed class ShellLibrary : ShellContainer, IList<ShellFileSystemFolder>
 {
     internal const string FileExtension = ".library-ms";

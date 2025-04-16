@@ -4,9 +4,11 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
+[SupportedOSPlatform("Windows")]
 public static class KnownFolderHelper
 {
     [SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance")]

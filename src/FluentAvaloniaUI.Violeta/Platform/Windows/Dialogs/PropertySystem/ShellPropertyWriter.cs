@@ -4,13 +4,14 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8618
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
-#pragma warning disable CS8618
-
+[SupportedOSPlatform("Windows")]
 public class ShellPropertyWriter : IDisposable
 {
     internal IPropertyStore writablePropStore;

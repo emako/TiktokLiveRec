@@ -1,11 +1,14 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public static class SearchConditionFactory
 {
     public static SearchCondition CreateAndOrCondition(SearchConditionType conditionType, bool simplify, params SearchCondition[] conditionNodes)
@@ -242,7 +245,7 @@ public static class SearchConditionFactory
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
+    [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
     private static SearchCondition CreateLeafCondition(string propertyName, PropVariant propVar, string valueType, SearchConditionOperation operation)
     {
         IConditionFactory nativeConditionFactory = null!;

@@ -1,9 +1,11 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.StockIcons;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.StockIcons;
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]
 internal static class StockIconsNativeMethods
 {

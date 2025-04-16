@@ -1,8 +1,10 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
 using System.Diagnostics;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogCheckBox : CommonFileDialogProminentControl
 {
     private bool isChecked;

@@ -1,7 +1,9 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
+[SupportedOSPlatform("Windows")]
 public interface IKnownFolder : IDisposable, IEnumerable<ShellObject>
 {
     public string CanonicalName { get; }

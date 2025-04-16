@@ -1,10 +1,14 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ExplorerBrowser;
 
+[SupportedOSPlatform("Windows")]
 internal static class ExplorerBrowserCLSIDGuid
 {
     internal const string ExplorerBrowser = "71F96385-DDD6-48D3-A0C1-AE06E8B055FB";
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class ExplorerBrowserIIDGuid
 {
     internal const string DShellFolderViewEvents = "62112AA2-EBE4-11cf-A5FB-0020AFE7292D";
@@ -23,6 +27,7 @@ internal static class ExplorerBrowserIIDGuid
     internal const string IShellView = "000214E3-0000-0000-C000-000000000046";
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class ExplorerBrowserViewDispatchIds
 {
     internal const int ContentsChanged = 207;
@@ -31,6 +36,7 @@ internal static class ExplorerBrowserViewDispatchIds
     internal const int SelectionChanged = 200;
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class ExplorerBrowserViewPanes
 {
     internal const string AdvancedQuery = "b4e9db8b-34ba-4c39-b5cc-16a1bd2c411c";

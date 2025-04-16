@@ -6,12 +6,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Versioning;
 using System.Text;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 
 #pragma warning disable CS0108
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+
+[SupportedOSPlatform("Windows")]
 public enum SICHINTF
 {
     SICHINT_DISPLAY = 0x00000000,
@@ -20,7 +22,8 @@ public enum SICHINTF
     SICHINT_ALLFIELDS = unchecked((int)0x80000000)
 }
 
-[ComImport()]
+[SupportedOSPlatform("Windows")]
+[ComImport]
 [Guid(ShellIIDGuid.ICondition)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
@@ -66,6 +69,7 @@ public interface ICondition : IPersistStream
     public HResult Clone([Out()] out ICondition ppc);
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IConditionFactory)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -94,12 +98,14 @@ public interface IConditionFactory
     public HResult Resolve();
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid("24264891-E80B-4fd3-B7CE-4FF2FAE8931F")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 public interface IEntity;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IEnumIDList)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -122,6 +128,7 @@ public interface IEnumIDList
     public HResult Clone([MarshalAs(UnmanagedType.Interface)] out IEnumIDList ppenum);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid(ShellIIDGuid.IEnumUnknown)]
@@ -141,6 +148,7 @@ public interface IEnumUnknown
     public HResult Clone(out IEnumUnknown result);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IModalWindow)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -152,21 +160,25 @@ public interface IModalWindow
     public int Show([In] nint parent);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IConditionFactory)]
 [CoClass(typeof(ConditionFactoryCoClass))]
 public interface INativeConditionFactory : IConditionFactory;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IQueryParserManager)]
 [CoClass(typeof(QueryParserManagerCoClass))]
 public interface INativeQueryParserManager : IQueryParserManager;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.ISearchFolderItemFactory)]
 [CoClass(typeof(SearchFolderItemFactoryCoClass))]
 public interface INativeSearchFolderItemFactory : ISearchFolderItemFactory;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("00000109-0000-0000-C000-000000000046")]
@@ -189,6 +201,7 @@ public interface IPersistStream
     public HResult GetSizeMax(out ulong cbSize);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IQueryParser)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -220,6 +233,7 @@ public interface IQueryParser
     public HResult RestatePropertyValueToString([In] ICondition pCondition, [In] bool fUseEnglish, [Out, MarshalAs(UnmanagedType.LPWStr)] out string ppszPropertyName, [Out, MarshalAs(UnmanagedType.LPWStr)] out string ppszQueryString);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IQueryParserManager)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -236,6 +250,7 @@ public interface IQueryParserManager
     public HResult SetOption([In] QueryParserManagerOption option, [In] PropVariant pOptionValue);
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IQuerySolution)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -272,6 +287,7 @@ public interface IQuerySolution : IConditionFactory
     public HResult GetLexicalData([MarshalAs(UnmanagedType.LPWStr)] out string ppszInputString, [Out] out nint ppTokens, [Out] out uint plcid, [Out] /* IUnknown** */ out nint ppWordBreaker);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IRichChunk)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -282,6 +298,7 @@ public interface IRichChunk
     public HResult GetData();
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.ISearchFolderItemFactory)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -297,6 +314,7 @@ public interface ISearchFolderItemFactory
     public int GetShellItem(ref Guid riid, [Out, MarshalAs(UnmanagedType.Interface)] out IShellItem ppv);
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.ISharedBitmap)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -314,6 +332,7 @@ public interface ISharedBitmap
     public void Detach([Out] out nint phbm);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IShellFolder)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -353,6 +372,7 @@ public interface IShellFolder
     public void SetNameOf([In] nint hwnd, [In] ref nint pidl, [In, MarshalAs(UnmanagedType.LPWStr)] string pszName, [In] uint uFlags, [Out] nint ppidlOut);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IShellFolder2)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -411,6 +431,7 @@ public interface IShellFolder2 : IShellFolder
     public void MapColumnToSCID([In] uint iColumn, out PropertyKey pscid);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IShellItem)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -444,9 +465,10 @@ public interface IShellItem
         out int piOrder);
 }
 
-[ComImport,
-Guid(ShellIIDGuid.IShellItem2),
-InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[SupportedOSPlatform("Windows")]
+[ComImport]
+[Guid(ShellIIDGuid.IShellItem2)]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 public interface IShellItem2 : IShellItem
 {
     [PreserveSig]
@@ -520,6 +542,7 @@ public interface IShellItem2 : IShellItem
     public void GetBool([In] ref PropertyKey key, out int pf);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IShellItemArray)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -569,7 +592,8 @@ public interface IShellItemArray
     public HResult EnumItems([MarshalAs(UnmanagedType.Interface)] out nint ppenumShellItems);
 }
 
-[ComImport()]
+[SupportedOSPlatform("Windows")]
+[ComImport]
 [Guid("bcc18b79-ba16-442f-80c4-8a59c30c463b")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
@@ -582,6 +606,7 @@ public interface IShellItemImageFactory
         [Out] out nint phbm);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IShellLibrary)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -668,6 +693,7 @@ public interface IShellLibrary
         [MarshalAs(UnmanagedType.Interface)] out IShellItem2 savedTo);
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IShellLinkW)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -731,6 +757,7 @@ public interface IShellLinkW
     public void SetPath([MarshalAs(UnmanagedType.LPWStr)] string pszFile);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.IThumbnailCache)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -750,23 +777,27 @@ public interface IThumbnailCache
         [Out] out ThumbnailCacheOptions pOutFlags);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [ClassInterface(ClassInterfaceType.None)]
 [TypeLibType(TypeLibTypeFlags.FCanCreate)]
 [Guid(ShellCLSIDGuid.ConditionFactory)]
 public class ConditionFactoryCoClass;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(ShellIIDGuid.CShellLink)]
 [ClassInterface(ClassInterfaceType.None)]
 public class CShellLink;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [ClassInterface(ClassInterfaceType.None)]
 [TypeLibType(TypeLibTypeFlags.FCanCreate)]
 [Guid(ShellCLSIDGuid.QueryParserManager)]
 public class QueryParserManagerCoClass;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [ClassInterface(ClassInterfaceType.None)]
 [TypeLibType(TypeLibTypeFlags.FCanCreate)]

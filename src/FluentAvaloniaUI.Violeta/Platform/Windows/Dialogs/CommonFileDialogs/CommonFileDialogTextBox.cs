@@ -1,10 +1,12 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Dialogs;
 using System.Diagnostics;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogTextBox : CommonFileDialogControl
 {
     private IFileDialogCustomize customizedDialog;

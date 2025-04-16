@@ -4,12 +4,14 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8601 // Possible null reference assignment.
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Performance", "CA1806:Do not ignore method results")]
 public class ShellPropertyDescription : IDisposable
 {

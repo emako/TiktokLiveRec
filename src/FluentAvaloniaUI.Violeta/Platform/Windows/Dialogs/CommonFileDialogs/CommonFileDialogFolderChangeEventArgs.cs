@@ -1,10 +1,10 @@
 using System.ComponentModel;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
-public class CommonFileDialogFolderChangeEventArgs : CancelEventArgs
+[SupportedOSPlatform("Windows")]
+public class CommonFileDialogFolderChangeEventArgs(string folder) : CancelEventArgs
 {
-    public CommonFileDialogFolderChangeEventArgs(string folder) => Folder = folder;
-
-    public string Folder { get; set; }
+    public string Folder { get; set; } = folder;
 }

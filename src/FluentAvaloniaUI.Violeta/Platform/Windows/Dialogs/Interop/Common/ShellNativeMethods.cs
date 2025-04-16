@@ -1,8 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 
+[SupportedOSPlatform("Windows")]
 internal static class ShellNativeMethods
 {
     internal const int CommandLink = 0x0000000E;
@@ -20,6 +22,7 @@ internal static class ShellNativeMethods
     internal const uint SetShield = 0x0000160C;
 }
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Interoperability", "CA1401:P/Invokes should not be visible")]
 [SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time", Justification = "<Pending>")]
 public static partial class Shell32
@@ -112,6 +115,7 @@ public static partial class Shell32
         [In] LibraryManageDialogOptions lmdOptions);
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
 public struct FilterSpec(string name, string spec)
 {
@@ -122,6 +126,7 @@ public struct FilterSpec(string name, string spec)
     public string Spec = spec;
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 public struct SHChangeNotifyEntry
 {
@@ -131,6 +136,7 @@ public struct SHChangeNotifyEntry
     public bool recursively;
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 public struct ShellNotifyStruct
 {
@@ -138,6 +144,7 @@ public struct ShellNotifyStruct
     public nint item2;
 };
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
 [SuppressMessage("Style", "IDE0250:Make struct 'readonly'")]
 public struct ThumbnailId
@@ -146,6 +153,7 @@ public struct ThumbnailId
     private readonly byte rgbKey;
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum ShellObjectChangeTypes
 {
@@ -175,6 +183,7 @@ public enum ShellObjectChangeTypes
     FromInterrupt = unchecked((int)0x80000000),
 }
 
+[SupportedOSPlatform("Windows")]
 public enum ControlState
 {
     Inactive = 0x00000000,
@@ -182,6 +191,7 @@ public enum ControlState
     Visible = 0x00000002,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum DefaultSaveFolderType
 {
     Detect = 1,
@@ -189,12 +199,14 @@ public enum DefaultSaveFolderType
     Public = 3,
 };
 
+[SupportedOSPlatform("Windows")]
 public enum FileDialogAddPlacement
 {
     Bottom = 0x00000000,
     Top = 0x00000001,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum FileDialogEventOverwriteResponse
 {
     Default = 0x00000000,
@@ -202,6 +214,7 @@ public enum FileDialogEventOverwriteResponse
     Refuse = 0x00000002,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum FileDialogEventShareViolationResponse
 {
     Default = 0x00000000,
@@ -209,6 +222,7 @@ public enum FileDialogEventShareViolationResponse
     Refuse = 0x00000002,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum FileOpenOptions
 {
@@ -234,6 +248,7 @@ public enum FileOpenOptions
     DefaultNoMiniMode = 0x20000000,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum GetPropertyStoreOptions
 {
@@ -248,6 +263,7 @@ public enum GetPropertyStoreOptions
     MaskValid = 0xff,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum LibraryFolderFilter
 {
     ForceFileSystem = 1,
@@ -255,12 +271,14 @@ public enum LibraryFolderFilter
     AllItems = 3,
 };
 
+[SupportedOSPlatform("Windows")]
 public enum LibraryManageDialogOptions
 {
     Default = 0,
     NonIndexableLocationWarning = 1,
 };
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 [SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 public enum LibraryOptions
@@ -270,6 +288,7 @@ public enum LibraryOptions
     MaskAll = 0x1,
 };
 
+[SupportedOSPlatform("Windows")]
 public enum LibrarySaveOptions
 {
     FailIfThere = 0,
@@ -277,6 +296,7 @@ public enum LibrarySaveOptions
     MakeUniqueName = 2,
 };
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum ShellChangeNotifyEventSource
 {
@@ -286,6 +306,7 @@ public enum ShellChangeNotifyEventSource
     NewDelivery = 0x8000,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 [SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 public enum ShellFileGetAttributesOptions
@@ -327,6 +348,7 @@ public enum ShellFileGetAttributesOptions
     PkeyMask = unchecked((int)0x81044000),
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum ShellFolderEnumerationOptions : ushort
 {
@@ -344,6 +366,7 @@ public enum ShellFolderEnumerationOptions : ushort
     EnableAsync = 0x8000,
 }
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 public enum ShellItemAttributeOptions
 {
@@ -354,6 +377,7 @@ public enum ShellItemAttributeOptions
     AllItems = 0x00004000,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum ShellItemDesignNameOptions
 {
     Normal = 0x00000000,
@@ -367,6 +391,7 @@ public enum ShellItemDesignNameOptions
     ParentRelative = unchecked((int)0x80080001),
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum SIIGBF
 {
@@ -378,6 +403,7 @@ public enum SIIGBF
     InCacheOnly = 0x10,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum ThumbnailCacheOptions
 {
@@ -386,6 +412,7 @@ public enum ThumbnailCacheOptions
     Cached = 0x00000002,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum ThumbnailOptions
 {

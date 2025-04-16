@@ -1,12 +1,16 @@
-using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential, Pack = 4)]
+[SuppressMessage("Style", "IDE0044:Add readonly modifier")]
+[SuppressMessage("Style", "IDE0251:Make member 'readonly'")]
 public struct PropertyKey : IEquatable<PropertyKey>
 {
     private Guid formatId;

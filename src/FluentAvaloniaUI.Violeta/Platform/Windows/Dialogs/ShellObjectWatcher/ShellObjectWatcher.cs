@@ -1,9 +1,11 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.ComponentModel;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
 
+[SupportedOSPlatform("Windows")]
 public class ShellObjectWatcher : IDisposable
 {
     private readonly ShellObject _shellObject;

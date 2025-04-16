@@ -3,13 +3,14 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable IDE0059
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
-#pragma warning disable IDE0059
-
+[SupportedOSPlatform("Windows")]
 internal static class ShellHelper
 {
     internal static PropertyKey ItemTypePropertyKey = new(new Guid("28636AA6-953D-11D2-B5D6-00C04FD918D0"), 11);

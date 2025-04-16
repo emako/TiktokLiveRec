@@ -1,10 +1,12 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Security;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 
+[SupportedOSPlatform("Windows")]
 [SuppressUnmanagedCodeSecurity]
 internal static class KnownFoldersSafeNativeMethods
 {

@@ -4,11 +4,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
+
+[SupportedOSPlatform("Windows")]
 public class FileSystemKnownFolder : ShellFileSystemFolder, IKnownFolder, IDisposable
 {
     private IKnownFolderNative knownFolderNative;
@@ -35,7 +37,7 @@ public class FileSystemKnownFolder : ShellFileSystemFolder, IKnownFolder, IDispo
 
     public string Description => KnownFolderSettings.Description;
 
-    public System.IO.FileAttributes FileAttributes => KnownFolderSettings.FileAttributes;
+    public FileAttributes FileAttributes => KnownFolderSettings.FileAttributes;
 
     public Guid FolderId => KnownFolderSettings.FolderId;
 

@@ -2,11 +2,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 #pragma warning disable CS8618
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Microsoft.Naming", "CA1710:")]
 public abstract class ShellContainer : ShellObject, IEnumerable<ShellObject>, IDisposable
 {
@@ -53,7 +55,7 @@ public abstract class ShellContainer : ShellObject, IEnumerable<ShellObject>, ID
         {
             if (desktopFolderEnumeration == null)
             {
-                Shell32.SHGetDesktopFolder(out desktopFolderEnumeration);
+                _ = Shell32.SHGetDesktopFolder(out desktopFolderEnumeration);
             }
 
             nativeShellFolder = desktopFolderEnumeration;

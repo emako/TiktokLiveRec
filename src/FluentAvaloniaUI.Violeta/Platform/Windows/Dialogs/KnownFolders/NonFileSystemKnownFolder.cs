@@ -4,11 +4,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 
 #pragma warning disable CS8618
 
+[SupportedOSPlatform("Windows")]
 public class NonFileSystemKnownFolder : ShellNonFileSystemFolder, IKnownFolder, IDisposable
 {
     private IKnownFolderNative knownFolderNative;

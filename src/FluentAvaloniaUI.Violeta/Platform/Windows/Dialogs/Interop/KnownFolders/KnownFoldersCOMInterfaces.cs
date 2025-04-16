@@ -2,11 +2,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS0108
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
+
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(KnownFoldersIIDGuid.IKnownFolderManager)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -56,6 +58,7 @@ internal interface IKnownFolderManager
     public void Redirect();
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid(KnownFoldersIIDGuid.IKnownFolder)]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -95,6 +98,7 @@ internal interface IKnownFolderNative
         [Out, MarshalAs(UnmanagedType.Struct)] out KnownFoldersSafeNativeMethods.NativeFolderDefinition definition);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid("4df0c730-df9d-4ae3-9153-aa6b82e9795a")]
 internal class KnownFolderManagerClass : IKnownFolderManager

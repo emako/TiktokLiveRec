@@ -1,5 +1,8 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 
+[SupportedOSPlatform("Windows")]
 public enum HResult
 {
     Ok = 0x0000,
@@ -17,6 +20,7 @@ public enum HResult
     AccessDenied = unchecked((int)0x80030005)
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class CoreErrorHelper
 {
     public const int Ignored = (int)HResult.Ok;

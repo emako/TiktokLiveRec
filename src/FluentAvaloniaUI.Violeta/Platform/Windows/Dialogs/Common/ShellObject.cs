@@ -4,6 +4,7 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8601 // Possible null reference assignment.
 #pragma warning disable CS8604 // Possible null reference argument.
@@ -13,6 +14,7 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public abstract class ShellObject : IDisposable, IEquatable<ShellObject>
 {
     internal IShellItem2 nativeShellItem;

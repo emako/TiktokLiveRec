@@ -1,5 +1,8 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.StockIcons;
 
+[SupportedOSPlatform("Windows")]
 public enum StockIconSize
 {
     Small,
@@ -7,6 +10,7 @@ public enum StockIconSize
     ShellSize,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum StockIconIdentifier
 {
     DocumentNotAssociated = 0,

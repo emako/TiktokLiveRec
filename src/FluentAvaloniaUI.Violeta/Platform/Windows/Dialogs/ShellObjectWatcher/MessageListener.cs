@@ -7,10 +7,9 @@ using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
 #pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8618
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
-
-#pragma warning disable CS8618
 
 [SupportedOSPlatform("Windows")]
 [SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]
@@ -202,6 +201,7 @@ internal class MessageListener : IDisposable
     }
 }
 
+[SupportedOSPlatform("Windows")]
 public class WindowMessageEventArgs : EventArgs
 {
     public Message Message { get; private set; }

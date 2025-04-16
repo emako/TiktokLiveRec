@@ -1,10 +1,12 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 #pragma warning disable CS8618
 
+[SupportedOSPlatform("Windows")]
 internal class ShellPropertyDescriptionsCache
 {
     private static ShellPropertyDescriptionsCache cacheInstance;

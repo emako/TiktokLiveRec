@@ -1,11 +1,13 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 using System.Text;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
 
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+
+[SupportedOSPlatform("Windows")]
 public class CommonFileDialogFilter
 {
     private readonly Collection<string> extensions;

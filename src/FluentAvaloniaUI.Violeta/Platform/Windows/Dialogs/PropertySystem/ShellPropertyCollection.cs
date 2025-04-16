@@ -5,11 +5,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 #pragma warning disable CS8618
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value")]
 public class ShellPropertyCollection : ReadOnlyCollection<IShellProperty>, IDisposable

@@ -1,7 +1,9 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.ShellObjectWatcher;
 
+[SupportedOSPlatform("Windows")]
 public class ShellObjectNotificationEventArgs : EventArgs
 {
     public ShellObjectChangeTypes ChangeType { get; private set; }
@@ -15,6 +17,7 @@ public class ShellObjectNotificationEventArgs : EventArgs
     }
 }
 
+[SupportedOSPlatform("Windows")]
 public class ShellObjectChangedEventArgs : ShellObjectNotificationEventArgs
 {
     public string Path { get; private set; }
@@ -23,6 +26,7 @@ public class ShellObjectChangedEventArgs : ShellObjectNotificationEventArgs
         : base(notifyLock) => Path = notifyLock.ItemName;
 }
 
+[SupportedOSPlatform("Windows")]
 public class ShellObjectRenamedEventArgs : ShellObjectChangedEventArgs
 {
     public string NewPath { get; private set; }
@@ -31,6 +35,7 @@ public class ShellObjectRenamedEventArgs : ShellObjectChangedEventArgs
         : base(notifyLock) => NewPath = notifyLock.ItemName2;
 }
 
+[SupportedOSPlatform("Windows")]
 public class SystemImageUpdatedEventArgs : ShellObjectNotificationEventArgs
 {
     public int ImageIndex { get; private set; }

@@ -1,7 +1,10 @@
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.CommonFileDialogs;
+
+[SupportedOSPlatform("Windows")]
 public static class CommonFileDialogStandardFilters
 {
     private static CommonFileDialogFilter officeFilesFilter;

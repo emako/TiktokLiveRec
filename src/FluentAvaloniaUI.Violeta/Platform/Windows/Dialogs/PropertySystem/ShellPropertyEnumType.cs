@@ -1,9 +1,11 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
+
+[SupportedOSPlatform("Windows")]
 public class ShellPropertyEnumType
 {
     private string displayText;
@@ -79,9 +81,5 @@ public class ShellPropertyEnumType
         }
     }
 
-    private IPropertyEnumType NativePropertyEnumType
-    {
-        set;
-        get;
-    }
+    private IPropertyEnumType NativePropertyEnumType { set; get; }
 }

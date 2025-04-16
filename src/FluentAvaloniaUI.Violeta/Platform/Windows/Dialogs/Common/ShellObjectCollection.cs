@@ -2,12 +2,14 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 using System.Collections;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public class ShellObjectCollection : IEnumerable, IDisposable, IList<ShellObject>
 {
-    private readonly List<ShellObject> content = new();
+    private readonly List<ShellObject> content = [];
     private readonly bool readOnly;
     private bool isDisposed;
 

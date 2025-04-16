@@ -1,7 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 [SuppressMessage("Design", "CA1069:Enums values should not be duplicated")]
 public enum AccessModes

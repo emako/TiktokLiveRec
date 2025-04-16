@@ -1,9 +1,11 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 [Serializable]
 public class ShellException : ExternalException
 {

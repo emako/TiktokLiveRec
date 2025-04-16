@@ -3,11 +3,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 #pragma warning disable CS8618
 
+[SupportedOSPlatform("Windows")]
 public class SearchCondition : IDisposable
 {
     private readonly string canonicalName;
@@ -42,7 +44,7 @@ public class SearchCondition : IDisposable
                 throw new ShellException(hr);
             }
 
-            PropertyValue = propVar.Value.ToString();
+            PropertyValue = propVar.Value.ToString()!;
         }
     }
 

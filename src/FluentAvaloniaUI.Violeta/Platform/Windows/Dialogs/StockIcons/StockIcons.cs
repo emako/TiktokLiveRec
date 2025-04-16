@@ -1,5 +1,8 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.StockIcons;
 
+[SupportedOSPlatform("Windows")]
 public class StockIcons
 {
     private readonly IDictionary<StockIconIdentifier, StockIcon> stockIconCache;

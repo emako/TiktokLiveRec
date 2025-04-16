@@ -1,5 +1,8 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
+[SupportedOSPlatform("Windows")]
 public enum PropEnumType
 {
     DiscreteValue = 0,
@@ -8,6 +11,7 @@ public enum PropEnumType
     EndRange = 3,
 };
 
+[SupportedOSPlatform("Windows")]
 public enum PropertyAggregationType
 {
     Default = 0,
@@ -20,6 +24,7 @@ public enum PropertyAggregationType
     Min = 7,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum PropertyColumnStateOptions
 {
@@ -45,6 +50,7 @@ public enum PropertyColumnStateOptions
     DisplayMask = 0x0000F000,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum PropertyConditionOperation
 {
     Implicit,
@@ -64,6 +70,7 @@ public enum PropertyConditionOperation
     ApplicationSpecific,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum PropertyConditionType
 {
     None = 0,
@@ -74,6 +81,7 @@ public enum PropertyConditionType
     Number = 5,
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum PropertyDescriptionFormatOptions
 {
@@ -95,6 +103,7 @@ public enum PropertyDescriptionFormatOptions
     SmartDateTime = 0x4000,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum PropertyDisplayType
 {
     String = 0,
@@ -104,6 +113,7 @@ public enum PropertyDisplayType
     Enumerated = 4,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum PropertyGroupingRange
 {
     Discrete = 0,
@@ -115,6 +125,7 @@ public enum PropertyGroupingRange
     Enumerated = 6,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum PropertySortDescription
 {
     General,
@@ -124,6 +135,7 @@ public enum PropertySortDescription
     OldestToNewest,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum PropertyStoreCacheState
 {
     Normal = 0,
@@ -131,6 +143,7 @@ public enum PropertyStoreCacheState
     Dirty = 2
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum PropertyTypeOptions
 {
@@ -149,6 +162,7 @@ public enum PropertyTypeOptions
     MaskAll = unchecked((int)0x800001FF),
 }
 
+[SupportedOSPlatform("Windows")]
 [Flags]
 public enum PropertyViewOptions
 {

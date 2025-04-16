@@ -2,9 +2,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.PropertySystem;
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Explicit)]
 public sealed class PropVariant : IDisposable
 {

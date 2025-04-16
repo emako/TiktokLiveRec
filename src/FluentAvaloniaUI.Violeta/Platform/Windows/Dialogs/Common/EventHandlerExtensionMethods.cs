@@ -1,5 +1,8 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public static class EventHandlerExtensionMethods
 {
     public static void SafeRaise(this EventHandler eventHandler, object sender)

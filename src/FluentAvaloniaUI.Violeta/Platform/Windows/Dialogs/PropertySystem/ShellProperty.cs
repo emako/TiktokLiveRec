@@ -6,12 +6,14 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Natives;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
 #pragma warning disable CS8604 // Possible null reference argument.
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
+[SupportedOSPlatform("Windows")]
 public class ShellProperty<T> : IShellProperty
 {
     private readonly ShellPropertyDescription description = null!;

@@ -1,10 +1,12 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
-
-namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8618
 
+namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
+
+[SupportedOSPlatform("Windows")]
 public class ShellSearchFolder : ShellSearchCollection
 {
     private SearchCondition searchCondition;

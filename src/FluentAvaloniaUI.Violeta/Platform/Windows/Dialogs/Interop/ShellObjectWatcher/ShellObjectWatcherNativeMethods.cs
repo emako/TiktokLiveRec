@@ -2,11 +2,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Versioning;
 
 #pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellObjectWatcher;
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 [SuppressMessage("Style", "IDE0251:Make member 'readonly'")]
 public struct Message
@@ -65,6 +67,7 @@ public struct Message
     }
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
 internal struct WindowClassEx
 {
@@ -86,6 +89,7 @@ internal struct WindowClassEx
     internal nint SmallIconHandle;
 }
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Interoperability", "SYSLIB1054:Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time")]
 internal static class ShellObjectWatcherNativeMethods
 {

@@ -1,9 +1,11 @@
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 #pragma warning disable SYSLIB0051 // Type or member is obsolete
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.PropertySystem;
 
+[SupportedOSPlatform("Windows")]
 [Serializable]
 public class PropertySystemException : ExternalException
 {

@@ -4,9 +4,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.KnownFolders;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
+
+#pragma warning disable CS8604 // Possible null reference argument.
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 internal static class ShellObjectFactory
 {
     internal static ShellObject Create(IShellItem nativeShellItem)

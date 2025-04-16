@@ -3,11 +3,13 @@ using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
 #pragma warning disable CS8618
 
+[SupportedOSPlatform("Windows")]
 internal class ShellFolderItems : IEnumerator<ShellObject>
 {
     private readonly ShellContainer nativeShellFolder;

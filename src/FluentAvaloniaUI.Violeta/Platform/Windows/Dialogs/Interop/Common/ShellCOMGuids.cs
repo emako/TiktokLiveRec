@@ -1,10 +1,14 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
 
+[SupportedOSPlatform("Windows")]
 internal static class ShellBHIDGuid
 {
     internal const string ShellFolderObject = "3981e224-f559-11d3-8e3a-00c04f6837d5";
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class ShellCLSIDGuid
 {
     internal const string ConditionFactory = "E03E85B0-7BE3-4000-BA98-6C13DE9FA486";
@@ -16,6 +20,7 @@ internal static class ShellCLSIDGuid
     internal const string ShellLibrary = "D9B3211D-E57F-4426-AAEF-30A806ADD397";
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class ShellIIDGuid
 {
     internal const string CShellLink = "00021401-0000-0000-C000-000000000046";
@@ -57,6 +62,7 @@ internal static class ShellIIDGuid
     internal const string IThumbnailCache = "F676C15D-596A-4ce2-8234-33996F445DB1";
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class ShellKFIDGuid
 {
     internal const string ComputerFolder = "0AC0837C-BBF8-452A-850D-79D08E667CA7";

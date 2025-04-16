@@ -1,16 +1,21 @@
+using System.Runtime.Versioning;
+
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.KnownFolders;
 
+[SupportedOSPlatform("Windows")]
 internal static class KnownFoldersCLSIDGuid
 {
     internal const string KnownFolderManager = "4df0c730-df9d-4ae3-9153-aa6b82e9795a";
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class KnownFoldersIIDGuid
 {
     internal const string IKnownFolder = "3AA7AF7E-9B36-420c-A8E3-F77D4674A488";
     internal const string IKnownFolderManager = "8BE2D872-86AA-4d47-B776-32CCA40C7018";
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class KnownFoldersKFIDGuid
 {
     internal const string ComputerFolder = "0AC0837C-BBF8-452A-850D-79D08E667CA7";

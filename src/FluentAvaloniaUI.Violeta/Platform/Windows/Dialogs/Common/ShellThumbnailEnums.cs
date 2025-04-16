@@ -1,7 +1,9 @@
 using FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.Common;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Common;
 
+[SupportedOSPlatform("Windows")]
 public enum ShellThumbnailFormatOption
 {
     Default,
@@ -9,6 +11,7 @@ public enum ShellThumbnailFormatOption
     IconOnly = SIIGBF.IconOnly,
 }
 
+[SupportedOSPlatform("Windows")]
 public enum ShellThumbnailRetrievalOption
 {
     Default,

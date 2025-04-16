@@ -3,17 +3,21 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Versioning;
 
 namespace FluentAvalonia.UI.Violeta.Platform.Windows.Dialogs.Interop.ShellExtensions;
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("b7d14566-0509-4cce-a71f-0a554233bd9b")]
+[SuppressMessage("Interoperability", "SYSLIB1096:Convert to 'GeneratedComInterface'")]
 public interface IInitializeWithFile
 {
     public void Initialize([MarshalAs(UnmanagedType.LPWStr)] string filePath, AccessModes fileMode);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("7f73be3f-fb79-493c-a6c7-7ee14e245841")]
@@ -22,6 +26,7 @@ public interface IInitializeWithItem
     public void Initialize([In, MarshalAs(UnmanagedType.IUnknown)] object shellItem, AccessModes accessMode);
 }
 
+[SupportedOSPlatform("Windows")]
 [SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix")]
 [ComVisible(true)]
 [Guid("b824b49d-22ac-4161-ac8a-9916e8fa3f7f")]
@@ -31,6 +36,7 @@ public interface IInitializeWithStream
     public void Initialize(IStream stream, AccessModes fileMode);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComVisible(true)]
 [Guid("e357fccd-a995-4576-b01f-234630154e96")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -40,6 +46,7 @@ public interface IThumbnailProvider
     public void GetThumbnail(uint squareLength, out nint bitmapHandle, out uint bitmapType);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("fc4801a3-2ba9-11cf-a229-00aa003d7352")]
@@ -50,6 +57,7 @@ internal interface IObjectWithSite
     public void GetSite(ref Guid riid, [MarshalAs(UnmanagedType.IUnknown)] out object ppvSite);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [Guid("00000114-0000-0000-C000-000000000046")]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -61,6 +69,7 @@ internal interface IOleWindow
     public void ContextSensitiveHelp([MarshalAs(UnmanagedType.Bool)] bool fEnterMode);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("8895b1c6-b41f-4c1c-a562-0d564250836f")]
@@ -83,6 +92,7 @@ internal interface IPreviewHandler
     public HResult TranslateAccelerator(ref MSG pmsg);
 }
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("fec87aaf-35f9-447a-adb7-20234491401a")]
@@ -95,6 +105,7 @@ internal interface IPreviewHandlerFrame
     public HResult TranslateAccelerator(ref MSG pmsg);
 };
 
+[SupportedOSPlatform("Windows")]
 [ComImport]
 [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 [Guid("8327b13c-b63f-4b24-9b8a-d010dcc3f599")]
@@ -108,6 +119,7 @@ internal interface IPreviewHandlerVisuals
     public void SetTextColor(COLORREF color);
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 internal struct COLORREF
 {
@@ -120,6 +132,7 @@ internal struct COLORREF
                 (int)(0x00FF0000U & Dword) >> 16);
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 internal struct MSG
 {
@@ -132,6 +145,7 @@ internal struct MSG
     public int pt_y;
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
 internal class LogFont
 {
@@ -153,6 +167,7 @@ internal class LogFont
     internal string lfFaceName = string.Empty;
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 [SuppressMessage("Style", "IDE0251:Make member 'readonly'")]
 public struct POINT(int x, int y) : IEquatable<POINT>
@@ -180,6 +195,7 @@ public struct POINT(int x, int y) : IEquatable<POINT>
     public static bool operator !=(POINT left, POINT right) => !(left == right);
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 [SuppressMessage("Style", "IDE0250:Make struct 'readonly'")]
 public struct RECT
@@ -190,6 +206,7 @@ public struct RECT
     public readonly int Bottom;
 }
 
+[SupportedOSPlatform("Windows")]
 [StructLayout(LayoutKind.Sequential)]
 public struct SIZE()
 {
@@ -203,6 +220,7 @@ public struct SIZE()
     }
 }
 
+[SupportedOSPlatform("Windows")]
 public struct MESSAGE
 {
     public nint HWnd { readonly get; set; }

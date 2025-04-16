@@ -13,6 +13,7 @@ internal static class DefaultIconSize
     public static readonly SIZE Small = new(16, 16);
 }
 
+[SupportedOSPlatform("Windows")]
 internal static class DefaultThumbnailSize
 {
     public static readonly SIZE ExtraLarge = new(1024, 1024);
