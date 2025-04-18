@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Platform;
 using Avalonia.Platform.Storage;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -14,6 +15,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Text;
 using TiktokLiveRec.Extensions;
 
 namespace TiktokLiveRec.ViewModels;
@@ -453,17 +455,15 @@ public partial class SettingsViewModel : ObservableObject
     }
 
     [RelayCommand]
-    [SuppressMessage("Performance", "CA1822:Mark members as static")]
-    private async Task OpenHowToGetCookieChinaAsync()
+    private void OpenHowToGetCookieChina()
     {
-        // TODO: Implement for other platforms
-        //string html = ResourcesProvider.GetString("pack://application:,,,/TiktokLiveRec;component/Assets/GETCOOKIE.html");
-        //string filePath = Path.GetFullPath(ConfigurationSpecialPath.GetPath("GETCOOKIE.html", AppConfig.PackName));
+        using Stream stream = AssetLoader.Open(new Uri("avares://TiktokLiveRec/Assets/GETCOOKIE_DOUYIN.html"));
+        using StreamReader reader = new(stream, Encoding.UTF8, leaveOpen: true);
+        string html = reader.ReadToEnd();
+        string filePath = Path.GetFullPath(ConfigurationSpecialPath.GetPath("GETCOOKIE_DOUYIN.html", AppConfig.PackName));
 
-        //File.WriteAllText(filePath, html);
-
-        //// TODO: Implement for other platforms
-        //await Launcher.LaunchUriAsync(new Uri($"file://{filePath}"));
+        File.WriteAllText(filePath, html);
+        UrlHelper.OpenUrl(filePath);
     }
 
     [ObservableProperty]
@@ -476,11 +476,15 @@ public partial class SettingsViewModel : ObservableObject
     }
 
     [RelayCommand]
-    [SuppressMessage("Performance", "CA1822:Mark members as static")]
     private void OpenHowToGetCookieOversea()
     {
-        // TODO
-        Toast.Warning("ComingSoon".Tr() + " ...");
+        using Stream stream = AssetLoader.Open(new Uri("avares://TiktokLiveRec/Assets/GETCOOKIE_TIKTOK.html"));
+        using StreamReader reader = new(stream, Encoding.UTF8, leaveOpen: true);
+        string html = reader.ReadToEnd();
+        string filePath = Path.GetFullPath(ConfigurationSpecialPath.GetPath("GETCOOKIE_TIKTOK.html", AppConfig.PackName));
+
+        File.WriteAllText(filePath, html);
+        UrlHelper.OpenUrl(filePath);
     }
 
     [ObservableProperty]

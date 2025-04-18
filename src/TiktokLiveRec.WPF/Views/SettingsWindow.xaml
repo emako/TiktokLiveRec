@@ -623,8 +623,7 @@
                                 <Button Grid.Column="2"
                                         Margin="8,0,0,0"
                                         Command="{Binding OpenHowToGetCookieOverseaCommand}"
-                                        Content="{I18N HowToGet}"
-                                        Visibility="Hidden" />
+                                        Content="{I18N HowToGet}" />
                             </ui:Grid>
                         </ui:StackPanel>
                     </ui:CardExpander>

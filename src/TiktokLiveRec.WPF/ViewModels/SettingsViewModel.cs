@@ -449,11 +449,10 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [RelayCommand]
-    [SuppressMessage("Performance", "CA1822:Mark members as static")]
     private async Task OpenHowToGetCookieChinaAsync()
     {
-        string html = ResourcesProvider.GetString("pack://application:,,,/TiktokLiveRec;component/Assets/GETCOOKIE.html");
-        string filePath = Path.GetFullPath(ConfigurationSpecialPath.GetPath("GETCOOKIE.html", AppConfig.PackName));
+        string html = ResourcesProvider.GetString("pack://application:,,,/TiktokLiveRec;component/Assets/GETCOOKIE_DOUYIN.html");
+        string filePath = Path.GetFullPath(ConfigurationSpecialPath.GetPath("GETCOOKIE_DOUYIN.html", AppConfig.PackName));
 
         File.WriteAllText(filePath, html);
 
@@ -471,11 +470,15 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [RelayCommand]
-    [SuppressMessage("Performance", "CA1822:Mark members as static")]
-    private void OpenHowToGetCookieOversea()
+    private async Task OpenHowToGetCookieOverseaAsync()
     {
-        // TODO
-        Toast.Warning("ComingSoon".Tr() + " ...");
+        string html = ResourcesProvider.GetString("pack://application:,,,/TiktokLiveRec;component/Assets/GETCOOKIE_TIKTOK.html");
+        string filePath = Path.GetFullPath(ConfigurationSpecialPath.GetPath("GETCOOKIE_TIKTOK.html", AppConfig.PackName));
+
+        File.WriteAllText(filePath, html);
+
+        // TODO: Implement for other platforms
+        await Launcher.LaunchUriAsync(new Uri($"file://{filePath}"));
     }
 
     [ObservableProperty]
