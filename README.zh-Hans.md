@@ -49,14 +49,18 @@ https://www.tiktok.com/@XXX/live
 
 另外 macOS 估计会是下一个支持的系统。
 
-| 操作系统 | 开发框架             | 状态   |
-| -------- | -------------------- | ------ |
-| Windows  | WPF                  | 支持   |
-| macOS    | Avalonia             | 待开发 |
-| Ubuntu   | Avalonia 或 WPF+Wice | 待开发 |
-| Android  | Avalonia 或 MAUI     | 待开发 |
-| iOS      | Avalonia 或 MAUI     | 待开发 |
-| tvOS     | 待定                 | 待开发 |
+| 操作系统 | 开发框架 | 状态   |
+| -------- | -------- | ------ |
+| Windows  | WPF      | 支持   |
+| macOS    | Avalonia | 开发中 |
+| Ubuntu   | Avalonia | 待开发 |
+| Android  | Avalonia | 待开发 |
+| iOS      | Avalonia | 待开发 |
+| tvOS     | 待定     | 待开发 |
+
+## 自有Cookie
+
+来看看 [GETCOOKIE_DOUYIN.md](doc/GETCOOKIE_DOUYIN.md) 或 [GETCOOKIE_TIKTOK.md](doc/GETCOOKIE_TIKTOK.md)。
 
 ## 隐私政策
 

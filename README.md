@@ -49,14 +49,18 @@ Implementing other OS's based on my personal needs or other user reactions.
 
 BTW macOS may will be the next supported OS.
 
-| OS      | Framework            | Status    |
-| ------- | -------------------- | --------- |
-| Windows | WPF                  | Available |
-| macOS   | Avalonia             | TBD       |
-| Ubuntu  | Avalonia or WPF+Wice | TBD       |
-| Android | Avalonia or MAUI     | TBD       |
-| iOS     | Avalonia or MAUI     | TBD       |
-| tvOS    | TBD                  | TBD       |
+| OS      | Framework | Status            |
+| ------- | --------- | ----------------- |
+| Windows | WPF       | Available         |
+| macOS   | Avalonia  | Under Development |
+| Ubuntu  | Avalonia  | TBD               |
+| Android | Avalonia  | TBD               |
+| iOS     | Avalonia  | TBD               |
+| tvOS    | TBD       | TBD               |
+
+## Your Cookie Can
+
+Check it from [GETCOOKIE_DOUYIN.md](doc/GETCOOKIE_DOUYIN.md) or [GETCOOKIE_TIKTOK.md](doc/GETCOOKIE_TIKTOK.md).
 
 ## Privacy Policy
 
