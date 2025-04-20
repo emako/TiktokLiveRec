@@ -1,4 +1,4 @@
-﻿<vio:ContentDialog x:Class="TiktokLiveRec.Views.AddRoomContentDialog"
+<vio:ContentDialog x:Class="TiktokLiveRec.Views.AddRoomContentDialog"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,9 +17,10 @@
                    Style="{StaticResource DefaultVioletaContentDialogStyle}"
                    mc:Ignorable="d">
     <ui:Grid>
-        <ui:StackPanel Spacing="8">
+        <ui:StackPanel MinWidth="350" Spacing="8">
             <TextBlock Text="{I18N EnterRoomUrl}" />
             <ui:TextBox PlaceholderText="https://live.douyin.com/xxx" Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <CheckBox Content="{I18N AddRoomForce}" IsChecked="{Binding IsForcedAdd, Mode=TwoWay}" />
         </ui:StackPanel>
     </ui:Grid>
 </vio:ContentDialog>

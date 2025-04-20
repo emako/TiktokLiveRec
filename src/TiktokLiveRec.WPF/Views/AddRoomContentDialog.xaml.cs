@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using TiktokLiveRec.Core;
 using Wpf.Ui.Violeta.Controls;
 
@@ -9,6 +9,9 @@ public sealed partial class AddRoomContentDialog : ContentDialog
 {
     [ObservableProperty]
     private string? url = null;
+
+    [ObservableProperty]
+    private bool isForcedAdd = false;
 
     [ObservableProperty]
     private string? nickName = null;
@@ -30,35 +33,61 @@ public sealed partial class AddRoomContentDialog : ContentDialog
             return;
         }
 
-        using (LoadingWindow.ShowAsync())
+        if (IsForcedAdd)
         {
-            try
+            string? roomUrl = Spider.ParseUrl(Url);
+
+            if (roomUrl != null)
             {
-                ISpiderResult? spider = Spider.GetResult(Url);
-
-                if (string.IsNullOrWhiteSpace(spider?.Nickname))
+                if (Configurations.Rooms.Get().Any(room => room.RoomUrl == roomUrl))
                 {
                     e.Cancel = true;
-                    Toast.Error("GetRoomInfoError".Tr());
+                    Toast.Warning("AddRoomErrorDuplicated".Tr(roomUrl));
                     return;
                 }
 
-                if (Configurations.Rooms.Get().Any(room => room.RoomUrl == spider.RoomUrl))
-                {
-                    e.Cancel = true;
-                    Toast.Warning("AddRoomErrorDuplicated".Tr(spider.Nickname));
-                    return;
-                }
+                NickName = roomUrl;
+                RoomUrl = roomUrl;
 
-                NickName = spider.Nickname;
-                RoomUrl = spider.RoomUrl;
-
-                Toast.Success("AddRoomSucc".Tr(NickName));
+                Toast.Success("AddRoomSucc".Tr(RoomUrl));
             }
-            catch
+            else
             {
-                e.Cancel = true;
                 Toast.Error("ErrorRoomUrl".Tr());
+            }
+        }
+        else
+        {
+            using (LoadingWindow.ShowAsync())
+            {
+                try
+                {
+                    ISpiderResult? spider = Spider.GetResult(Url);
+
+                    if (string.IsNullOrWhiteSpace(spider?.Nickname))
+                    {
+                        e.Cancel = true;
+                        Toast.Error("GetRoomInfoError".Tr());
+                        return;
+                    }
+
+                    if (Configurations.Rooms.Get().Any(room => room.RoomUrl == spider.RoomUrl))
+                    {
+                        e.Cancel = true;
+                        Toast.Warning("AddRoomErrorDuplicated".Tr(spider.Nickname));
+                        return;
+                    }
+
+                    NickName = spider.Nickname;
+                    RoomUrl = spider.RoomUrl;
+
+                    Toast.Success("AddRoomSucc".Tr(NickName));
+                }
+                catch
+                {
+                    e.Cancel = true;
+                    Toast.Error("ErrorRoomUrl".Tr());
+                }
             }
         }
     }

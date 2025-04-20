@@ -505,4 +505,7 @@
   <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
     <value>保存フォルダは作者によって作られる</value>
   </data>
+  <data name="AddRoomForce" xml:space="preserve">
+    <value>有効性を検出せずに直接追加する</value>
+  </data>
 </root>

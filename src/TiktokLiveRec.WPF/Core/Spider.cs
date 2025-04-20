@@ -1,7 +1,23 @@
-﻿namespace TiktokLiveRec.Core;
+namespace TiktokLiveRec.Core;
 
 internal static class Spider
 {
+    public static string? ParseUrl(string url)
+    {
+        // Only support following spider now.
+
+        if (url.Contains("douyin"))
+        {
+            return DouyinSpider.Instance.Value.ParseUrl(url);
+        }
+        else if (url.Contains("tiktok"))
+        {
+            return TiktokSpider.Instance.Value.ParseUrl(url);
+        }
+
+        return null;
+    }
+
     public static ISpiderResult? GetResult(string url)
     {
         // Only support following spider now.

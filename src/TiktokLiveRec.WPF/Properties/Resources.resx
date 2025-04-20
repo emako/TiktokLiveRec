@@ -502,4 +502,7 @@
   <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
     <value>Is the saving directory distinguished by authors</value>
   </data>
+  <data name="AddRoomForce" xml:space="preserve">
+    <value>Add it directly without detecting validity</value>
+  </data>
 </root>

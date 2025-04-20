@@ -502,4 +502,7 @@
   <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
     <value>保存目录是否以作者区分</value>
   </data>
+  <data name="AddRoomForce" xml:space="preserve">
+    <value>不检测有效性直接添加</value>
+  </data>
 </root>
