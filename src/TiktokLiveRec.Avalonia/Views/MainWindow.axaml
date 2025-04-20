@@ -112,7 +112,9 @@
                                    Opacity="0.5"
                                    ShowAsMonochrome="True"
                                    UriSource="avares://TiktokLiveRec/Assets/Background.png" />
-                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RoomStatuses}">
+                    <DataGrid AutoGenerateColumns="False"
+                              ItemsSource="{Binding RoomStatuses}"
+                              SelectedItem="{Binding SelectedItem}">
                         <DataGrid.Styles>
                             <Style Selector="DataGridColumnHeader">
                                 <Setter Property="Theme" Value="{DynamicResource DataGridCenterColumnHeader}" />
@@ -120,6 +122,86 @@
                                 <Setter Property="FontSize" Value="13" />
                             </Style>
                         </DataGrid.Styles>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="{Binding SelectedItem.NickName}" IsEnabled="False" />
+                                <MenuItem Command="{Binding GotoRoomUrlCommand}" Header="{I18N GotoLiveRoom}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon Margin="2,0,2,0"
+                                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                     FontSize="16"
+                                                     Glyph="{x:Static ui:FontSymbols.OpenInNewWindow}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="{Binding RowUpRoomUrlCommand}" Header="{I18N RowUpRoom}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon Margin="2,0,2,0"
+                                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                     FontSize="16"
+                                                     Glyph="{x:Static ui:FontSymbols.ChevronUp}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="{Binding RowDownRoomUrlCommand}" Header="{I18N RowDownRoom}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon Margin="2,0,2,0"
+                                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                     FontSize="16"
+                                                     Glyph="{x:Static ui:FontSymbols.ChevronDown}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="{Binding RemoveRoomUrlCommand}" Header="{I18N RemoveRoom}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon Margin="2,0,2,0"
+                                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                                     FontSize="16"
+                                                     Glyph="{x:Static ui:FontSymbols.CalculatorMultiply}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator />
+                                <MenuItem Command="{Binding OpenSaveFolderCommand}" Header="{I18N SaveFolder}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon Margin="2,0,2,0"
+                                                     FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                                     FontSize="16"
+                                                     Glyph="{x:Static ui:FontSymbols.FolderOpen}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="{Binding PlayRecordCommand}" Header="{I18N PlayRecord}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon Margin="2,0,2,0"
+                                                     FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                                     FontSize="16"
+                                                     Glyph="{x:Static ui:FontSymbols.Play}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="{Binding StopRecordCommand}" Header="{I18N StopRecord}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon Margin="2,0,2,0"
+                                                     FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                                     FontSize="16"
+                                                     Glyph="{x:Static ui:FontSymbols.Stop}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <!--<MenuItem Command="{Binding ShowRecordLogCommand}" Header="{I18N RecordLog}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon Margin="2,0,2,0"
+                                                     FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                                     FontSize="16"
+                                                     Glyph="{x:Static ui:FontSymbols.List}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>-->
+                                <Separator />
+                                <MenuItem Header="{I18N SingleSettings}" IsEnabled="False" />
+                                <MenuItem Command="{Binding IsToNotifyCommand}"
+                                          Header="{I18N LiveNotification}"
+                                          IsChecked="{Binding SelectedItem.IsToNotify, Mode=TwoWay}"
+                                          ToggleType="CheckBox" />
+                                <MenuItem Command="{Binding IsToRecordCommand}"
+                                          Header="{I18N EnableRecord}"
+                                          IsChecked="{Binding SelectedItem.IsToRecord, Mode=TwoWay}"
+                                          ToggleType="CheckBox" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Width="0.5*" Header="">
                                 <DataGridTemplateColumn.CellTemplate>

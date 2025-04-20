@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Interactivity;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Fischless.Configuration;
@@ -8,6 +9,7 @@ using Flucli;
 using FluentAvalonia.UI.Controls;
 using FluentAvaloniaUI.Violeta.Mvvm;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Threading;
@@ -335,7 +337,7 @@ public sealed partial class MainViewModel : ObservableObject
             return;
         }
 
-        //MessageBoxResult result = await MessageBox.QuestionAsync("SureRemoveRoom".Tr(SelectedItem.NickName));
+        //MessageBoxResult result = await MessageBox.Question("SureRemoveRoom".Tr(SelectedItem.NickName));
 
         //if (result == MessageBoxResult.Yes)
         //{
@@ -372,7 +374,7 @@ public sealed partial class MainViewModel : ObservableObject
             return;
         }
 
-        UrlHelper.OpenUrl(SaveFolderHelper.GetSaveFolder(SelectedItem.RoomUrl));
+        UrlHelper.OpenUrl(SelectedItem.RoomUrl);
     }
 
     [RelayCommand]

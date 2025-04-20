@@ -70,6 +70,7 @@ public class ReactiveCollection<T> : ObservableCollection<T>
         if (num > 0)
         {
             Move(num, num - 1);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
     }
 
@@ -79,6 +80,7 @@ public class ReactiveCollection<T> : ObservableCollection<T>
         if (num >= 0 && num < Count - 1)
         {
             Move(num, num + 1);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
     }
 }
