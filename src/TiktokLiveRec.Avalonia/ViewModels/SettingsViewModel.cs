@@ -54,10 +54,7 @@ public partial class SettingsViewModel : ObservableObject
 
         Locale.Culture = value switch
         {
-            (int)LanguageIndexEnum.Auto =>
-                Environment.OSVersion.Platform == PlatformID.Win32NT
-                    ? new CultureInfo(Interop.GetUserDefaultLocaleName())
-                    : CultureInfo.InstalledUICulture,
+            (int)LanguageIndexEnum.Auto => CultureInfo.InstalledUICulture,
             _ => new CultureInfo(language),
         };
 

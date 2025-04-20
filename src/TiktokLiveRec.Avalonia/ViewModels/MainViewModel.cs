@@ -82,6 +82,7 @@ public sealed partial class MainViewModel : ObservableObject
         TrayIconManager.GetInstance().UpdateTrayIcon();
     }
 
+    [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>")]
     public MainViewModel()
     {
         DispatcherTimer = new(TimeSpan.FromSeconds(3), ReloadRoomStatus);
@@ -119,8 +120,8 @@ public sealed partial class MainViewModel : ObservableObject
         //});
 
         //GlobalMonitor.Start();
-        //ChildProcessTracerPeriodicTimer.Default.WhiteList = ["ffmpeg", "ffplay"];
-        //ChildProcessTracerPeriodicTimer.Default.Start();
+        ChildProcessTracerPeriodicTimer.Default.WhiteList = ["ffmpeg", "ffplay"];
+        ChildProcessTracerPeriodicTimer.Default.Start();
         DispatcherTimer.Start();
     }
 

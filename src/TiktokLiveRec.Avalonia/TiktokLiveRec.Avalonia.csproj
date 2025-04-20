@@ -56,6 +56,7 @@
         <Compile Include="..\TiktokLiveRec.WPF\Core\Recorder.cs" Link="Core\Recorder.cs" />
         <Compile Include="..\TiktokLiveRec.WPF\Core\SpiderImpl\DouyinSpider.cs" Link="Core\SpiderImpl\DouyinSpider.cs" />
         <Compile Include="..\TiktokLiveRec.WPF\Core\SpiderImpl\TiktokSpider.cs" Link="Core\SpiderImpl\TiktokSpider.cs" />
+        <Compile Include="..\TiktokLiveRec.WPF\Threading\PeriodicWait.cs" Link="Threading\PeriodicWait.cs" />
     </ItemGroup>
 
     <ItemGroup>
