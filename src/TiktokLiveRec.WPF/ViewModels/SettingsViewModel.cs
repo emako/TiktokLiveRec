@@ -244,6 +244,24 @@ public partial class SettingsViewModel : ReactiveObject
     }
 
     [ObservableProperty]
+    private bool isToSegment = Configurations.IsToSegment.Get();
+
+    partial void OnIsToSegmentChanged(bool value)
+    {
+        Configurations.IsToSegment.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private int segmentTime = Configurations.SegmentTime.Get();
+
+    partial void OnSegmentTimeChanged(int value)
+    {
+        Configurations.SegmentTime.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
     private string saveFolder = Configurations.SaveFolder.Get();
 
     partial void OnSaveFolderChanged(string value)

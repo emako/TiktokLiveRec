@@ -916,6 +916,33 @@ namespace TiktokLiveRec.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Video Segment.
+        /// </summary>
+        public static string Segment {
+            get {
+                return ResourceManager.GetString("Segment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies the length of time (in seconds) for each output video.
+        /// </summary>
+        public static string SegmentHint {
+            get {
+                return ResourceManager.GetString("SegmentHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video Segment Time (sec).
+        /// </summary>
+        public static string SegmentTime {
+            get {
+                return ResourceManager.GetString("SegmentTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Folder.
         /// </summary>
         public static string SelectFolder {

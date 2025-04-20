@@ -508,4 +508,13 @@
   <data name="AddRoomForce" xml:space="preserve">
     <value>有効性を検出せずに直接追加する</value>
   </data>
+  <data name="SegmentTime" xml:space="preserve">
+    <value>ビデオ分割時間（秒）</value>
+  </data>
+  <data name="Segment" xml:space="preserve">
+    <value>ビデオ分割</value>
+  </data>
+  <data name="SegmentHint" xml:space="preserve">
+    <value>各出力ビデオの分割時間（秒単位）を指定する</value>
+  </data>
 </root>

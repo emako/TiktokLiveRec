@@ -505,4 +505,13 @@
   <data name="AddRoomForce" xml:space="preserve">
     <value>Add it directly without detecting validity</value>
   </data>
+  <data name="SegmentTime" xml:space="preserve">
+    <value>Video Segment Time (sec)</value>
+  </data>
+  <data name="Segment" xml:space="preserve">
+    <value>Video Segment</value>
+  </data>
+  <data name="SegmentHint" xml:space="preserve">
+    <value>Specifies the length of time (in seconds) for each output video</value>
+  </data>
 </root>

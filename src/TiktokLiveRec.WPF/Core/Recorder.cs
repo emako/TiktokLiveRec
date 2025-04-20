@@ -25,6 +25,8 @@ public sealed class Recorder
 
     public DateTime EndTime { get; private set; } = DateTime.MinValue;
 
+    public bool IsToSegment { get; set; } = false;
+
     public Task Start(RecorderStartInfo startInfo, CancellationTokenSource? tokenSource = null)
     {
         if (RecordStatus == RecordStatus.Recording)
@@ -64,16 +66,36 @@ public sealed class Recorder
                 string userAgent = Configurations.UserAgent.Get();
                 string httpProxy = Configurations.ProxyUrl.Get();
                 bool isUseProxy = Configurations.IsUseProxy.Get() && !string.IsNullOrWhiteSpace(httpProxy);
+                int segmentTime = Configurations.SegmentTime.Get();
+                bool isToSegment = Configurations.IsToSegment.Get() && segmentTime > 0;
+
+                IsToSegment = isToSegment;
 
                 if (!string.IsNullOrWhiteSpace(startInfo.HlsUrl))
                 {
                     Url = startInfo.HlsUrl;
-                    FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.ts");
+
+                    if (isToSegment)
+                    {
+                        FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}_%03d.ts");
+                    }
+                    else
+                    {
+                        FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.ts");
+                    }
                 }
                 else
                 {
                     Url = startInfo.FlvUrl;
-                    FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.flv");
+
+                    if (isToSegment)
+                    {
+                        FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}_%03d.ts");
+                    }
+                    else
+                    {
+                        FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}_%03d.flv");
+                    }
                 }
 
                 if (string.IsNullOrWhiteSpace(userAgent))
@@ -125,7 +147,12 @@ public sealed class Recorder
                     "-map", "0",                      // Set input stream mapping.
                 }
                 .AddIf(isUseProxy, "-http_proxy", httpProxy)
-                .AddIf(false, "-f", "segment", "-segment_time", "999999", "-segment_format", "mpegts", "-reset_timestamps", "1")
+                .AddIf(isToSegment,
+                    "-f", "segment",
+                    "-segment_time", segmentTime.ToString(), // in secs
+                    "-segment_format", "mpegts",
+                    "-reset_timestamps", "1"
+                )
                 .AddIf(true, FileName) // _%03d
                 .ToArguments();
                 TokenSource = tokenSource ?? new CancellationTokenSource();
@@ -137,8 +164,8 @@ public sealed class Recorder
                     .WithArguments(Parameters)
                     .WithEnvironmentVariable(
                     [
-                        (isUseProxy ? "http_proxy" : "__TIKTOKLIVEREC_IGNORE_PROXY__", "http://" + httpProxy),
-                        (isUseProxy ? "https_proxy" : "__TIKTOKLIVEREC_IGNORE_PROXY__", "http://" + httpProxy),
+                        (isUseProxy ? "http_proxy" : "__TIKTOKLIVEREC_IGNORE_HTTP_PROXY__", "http://" + httpProxy),
+                        (isUseProxy ? "https_proxy" : "__TIKTOKLIVEREC_IGNORE_HTTPS_PROXY__", "http://" + httpProxy),
                     ])
                     .WithStandardErrorPipe(PipeTarget.ToDelegate(OnStandardErrorReceived, Encoding.UTF8))
                     .WithStandardOutputPipe(PipeTarget.ToDelegate(OnStandardOutputReceived, Encoding.UTF8))
