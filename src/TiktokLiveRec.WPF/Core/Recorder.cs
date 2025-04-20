@@ -1,10 +1,8 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
-using Downloader;
+using CommunityToolkit.Mvvm.Messaging;
 using Flucli;
 using Flucli.Utils.Extensions;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Text;
 using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Models;
@@ -53,7 +51,7 @@ public sealed class Recorder
 
                 string saveFolder = SaveFolderHelper.GetSaveFolder(Configurations.SaveFolder.Get());
 
-                saveFolder = Path.Combine(saveFolder, 
+                saveFolder = Path.Combine(saveFolder,
                     Configurations.SaveFolderDistinguishedByAuthors.Get()
                         ? startInfo.NickName.SanitizeFileName().ReplaceTrailingDotsWithUnderscores()
                         : string.Empty
@@ -137,41 +135,14 @@ public sealed class Recorder
 
                 CliResult result = await recorderPath
                     .WithArguments(Parameters)
+                    .WithEnvironmentVariable(
+                    [
+                        (isUseProxy ? "http_proxy" : "__TIKTOKLIVEREC_IGNORE_PROXY__", "http://" + httpProxy),
+                        (isUseProxy ? "https_proxy" : "__TIKTOKLIVEREC_IGNORE_PROXY__", "http://" + httpProxy),
+                    ])
                     .WithStandardErrorPipe(PipeTarget.ToDelegate(OnStandardErrorReceived, Encoding.UTF8))
                     .WithStandardOutputPipe(PipeTarget.ToDelegate(OnStandardOutputReceived, Encoding.UTF8))
                     .ExecuteAsync(cancellationToken: TokenSource.Token);
-
-                if (!result.IsSuccess)
-                {
-                    Debug.WriteLine($"[Recorder] FFmpeg not work, exit code is {result.ExitCode}.");
-                    Debug.WriteLine($"[Recorder] Now fallback to flv direct download mode.");
-
-                    // Fallback to flv downloading.
-                    if (!string.IsNullOrWhiteSpace(startInfo.FlvUrl))
-                    {
-                        EndTime = DateTime.MinValue;
-                        StartTime = DateTime.Now;
-
-                        Url = startInfo.FlvUrl;
-                        FileName = Path.Combine(saveFolder, $"{startInfo.NickName.SanitizeFileName()}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.flv");
-
-                        DownloadConfiguration downloadOpt = new();
-
-                        if (isUseProxy)
-                        {
-                            if (Uri.TryCreate($"https://{httpProxy}", UriKind.Absolute, out Uri? proxyUri))
-                            {
-                                downloadOpt.RequestConfiguration = new()
-                                {
-                                    Proxy = new WebProxy(proxyUri.Host, proxyUri.Port),
-                                };
-                            }
-                        }
-
-                        DownloadService downloader = new(downloadOpt);
-                        await downloader.DownloadFileTaskAsync(startInfo.FlvUrl, FileName, cancellationToken: TokenSource.Token);
-                    }
-                }
             }
             catch (Exception e)
             {
