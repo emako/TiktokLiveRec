@@ -61,6 +61,9 @@ internal static class User32
     [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
     public static extern int LoadString(nint instanceHandle, int id, StringBuilder buffer, int bufferSize);
 
+    [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+    public static extern nint MB_GetString(uint wBtn);
+
     public delegate nint WndProcDelegate(nint hWnd, uint msg, nint wParam, nint lParam);
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
@@ -387,5 +390,21 @@ internal static class User32
             Width = width;
             Height = height;
         }
+    }
+
+    [Flags]
+    public enum DialogBoxCommand : int
+    {
+        IDOK = 0,
+        IDCANCEL = 1,
+        IDABORT = 2,
+        IDRETRY = 3,
+        IDIGNORE = 4,
+        IDYES = 5,
+        IDNO = 6,
+        IDCLOSE = 7,
+        IDHELP = 8,
+        IDTRYAGAIN = 9,
+        IDCONTINUE = 10,
     }
 }
