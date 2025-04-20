@@ -502,4 +502,16 @@
   <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
     <value>保存目錄是否以作者區分</value>
   </data>
+  <data name="AddRoomForce" xml:space="preserve">
+    <value>不檢測有效性直接添加</value>
+  </data>
+  <data name="SegmentTime" xml:space="preserve">
+    <value>檔案分段時間（秒）</value>
+  </data>
+  <data name="Segment" xml:space="preserve">
+    <value>檔案分段</value>
+  </data>
+  <data name="SegmentHint" xml:space="preserve">
+    <value>指定每個輸出檔案的時間長度（單位為秒）</value>
+  </data>
 </root>

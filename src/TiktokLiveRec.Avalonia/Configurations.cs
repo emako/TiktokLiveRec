@@ -25,6 +25,8 @@ public static class Configurations
     public static ConfigurationDefinition<bool> IsToRecord { get; } = new(nameof(IsToRecord), true);
     public static ConfigurationDefinition<string> RecordFormat { get; } = new(nameof(RecordFormat), "TS/FLV");
     public static ConfigurationDefinition<bool> IsRemoveTs { get; } = new(nameof(IsRemoveTs), false);
+    public static ConfigurationDefinition<bool> IsToSegment { get; } = new(nameof(IsToSegment), false);
+    public static ConfigurationDefinition<int> SegmentTime { get; } = new(nameof(SegmentTime), 1800);
     public static ConfigurationDefinition<string> SaveFolder { get; } = new(nameof(SaveFolder), string.Empty);
     public static ConfigurationDefinition<bool> SaveFolderDistinguishedByAuthors { get; } = new(nameof(SaveFolderDistinguishedByAuthors), true);
     public static ConfigurationDefinition<string> Player { get; } = new(nameof(Player), "ffplay");

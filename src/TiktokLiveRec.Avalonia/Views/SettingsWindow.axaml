@@ -337,6 +337,50 @@
                 <Expander>
                     <Expander.Header>
                         <Grid Margin="0,16,0,16" ColumnDefinitions="Auto,*,Auto">
+                            <Grid Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock MinWidth="26"
+                                           Margin="4,0,0,0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                           FontSize="18"
+                                           Text="{x:Static ui:FontSymbols.BulletedList}" />
+                            </Grid>
+                            <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0" Text="{I18N Segment}" />
+                                <TextBlock Grid.Row="1"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource SystemFillColorSolidNeutralBrush}"
+                                           Text="{I18N SegmentHint}" />
+                            </Grid>
+                            <Grid Grid.Column="2" Margin="0,0,-24,0">
+                                <ToggleSwitch IsChecked="{Binding IsToSegment, Mode=TwoWay}"
+                                              OffContent=""
+                                              OnContent="" />
+                            </Grid>
+                        </Grid>
+                    </Expander.Header>
+                    <StackPanel Spacing="8">
+                        <StackPanel Margin="42,0,28,0"
+                                    IsEnabled="{Binding IsToSegment}"
+                                    Spacing="12">
+                            <Grid ColumnDefinitions="Auto,Auto">
+                                <TextBlock Grid.Column="0"
+                                           VerticalAlignment="Center"
+                                           Text="{I18N SegmentTime}" />
+                                <ui:NumberBox Grid.Column="1"
+                                              MinWidth="150"
+                                              Margin="8,0,0,0"
+                                              Maximum="2147483647"
+                                              Minimum="10"
+                                              Value="{Binding SegmentTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                <Expander>
+                    <Expander.Header>
+                        <Grid Margin="0,16,0,16" ColumnDefinitions="Auto,*,Auto">
                             <Grid Grid.Column="0" Margin="0,0,16,0">
                                 <TextBlock MinWidth="26"
                                            Margin="4,0,0,0"

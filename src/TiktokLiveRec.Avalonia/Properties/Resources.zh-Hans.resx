@@ -502,4 +502,16 @@
   <data name="SaveFolderDistinguishedByAuthors" xml:space="preserve">
     <value>保存目录是否以作者区分</value>
   </data>
+  <data name="AddRoomForce" xml:space="preserve">
+    <value>不检测有效性直接添加</value>
+  </data>
+  <data name="SegmentTime" xml:space="preserve">
+    <value>视频分段时间（秒）</value>
+  </data>
+  <data name="Segment" xml:space="preserve">
+    <value>视频分段</value>
+  </data>
+  <data name="SegmentHint" xml:space="preserve">
+    <value>指定每个输出视频的时间长度（单位为秒）</value>
+  </data>
 </root>

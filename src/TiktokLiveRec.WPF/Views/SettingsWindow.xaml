@@ -302,7 +302,7 @@
                                                VerticalAlignment="Center"
                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
                                                FontSize="18"
-                                               Text="{x:Static ui:FontSymbols.ActionCenter}" />
+                                               Text="{x:Static ui:FontSymbols.BulletedList}" />
                                 </Grid>
                                 <ui:Grid Grid.Column="1" RowDefinitions="Auto,Auto">
                                     <TextBlock Grid.Row="0" Text="{I18N Segment}" />
@@ -327,7 +327,7 @@
                                     <ui:NumberBox Grid.Column="1"
                                                   MinWidth="150"
                                                   Margin="8,0,0,0"
-                                                  Maximum="{c:DoubleMaxValue}"
+                                                  Maximum="2147483647"
                                                   Minimum="10"
                                                   Value="{Binding SegmentTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 </ui:Grid>

@@ -254,6 +254,24 @@ public partial class SettingsViewModel : ObservableObject
     }
 
     [ObservableProperty]
+    private bool isToSegment = Configurations.IsToSegment.Get();
+
+    partial void OnIsToSegmentChanged(bool value)
+    {
+        Configurations.IsToSegment.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
+    private int segmentTime = Configurations.SegmentTime.Get();
+
+    partial void OnSegmentTimeChanged(int value)
+    {
+        Configurations.SegmentTime.Set(value);
+        ConfigurationManager.Save();
+    }
+
+    [ObservableProperty]
     private bool isRemoveTs = Configurations.IsRemoveTs.Get();
 
     partial void OnIsRemoveTsChanged(bool value)
