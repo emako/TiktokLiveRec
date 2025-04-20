@@ -1,7 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ComputedConverters;
-using System.IO;
 using TiktokLiveRec.Core;
 using TiktokLiveRec.Models;
 using Windows.System;
@@ -118,7 +117,6 @@ public partial class RoomStatusReactive : ReactiveObject
     [RelayCommand]
     private async Task GotoRoomUrlAsync()
     {
-        // TODO: Implement for other platforms
         await Launcher.LaunchUriAsync(new Uri(RoomUrl));
     }
 }

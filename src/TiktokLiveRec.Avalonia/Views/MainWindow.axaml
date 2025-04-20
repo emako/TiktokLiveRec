@@ -3,8 +3,9 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:u="https://irihi.tech/ursa"
                  xmlns:ui="using:FluentAvalonia.UI.Controls"
-                 xmlns:vm="clr-namespace:TiktokLiveRec.ViewModels"
+                 xmlns:vm="using:TiktokLiveRec.ViewModels"
                  Title="TiktokLiveRec"
                  Width="860"
                  Height="600"
@@ -102,12 +103,101 @@
                          BorderBrush="{DynamicResource ExpanderHeaderBorderBrush}"
                          BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}"
                          CornerRadius="{DynamicResource ControlCornerRadius}">
-                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RoomStatuses}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding NickName}" Header="NickName" />
-                        <DataGridTextColumn Binding="{Binding RoomUrl}" Header="RoomUrl" />
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <ui:BitmapIcon Width="100"
+                                   Height="100"
+                                   Margin="8"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Bottom"
+                                   Opacity="0.5"
+                                   ShowAsMonochrome="True"
+                                   UriSource="avares://TiktokLiveRec/Assets/Background.png" />
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RoomStatuses}">
+                        <DataGrid.Styles>
+                            <Style Selector="DataGridColumnHeader">
+                                <Setter Property="Theme" Value="{DynamicResource DataGridCenterColumnHeader}" />
+                                <Setter Property="MinHeight" Value="48" />
+                                <Setter Property="FontSize" Value="13" />
+                            </Style>
+                        </DataGrid.Styles>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="0.5*" Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="80"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center">
+                                            <ui:PersonPicture Width="28"
+                                                              Height="28"
+                                                              Source="{Binding AvatarThumbUrl}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="1*"
+                                                    Header="{I18N LiveRoom}"
+                                                    IsReadOnly="True"
+                                                    SortMemberPath="NickName">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="13" Text="{Binding NickName}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="*"
+                                                    Header="{I18N StreamStatus}"
+                                                    IsReadOnly="True"
+                                                    SortMemberPath="StreamStatusText">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="13" Text="{Binding StreamStatusText}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="*"
+                                                    Header="{I18N RecordStatus}"
+                                                    IsReadOnly="True"
+                                                    SortMemberPath="RecordStatusText">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontSize="13" Text="{Binding RecordStatusText}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="*"
+                                                    Header="{I18N Operation}"
+                                                    IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <StackPanel Margin="2"
+                                                        HorizontalAlignment="Center"
+                                                        Orientation="Horizontal"
+                                                        Spacing="8">
+                                                <Button Command="{Binding GotoRoomUrlCommand}">
+                                                    <Button.Content>
+                                                        <StackPanel Orientation="Horizontal" Spacing="4">
+                                                            <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                                                         FontSize="13"
+                                                                         Glyph="{x:Static ui:FontSymbols.OpenInNewWindow}" />
+                                                            <TextBlock FontSize="13" Text="{I18N ButtonOfGoto}" />
+                                                        </StackPanel>
+                                                    </Button.Content>
+                                                </Button>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </ui:FABorder>
         </Grid>
         <Grid Grid.Row="2" Margin="0,8,0,8">

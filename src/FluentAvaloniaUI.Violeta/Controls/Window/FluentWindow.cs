@@ -45,7 +45,7 @@ public class FluentWindow : UrsaWindow
 
             if (themeVariant == ThemeVariant.Dark)
             {
-                Background = new SolidColorBrush(Color.FromRgb(0x27, 0x27, 0x27));
+                Background = new SolidColorBrush(Color.FromRgb(0x20, 0x20, 0x20));
             }
             else
             {
@@ -62,7 +62,7 @@ public class FluentWindow : UrsaWindow
 
             if (themeVariant == ThemeVariant.Dark)
             {
-                Background = new SolidColorBrush(Color.FromRgb(0x27, 0x27, 0x27));
+                Background = new SolidColorBrush(Color.FromRgb(0x20, 0x20, 0x20));
             }
             else
             {

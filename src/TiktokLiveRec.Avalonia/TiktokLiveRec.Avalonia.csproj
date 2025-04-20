@@ -46,11 +46,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <AvaloniaResource Remove="Assets\Background.png" />
       <AvaloniaResource Remove="Assets\Loading.json" />
     </ItemGroup>
 
     <ItemGroup>
+        <Compile Include="..\TiktokLiveRec.WPF\Core\Converter.cs" Link="Core\Converter.cs" />
         <Compile Include="..\TiktokLiveRec.WPF\Core\Spider.cs" Link="Core\Spider.cs" />
+        <Compile Include="..\TiktokLiveRec.WPF\Core\Recorder.cs" Link="Core\Recorder.cs" />
         <Compile Include="..\TiktokLiveRec.WPF\Core\SpiderImpl\DouyinSpider.cs" Link="Core\SpiderImpl\DouyinSpider.cs" />
         <Compile Include="..\TiktokLiveRec.WPF\Core\SpiderImpl\TiktokSpider.cs" Link="Core\SpiderImpl\TiktokSpider.cs" />
     </ItemGroup>
@@ -106,6 +109,7 @@
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia.Extensions" Version="2.1.0" PrivateAssets="All" />
         <PackageReference Include="Antelcat.I18N.Avalonia" Version="1.1.2" />
         <PackageReference Include="FluentAvaloniaUI" Version="2.3.0" />
+        <PackageReference Include="Flucli" Version="0.3.2" />
         <PackageReference Include="Fischless.Configuration" Version="1.0.0" />
         <PackageReference Include="Fischless.Configuration.Json" Version="1.0.0" />
         <PackageReference Include="Fischless.Configuration.Yaml" Version="1.0.0" />
@@ -125,6 +129,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Resource Include="Assets\Background.png" />
       <Resource Include="Assets\Loading.json" />
     </ItemGroup>
 

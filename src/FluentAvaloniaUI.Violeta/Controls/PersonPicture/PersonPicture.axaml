@@ -1,0 +1,203 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls">
+    <Design.PreviewWith>
+        <StackPanel Margin="20"
+                    Orientation="Horizontal"
+                    Spacing="8">
+            <ui:PersonPicture Content="AS" />
+            <ui:PersonPicture Padding="4" Content="Semi" />
+            <ui:PersonPicture Padding="10" Content="Semi" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <SolidColorBrush x:Key="PersonPictureForeground" Color="White" />
+    <SolidColorBrush x:Key="PersonPictureRedBackground" Color="#D73324" />
+    <SolidColorBrush x:Key="PersonPicturePinkBackground" Color="#C72261" />
+    <SolidColorBrush x:Key="PersonPicturePurpleBackground" Color="#89289F" />
+    <SolidColorBrush x:Key="PersonPictureVioletBackground" Color="#6439B5" />
+    <SolidColorBrush x:Key="PersonPictureIndigoBackground" Color="#3444A3" />
+    <SolidColorBrush x:Key="PersonPictureBlueBackground" Color="#1D75DB" />
+    <SolidColorBrush x:Key="PersonPictureLightBlueBackground" Color="#0A81CC" />
+    <SolidColorBrush x:Key="PersonPictureCyanBackground" Color="#0E8999" />
+    <SolidColorBrush x:Key="PersonPictureTealBackground" Color="#0A9588" />
+    <SolidColorBrush x:Key="PersonPictureGreenBackground" Color="#32953D" />
+    <SolidColorBrush x:Key="PersonPictureLightGreenBackground" Color="#679934" />
+    <SolidColorBrush x:Key="PersonPictureLimeBackground" Color="#84B00C" />
+    <SolidColorBrush x:Key="PersonPictureYellowBackground" Color="#D2AF0F" />
+    <SolidColorBrush x:Key="PersonPictureAmberBackground" Color="#CA8F1E" />
+    <SolidColorBrush x:Key="PersonPictureOrangeBackground" Color="#D56F0F" />
+    <SolidColorBrush x:Key="PersonPictureGreyBackground" Color="#555B61" />
+
+    <FontWeight x:Key="PersonPictureFontWeight">600</FontWeight>
+    <CornerRadius x:Key="PersonPictureCircleCornerRadius">100</CornerRadius>
+
+    <CornerRadius x:Key="PersonPictureSquareCornerRadius">3</CornerRadius>
+
+    <x:Double x:Key="PersonPictureExtraExtraSmallWidth">20</x:Double>
+    <x:Double x:Key="PersonPictureExtraExtraSmallFontSize">10</x:Double>
+
+    <x:Double x:Key="PersonPictureExtraSmallWidth">24</x:Double>
+    <x:Double x:Key="PersonPictureExtraSmallFontSize">10</x:Double>
+
+    <x:Double x:Key="PersonPictureSmallWidth">32</x:Double>
+    <x:Double x:Key="PersonPictureSmallFontSize">12</x:Double>
+
+    <x:Double x:Key="PersonPictureDefaultWidth">40</x:Double>
+    <x:Double x:Key="PersonPictureDefaultFontSize">18</x:Double>
+
+    <x:Double x:Key="PersonPictureMediumWidth">48</x:Double>
+    <x:Double x:Key="PersonPictureMediumFontSize">20</x:Double>
+
+    <x:Double x:Key="PersonPictureLargeWidth">72</x:Double>
+    <x:Double x:Key="PersonPictureLargeFontSize">32</x:Double>
+    <CornerRadius x:Key="PersonPictureLargeSquareCornerRadius">6</CornerRadius>
+
+    <x:Double x:Key="PersonPictureExtraLargeWidth">128</x:Double>
+    <x:Double x:Key="PersonPictureExtraLargeFontSize">64</x:Double>
+    <CornerRadius x:Key="PersonPictureExtraLargeSquareCornerRadius">12</CornerRadius>
+
+    <ControlTheme x:Key="{x:Type ui:PersonPicture}" TargetType="{x:Type ui:PersonPicture}">
+        <Setter Property="Foreground" Value="{DynamicResource PersonPictureForeground}" />
+        <Setter Property="Background" Value="{DynamicResource PersonPictureGreyBackground}" />
+        <Setter Property="FontSize" Value="{DynamicResource PersonPictureMediumFontSize}" />
+        <Setter Property="FontWeight" Value="{DynamicResource PersonPictureFontWeight}" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Width" Value="{DynamicResource PersonPictureMediumWidth}" />
+        <Setter Property="Height" Value="{Binding $self.Width}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PersonPictureCircleCornerRadius}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="{x:Type ui:PersonPicture}">
+                <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
+                    <Panel>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                IsVisible="{TemplateBinding Source,
+                                                            Converter={x:Static ObjectConverters.IsNull}}" />
+                        <Viewbox Margin="{TemplateBinding Padding}" StretchDirection="DownOnly">
+                            <Grid>
+                                <ContentPresenter Name="PART_ContentPresenter"
+                                                  HorizontalContentAlignment="Center"
+                                                  VerticalContentAlignment="Center"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                                  IsVisible="{TemplateBinding Source,
+                                                                              Converter={x:Static ObjectConverters.IsNull}}" />
+                                <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                             FontSize="{TemplateBinding Height}"
+                                             FontWeight="Light"
+                                             Glyph="{x:Static ui:FontSymbols.Contact}"
+                                             IsVisible="{TemplateBinding Source,
+                                                                         Converter={x:Static ObjectConverters.IsNull}}">
+                                    <ui:FontIcon.RenderTransform>
+                                        <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
+                                    </ui:FontIcon.RenderTransform>
+                                </ui:FontIcon>
+                            </Grid>
+                        </Viewbox>
+                        <Image Source="{TemplateBinding Source}" />
+                        <ContentPresenter Name="PART_HoverMask"
+                                          HorizontalContentAlignment="Center"
+                                          VerticalContentAlignment="Center"
+                                          Content="{TemplateBinding HoverMask}"
+                                          CornerRadius="{TemplateBinding CornerRadius}"
+                                          IsVisible="False" />
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_HoverMask">
+            <Setter Property="IsVisible" Value="{Binding HoverMask, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}" />
+        </Style>
+        <Style Selector="^.Red">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureRedBackground}" />
+        </Style>
+        <Style Selector="^.Pink">
+            <Setter Property="Background" Value="{DynamicResource PersonPicturePinkBackground}" />
+        </Style>
+        <Style Selector="^.Purple">
+            <Setter Property="Background" Value="{DynamicResource PersonPicturePurpleBackground}" />
+        </Style>
+        <Style Selector="^.Violet">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureVioletBackground}" />
+        </Style>
+        <Style Selector="^.Indigo">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureIndigoBackground}" />
+        </Style>
+        <Style Selector="^.Blue">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureBlueBackground}" />
+        </Style>
+        <Style Selector="^.LightBlue">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureLightBlueBackground}" />
+        </Style>
+        <Style Selector="^.Cyan">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureCyanBackground}" />
+        </Style>
+        <Style Selector="^.Teal">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureTealBackground}" />
+        </Style>
+        <Style Selector="^.Green">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureGreenBackground}" />
+        </Style>
+        <Style Selector="^.LightGreen">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureLightGreenBackground}" />
+        </Style>
+        <Style Selector="^.Lime">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureLimeBackground}" />
+        </Style>
+        <Style Selector="^.Yellow">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureYellowBackground}" />
+        </Style>
+        <Style Selector="^.Amber">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureAmberBackground}" />
+        </Style>
+        <Style Selector="^.Orange">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureOrangeBackground}" />
+        </Style>
+        <Style Selector="^.Grey">
+            <Setter Property="Background" Value="{DynamicResource PersonPictureGreyBackground}" />
+        </Style>
+
+        <Style Selector="^.Square">
+            <Setter Property="CornerRadius" Value="{DynamicResource PersonPictureSquareCornerRadius}" />
+        </Style>
+
+        <Style Selector="^.ExtraExtraSmall">
+            <Setter Property="Width" Value="{DynamicResource PersonPictureExtraExtraSmallWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource PersonPictureExtraExtraSmallFontSize}" />
+        </Style>
+        <Style Selector="^.ExtraSmall">
+            <Setter Property="Width" Value="{DynamicResource PersonPictureExtraSmallWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource PersonPictureExtraSmallFontSize}" />
+        </Style>
+        <Style Selector="^.Small">
+            <Setter Property="Width" Value="{DynamicResource PersonPictureSmallWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource PersonPictureSmallFontSize}" />
+        </Style>
+        <Style Selector="^.Default">
+            <Setter Property="Width" Value="{DynamicResource PersonPictureDefaultWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource PersonPictureDefaultFontSize}" />
+        </Style>
+        <Style Selector="^.Medium">
+            <Setter Property="Width" Value="{DynamicResource PersonPictureMediumWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource PersonPictureMediumFontSize}" />
+        </Style>
+        <Style Selector="^.Large">
+            <Setter Property="Width" Value="{DynamicResource PersonPictureLargeWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource PersonPictureLargeFontSize}" />
+            <Style Selector="^.Square">
+                <Setter Property="CornerRadius" Value="{DynamicResource PersonPictureLargeSquareCornerRadius}" />
+            </Style>
+        </Style>
+        <Style Selector="^.ExtraLarge">
+            <Setter Property="Width" Value="{DynamicResource PersonPictureExtraLargeWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource PersonPictureExtraLargeFontSize}" />
+            <Style Selector="^.Square">
+                <Setter Property="CornerRadius" Value="{DynamicResource PersonPictureExtraLargeSquareCornerRadius}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
