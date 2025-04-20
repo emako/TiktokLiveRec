@@ -1,0 +1,31 @@
+<Window x:Class="TiktokLiveRec.Views.LoadingWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TiktokLiveRec.Views"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        Background="Transparent"
+        BorderBrush="Transparent"
+        BorderThickness="0"
+        CanResize="False"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ExtendClientAreaToDecorationsHint="False"
+        IsEnabled="False"
+        IsHitTestVisible="False"
+        IsTabStop="False"
+        ShowActivated="False"
+        ShowInTaskbar="False"
+        SizeToContent="Manual"
+        SystemDecorations="None"
+        WindowStartupLocation="Manual"
+        mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Lottie Width="46"
+                Height="46"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Path="/Assets/Loading.json" />
+    </Grid>
+</Window>

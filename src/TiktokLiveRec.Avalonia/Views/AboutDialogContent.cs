@@ -1,14 +1,16 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Layout;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using CommunityToolkit.Mvvm.Input;
+using FluentAvalonia.UI.Controls;
 using TiktokLiveRec.Extensions;
 
 namespace TiktokLiveRec.Views;
 
-public partial class AboutDialogContent : UserControl
+public sealed partial class AboutDialogContent : UserControl
 {
     public AboutDialogContent()
     {
@@ -55,6 +57,29 @@ public partial class AboutDialogContent : UserControl
         rootGrid.Children.Add(link);
 
         Content = rootGrid;
+    }
+
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        if (change.Property == ParentProperty)
+        {
+            if (Parent is ContentDialog dialog)
+            {
+                dialog.Title = "About".Tr();
+                dialog.CloseButtonText = "ButtonOfClose".Tr();
+
+                if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                {
+                    if (desktop.MainWindow is Window window)
+                    {
+                        _ = dialog.UseAsTitleBarForWindowFrame(window, true)
+                            .UseAsTitleBarForWindowSystemMenu(window);
+                    }
+                }
+            }
+        }
+
+        base.OnPropertyChanged(change);
     }
 
     [RelayCommand]

@@ -3,14 +3,16 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Fischless.Configuration;
 using FluentAvalonia.UI.Controls;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using TiktokLiveRec.Views;
+using Ursa.Controls;
 
 namespace TiktokLiveRec.ViewModels;
 
-public partial class MainViewModel : ObservableObject
+public sealed partial class MainViewModel : ObservableObject
 {
     [ObservableProperty]
     private ObservableCollection<RoomStatusReactive> roomStatuses;
@@ -40,8 +42,36 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void AddRoom()
+    private async Task AddRoomAsync()
     {
+        AddRoomContentDialogContent content = new();
+        _ = await new ContentDialog()
+        {
+            Content = content,
+        }.ShowAsync();
+
+        if (content.Result == ContentDialogResult.Primary)
+        {
+            if (!string.IsNullOrWhiteSpace(content.NickName))
+            {
+                List<Room> rooms = [.. Configurations.Rooms.Get()];
+
+                rooms.RemoveAll(room => room.RoomUrl == content.Url);
+                rooms.Add(new Room()
+                {
+                    NickName = content.NickName,
+                    RoomUrl = content.RoomUrl!,
+                });
+                Configurations.Rooms.Set([.. rooms]);
+                ConfigurationManager.Save();
+
+                RoomStatuses.Add(new RoomStatusReactive()
+                {
+                    NickName = content.NickName,
+                    RoomUrl = content.RoomUrl!,
+                });
+            }
+        }
     }
 
     [RelayCommand]
@@ -88,21 +118,9 @@ public partial class MainViewModel : ObservableObject
     [SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression")]
     private async Task OpenAboutAsync()
     {
-        if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        _ = await new ContentDialog()
         {
-            if (desktop.MainWindow is Window window)
-            {
-                ContentDialog dialog = new()
-                {
-                    Title = "About".Tr(),
-                    Content = new AboutDialogContent(),
-                    CloseButtonText = "ButtonOfClose".Tr(),
-                };
-
-                _ = dialog.UseAsTitleBarForWindowFrame(window, true)
-                    .UseAsTitleBarForWindowSystemMenu(window);
-                _ = await dialog.ShowAsync();
-            }
-        }
+            Content = new AboutDialogContent(),
+        }.ShowAsync();
     }
 }

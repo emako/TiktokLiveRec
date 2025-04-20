@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
@@ -46,10 +46,26 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <AvaloniaResource Remove="Assets\Loading.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\TiktokLiveRec.WPF\Core\Spider.cs" Link="Core\Spider.cs" />
+        <Compile Include="..\TiktokLiveRec.WPF\Core\SpiderImpl\DouyinSpider.cs" Link="Core\SpiderImpl\DouyinSpider.cs" />
+        <Compile Include="..\TiktokLiveRec.WPF\Core\SpiderImpl\TiktokSpider.cs" Link="Core\SpiderImpl\TiktokSpider.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <Compile Update="Properties\Resources.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Views\LoadingWindow.axaml.cs">
+          <DependentUpon>LoadingWindow.axaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\AddRoomContentDialogContent.axaml.cs">
+          <DependentUpon>AddRoomContentDialogContent.axaml</DependentUpon>
         </Compile>
     </ItemGroup>
 
@@ -85,6 +101,7 @@
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="Avalonia.Skia.Lottie" Version="11.0.0" />
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia" Version="2.1.0" PrivateAssets="All" />
         <PackageReference Condition="'$(DefineConstants.Contains(ENABLE_XAML_HOT_RELOAD))'" Include="HotAvalonia.Extensions" Version="2.1.0" PrivateAssets="All" />
         <PackageReference Include="Antelcat.I18N.Avalonia" Version="1.1.2" />
@@ -100,10 +117,15 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
         <PackageReference Include="Dotnet.Bundle" Version="*" />
         <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
+        <PackageReference Include="RestSharp" Version="112.1.0" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\FluentAvaloniaUI.Violeta\FluentAvaloniaUI.Violeta.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Assets\Loading.json" />
     </ItemGroup>
 
 </Project>

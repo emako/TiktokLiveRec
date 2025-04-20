@@ -1,0 +1,17 @@
+<UserControl x:Class="TiktokLiveRec.Views.AddRoomContentDialogContent"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TiktokLiveRec.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
+             x:DataType="local:AddRoomContentDialogViewModel"
+             mc:Ignorable="d">
+    <Grid>
+        <StackPanel MinWidth="350" Spacing="8">
+            <TextBlock Text="{I18N EnterRoomUrl}" />
+            <TextBox Text="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="https://live.douyin.com/xxx" />
+            <CheckBox Content="{I18N AddRoomForce}" IsChecked="{Binding IsForcedAdd, Mode=TwoWay}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
