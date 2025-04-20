@@ -1,4 +1,4 @@
-﻿<ui:FluentWindow x:Class="TiktokLiveRec.Views.MainWindow"
+<ui:FluentWindow x:Class="TiktokLiveRec.Views.MainWindow"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:b="http://schemas.github.com/computedbehaviors/2024/xaml"
@@ -82,7 +82,7 @@
                       AutoGenerateColumns="False"
                       Background="Transparent"
                       CanUserAddRows="False"
-                      CanUserSortColumns="False"
+                      CanUserSortColumns="True"
                       ColumnHeaderHeight="50"
                       ColumnWidth="100"
                       DataGrid.CellStyle="{StaticResource CenteredDataGridCellStyle}"
@@ -201,21 +201,24 @@
                                         EditingElementStyle="{StaticResource CenteredDataGridTextColumnEditingElementStyle}"
                                         ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
                                         Header="{I18N LiveRoom}"
-                                        IsReadOnly="True" />
+                                        IsReadOnly="True"
+                                        SortMemberPath="LiveRoom" />
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding StreamStatusText}"
                                         CellStyle="{StaticResource CenteredDataGridTextColumnCellStyle}"
                                         EditingElementStyle="{StaticResource CenteredDataGridTextColumnEditingElementStyle}"
                                         ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
                                         Header="{I18N StreamStatus}"
-                                        IsReadOnly="True" />
+                                        IsReadOnly="True"
+                                        SortMemberPath="StreamStatusText" />
                     <DataGridTextColumn Width="*"
                                         Binding="{Binding RecordStatusText}"
                                         CellStyle="{StaticResource CenteredDataGridTextColumnCellStyle}"
                                         EditingElementStyle="{StaticResource CenteredDataGridTextColumnEditingElementStyle}"
                                         ElementStyle="{StaticResource CenteredDataGridTextColumnElementStyle}"
                                         Header="{I18N RecordStatus}"
-                                        IsReadOnly="True" />
+                                        IsReadOnly="True"
+                                        SortMemberPath="RecordStatusText" />
                     <DataGridTemplateColumn Width="1.6*" Header="{I18N Operation}">
                         <DataGridTemplateColumn.CellStyle>
                             <Style BasedOn="{StaticResource DefaultDataGridCellStyle}" TargetType="{x:Type DataGridCell}">

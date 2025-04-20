@@ -1,8 +1,7 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 using Flucli;
 using Flucli.Utils.Extensions;
 using System.Diagnostics;
-using System.IO;
 using System.Text;
 using TiktokLiveRec.Extensions;
 using TiktokLiveRec.Models;

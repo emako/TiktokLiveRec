@@ -1,6 +1,5 @@
 using MediaInfoLib;
 using System.Diagnostics;
-using System.IO;
 using TiktokLiveRec.Extensions;
 using Vanara.PInvoke;
 using Windows.System;

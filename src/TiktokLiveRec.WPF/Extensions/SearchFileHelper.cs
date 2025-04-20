@@ -1,4 +1,3 @@
-﻿using System.IO;
 using System.Text.RegularExpressions;
 
 namespace TiktokLiveRec.Extensions;
