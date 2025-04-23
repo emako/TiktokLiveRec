@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
 using Fischless.Configuration;
 using MediaInfoLib;
@@ -6,7 +6,6 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using System.Collections.Concurrent;
 using System.Collections.Specialized;
 using System.Diagnostics;
-using System.IO;
 using System.Web;
 using TiktokLiveRec.Models;
 using TiktokLiveRec.Threading;

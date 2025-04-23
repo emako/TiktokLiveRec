@@ -1,7 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Toolkit.Uwp.Notifications;
 using NAudio.Wave;
-using System.IO;
 using System.Net;
 using System.Net.Mail;
 
