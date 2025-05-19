@@ -46,11 +46,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <AvaloniaResource Remove="Assets\Background.png" />
-      <AvaloniaResource Remove="Assets\Loading.json" />
-    </ItemGroup>
-
-    <ItemGroup>
         <Compile Include="..\TiktokLiveRec.WPF\Core\Converter.cs" Link="Core\Converter.cs" />
         <Compile Include="..\TiktokLiveRec.WPF\Core\Spider.cs" Link="Core\Spider.cs" />
         <Compile Include="..\TiktokLiveRec.WPF\Core\Recorder.cs" Link="Core\Recorder.cs" />
@@ -127,11 +122,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\FluentAvaloniaUI.Violeta\FluentAvaloniaUI.Violeta.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Resource Include="Assets\Background.png" />
-      <Resource Include="Assets\Loading.json" />
     </ItemGroup>
 
 </Project>

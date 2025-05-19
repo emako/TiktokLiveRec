@@ -3,8 +3,8 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 using Fischless.Configuration;
-using FluentAvalonia.UI.Violeta.Platform.Windows;
 using FluentAvalonia.UI.Violeta.Platform;
+using FluentAvalonia.UI.Violeta.Platform.Windows;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using TiktokLiveRec.Views;
@@ -57,7 +57,11 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+#if DEBUG
             desktop.MainWindow = new MainWindow();
+#else
+            desktop.MainWindow = LoadingWindow.ShowAsSplash<MainWindow>(1200);
+#endif
         }
 
         base.OnFrameworkInitializationCompleted();
