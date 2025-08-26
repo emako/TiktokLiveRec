@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Text.RegularExpressions;
 
 namespace TiktokLiveRec.Core;
@@ -61,6 +62,23 @@ public sealed partial class TiktokSpider : ISpider
         {
             BaseUrl = new Uri(url),
         };
+
+        if (Configurations.IsUseProxy.Get())
+        {
+            string proxyUrl = Configurations.ProxyUrl.Get();
+
+            if (!string.IsNullOrWhiteSpace(proxyUrl) && proxyUrl.Contains(':'))
+            {
+                string[] proxyParts = proxyUrl.Split(':');
+                if (proxyParts.Length >= 2 && 
+                    IPAddress.TryParse(proxyParts[0], out IPAddress? address) && 
+                    int.TryParse(proxyParts[1], out int port) &&
+                    port > 0 && port <= short.MaxValue)
+                {
+                    options.Proxy = new WebProxy(address.ToString(), port);
+                }
+            }
+        }
 
         RestClient client = new(options);
 
