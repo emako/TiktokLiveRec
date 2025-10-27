@@ -54,12 +54,16 @@ public sealed partial class DouyinSpider : ISpider
         {
             string proxyUrl = Configurations.ProxyUrl.Get();
 
-            if (!string.IsNullOrWhiteSpace(proxyUrl))
+            if (!string.IsNullOrWhiteSpace(proxyUrl) && proxyUrl.Contains(':'))
             {
-                options.Proxy = new WebProxy($"https://{proxyUrl}")
+                string[] proxyParts = proxyUrl.Split(':');
+                if (proxyParts.Length >= 2 && 
+                    IPAddress.TryParse(proxyParts[0], out IPAddress? address) && 
+                    int.TryParse(proxyParts[1], out int port) &&
+                    port > 0 && port <= short.MaxValue)
                 {
-                    //Credentials = new NetworkCredential("username", "password")
-                };
+                    options.Proxy = new WebProxy(address.ToString(), port);
+                }
             }
         }
 
